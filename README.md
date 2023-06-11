@@ -13,6 +13,17 @@ Do **NOT** run the following installs as root:
 ./installs/pip.sh  # DO NOT RUN AS ROOT!
 ```
 
+Run installs directly:
+
+```
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install curl
+curl --silent https://raw.githubusercontent.com/janmirco/setup/main/installs/apt.sh | sudo bash
+curl --silent https://raw.githubusercontent.com/janmirco/setup/main/installs/snap.sh | sudo bash
+curl --silent https://raw.githubusercontent.com/janmirco/setup/main/installs/tldr.sh | bash
+curl --silent https://raw.githubusercontent.com/janmirco/setup/main/installs/pip.sh | bash
+```
+
 
 ### Special installs
 
