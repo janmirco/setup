@@ -77,7 +77,7 @@ if ! command -v sciebo &> /dev/null; then
     sudo apt-get install --assume-yes sciebo-client sciebo-client-*
 fi
 
-# Pulse/Ivanti vpn problem, see https://git.uni-wuppertal.de/japfeifer/japfeifer/-/issues/1#note_50371
+# Pulse/Ivanti vpn problem, see https://zim.uni-wuppertal.de/de/unsere-dienste/netzzugang/vpn-aussenzugang/pulse-secure/#c135068
 if ! [ -f '/etc/apt/sources.list.d/home:bluca:openconnect.list' ]; then
     echo 'deb http://download.opensuse.org/repositories/home:/bluca:/openconnect/Ubuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:bluca:openconnect.list
     curl -fsSL https://download.opensuse.org/repositories/home:bluca:openconnect/Ubuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_bluca_openconnect.gpg > /dev/null
