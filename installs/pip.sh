@@ -19,3 +19,4 @@ python3 -m pip install -U pip pandas
 python3 -m pip install -U pip polars
 python3 -m pip install -U pip meshio[all]
 python3 -m pip install -U pip gstools
+python3 -m pip install -U pip snakeviz
