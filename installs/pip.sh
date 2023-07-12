@@ -15,6 +15,7 @@ python3 -m pip install -U pip jupyter-book
 python3 -m pip install -U pip jinja2
 python3 -m pip install -U pip cpplint
 python3 -m pip install -U pip scholarly
+python3 -m pip install -U pip openpyxl
 python3 -m pip install -U pip pandas
 python3 -m pip install -U pip polars
 python3 -m pip install -U pip meshio[all]
