@@ -54,10 +54,12 @@ sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
 #   download .deb from:
 #       * https://zoom.us/download
 #       * https://code.visualstudio.com/download
+#       * https://obsidian.md/download
 #   install:
 #       sudo apt-get update
 #       sudo apt-get install --assume-yes ~/Downloads/code_<VERSION>_amd64.deb
 #       sudo apt-get install --assume-yes ~/Downloads/zoom_amd64.deb
+#       sudo apt-get install --assume-yes ~/Downloads/obsidian_1.3.7_amd64.deb
 
 # Brave
 if ! command -v brave-browser &> /dev/null; then
