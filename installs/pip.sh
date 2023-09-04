@@ -22,3 +22,4 @@ python3 -m pip install -U pip meshio[all]
 python3 -m pip install -U pip gstools
 python3 -m pip install -U pip snakeviz
 python3 -m pip install -U pip torch torchvision torchaudio
+python3 -m pip install -U pip python-frontmatter
