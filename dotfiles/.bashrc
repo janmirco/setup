@@ -89,7 +89,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-source "$HOME/.git-prompt.sh"
 if [ "$color_prompt" = yes ]; then
     GIT_PS1_SHOWDIRTYSTATE=true  # for showing staged/unstaged files
     GIT_PS1_SHOWUNTRACKEDFILES=true  # for showing untracked files
@@ -143,3 +142,4 @@ bind '"\e[B":history-search-forward'
 #   Imports
 
 source "$HOME/.bash_aliases"
+source "$HOME/.git-prompt.sh"
