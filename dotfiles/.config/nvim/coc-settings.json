@@ -1,0 +1,78 @@
+{
+    "coc.preferences.jumpCommand": "edit",
+
+    "coc.source.around.shortcut": "BC",
+    "coc.source.buffer.shortcut": "BO",
+    "coc.source.file.shortcut": "FS",
+
+    "coc.source.around.priority": 9,
+    "coc.source.buffer.priority": 8,
+    "coc.source.file.priority": 7,
+
+    "suggest.completionItemKindLabels": {
+        "class": "CLASS",
+        "color": "COLOR",
+        "constant": "CONSTANT",
+        "constructor": "CONSTRUCTOR",
+        "default": "DEFAULT",
+        "enum": "ENUM",
+        "enumMember": "ENUMMEMBER",
+        "event": "EVENT",
+        "field": "FIELD",
+        "file": "FILE",
+        "folder": "FOLDER",
+        "function": "FUNCTION",
+        "interface": "INTERFACE",
+        "keyword": "KEYWORD",
+        "method": "METHOD",
+        "module": "MODULE",
+        "operator": "OPERATOR",
+        "property": "PROPERTY",
+        "reference": "REFERENCE",
+        "snippet": "SNIPPET",
+        "struct": "STRUCT",
+        "text": "TEXT",
+        "typeParameter": "TYPEPARAMETER",
+        "unit": "UNIT",
+        "value": "VALUE",
+        "variable": "VARIABLE"
+    },
+
+    "clangd.path": "/usr/bin/clangd",
+    "clangd.disableDiagnostics": true,
+
+    "languageserver": {
+        "fortran": {
+            "command": "~/.local/bin/fortls",
+            "args": ["--lowercase_intrinsics"],
+            "filetypes": ["fortran"],
+            "rootPatterns": [".fortls", ".git/"]
+        }
+    },
+
+    "javascript.suggestionActions.enabled": false,
+
+    "Lua.hint.enable": false,
+    "sumneko-lua.enableNvimLuaDev": true,
+    "Lua.workspace.checkThirdParty": false,
+
+    "python.pythonPath": "/usr/bin/python3",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportOptionalSubscript": "none",
+        "reportGeneralTypeIssues": "none"
+    },
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=numpy,torch",
+        "--generated-members", "matparo.* mp.* effi.* ej.* e.* feaptools.* ft.*",
+        "--disable=E1102",
+        "--disable=R0914",
+        "--disable=C0103"
+    ],
+    "pyright.inlayHints.functionReturnTypes": false,
+    "pyright.inlayHints.variableTypes": false,
+    "pyright.inlayHints.enable": false,
+
+    "rust-analyzer.inlayHints.enable": false
+}
