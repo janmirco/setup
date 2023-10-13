@@ -49,6 +49,7 @@ sudo apt-get install --assume-yes libgmp-dev libbinutils libbinutils-dbg
 sudo apt-get install --assume-yes vim vim-runtime vim-doc vim-scripts vim-gtk3
 sudo apt-get install --assume-yes obs-studio
 sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
+sudo apt-get install --assume-yes pugixml-doc libpugixml*
 
 # Zoom and VS Code
 #   download .deb from:
