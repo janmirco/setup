@@ -1,0 +1,84 @@
+# ==============================================================================
+#                   _____ _ _      _____             __ _
+#                  / ____(_) |    / ____|           / _(_)
+#                 | |  __ _| |_  | |     ___  _ __ | |_ _  __ _
+#                 | | |_ | | __| | |    / _ \| '_ \|  _| |/ _` |
+#                 | |__| | | |_  | |___| (_) | | | | | | | (_| |
+#                  \_____|_|\__|  \_____\___/|_| |_|_| |_|\__, |
+#                                                          __/ |
+#                                                         |___/
+# ==============================================================================
+
+[user]
+    name = First Last
+    email = first.last@email.hello
+
+[core]
+    editor = nvim
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[merge]
+    tool = nvmerge
+    conflictstyle = diff3
+[mergetool]
+    prompt = false
+    trustExitCode = true
+[mergetool "nvmerge"]
+    cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd l'
+
+[diff]
+    tool = nvdiff
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "nvdiff"]
+    cmd = nvim -d $LOCAL $REMOTE -c 'wincmd l'
+
+[alias]
+    ap = add --patch
+    bi = bisect
+    br = branch
+    bra = branch --all
+    ci = commit
+    cia = commit --amend
+    cianoedit = commit --amend --no-edit
+    cl = clean -dx --dry-run
+    clf = clean -dx --force
+    co = checkout
+    coback = checkout -
+    cp = cherry-pick
+    cpa = cherry-pick --abort
+    cpc = cherry-pick --continue
+    dstat = diff --stat
+    fo = fetch origin
+    fpo = fetch --prune origin
+    fork = "!f() { \
+        ForkPoint=$(git merge-base --fork-point $1 ) ; \
+        echo    _____Fork-Point-Commit: $ForkPoint ; echo   ; \
+        echo   '++++ current branch commits: ++++'          ; git lognice $1..  ; git diff --stat $1...HEAD ; \
+        echo '\n++++ diverging base-branch commits: ++++'   ; git lognice ..$1  ; git diff --stat ...$1 ; \
+        echo '\n++++ last 3 common commits: ++++'           ; git lognice -n3 $ForkPoint ; \
+        }; f"
+    lognice = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(dim white)%an%  -%C(reset) %C(white)%s%C(reset) │ %C(bold yellow)%d%C(reset)'
+    mg = merge
+    mga = merge --abort
+    mgc = merge --continue
+    rb = rebase
+    rba = rebase --abort
+    rbc = rebase --continue
+    rbi = rebase --interactive
+    rbinum = "!f() { git rebase --interactive HEAD~$1 $2; unset -f f; }; f"
+    sp = stash push
+    spu = stash push --include-untracked
+    ss = stash show
+    stoptracking = rm --cached
+    unci1 = reset HEAD~1
+    # reset --hard HEAD~1  # points head one commit before latest and working directory gets lost FOREVER (commits and staging area can be brought back via `git reflog` and `git fsck --lost-found`)
+    # reset --soft HEAD~1  # points head one commit before latest and puts files back in staging area (previous working directory stays intact)
+    # reset        HEAD~1  # points head one commit before latest and puts files back in working directory (previous working directory stays intact) --> default flag: `--mixed`
+    undo = checkout --
+    unstage = reset HEAD --
