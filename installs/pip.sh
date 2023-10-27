@@ -2,8 +2,8 @@
 
 # python installs - DO NOT RUN AS ROOT!
 python3 -m pip install -U pip numpy scipy sympy matplotlib numba
-python3 -m pip install -U pip virtualenv
-python3 -m pip install -U pip black isort mypy pyright ruff
+python3 -m pip install -U pip virtualenv setuptools wheel build
+python3 -m pip install -U pip black isort mypy pyright ruff pytest
 python3 -m pip install -U pip fortls debugpy
 python3 -m pip install -U pip gmsh
 python3 -m pip install -U pip thefuck
@@ -26,3 +26,5 @@ python3 -m pip install -U pip python-frontmatter
 python3 -m pip install -U pip beautifulsoup4
 python3 -m pip install -U pip icecream
 python3 -m pip install -U pip h5py
+python3 -m pip install -U pip yt-dlp
+python3 -m pip install -U pip tldr
