@@ -8,7 +8,6 @@ sudo apt-get install --assume-yes curl xclip tree htop ranger figlet sl ncdu ncd
 sudo apt-get install --assume-yes tmux
 sudo apt-get install --assume-yes ssh
 sudo apt-get install --assume-yes pass xsel
-sudo apt-get install --assume-yes tldr
 sudo apt-get install --assume-yes calcurse
 sudo apt-get install --assume-yes pandoc
 sudo apt-get install --assume-yes cmatrix*
