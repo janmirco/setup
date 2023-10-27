@@ -7,7 +7,7 @@ sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install --assume-yes curl xclip tree htop ranger figlet sl ncdu ncdt rename libaa-bin lolcat
 sudo apt-get install --assume-yes tmux
 sudo apt-get install --assume-yes ssh
-sudo apt-get install --assume-yes pass
+sudo apt-get install --assume-yes pass xsel
 sudo apt-get install --assume-yes tldr
 sudo apt-get install --assume-yes calcurse
 sudo apt-get install --assume-yes pandoc
@@ -50,6 +50,8 @@ sudo apt-get install --assume-yes vim vim-runtime vim-doc vim-scripts vim-gtk3
 sudo apt-get install --assume-yes obs-studio
 sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
 sudo apt-get install --assume-yes pugixml-doc libpugixml*
+sudo apt-get install --assume-yes kdenlive*
+sudo apt-get install --assume-yes default-jre default-jdk
 
 # Zoom and VS Code
 #   download .deb from:
