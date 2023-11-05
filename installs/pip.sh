@@ -4,6 +4,7 @@
 python3 -m pip install -U pip numpy scipy sympy matplotlib numba
 python3 -m pip install -U pip virtualenv setuptools wheel build
 python3 -m pip install -U pip black isort mypy pyright ruff pytest
+python3 -m pip install -U pip clang-format clang-tidy
 python3 -m pip install -U pip fortls debugpy
 python3 -m pip install -U pip gmsh
 python3 -m pip install -U pip thefuck
