@@ -51,6 +51,7 @@ sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
 sudo apt-get install --assume-yes pugixml-doc libpugixml*
 sudo apt-get install --assume-yes kdenlive*
 sudo apt-get install --assume-yes default-jre default-jdk
+sudo apt-get install --assume-yes remmina*
 
 # Zoom and VS Code
 #   download .deb from:
