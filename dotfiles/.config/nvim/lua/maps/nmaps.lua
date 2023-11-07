@@ -1,7 +1,3 @@
--- set string for echo
-local sign = "[nmap] "
-
-
 -- remap gv (reselection in visual mode) for use with git
 vim.keymap.set("n", "gV", "gv")
 
@@ -66,21 +62,22 @@ vim.keymap.set("n", "<A-R>", function() toggle("relativenumber") end)
 
 
 -- standard commands mapped with leader
-vim.keymap.set("n", "<leader>a", ":wall<cr>:qall<cr>")
-vim.keymap.set("n", "<leader>e", ":edit<cr>:echo '" .. sign .. "File reloaded'<cr>")
-vim.keymap.set("n", "<leader>w", ":update<cr>:echo '" .. sign .. "File updated'<cr>")
+vim.keymap.set("n", "<leader>a", ":write<cr>:qall<cr>")
+vim.keymap.set("n", "<leader>r", function() vim.cmd("edit"); print(vim.fn.expand("%:t") .. " reloaded") end)
+vim.keymap.set("n", "<leader>W", function() vim.cmd("write"); print(vim.fn.expand("%:t") .. " written") end)
+vim.keymap.set("n", "<leader>w", function() vim.cmd("update"); print(vim.fn.expand("%:t") .. " updated") end)
 vim.keymap.set("n", "<leader>cq", ":cq<cr>")
-vim.keymap.set("n", "<leader>t", ":edit ")
+vim.keymap.set("n", "<leader>e", ":edit ")
 vim.keymap.set("n", "<leader>v", ":vsplit ")
 vim.keymap.set("n", "<leader>s", ":split ")
 
 
 -- close every window except for the current one
-vim.keymap.set("n", "<leader>ow", ":update<cr>:only<cr>:echo '" .. sign .. "Closed all windows except current'<cr>")
+vim.keymap.set("n", "<leader>ow", function() vim.cmd("update"); vim.cmd("only"); print("Closed all windows except: " .. vim.fn.expand("%:t")) end)
 
 
 -- source init.lua
-vim.keymap.set("n", "<leader>5", ":luafile %<cr>")
+vim.keymap.set("n", "<leader>5", ":source %<cr>")
 
 
 -- print and change working directory
@@ -90,13 +87,12 @@ vim.keymap.set("n", "<leader>pl", ":lcd %:h<cr>")
 
 
 -- show files of current directory and directory tree
-vim.keymap.set("n", "<leader>ll", ":! ls -lahFv --group-directories-first<cr>")
-vim.keymap.set("n", "<leader>lt", ":! tree -a --dirsfirst -I '.git'<cr>")
+vim.keymap.set("n", "<leader>l", ":! ls -lAhv --group-directories-first<cr>")
+vim.keymap.set("n", "<leader>t", ":! tree -avn --dirsfirst -I '.git|node_modules|env'<cr>")
 
 
 -- remove trailing whitespace and only save if there was any
-vim.keymap.set("n", "<leader>r", ":%s/\\s\\+$//ge<cr>:update<cr>:echo '" .. sign .. "Remove trailing whitespace of current file'<cr>")
-vim.keymap.set("n", "<leader>rw", ":windo %s/\\s\\+$//ge<cr>:windo update<cr>:echo '" .. sign .. "Remove trailing whitespace of all windows'<cr>")
+vim.keymap.set("n", "<leader>rw", ":windo %s/\\s\\+$//ge<cr>:windo update<cr>:echo 'Remove trailing whitespace of all windows'<cr>")
 
 
 -- search word where cursor hovers over
@@ -216,7 +212,7 @@ vim.keymap.set("n", "<leader>4", "\"4p")
 --     for _, value in pairs(split(vim.fn.getcwd(), "/")) do dir = value end
 --     local session = "$HOME/.config/nvim/sessions/session_" .. dir .. ".vim"
 --     vim.cmd(":mksession " .. session)
---     print(sign .. "Saved session: " .. session)
+--     print("Saved session: " .. session)
 -- end
 -- vim.keymap.set("n", "<A-s>", ":mksession! $HOME/.config/nvim/sessions/last_session.vim<cr>")
 -- vim.keymap.set("n", "<A-S>", make_session_with_automatic_name)

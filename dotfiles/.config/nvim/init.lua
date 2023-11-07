@@ -39,6 +39,7 @@ vim.cmd("Plug 'fannheyward/telescope-coc.nvim'")
 vim.cmd("Plug 'folke/zen-mode.nvim'")
 vim.cmd("Plug 'ggandor/leap.nvim'")
 vim.cmd("Plug 'goolord/alpha-nvim'")
+vim.cmd("Plug 'hrsh7th/nvim-cmp'")
 vim.cmd("Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }")
 vim.cmd("Plug 'jakewvincent/mkdnflow.nvim'")
 vim.cmd("Plug 'justinmk/vim-syntax-extra'")
@@ -67,11 +68,7 @@ vim.cmd("call plug#end()")
 
 
 -- plugin-specific configurations
-vim.cmd("lua require('plugins_config')")
-
-
--- self-made matlab language server
-vim.cmd("lua require('mls_config')")
+require("index_configs")
 
 
 
@@ -126,7 +123,7 @@ vim.cmd("autocmd BufEnter,BufRead *.ma,*.mm,*.mma setfiletype mma")
 --   Sec: General options
 -- =============================================================================
 
-vim.cmd("lua require('general_options')")
+require("general_options")
 vim.cmd("let g:python3_host_prog = '/bin/python3'")
 
 
@@ -153,16 +150,5 @@ vim.cmd("set cursorline")
 -- =============================================================================
 
 vim.cmd("let g:mapleader=' '")
-vim.cmd("lua require('nmaps')")
-vim.cmd("lua require('imaps')")
-vim.cmd("lua require('vmaps')")
-vim.cmd("lua require('tmaps')")
-vim.cmd("lua require('plugins_maps')")
-
-
--- format code of entire file
-vim.cmd("autocmd BufEnter * nmap <silent> <Leader><Leader> magg=G`a:delmarks a<CR>zz:echo '[VimFormat] Formatted file'<CR>")
-vim.cmd("autocmd BufEnter *.go nmap <silent> <Leader><Leader> :update<CR>:! go fmt %<CR><CR>:e %<CR>zz:echo '[GoFormat] Formatted Go file with go fmt'<CR>")
-vim.cmd("autocmd BufEnter *.py nmap <silent> <Leader><Leader> :update<CR>:! python3 -m isort --profile black --line-length 1000 %<CR><CR>:e %<CR>:! python3 -m black --line-length 1000 %<CR><CR>:e %<CR>zz:echo '[PyFormat] Formatted Python file with isort & Black'<CR>")
-vim.cmd("autocmd BufEnter *.rs nmap <silent> <Leader><Leader> :update<cr>:! rustfmt %<cr><cr>:e %<cr>zz:echo '[RustFormat] Formatted Rust file with rustfmt'<CR>")
-vim.cmd("autocmd BufEnter *.tex nmap <silent> <Leader><Leader> magg=G=G`a:delmarks a<CR>zz:echo '[VimFormat] Formatted TeX file'<CR>")
+require("index_maps")
+require("auto/format")

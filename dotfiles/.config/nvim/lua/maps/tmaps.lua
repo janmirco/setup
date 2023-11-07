@@ -1,6 +1,5 @@
 -- exit terminal mode
 vim.keymap.set("t", "<esc>", "<C-\\><C-n>", {silent = true})
-vim.keymap.set("t", "<A-r>", "q<cmd>FloatermToggle<cr>", {silent = true})
 vim.keymap.set("t", "<A-m>", "<cmd>FloatermToggle<cr>", {silent = true})
 
 

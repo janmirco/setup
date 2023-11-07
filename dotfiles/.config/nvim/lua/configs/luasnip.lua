@@ -223,12 +223,18 @@ ls.add_snippets(nil, {
             choice_node(1, {
                 fmt("print({})", insert_node(1)),
                 fmt("print(f\"{}\")", insert_node(1)),
+                fmt("print(type({}))", insert_node(1)),
+                fmt("print(len({}))", insert_node(1)),
+                fmt("print(np.shape({}))", insert_node(1)),
             })
         )),
         snippet("d", fmt("{}",
             choice_node(1, {
                 fmt("print({})\nraise SystemExit()", insert_node(1)),
                 fmt("print(f\"{}\")\nraise SystemExit()", insert_node(1)),
+                fmt("print(type({}))\nraise SystemExit()", insert_node(1)),
+                fmt("print(len({}))\nraise SystemExit()", insert_node(1)),
+                fmt("print(np.shape({}))\nraise SystemExit()", insert_node(1)),
             })
         )),
     },

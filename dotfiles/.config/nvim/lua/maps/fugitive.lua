@@ -1,0 +1,8 @@
+vim.keymap.set("n", "gs", ":Git<cr>", {silent = true})
+vim.keymap.set("n", "gl", ":Git log<cr>", {silent = true})
+vim.keymap.set("n", "gc", ":Git commit<cr>", {silent = true})
+vim.keymap.set("n", "gb", ":Git blame<cr>", {silent = true})
+vim.keymap.set("n", "gv", ":Gvdiffsplit<cr>", {silent = true})
+vim.keymap.set("n", "gm", ":Gvdiffsplit!<cr>", {silent = true})
+vim.keymap.set("n", "g,", ":diffget //2<cr>:echo '[GitMerge] Grabbed from left side'<cr>", {silent = true})
+vim.keymap.set("n", "g.", ":diffget //3<cr>:echo '[GitMerge] Grabbed from right side'<cr>", {silent = true})
