@@ -21,11 +21,6 @@
 --   Rate: 40 repeats/s
 
 
-
--- =============================================================================
---   Sec: Plugins
--- =============================================================================
-
 vim.cmd("call plug#begin('$HOME/.config/nvim/autoload/plugged')")
 vim.cmd("Plug 'JuliaEditorSupport/julia-vim'")
 vim.cmd("Plug 'L3MON4D3/LuaSnip'")
@@ -59,6 +54,7 @@ vim.cmd("Plug 'preservim/nerdcommenter'")
 vim.cmd("Plug 'puremourning/vimspector'")
 vim.cmd("Plug 'sainnhe/everforest'")
 vim.cmd("Plug 'sainnhe/gruvbox-material'")
+vim.cmd("Plug 'stevearc/oil.nvim'")
 vim.cmd("Plug 'szw/vim-maximizer'")
 vim.cmd("Plug 'tpope/vim-fugitive'")
 vim.cmd("Plug 'vim-scripts/MatlabFilesEdition'")
@@ -67,88 +63,13 @@ vim.cmd("Plug 'voldikss/vim-floaterm'")
 vim.cmd("call plug#end()")
 
 
--- plugin-specific configurations
-require("index_configs")
+vim.g.python3_host_prog = "/bin/python3"
+vim.g.mapleader = " "
 
 
-
--- =============================================================================
---   Sec: Syntax (this needs to be BEFORE syntax enable)
--- =============================================================================
-
--- bash
-vim.cmd("autocmd BufEnter,BufRead .bash* setfiletype bash")
-
-
--- fortran
-vim.cmd("autocmd BufEnter,BufRead Irun* setfiletype fortran")
-vim.cmd("autocmd BufEnter,BufRead feap*.jinja setfiletype fortran")
-vim.cmd("autocmd BufEnter *.f let g:fortran_fixed_source = 1")
-vim.cmd("autocmd BufEnter *.f90,Irun* let g:fortran_free_source = 1")
-vim.cmd("autocmd BufEnter *.f,*.f90,Irun* let g:fortran_do_enddo = 1")
-vim.cmd("autocmd BufEnter *.f,*.f90,Irun* let g:fortran_fold = 1")
-vim.cmd("autocmd BufEnter *.f,*.f90,Irun* let g:fortran_fold_conditionals = 1")
-vim.cmd("autocmd BufEnter *.f,*.f90,Irun* let g:fortran_fold_multilinecomments = 1")
--- vim.cmd("autocmd BufEnter *.f,*.f90,Irun* let g:fortran_more_precise = 1")  -- SLOW!
-
-
--- git commit message
-vim.cmd("autocmd BufEnter,BufRead COMMIT_EDITMSG setlocal spell spelllang=en_us")
-
-
--- latex
-vim.cmd("autocmd BufEnter,BufRead *.tex setfiletype tex")
-vim.cmd("autocmd BufEnter,BufRead *.tex let g:tex_flavor = 'latex'")
-vim.cmd("autocmd BufEnter,BufRead *.tex let g:tex_nospell = 0")
-vim.cmd("autocmd BufEnter,BufRead *.tex let g:tex_comment_nospell = 0")
-vim.cmd("autocmd BufEnter,BufRead *.tex let g:tex_verbspell = 1")
-vim.cmd("autocmd BufEnter,BufRead *.tex syntax spell toplevel")
-
-
--- markdown
-vim.cmd("autocmd BufEnter,BufRead *.md setfiletype markdown")
-
-
--- matlab
-vim.cmd("autocmd BufEnter,BufRead *.m setfiletype matlab")
-vim.cmd("autocmd BufEnter *.m set commentstring=%%s")
-
-
--- mathematica
-vim.cmd("autocmd BufEnter,BufRead *.ma,*.mm,*.mma setfiletype mma")
-
-
-
--- =============================================================================
---   Sec: General options
--- =============================================================================
-
+require("plugins")
+require("syntax")  -- this needs to be BEFORE `syntax enable` command
 require("general_options")
-vim.cmd("let g:python3_host_prog = '/bin/python3'")
-
-
-
--- =============================================================================
---   Sec: Rulers
--- =============================================================================
-
--- vertical ruler
-vim.cmd("autocmd BufEnter *                set colorcolumn=81")
-vim.cmd("autocmd BufEnter *.tex,*.md,*.txt set colorcolumn=81,161")
-vim.cmd("autocmd BufEnter CMake*           set colorcolumn=81")
-vim.cmd("autocmd BufEnter *.f,*.f77,*.for  set colorcolumn=6,73")
-vim.cmd("autocmd BufEnter COMMIT_EDITMSG   set colorcolumn=51,73")
-
-
--- horizontal ruler
-vim.cmd("set cursorline")
-
-
-
--- =============================================================================
---   Sec: Keymaps
--- =============================================================================
-
-vim.cmd("let g:mapleader=' '")
-require("index_maps")
-require("auto/format")
+require("maps")
+require("format")
+require("rulers")

@@ -54,7 +54,7 @@
 
     "Lua.hint.enable": false,
     "sumneko-lua.enableNvimLuaDev": true,
-    "Lua.workspace.checkThirdParty": false,
+    "Lua.workspace.checkThirdParty": "Disable",
 
     "python.pythonPath": "/usr/bin/python3",
     "python.analysis.diagnosticSeverityOverrides": {

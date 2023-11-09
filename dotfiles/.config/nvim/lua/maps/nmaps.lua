@@ -21,6 +21,7 @@ end
 vim.keymap.set("n", "<A-e>", function() toggle_spell("en_us") end)
 vim.keymap.set("n", "<A-d>", function() toggle_spell("de") end)
 
+
 -- some keymaps for spell checking:
 -- ]s --> moves forward  through the mistakes
 -- [s --> moves backward through the mistakes
@@ -62,15 +63,23 @@ vim.keymap.set("n", "<A-R>", function() toggle("relativenumber") end)
 
 
 -- standard commands mapped with leader
-vim.keymap.set("n", "<leader>a", ":write<cr>:qall<cr>")
 vim.keymap.set("n", "<leader>r", function() vim.cmd("edit"); print(vim.fn.expand("%:t") .. " reloaded") end)
-vim.keymap.set("n", "<leader>W", function() vim.cmd("write"); print(vim.fn.expand("%:t") .. " written") end)
-vim.keymap.set("n", "<leader>w", function() vim.cmd("update"); print(vim.fn.expand("%:t") .. " updated") end)
-vim.keymap.set("n", "<leader>Q", ":qall<cr>")
-vim.keymap.set("n", "<leader>cq", ":cq<cr>")
+vim.keymap.set("n", "<leader>w", function() vim.cmd("write"); print(vim.fn.expand("%:t") .. " written") end)
+vim.keymap.set("n", "<leader>W", function() vim.cmd("wall"); print("All files written") end)
+vim.keymap.set("n", "<leader>Q", function() vim.cmd("qall") end)
+vim.keymap.set("n", "<leader>a", function() vim.cmd("wall"); vim.cmd("qall") end)
+vim.keymap.set("n", "<leader>cq", function() vim.cmd("cquit") end)
 vim.keymap.set("n", "<leader>e", ":edit ")
 vim.keymap.set("n", "<leader>v", ":vsplit ")
 vim.keymap.set("n", "<leader>s", ":split ")
+
+
+-- buffers
+vim.keymap.set("n", "<leader>q", ":bdelete<cr>")
+vim.keymap.set("n", "<Tab>", ":bnext<cr>", {silent = true})
+vim.keymap.set("n", "<BS>", ":bprevious<cr>", {silent = true})
+vim.keymap.set("n", "<A-b>", "<C-o>")
+vim.keymap.set("n", "<A-f>", "<C-i>")
 
 
 -- close every window except for the current one
@@ -102,14 +111,6 @@ vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>")
 
 -- search and replace in file
 vim.keymap.set("n", "<leader>S", ":%s///g<Left><Left><Left>")
-
-
--- buffers
-vim.keymap.set("n", "<leader>q", ":bdelete<cr>", {silent = true})
-vim.keymap.set("n", "<Tab>", ":bnext<cr>", {silent = true})
-vim.keymap.set("n", "<BS>", ":bprevious<cr>", {silent = true})
-vim.keymap.set("n", "<A-b>", "<C-o>")
-vim.keymap.set("n", "<A-f>", "<C-i>")
 
 
 -- window commands
@@ -152,12 +153,6 @@ vim.keymap.set("n", "<A-n>", ":update<CR>:e $HOME/.config/nvim/init.lua<cr>")
 vim.keymap.set("n", "<A-c>", ":update<CR>:e $HOME/.config/nvim/coc-settings.json<cr>")
 
 
--- open note
-local date = os.date("%Y-%m-%d")
-local note_path = "$HOME/Documents/cam/research/jp/jp/notes/" .. date .. "_note.md"
-vim.keymap.set("n", "<C-n>", ":update<cr>:e " .. note_path .. "<cr>")
-
-
 -- jump back to the originally opened file (Buffer 1)
 vim.keymap.set("n", "<A-o>", ":update<CR>:b 1<cr>")
 
@@ -171,9 +166,11 @@ vim.keymap.set("n", "n", "nzz", {silent = true})
 vim.keymap.set("n", "N", "Nzz", {silent = true})
 vim.keymap.set("n", "J", "maJ`a:delmarks a<cr>", {silent = true})
 
+
 -- move current line
 vim.keymap.set("n", "<A-j>", "<S-v>dp", {silent = true})
 vim.keymap.set("n", "<A-k>", "<S-v>dkP", {silent = true})
+
 
 -- function OpenFileUnderCursor()
 --     let current_path = expand('%:p:h')
@@ -217,22 +214,6 @@ vim.keymap.set("n", "<leader>4", "\"4p")
 -- end
 -- vim.keymap.set("n", "<A-s>", ":mksession! $HOME/.config/nvim/sessions/last_session.vim<cr>")
 -- vim.keymap.set("n", "<A-S>", make_session_with_automatic_name)
-local zen_mode_toggle = function()
-    require("zen-mode").toggle({
-        window = {
-            options = {
-                signcolumn = "no",
-                number = false,
-                relativenumber = false,
-                cursorline = false,
-                cursorcolumn = false,
-                foldcolumn = "0",
-                list = false,
-            },
-        },
-    })
-end
-vim.keymap.set("n", "<A-s>", zen_mode_toggle, {silent = true})
 
 
 -- updating
@@ -240,3 +221,12 @@ vim.keymap.set("n", "<leader>u1", ":PlugUpgrade<cr>")
 vim.keymap.set("n", "<leader>u2", ":PlugUpdate<cr>")
 vim.keymap.set("n", "<leader>u3", ":CocUpdate<cr>")
 vim.keymap.set("n", "<leader>u4", ":TSUpdate<cr>")
+
+
+-- manual file formatting
+vim.cmd("autocmd BufEnter * nmap <silent> <Leader><Leader> magg=G`a:delmarks a<CR>:echo '[VimFormat] Formatted file'<CR>")
+vim.cmd("autocmd BufEnter *.go nmap <silent> <Leader><Leader> :update<CR>:! go fmt %<CR><CR>:e %<CR>:echo '[GoFormat] Formatted Go file with go fmt'<CR>")
+vim.cmd("autocmd BufEnter *.py nmap <silent> <Leader><Leader> :update<CR>:! python3 -m isort --profile=black --line-length=1000 %<CR><CR>:e %<CR>:! python3 -m black --line-length=1000 %<CR><CR>:e %<CR>:echo '[PyFormat] Formatted Python file with isort & Black'<CR>")
+vim.cmd("autocmd BufEnter *.rs nmap <silent> <Leader><Leader> :update<cr>:! rustfmt %<cr><cr>:e %<cr>:echo '[RustFormat] Formatted Rust file with rustfmt'<CR>")
+vim.cmd("autocmd BufEnter *.tex nmap <silent> <Leader><Leader> magg=G=G`a:delmarks a<CR>:echo '[VimFormat] Formatted TeX file'<CR>")
+vim.cmd("autocmd BufEnter *.cpp,*.hpp,*.c,*.h nmap <silent> <Leader><Leader> :update<cr>:! clang-format -i --style=file:$HOME/.config/nvim/lua/auto/.clang-format %<cr><cr>:e %<cr>:echo '[CppFormat] Formatted C/C++ file with clang-format'<cr>")
