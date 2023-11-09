@@ -12,6 +12,7 @@ update-dotfiles:
 	@cp ~/.config/nvim/coc-settings.json dotfiles/.config/nvim/
 	@cp ~/.config/nvim/init.lua dotfiles/.config/nvim/
 	@cp ~/.bashrc dotfiles/
+	@cp ~/.bash_aliases dotfiles/
 	@cp ~/.gdbinit dotfiles/
 	@cp ~/.git-prompt.sh dotfiles/
 	@cp ~/.gitconfig dotfiles/
