@@ -5,12 +5,8 @@ update:
 	@make update-installs --silent
 
 update-dotfiles:
-	@cp ~/.config/nvim/autoload/plug.vim dotfiles/.config/nvim/autoload/
-	@rm -rf dotfiles/.config/nvim/lua/*
-	@cp -r ~/.config/nvim/lua/* dotfiles/.config/nvim/lua/
-	@cp -r ~/.config/nvim/lua/.clang-format dotfiles/.config/nvim/lua/
-	@cp ~/.config/nvim/coc-settings.json dotfiles/.config/nvim/
-	@cp ~/.config/nvim/init.lua dotfiles/.config/nvim/
+	@rm -rf dotfiles/.config/nvim/
+	@cp -r ~/.config/nvim/ dotfiles/.config/
 	@cp ~/.bashrc dotfiles/
 	@cp ~/.bash_aliases dotfiles/
 	@cp ~/.gdbinit dotfiles/
