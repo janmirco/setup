@@ -110,13 +110,15 @@ alias yank='yank-cli -- xsel -b'
 alias gv='git difftool'
 alias gm='git mergetool'
 
-alias gl='git log    -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an% -%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"'
-alias gll='git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an% -%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"'
+git_format="%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an%  ->%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"
+
+alias gl='git log    -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
+alias gll='git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
 alias gbr='git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --simplify-by-decoration --oneline'
 alias glist='git ls-tree --full-tree -r --name-only HEAD'
 
-alias gs='clear   && git status --short && echo                    && echo && git log  -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an% -%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
-alias gss='clear  && git status         && echo && git diff --stat && echo && git log -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an% -%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
+alias gs='clear   && git status --short && echo                    && echo && git log  -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
+alias gss='clear  && git status         && echo && git diff --stat && echo && git log -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
 alias gsss='clear && git status && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
 
 alias gfindrepos='find . -name .git -type d -prune'
