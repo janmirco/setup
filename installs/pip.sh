@@ -29,3 +29,4 @@ python3 -m pip install -U pip icecream
 python3 -m pip install -U pip h5py
 python3 -m pip install -U pip yt-dlp
 python3 -m pip install -U pip tldr
+python3 -m pip install -U pip abqpy
