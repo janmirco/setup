@@ -124,9 +124,6 @@ alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 
-alias gaddwordstospell='cd $HOME && git add .config/nvim/spell && git commit -m "[nvim] Add words to spell"'
-alias gupdatetodos='cd $HOME && git add README.md && git commit -m "[readme] Update todos"'
-
 
 # --------------------------------------------------------------------
 #   Neovim and fzf
