@@ -36,7 +36,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 
-vim.opt.undodir = vim.env.HOME .. "/.config/nvim/undodir"
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
 
 vim.opt.updatetime = 50

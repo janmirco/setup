@@ -1,3 +1,76 @@
+-- information about stdpath, see `:h standard-path`
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",  -- latest stable release
+        lazypath,
+    })
+end
+
+vim.opt.rtp:prepend(lazypath)
+
+local plugins = {
+    "JuliaEditorSupport/julia-vim",
+    "L3MON4D3/LuaSnip",
+    "Yggdroot/indentLine",
+    "airblade/vim-gitgutter",
+    "christoomey/vim-tmux-navigator",
+    "czheo/mojo.vim",
+    "fannheyward/telescope-coc.nvim",
+    "folke/zen-mode.nvim",
+    "ggandor/leap.nvim",
+    "goolord/alpha-nvim",
+    "hrsh7th/nvim-cmp",
+    "jakewvincent/mkdnflow.nvim",
+    "justinmk/vim-syntax-extra",
+    "morhetz/gruvbox",
+    "nvim-lua/plenary.nvim",
+    "nvim-lualine/lualine.nvim",
+    "nvim-telescope/telescope-fzf-writer.nvim",
+    "nvim-telescope/telescope.nvim",
+    "nvim-tree/nvim-tree.lua",
+    "nvim-tree/nvim-web-devicons",
+    "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/playground",
+    "preservim/nerdcommenter",
+    "puremourning/vimspector",
+    "sainnhe/everforest",
+    "sainnhe/gruvbox-material",
+    "stevearc/oil.nvim",
+    "szw/vim-maximizer",
+    "tpope/vim-fugitive",
+    "tpope/vim-repeat",
+    "tpope/vim-speeddating",
+    "tpope/vim-surround",
+    "vim-scripts/MatlabFilesEdition",
+    "vim-scripts/matchit.zip",
+    "voldikss/vim-floaterm",
+    { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons", },
+    { "dracula/vim", name = "dracula", },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
+    { "neoclide/coc.nvim", branch = "release", },
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate", },
+}
+
+local opts = {}
+
+require("lazy").setup(plugins, opts)
+
+-- configurations
 require("plugins/alpha")
 require("plugins/bufferline")
 require("plugins/coc")
@@ -20,5 +93,6 @@ require("plugins/oil")
 require("plugins/telescope")
 require("plugins/themes")
 require("plugins/treesitter")
+require("plugins/vim-tmux-navigator")
 require("plugins/vimspector")
 require("plugins/zen_mode")

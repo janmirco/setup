@@ -58,6 +58,7 @@
 
     "python.pythonPath": "/usr/bin/python3",
     "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "warning",
         "reportOptionalSubscript": "none",
         "reportGeneralTypeIssues": "none"
     },

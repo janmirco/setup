@@ -2,10 +2,6 @@
 vim.keymap.set("n", "gV", "gv")
 
 
--- -- for testing your own plugin
--- vim.keymap.set("n", "<leader>tt", "<plug>JelloHello", {silent = true})
-
-
 -- toggle local spell check
 local toggle_spell = function(language)
     local spell_on = vim.api.nvim_eval("&spell") == 1
@@ -113,11 +109,7 @@ vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>")
 vim.keymap.set("n", "<leader>S", ":%s///g<Left><Left><Left>")
 
 
--- window commands
-vim.keymap.set("n", "<C-h>", ":wincmd h<cr>", {silent = true})
-vim.keymap.set("n", "<C-j>", ":wincmd j<cr>", {silent = true})
-vim.keymap.set("n", "<C-k>", ":wincmd k<cr>", {silent = true})
-vim.keymap.set("n", "<C-l>", ":wincmd l<cr>", {silent = true})
+-- window commands (window navigation set in `lua/plugins/vim-tmux-navigator.lua`)
 vim.keymap.set("n", "<A-=>", ":resize +3<cr>", {silent = true})
 vim.keymap.set("n", "<A-->", ":resize -3<cr>", {silent = true})
 vim.keymap.set("n", "<A-.>", ":vertical resize +3<cr>", {silent = true})
@@ -172,15 +164,6 @@ vim.keymap.set("n", "<A-j>", "<S-v>dp", {silent = true})
 vim.keymap.set("n", "<A-k>", "<S-v>dkP", {silent = true})
 
 
--- function OpenFileUnderCursor()
---     let current_path = expand('%:p:h')
---     let file_under_cursor = expand('<cfile>')
---     let entire = current_path . '/' . file_under_cursor
---     execute('!xdg-open '.entire)
--- endfunction
--- nmap <F8> :call OpenFileUnderCursor()<CR><CR>
-
-
 -- open help menu for word under cursor
 vim.keymap.set("n", "H", "yiw:help <C-r>\"<cr>")
 
@@ -192,35 +175,10 @@ vim.keymap.set("n", "<leader>3", "\"3p")
 vim.keymap.set("n", "<leader>4", "\"4p")
 
 
--- -- sessions
--- --     store an editing session with `:mksession <PATH>/<NAME_OF_SESSION>`
--- --     get back into this editing session with `nvim -S <PATH>/<NAME_OF_SESSION>`
--- local split = function(str, sep)
---     if sep == nil then
---         sep = "%s"
---     end
---     local t = {}
---     for s in string.gmatch(str, "([^" .. sep .. "]+)") do
---         table.insert(t, s)
---     end
---     return t
--- end
--- local make_session_with_automatic_name = function()
---     local dir = ""
---     for _, value in pairs(split(vim.fn.getcwd(), "/")) do dir = value end
---     local session = "$HOME/.config/nvim/sessions/session_" .. dir .. ".vim"
---     vim.cmd(":mksession " .. session)
---     print("Saved session: " .. session)
--- end
--- vim.keymap.set("n", "<A-s>", ":mksession! $HOME/.config/nvim/sessions/last_session.vim<cr>")
--- vim.keymap.set("n", "<A-S>", make_session_with_automatic_name)
-
-
 -- updating
-vim.keymap.set("n", "<leader>u1", ":PlugUpgrade<cr>")
-vim.keymap.set("n", "<leader>u2", ":PlugUpdate<cr>")
-vim.keymap.set("n", "<leader>u3", ":CocUpdate<cr>")
-vim.keymap.set("n", "<leader>u4", ":TSUpdate<cr>")
+vim.keymap.set("n", "<leader>u1", ":Lazy update<cr>")
+vim.keymap.set("n", "<leader>u2", ":CocUpdate<cr>")
+vim.keymap.set("n", "<leader>u3", ":TSUpdate<cr>")
 
 
 -- manual file formatting
@@ -229,4 +187,4 @@ vim.cmd("autocmd BufEnter *.go nmap <silent> <Leader><Leader> :update<CR>:! go f
 vim.cmd("autocmd BufEnter *.py nmap <silent> <Leader><Leader> :update<CR>:! python3 -m isort --profile=black --line-length=1000 %<CR><CR>:e %<CR>:! python3 -m black --line-length=1000 %<CR><CR>:e %<CR>:echo '[PyFormat] Formatted Python file with isort & Black'<CR>")
 vim.cmd("autocmd BufEnter *.rs nmap <silent> <Leader><Leader> :update<cr>:! rustfmt %<cr><cr>:e %<cr>:echo '[RustFormat] Formatted Rust file with rustfmt'<CR>")
 vim.cmd("autocmd BufEnter *.tex nmap <silent> <Leader><Leader> magg=G=G`a:delmarks a<CR>:echo '[VimFormat] Formatted TeX file'<CR>")
-vim.cmd("autocmd BufEnter *.cpp,*.hpp,*.c,*.h nmap <silent> <Leader><Leader> :update<cr>:! clang-format -i --style=file:$HOME/.config/nvim/lua/auto/.clang-format %<cr><cr>:e %<cr>:echo '[CppFormat] Formatted C/C++ file with clang-format'<cr>")
+vim.cmd("autocmd BufEnter *.cpp,*.hpp,*.c,*.h nmap <silent> <Leader><Leader> :update<cr>:! clang-format -i --style=file:$HOME/.config/nvim/.clang-format %<cr><cr>:e %<cr>:echo '[CppFormat] Formatted C/C++ file with clang-format'<cr>")
