@@ -46,7 +46,7 @@ vim.opt.showmatch = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
-vim.opt.showtabline = 0
+vim.opt.showtabline = 1  -- see plugins/bufferline.lua
 vim.opt.tabpagemax = 100
 
 vim.opt.autoread = true
