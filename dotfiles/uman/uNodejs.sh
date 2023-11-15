@@ -6,7 +6,7 @@ bin_path="$HOME/bin/$bin_name"
 dir_name="$bin_path/node-linux-x64"
 
 echo "$log_sign Current version: "$(node --version)""
-version="$(curl --silent --location https://nodejs.org/download/release/latest-v18.x/ | sed 's/.tar.xz/\n/' | head -n 1 | sed 's/node-v/\n/' | tail -n 1 | sed 's/-aix-ppc64/\n/' | head -n 1)"
+version="$(curl --silent --location https://nodejs.org/en/download/ | sed 's/Latest LTS Version<!-- -->: <strong>/\n/' | head -n 2 | tail -n 1 | sed 's/<\/strong>/\n/' | head -n 1)"
 echo "$log_sign New version: $version"
 
 tar_name="$bin_path/node-v$version-linux-x64.tar.gz"
