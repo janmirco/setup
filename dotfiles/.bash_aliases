@@ -126,6 +126,9 @@ alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 
+alias gupdatetodos='cd $HOME && git add $HOME/README.md && git commit -m "[readme] Update todos"'
+alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "[nvim/lazy] Update lazy-lock.json"'
+
 
 # --------------------------------------------------------------------
 #   Neovim and fzf
