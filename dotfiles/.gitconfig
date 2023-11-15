@@ -55,7 +55,6 @@
     cpc = cherry-pick --continue
     dstat = diff --stat
     fo = fetch origin
-    fpo = fetch --prune origin
     fork = "!f() { \
         ForkPoint=$(git merge-base --fork-point $1 ) ; \
         echo    _____Fork-Point-Commit: $ForkPoint ; echo   ; \
@@ -63,6 +62,7 @@
         echo '\n++++ diverging base-branch commits: ++++'   ; git lognice ..$1  ; git diff --stat ...$1 ; \
         echo '\n++++ last 3 common commits: ++++'           ; git lognice -n3 $ForkPoint ; \
         }; f"
+    fpo = fetch --prune origin
     lognice = log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an%  ->%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'
     mg = merge
     mga = merge --abort
