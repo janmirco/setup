@@ -226,3 +226,17 @@ alias tlk='tmux list-keys'
 # tmux kill-session  # to kill last attached session
 # tmux kill-session -t TARGET_SESSION
 # tmux kill-server
+
+
+# --------------------------------------------------------------------
+#   UMAN
+
+alias uApt='$HOME/uman/uApt.sh'
+alias uBios='$HOME/uman/uBios.sh'
+alias uDaily='$HOME/uman/uDaily.sh'
+alias uEditor='$HOME/uman/uEditor.sh'
+alias uNeovim='$HOME/uman/uNeovim.sh'
+alias uNodejs='$HOME/uman/uNodejs.sh'
+alias uSnap='$HOME/uman/uSnap.sh'
+alias uSystem='$HOME/uman/uSystem.sh'
+alias uTldr='$HOME/uman/uTldr.sh'

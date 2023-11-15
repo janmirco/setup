@@ -7,6 +7,8 @@ update:
 update-dotfiles:
 	@rm -rf dotfiles/.config/nvim/
 	@cp -r ~/.config/nvim/ dotfiles/.config/
+	@rm -rf dotfiles/uman/
+	@cp -r ~/uman/ dotfiles/
 	@cp ~/.bashrc dotfiles/
 	@cp ~/.bash_aliases dotfiles/
 	@cp ~/.gdbinit dotfiles/
