@@ -37,10 +37,13 @@ function download {
 
 download "https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
 
-echo "$log_sign Updating npm, node-provider, tree-sitter, python-provider ..."
+echo "$log_sign Updating npm ..."
 npm install -g npm >> "$bin_path/$bin_name"_log.txt 2>&1
+echo "$log_sign Updating node-provider ..."
 npm install -g neovim >> "$bin_path/$bin_name"_log.txt 2>&1
+echo "$log_sign Updating tree-sitter ..."
 npm install -g tree-sitter-cli >> "$bin_path/$bin_name"_log.txt 2>&1
+echo "$log_sign Updating python-provider ..."
 python3 -m pip install --upgrade pip pynvim >> "$bin_path/$bin_name"_log.txt 2>&1
 
 echo "$log_sign Wrote stdout and stderr to "$bin_path/$bin_name"_log.txt."
