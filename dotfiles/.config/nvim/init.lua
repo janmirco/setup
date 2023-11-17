@@ -9,14 +9,7 @@
 --                                                                  |___/
 -- =============================================================================
 
--- -----------------------------------------------
--- Keyboard repeat
-
--- Default on Debian 10:
---   Delay: 600 ms
---   Rate: 25 repeats/s
-
--- Recommendation:
+-- Keyboard repeat recommendation:
 --   Delay: 400 ms
 --   Rate: 40 repeats/s
 

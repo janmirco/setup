@@ -34,7 +34,7 @@ local toggle_winbar = function()
         vim.opt.winbar = nil
     end
 end
-vim.keymap.set("n", "<A-w>", toggle_winbar)
+vim.keymap.set("n", "<A-W>", toggle_winbar)
 
 
 -- toggle light theme
@@ -54,7 +54,7 @@ vim.keymap.set("n", "<A-l>", toggle_light)
 local toggle = function(option)
     vim.opt[option] = not (vim.api.nvim_eval("&" .. option) == 1)
 end
-vim.keymap.set("n", "<A-z>", function() toggle("wrap") end)
+vim.keymap.set("n", "<A-w>", function() toggle("wrap") end)
 vim.keymap.set("n", "<A-R>", function() toggle("relativenumber") end)
 
 

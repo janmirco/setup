@@ -40,12 +40,6 @@ function download {
         echo "$log_sign Updating npm ..."
         npm install -g npm >> "$bin_path/$bin_name"_log.txt 2>&1
 
-        echo "$log_sign Updating npm provider for neovim ..."
-        npm install -g neovim >> "$bin_path/$bin_name"_log.txt 2>&1
-
-        echo "$log_sign Updating yarn ..."
-        npm install -g yarn >> "$bin_path/$bin_name"_log.txt 2>&1
-
         echo "$log_sign Wrote stdout and stderr to "$bin_path/$bin_name"_log.txt."
     else
         echo "$log_sign Given URL not found!"

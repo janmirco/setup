@@ -29,6 +29,23 @@ function download {
 
         echo "$log_sign Extracting tar ..."
         tar -C "$bin_path" -xvzf "$bin_path/$tar_name" >> "$bin_path/$bin_name"_log.txt 2>&1
+
+        echo "$log_sign Updating npm ..."
+        npm install -g npm >> "$bin_path/$bin_name"_log.txt 2>&1
+
+        echo "$log_sign Updating node-provider ..."
+        npm install -g neovim >> "$bin_path/$bin_name"_log.txt 2>&1
+
+        echo "$log_sign Updating yarn ..."
+        npm install -g yarn >> "$bin_path/$bin_name"_log.txt 2>&1
+
+        echo "$log_sign Updating python-provider ..."
+        python3 -m pip install --upgrade pip pynvim >> "$bin_path/$bin_name"_log.txt 2>&1
+
+        echo "$log_sign Updating tree-sitter-cli ..."
+        cargo install tree-sitter-cli >> "$bin_path/$bin_name"_log.txt 2>&1
+
+        echo "$log_sign Wrote stdout and stderr to "$bin_path/$bin_name"_log.txt."
     else
         echo "$log_sign Given URL for nightly build not found! Trying latest stable version ..."
         download "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
@@ -36,15 +53,4 @@ function download {
 }
 
 download "https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
-
-echo "$log_sign Updating npm ..."
-npm install -g npm >> "$bin_path/$bin_name"_log.txt 2>&1
-echo "$log_sign Updating node-provider ..."
-npm install -g neovim >> "$bin_path/$bin_name"_log.txt 2>&1
-echo "$log_sign Updating tree-sitter ..."
-npm install -g tree-sitter-cli >> "$bin_path/$bin_name"_log.txt 2>&1
-echo "$log_sign Updating python-provider ..."
-python3 -m pip install --upgrade pip pynvim >> "$bin_path/$bin_name"_log.txt 2>&1
-
-echo "$log_sign Wrote stdout and stderr to "$bin_path/$bin_name"_log.txt."
 echo "$log_sign Finished update."

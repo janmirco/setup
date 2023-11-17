@@ -142,4 +142,17 @@ bind '"\e[B":history-search-forward'
 #   Imports
 
 source "$HOME/.bash_aliases"
+source "$HOME/.bash_path"
 source "$HOME/.git-prompt.sh"
+source "$HOME/.fzf/shell/completion.bash"
+source "$HOME/.fzf/shell/key-bindings.bash"
+
+# https://github.com/nvbn/thefuck#installation
+eval $(thefuck --alias)
+
+# https://www.rust-lang.org/tools/install
+source "$HOME/.cargo/env"
+
+# modular
+export MODULAR_HOME="$HOME/.modular"
+export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"

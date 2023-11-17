@@ -11,7 +11,18 @@ local zen_mode_toggle = function()
                 list = false,
             },
         },
+        plugins = {
+            options = {
+                enabled = true,
+                ruler = false,
+                showcmd = false,
+                laststatus = 0,
+            },
+        },
+        on_open = function(_)
+            vim.cmd("set colorcolumn=")
+        end,
     })
 end
 
-vim.keymap.set("n", "<A-s>", zen_mode_toggle, {silent = true})
+vim.keymap.set("n", "<A-z>", zen_mode_toggle, {silent = true})
