@@ -51,8 +51,9 @@ telescope.setup({
         }
     }
 })
-telescope.load_extension("fzf")
 telescope.load_extension("coc")
+telescope.load_extension("fzf")
+telescope.load_extension("harpoon")
 
 local builtin = require("telescope.builtin")
 

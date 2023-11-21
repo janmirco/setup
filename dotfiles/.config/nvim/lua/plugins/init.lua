@@ -14,6 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+    "EdenEast/nightfox.nvim",
     "JuliaEditorSupport/julia-vim",
     "L3MON4D3/LuaSnip",
     "Yggdroot/indentLine",
@@ -21,9 +22,9 @@ local plugins = {
     "christoomey/vim-tmux-navigator",
     "czheo/mojo.vim",
     "fannheyward/telescope-coc.nvim",
+    "folke/tokyonight.nvim",
     "folke/zen-mode.nvim",
     "ggandor/leap.nvim",
-    "goolord/alpha-nvim",
     "hrsh7th/nvim-cmp",
     "jakewvincent/mkdnflow.nvim",
     "justinmk/vim-syntax-extra",
@@ -38,6 +39,7 @@ local plugins = {
     "nvim-treesitter/playground",
     "preservim/nerdcommenter",
     "puremourning/vimspector",
+    "rebelot/kanagawa.nvim",
     "sainnhe/everforest",
     "sainnhe/gruvbox-material",
     "stevearc/oil.nvim",
@@ -49,8 +51,18 @@ local plugins = {
     "vim-scripts/MatlabFilesEdition",
     "vim-scripts/matchit.zip",
     "voldikss/vim-floaterm",
+    { "ThePrimeagen/harpoon", dependencies = "nvim-lua/plenary.nvim", },
     { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons", },
     { "dracula/vim", name = "dracula", },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    },
+    { "nvimdev/dashboard-nvim", event = "VimEnter", dependencies = "nvim-tree/nvim-web-devicons", },
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -70,12 +82,13 @@ local opts = {}
 require("lazy").setup(plugins, opts)
 
 -- configurations
-require("plugins/alpha")
 require("plugins/bufferline")
 require("plugins/coc")
+require("plugins/dashboard")
 require("plugins/floaterm")
 require("plugins/fugitive")
 require("plugins/gitgutter")
+require("plugins/harpoon")
 require("plugins/indentline")
 require("plugins/julia-vim")
 require("plugins/leap")
@@ -86,6 +99,7 @@ require("plugins/maximizer")
 require("plugins/mkdnflow")
 require("plugins/mls")
 require("plugins/nerdcommenter")
+require("plugins/noice")
 require("plugins/nvim-tree")
 require("plugins/nvim-web-devicons")
 require("plugins/oil")

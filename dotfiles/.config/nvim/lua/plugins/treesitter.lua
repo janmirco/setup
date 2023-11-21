@@ -5,7 +5,13 @@ require("nvim-treesitter.configs").setup({
         "c",
         "cmake",
         "cpp",
+        "diff",
         "fortran",
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
         "html",
         "json",
         "latex",
@@ -15,24 +21,17 @@ require("nvim-treesitter.configs").setup({
         "markdown_inline",
         "matlab",
         "python",
+        "regex",
         "vim",
         "vimdoc",
         "xml",
         "yaml",
     },
     sync_install = false,
-    auto_install = false,
-    ignore_install = {},
+    auto_install = true,
     highlight = {
-        enable = {
-            "lua",
-        },
-        disable = {
-            "cpp",
-            "make",
-            "markdown",
-            "python",
-        },
+        enable = true,
+        disable = { "markdown" },  -- currently disabled due to weird indentation in second level
     },
 })
 
@@ -41,7 +40,7 @@ require("treesitter-context").setup({
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
     min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
     line_numbers = true,
-    multiline_threshold = 20, -- Maximum number of lines to show for a single context
+    multiline_threshold = 1, -- Maximum number of lines to show for a single context
     trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: "inner", "outer"
     mode = "cursor",  -- Line used to calculate context. Choices: "cursor", "topline"
     -- Separator between context and content. Should be a single character string, like "-".
