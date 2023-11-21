@@ -39,13 +39,14 @@ alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 alias animGitHistory='$HOME/scripts/showAnimatedHistory.sh'
 alias ascii='figlet -f big'
-alias bat='batcat'
-alias batless='bat --pager "less -RF"'
+alias bat='batcat -P'  # without pager
+alias batp='batcat'  # with default pager
 alias bl='bluetooth toggle'
 alias calcurseExport='$HOME/scripts/calcurse_export.sh'
 alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
+alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
 alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
 alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
