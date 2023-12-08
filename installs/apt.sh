@@ -78,8 +78,8 @@ fi
 if ! command -v sciebo &> /dev/null; then
     sudo apt-get update
     sudo apt-get install --assume-yes libicu70 libzstd1 apt-transport-https
-    wget -nv https://sciebo.de/install/linux/Ubuntu_22.04/Release.key -O - | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/owncloud.gpg > /dev/null
-    echo 'deb https://sciebo.de/install/linux/Ubuntu_22.04/ /' | sudo tee -a /etc/apt/sources.list.d/owncloud.list
+    wget -nv https://install.sciebo.de/linux/Ubuntu_22.04/Release.key -O - | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sciebo-client.gpg > /dev/null
+    echo 'deb https://install.sciebo.de/linux/Ubuntu_22.04/ /' | sudo tee -a /etc/apt/sources.list.d/sciebo-client.list
     sudo apt-get update
     sudo apt-get install --assume-yes sciebo-client sciebo-client-*
 fi
