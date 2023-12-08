@@ -31,7 +31,10 @@ require("nvim-treesitter.configs").setup({
     auto_install = true,
     highlight = {
         enable = true,
-        disable = { "markdown" },  -- currently disabled due to weird indentation in second level
+        disable = {
+            "make",
+            "markdown",
+        },
     },
 })
 

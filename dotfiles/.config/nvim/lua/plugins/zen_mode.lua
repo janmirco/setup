@@ -1,7 +1,7 @@
 local zen_mode_toggle = function()
     require("zen-mode").toggle({
         window = {
-            width = 0.67,
+            width = 0.95,
             height = 1.0,
             options = {
                 signcolumn = "no",

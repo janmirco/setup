@@ -29,6 +29,7 @@ local send_make = function()
         vim.cmd("! make")
     end
 end
-vim.keymap.set("n", "<leader>m", send_make, { silent = true })
+vim.keymap.set("n", "<leader>M", send_make, { silent = true })
+vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { silent = true })
 
 vim.keymap.set("n", "<leader>hm", ":Telescope harpoon marks<cr>", { silent = true })

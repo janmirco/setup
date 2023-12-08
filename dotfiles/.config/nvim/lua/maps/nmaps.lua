@@ -149,8 +149,9 @@ vim.keymap.set("n", "<A-c>", ":update<CR>:e $HOME/.config/nvim/coc-settings.json
 vim.keymap.set("n", "<A-o>", ":update<CR>:b 1<cr>")
 
 
--- yank to the end of the line
-vim.keymap.set("n", "Y", "y$")
+-- yank
+vim.keymap.set("n", "Y", "y$", {silent = true})  -- to the end of the line
+vim.keymap.set("n", "<C-y>", "ggVGy", {silent = true})  -- entire content of current file
 
 
 -- keeping it centered

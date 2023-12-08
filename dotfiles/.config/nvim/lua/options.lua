@@ -1,7 +1,5 @@
 vim.opt.errorbells = false
 
-vim.cmd("syntax enable")
-
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
@@ -46,7 +44,7 @@ vim.opt.showmatch = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
-vim.opt.showtabline = 1  -- see plugins/bufferline.lua
+vim.opt.showtabline = 0  -- You do not want tabs! Trust me.
 vim.opt.tabpagemax = 100
 
 vim.opt.autoread = true

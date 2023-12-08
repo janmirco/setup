@@ -183,6 +183,19 @@ ls.add_snippets(nil, {
         "\n" ..
         "$9"
         ),
+        ls.parser.parse_snippet("pandoc",
+        "---\n" ..
+        "geometry: left = 2.5cm, right = 2.5cm, top = 2.5cm, bottom = 2.5cm\n" ..
+        "pagestyle: plain\n" ..
+        "papersize: a4\n" ..
+        "fontfamily: lmodern\n" ..
+        "graphics: yes\n" ..
+        "header-includes:\n" ..
+        "    - \\renewcommand*\\familydefault{\\sfdefault}\n" ..
+        "    - \\renewcommand{\\labelitemi}{$\\bullet$}\n" ..
+        "    - \\usepackage{tikz}\n" ..
+        "---\n\n"
+        ),
     },
 
     matlab = {

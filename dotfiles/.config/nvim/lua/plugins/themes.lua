@@ -4,12 +4,13 @@ vim.opt.termguicolors = true  -- colors will be more vivid
 
 -- theme-specific settings
 -- local my_theme = "gruvbox"
-local my_theme = "gruvbox-material"
+-- local my_theme = "gruvbox-material"
 -- local my_theme = "everforest"
 -- local my_theme = "dracula"
 -- local my_theme = "tokyo"
 -- local my_theme = "kanagawa"
 -- local my_theme = "nightfox"
+local my_theme = "catppuccin"
 
 if my_theme == "gruvbox" then
     vim.g.gruvbox_contrast_dark = "hard"
@@ -48,6 +49,12 @@ elseif my_theme == "nightfox" then
     -- vim.cmd("colorscheme nordfox")  -- gray
     -- vim.cmd("colorscheme terafox")  -- green
     -- vim.cmd("colorscheme carbonfox")  -- black
+
+elseif my_theme == "catppuccin" then
+    -- vim.cmd("colorscheme catppuccin-mocha")  -- high contrast
+    -- vim.cmd("colorscheme catppuccin-macchiato")  -- less contrast
+    vim.cmd("colorscheme catppuccin-frappe")  -- least contrast
+    -- vim.cmd("colorscheme catppuccin-latte")  -- light theme
 
 end
 

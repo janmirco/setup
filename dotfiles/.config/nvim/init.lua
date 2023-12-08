@@ -17,8 +17,8 @@ vim.g.python3_host_prog = "/bin/python3"
 vim.g.mapleader = " "
 
 require("plugins")
-require("syntax")  -- this needs to be BEFORE `syntax enable` command
-require("general_options")
+require("syntax")
+require("options")
 require("maps")
 require("format")
 require("rulers")

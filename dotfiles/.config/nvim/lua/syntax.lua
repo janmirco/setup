@@ -38,3 +38,7 @@ vim.cmd("autocmd BufEnter *.m set commentstring=%%s")
 
 -- mathematica
 vim.cmd("autocmd BufEnter,BufRead *.ma,*.mm,*.mma setfiletype mma")
+
+
+-- Turn on syntax highlighting explicitly
+vim.cmd("syntax enable")
