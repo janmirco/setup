@@ -42,6 +42,7 @@ alias ascii='figlet -f big'
 alias bat='batcat -P'  # without pager
 alias batp='batcat'  # with default pager
 alias bl='bluetooth toggle'
+alias c='clear'
 alias calcurseExport='$HOME/scripts/calcurse_export.sh'
 alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
@@ -108,6 +109,8 @@ alias yank='yank-cli -- xsel -b'
 
 # --------------------------------------------------------------------
 #   Git
+
+alias gd='git diff'
 
 alias gv='git difftool'
 alias gm='git mergetool'

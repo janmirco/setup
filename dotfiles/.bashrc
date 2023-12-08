@@ -144,8 +144,8 @@ bind '"\e[B":history-search-forward'
 source "$HOME/.bash_aliases"
 source "$HOME/.bash_path"
 source "$HOME/.git-prompt.sh"
-source "$HOME/.fzf/shell/completion.bash"
-source "$HOME/.fzf/shell/key-bindings.bash"
+source "$HOME/.config/fzf/shell/completion.bash"
+source "$HOME/.config/fzf/shell/key-bindings.bash"
 
 # https://github.com/nvbn/thefuck#installation
 eval $(thefuck --alias)
