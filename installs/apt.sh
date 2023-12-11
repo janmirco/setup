@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # initial update and upgrade
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade --assume-yes
 
 # apt installs
 sudo apt-get install --assume-yes curl xclip tree htop ranger figlet sl ncdu ncdt rename libaa-bin lolcat tlp
@@ -94,4 +94,4 @@ if ! [ -f '/etc/apt/sources.list.d/home:bluca:openconnect.list' ]; then
 fi
 
 # final update and upgrade
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade --assume-yes
