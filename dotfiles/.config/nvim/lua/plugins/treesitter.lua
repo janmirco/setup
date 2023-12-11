@@ -36,6 +36,7 @@ require("nvim-treesitter.configs").setup({
             "markdown",
         },
     },
+    indent = { enable = true },
 })
 
 require("treesitter-context").setup({

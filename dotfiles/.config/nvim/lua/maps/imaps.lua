@@ -21,9 +21,11 @@ vim.keymap.set("i", "' ", "''<left>")
 vim.keymap.set("i", "\" ", "\"\"<left>")
 vim.keymap.set("i", "` ", "``<left>")
 vim.keymap.set("i", "< ", "<><left>")
+vim.keymap.set("i", "$ ", "$$<left>")
 vim.keymap.set("i", "(<cr>", "()<left><cr>")
 vim.keymap.set("i", "[<cr>", "[]<left><cr>")
 vim.keymap.set("i", "{<cr>", "{}<left><cr>")
+vim.keymap.set("i", "$<cr>", "$$$$<left><left><cr>")
 
 
 -- paste commands from normal mode
