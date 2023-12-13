@@ -8,6 +8,7 @@ require("dashboard").setup({
         week_header = { enable = true },
         shortcut = {
             { desc = "New file", group = "Number", action = function() vim.cmd("enew") end, key = "e", },
+            { desc = "Update lsp", group = "Number", action = function() vim.cmd("CocUpdate") end, key = "U", },
             { desc = "Update plugins", group = "Number", action = function() lazy.update({ wait = true }) end, key = "u", },
             { desc = "Restore plugins", group = "Number", action = function() lazy.restore({ wait = true }) end, key = "r", },
             { desc = "Find files", group = "Number", action = function() telescope_builtin.find_files({hidden = true, no_ignore = true}) end, key = "f", },
