@@ -26,7 +26,9 @@ local plugins = {
     { "dracula/vim", name = "dracula", priority = 1000, },
     { "fannheyward/telescope-coc.nvim" },
     { "folke/noice.nvim", event = "VeryLazy", dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", }, },
+    { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, },
     { "folke/tokyonight.nvim", priority = 1000, },
+    { "folke/trouble.nvim", dependencies = { "nvim-tree/nvim-web-devicons" }, },
     { "folke/zen-mode.nvim" },
     { "ggandor/leap.nvim" },
     { "hrsh7th/nvim-cmp" },
@@ -68,6 +70,7 @@ require("lazy").setup(plugins, opts)
 
 -- configurations
 require("plugins/coc")
+require("plugins/colorscheme")
 require("plugins/dashboard")
 require("plugins/floaterm")
 require("plugins/fugitive")
@@ -88,8 +91,9 @@ require("plugins/nvim-tree")
 require("plugins/nvim-web-devicons")
 require("plugins/oil")
 require("plugins/telescope")
-require("plugins/themes")
+require("plugins/todo-comments")
 require("plugins/treesitter")
+require("plugins/trouble")
 require("plugins/vim-tmux-navigator")
 require("plugins/vimspector")
 require("plugins/zen_mode")

@@ -37,19 +37,6 @@ end
 vim.keymap.set("n", "<A-W>", toggle_winbar)
 
 
--- toggle light theme
-local toggle_light = function()
-    local dark_on = vim.api.nvim_eval("&background") == "dark"
-    if dark_on then
-        vim.opt.background = "light"
-    else
-        vim.opt.background = "dark"
-    end
-    vim.cmd("source " .. vim.env.HOME .. "/.config/nvim/init.lua")
-end
-vim.keymap.set("n", "<A-l>", toggle_light)
-
-
 -- toggle any option
 local toggle = function(option)
     vim.opt[option] = not (vim.api.nvim_eval("&" .. option) == 1)
