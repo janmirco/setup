@@ -91,7 +91,8 @@ alias rg='rg --no-ignore --hidden'
 alias rm='rm -i'
 alias rr='ranger'
 alias show_path='echo "$PATH" | tr ":" "\n"'
-alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source, 2: soft link
+alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
+alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
 alias t='tree -avA --dirsfirst -I ".git|node_modules|env"'
 alias tree1='tree -avA --dirsfirst -I ".git|node_modules|env" -L 1'
 alias tree2='tree -avA --dirsfirst -I ".git|node_modules|env" -L 2'
@@ -175,6 +176,13 @@ alias nvgrid='f(){ $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd
 alias nvmain='f(){ $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd ="; unset -f f; }; f'
 
 alias nvsudo='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
+
+
+# --------------------------------------------------------------------
+#   Pass
+
+alias ppass='f(){ pass "$1" | xclip -rmlastnl; echo "Clipboard will be cleared and terminal will be closed in 50s ..."; sleep 50; xsel --clear; unset -f f; exit; }; f'
+alias ppass5='f(){ pass "$1" | xclip -rmlastnl; echo "Clipboard will be cleared and terminal will be closed in 5s ..."; sleep 5; xsel --clear; unset -f f; exit; }; f'
 
 
 # --------------------------------------------------------------------
