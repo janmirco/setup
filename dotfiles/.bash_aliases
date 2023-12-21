@@ -259,3 +259,12 @@ alias uNodejs='$HOME/uman/uNodejs.sh'
 alias uSnap='$HOME/uman/uSnap.sh'
 alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
+
+
+# --------------------------------------------------------------------
+#   Youtube-DL
+
+alias ytdl='$HOME/scripts/downloadYoutubeVideo.sh'
+alias ytdl22='yt-dlp --format 22'
+alias ytdlList='yt-dlp --list-formats'
+alias ytdlPlaylist='yt-dlp -o "%(playlist_index)s-%(title)s.%(ext)s"'
