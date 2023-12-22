@@ -84,8 +84,8 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 -- provide custom statusline: lightline.vim, vim-airline
 vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}")
 
-vim.keymap.set("n", "[c", "<Plug>(coc-diagnostic-prev)", {silent = true})
-vim.keymap.set("n", "]c", "<Plug>(coc-diagnostic-next)", {silent = true})
+vim.keymap.set("n", "[d", "<Plug>(coc-diagnostic-prev)", {silent = true})
+vim.keymap.set("n", "]d", "<Plug>(coc-diagnostic-next)", {silent = true})
 
 vim.keymap.set("n", "gd", "<Plug>(coc-definition)", {silent = true})
 vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
