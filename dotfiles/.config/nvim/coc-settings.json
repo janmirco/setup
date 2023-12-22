@@ -1,6 +1,8 @@
 {
     "coc.preferences.jumpCommand": "edit",
 
+    "inlayHint.enable": false,
+
     "coc.source.around.shortcut": "BC",
     "coc.source.buffer.shortcut": "BO",
     "coc.source.file.shortcut": "FS",
