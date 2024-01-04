@@ -1,13 +1,8 @@
--- =============================================================================
---      _   _                 _              _____             __ _
---     | \ | |               (_)            / ____|           / _(_)
---     |  \| | ___  _____   ___ _ __ ___   | |     ___  _ __ | |_ _  __ _
---     | . ` |/ _ \/ _ \ \ / / | '_ ` _ \  | |    / _ \| '_ \|  _| |/ _` |
---     | |\  |  __/ (_) \ V /| | | | | | | | |___| (_) | | | | | | | (_| |
---     |_| \_|\___|\___/ \_/ |_|_| |_| |_|  \_____\___/|_| |_|_| |_|\__, |
---                                                                   __/ |
---                                                                  |___/
--- =============================================================================
+--                           _
+--    ____  ___  ____ _   __(_)___ ___
+--   / __ \/ _ \/ __ \ | / / / __ `__ \    Jan Mirco Pfeifer
+--  / / / /  __/ /_/ / |/ / / / / / / /    https://github.com/janmirco
+-- /_/ /_/\___/\____/|___/_/_/ /_/ /_/
 
 -- Keyboard repeat recommendation:
 --   Delay: 400 ms
@@ -16,9 +11,27 @@
 vim.g.python3_host_prog = "/bin/python3"
 vim.g.mapleader = " "
 
-require("plugins")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+}) end
+vim.opt.rtp:prepend(lazypath)
+
+local lazy = require("lazy")
+local opts = { change_detection = { notify = false } }
+if vim.env.EDITOR_LIGHT == "yes" then
+    lazy.setup({ require("light") }, opts)
+else
+    lazy.setup("plugins", opts)
+end
+
 require("syntax")
 require("options")
 require("maps")
-require("format")
+require("autocmd")
 require("rulers")

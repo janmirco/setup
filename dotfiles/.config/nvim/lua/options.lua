@@ -9,7 +9,7 @@ vim.opt.splitright = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 
-vim.opt.backspace = {"indent", "eol", "start"}
+vim.opt.backspace = { "indent", "eol", "start" }
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -44,13 +44,13 @@ vim.opt.showmatch = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
-vim.opt.showtabline = 0  -- You do not want tabs! Trust me.
+vim.opt.showtabline = 0 -- You do not want tabs! Trust me.
 vim.opt.tabpagemax = 100
 
 vim.opt.autoread = true
 vim.opt.wildmenu = true
 vim.opt.showcmd = true
-vim.opt.path = {".", "/usr/include", "", "**"}
+vim.opt.path = { ".", "/usr/include", "", "**" }
 
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
