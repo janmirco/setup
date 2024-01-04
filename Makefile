@@ -9,11 +9,15 @@ update-dotfiles:
 	@cp -r ~/.config/nvim/ dotfiles/.config/
 	@rm -rf dotfiles/uman/
 	@cp -r ~/uman/ dotfiles/
-	@cp ~/.bashrc dotfiles/
 	@cp ~/.bash_aliases dotfiles/
+	@cp ~/.bash_login dotfiles/
+	@cp ~/.bash_logout dotfiles/
+	@cp ~/.bash_path dotfiles/
+	@cp ~/.bashrc dotfiles/
 	@cp ~/.gdbinit dotfiles/
 	@cp ~/.git-prompt.sh dotfiles/
 	@cp ~/.gitconfig dotfiles/
+	@cp ~/.gitignore dotfiles/
 	@cp ~/.tmux.conf dotfiles/
 
 update-installs:
