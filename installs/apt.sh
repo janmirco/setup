@@ -8,11 +8,11 @@ sudo apt-get install --assume-yes curl xclip tree htop ranger figlet sl ncdu ncd
 sudo apt-get install --assume-yes tmux
 sudo apt-get install --assume-yes ssh
 sudo apt-get install --assume-yes pass xsel
-sudo apt-get install --assume-yes calcurse
+sudo apt-get install --assume-yes calcurse todotxt-cli
 sudo apt-get install --assume-yes pandoc librsvg2-*
 sudo apt-get install --assume-yes cmatrix*
 sudo apt-get install --assume-yes hollywood
-sudo apt-get install --assume-yes python3 python3-doc python3-pip
+sudo apt-get install --assume-yes python3 python3-doc python3-pip python3-venv
 sudo apt-get install --assume-yes python3-setuptools python-setuptools-doc python3-dev
 sudo apt-get install --assume-yes ipython3
 sudo apt-get install --assume-yes lua5.4
