@@ -1,20 +1,8 @@
-# ==============================================================================
-#            ____            _                _ _
-#           |  _ \          | |         /\   | (_)
-#           | |_) | __ _ ___| |__      /  \  | |_  __ _ ___  ___  ___
-#           |  _ < / _` / __| '_ \    / /\ \ | | |/ _` / __|/ _ \/ __|
-#           | |_) | (_| \__ \ | | |  / ____ \| | | (_| \__ \  __/\__ \
-#           |____/ \__,_|___/_| |_| /_/    \_\_|_|\__,_|___/\___||___/
-#
-# ==============================================================================
-
-# --------------------------------------------------------------------
-#   Information
-
-# disable alias temporarily by using backslash:
-#   black --version  --> with    alias: __main__.py, version 20.8b1
-#   \black --version --> without alias: black, version 20.8b1
-
+#          ___
+#   ____ _/ (_)___ _________  _____
+#  / __ `/ / / __ `/ ___/ _ \/ ___/    Jan Mirco Pfeifer
+# / /_/ / / / /_/ (__  )  __(__  )     https://github.com/janmirco
+# \__,_/_/_/\__,_/____/\___/____/
 
 # --------------------------------------------------------------------
 #   Config shortcuts
@@ -23,6 +11,8 @@ alias ba='$EDITOR $HOME/.bash_aliases'
 alias bb='$EDITOR $HOME/.bashrc'
 alias gg='$EDITOR $HOME/.gitconfig'
 alias gi='$EDITOR $HOME/.gitignore'
+alias nd='$EDITOR $HOME/.todo-txt/todo.txt'
+alias ndc='$EDITOR $HOME/.todo-txt/todo.cfg'
 alias nn='$EDITOR $HOME/.config/nvim/init.lua'
 alias nt='$EDITOR $HOME/README.md'
 alias tt='$EDITOR $HOME/.tmux.conf'
@@ -53,11 +43,23 @@ alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
 alias chmodfiles='chmod 664'
 alias cht='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
+alias cl='clear; ls -lAhv --group-directories-first --color=always'
+alias ct='clear; tree -avA --dirsfirst -I ".git|node_modules|env"'
+alias d='todo-txt -d $HOME/.todo-txt/todo.cfg'
+alias da='todo-txt -d $HOME/.todo-txt/todo.cfg add'
+alias dd='todo-txt -d $HOME/.todo-txt/todo.cfg del'
 alias diff='diff --side-by-side --color=always --report-identical-files'
 alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
 alias disk_usage='$HOME/scripts/disk_usage.sh'
 alias disk_usage_tui='ncdu'
+alias dl='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list'
+alias dla='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listall'
+alias dlc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listcon'
+alias dlj='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listproj'
+alias dlp='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri'
+alias dr='todo-txt -d $HOME/.todo-txt/todo.cfg replace'
 alias du='f(){ du --human-readable --max-depth=1 "$1" | sort --human-numeric-sort --reverse; unset -f f; }; f'
+alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
@@ -135,8 +137,9 @@ alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 
-alias gupdatetodos='cd $HOME && git add $HOME/README.md && git commit -m "[readme] Update todos"'
-alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "[nvim/lazy] Update lazy-lock.json"'
+alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "[nvim] Update lazy-lock.json"'
+alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "[todo-txt] Update entire dir"'
+alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[readme] Update todos"'
 
 
 # --------------------------------------------------------------------
@@ -155,6 +158,7 @@ alias fo='$HOME/scripts/fOpenNeovim.sh'
 alias fopen='$HOME/scripts/fOpen.sh'
 
 alias nv='$EDITOR'
+alias nvl='f(){ export EDITOR_LIGHT="yes"; $EDITOR "$@"; unset -v EDITOR_LIGHT; unset -f f; }; f'
 alias nvs='$EDITOR -S $HOME/.config/$EDITOR/sessions/last_session.vim'
 alias nvS='$EDITOR -S'
 alias fnv='$EDITOR $(fzf)'

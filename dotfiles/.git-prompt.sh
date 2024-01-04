@@ -1,3 +1,10 @@
+#                                       __
+#     ____  _________  ____ ___  ____  / /_
+#    / __ \/ ___/ __ \/ __ `__ \/ __ \/ __/    Jan Mirco Pfeifer
+#   / /_/ / /  / /_/ / / / / / / /_/ / /_      https://github.com/janmirco
+#  / .___/_/   \____/_/ /_/ /_/ .___/\__/
+# /_/                        /_/
+
 # bash/zsh git prompt support
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>
@@ -94,10 +101,6 @@
 # directory is set up to be ignored by git, then set
 # GIT_PS1_HIDE_IF_PWD_IGNORED to a nonempty value. Override this on the
 # repository level by setting bash.hideIfPwdIgnored to "false".
-
-# Edited by:
-#     Jan Mirco Pfeifer
-#     https://github.com/janmirco
 
 # define color variables
 black=$(tput setaf 0)
