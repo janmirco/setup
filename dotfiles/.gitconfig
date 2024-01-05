@@ -76,6 +76,8 @@
     sw1 = show HEAD~0
     sw2 = show HEAD~1
     sw3 = show HEAD~2
+    sw4 = show HEAD~3
+    sw5 = show HEAD~4
     unci1 = reset HEAD~1
     # reset --hard HEAD~1  # points head one commit before latest and working directory gets lost FOREVER (commits and staging area can be brought back via `git reflog` and `git fsck --lost-found`)
     # reset --soft HEAD~1  # points head one commit before latest and puts files back in staging area (previous working directory stays intact)
