@@ -69,8 +69,8 @@ return {
 
             local builtin = require("telescope.builtin")
 
-            -- find files in a specific working directory
-            vim.keymap.set("n", "f", ":Telescope find_files hidden=true no_ignore=true cwd=")
+            -- find files in specific directory
+            vim.keymap.set("n", "fF", ":Telescope find_files hidden=true no_ignore=true cwd=")
 
             -- find files in current directory
             vim.keymap.set("n", "ff", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { silent = true })
@@ -93,7 +93,7 @@ return {
             -- find spell suggestions
             vim.keymap.set("n", "fs", builtin.spell_suggest, { silent = true })
 
-            -- show all registers and edit with <C-e>
+            -- find registers and edit with <C-e>
             vim.keymap.set("n", "fr", builtin.registers, { silent = true })
 
             -- find help tags
@@ -103,27 +103,27 @@ return {
             vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { silent = true })
 
             -- find files tracked by git
-            vim.keymap.set("n", "fg", builtin.git_files, { silent = true })
+            vim.keymap.set("n", "fgF", builtin.git_files, { silent = true })
 
-            -- git status for current directory
+            -- git status
             vim.keymap.set("n", "fgs", builtin.git_status, { silent = true })
 
-            -- find commits in git log
+            -- find git commits in git log
             vim.keymap.set("n", "fgl", builtin.git_commits, { silent = true })
 
             -- find git branches
             vim.keymap.set("n", "fgb", builtin.git_branches, { silent = true })
 
-            -- find all workspace symbols
-            vim.keymap.set("n", "fds", builtin.lsp_workspace_symbols, { silent = true })
-
-            -- find all document symbols
-            vim.keymap.set("n", "fdS", builtin.lsp_document_symbols, { silent = true })
-
-            -- find all workspace diagnostics
+            -- find diagnostics
             vim.keymap.set("n", "fdd", builtin.diagnostics, { silent = true })
 
-            -- find all references for word under the cursor
+            -- find lsp workspace symbols
+            vim.keymap.set("n", "fds", builtin.lsp_workspace_symbols, { silent = true })
+
+            -- find lsp document symbols
+            vim.keymap.set("n", "fdS", builtin.lsp_document_symbols, { silent = true })
+
+            -- find lsp references for word under the cursor
             vim.keymap.set("n", "fdr", builtin.lsp_references, { silent = true })
         end,
     },

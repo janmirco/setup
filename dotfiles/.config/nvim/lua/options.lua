@@ -38,6 +38,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
 vim.opt.undofile = true
 
 vim.opt.updatetime = 50
+vim.opt.timeout = true
 vim.opt.timeoutlen = 500
 
 vim.opt.showmatch = true
