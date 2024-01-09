@@ -1,7 +1,7 @@
 return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "nvim-telescope/telescope-fzf-writer.nvim" },
     { "nvim-telescope/telescope-ui-select.nvim" },
+    { "AckslD/nvim-neoclip.lua", config = function() require("neoclip").setup({ keys = { telescope = { i = { paste = "<cr>" } } } }) end },
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.5",
@@ -68,63 +68,88 @@ return {
             telescope.load_extension("ui-select")
 
             local builtin = require("telescope.builtin")
+            local utils = require("telescope.utils")
 
             -- find files in specific directory
-            vim.keymap.set("n", "fF", ":Telescope find_files hidden=true no_ignore=true cwd=")
+            vim.keymap.set("n", "fc", ":Telescope find_files hidden=true no_ignore=true cwd=", { desc = "Find files in specific directory", silent = true })
 
             -- find files in current directory
-            vim.keymap.set("n", "ff", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { silent = true })
+            vim.keymap.set("n", "ff", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { desc = "Find files in current directory", silent = true })
+
+            -- find files in directory of buffer
+            vim.keymap.set("n", "fF", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = utils.buffer_dir() }) end, { desc = "Find files in directory of buffer", silent = true })
 
             -- find files in home
-            vim.keymap.set("n", "fh", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME }) end, { silent = true })
+            vim.keymap.set("n", "fh", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME }) end, { desc = "Find files in home", silent = true })
 
             -- find files in nvim directory
-            vim.keymap.set("n", "fn", function() builtin.find_files({ hidden = true, cwd = vim.fn.stdpath("config") }) end, { silent = true })
+            vim.keymap.set("n", "fn", function() builtin.find_files({ hidden = true, cwd = vim.fn.stdpath("config") }) end, { desc = "Find files in nvim directory", silent = true })
 
             -- find keymaps
-            vim.keymap.set("n", "fk", builtin.keymaps, { silent = true })
+            vim.keymap.set("n", "fk", builtin.keymaps, { desc = "Find keymaps", silent = true })
 
             -- find buffers
-            vim.keymap.set("n", "fb", builtin.buffers, { silent = true })
+            vim.keymap.set("n", "fb", builtin.buffers, { desc = "Find buffers", silent = true })
 
             -- find files by using grep
-            vim.keymap.set("n", "fl", builtin.live_grep, { silent = true })
+            vim.keymap.set("n", "fl", builtin.live_grep, { desc = "Find files using grep", silent = true })
+
+            -- find files by using grep in directory of buffer
+            vim.keymap.set("n", "fL", function() builtin.live_grep({ cwd = utils.buffer_dir() }) end, { desc = "Find files using grep in directory of buffer", silent = true })
 
             -- find spell suggestions
-            vim.keymap.set("n", "fs", builtin.spell_suggest, { silent = true })
+            vim.keymap.set("n", "fs", builtin.spell_suggest, { desc = "Find spell suggestions", silent = true })
 
             -- find registers and edit with <C-e>
-            vim.keymap.set("n", "fr", builtin.registers, { silent = true })
+            vim.keymap.set("n", "fr", builtin.registers, { desc = "Find registers and edit with <C-e>", silent = true })
 
             -- find help tags
-            vim.keymap.set("n", "ft", builtin.help_tags, { silent = true })
+            vim.keymap.set("n", "fH", builtin.help_tags, { desc = "Find help tags", silent = true })
 
             -- find string in current buffer
-            vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { silent = true })
+            vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { desc = "Find string in current buffer", silent = true })
+
+            -- find string under cursor
+            vim.keymap.set("n", "fS", builtin.grep_string, { desc = "Find string under cursor", silent = true })
+
+            -- find yanks
+            vim.keymap.set("n", "fN", ":Telescope neoclip<cr>", { desc = "Find yanks using neoclip", silent = true })
+
+            -- find man pages
+            vim.keymap.set("n", "fm", builtin.man_pages, { desc = "Find man pages", silent = true })
+
+            -- find treesitter symbols
+            vim.keymap.set("n", "ft", builtin.treesitter, { desc = "Find treesitter symbols", silent = true })
+
+            -- find planets
+            vim.keymap.set("n", "fp", builtin.planets, { desc = "Find planets", silent = true })
 
             -- find files tracked by git
-            vim.keymap.set("n", "fgF", builtin.git_files, { silent = true })
+            vim.keymap.set("n", "fgf", builtin.git_files, { desc = "Find tracked files", silent = true })
+
+            -- find files tracked by git in directory of buffer
+            vim.keymap.set("n", "fgF", function() builtin.git_files({ cwd = utils.buffer_dir() }) end, { desc = "Find tracked files in directory of buffer", silent = true })
 
             -- git status
-            vim.keymap.set("n", "fgs", builtin.git_status, { silent = true })
+            vim.keymap.set("n", "fgs", builtin.git_status, { desc = "Status", silent = true })
 
             -- find git commits in git log
-            vim.keymap.set("n", "fgl", builtin.git_commits, { silent = true })
+            vim.keymap.set("n", "fgl", builtin.git_commits, { desc = "Find commits in log", silent = true })
 
             -- find git branches
-            vim.keymap.set("n", "fgb", builtin.git_branches, { silent = true })
+            vim.keymap.set("n", "fgb", builtin.git_branches, { desc = "Find branches", silent = true })
 
             -- find diagnostics
-            vim.keymap.set("n", "fdd", builtin.diagnostics, { silent = true })
+            vim.keymap.set("n", "fdd", builtin.diagnostics, { desc = "Find diagnostics", silent = true })
 
             -- find lsp workspace symbols
-            vim.keymap.set("n", "fds", builtin.lsp_workspace_symbols, { silent = true })
+            vim.keymap.set("n", "fds", builtin.lsp_workspace_symbols, { desc = "Find workspace symbols", silent = true })
 
             -- find lsp document symbols
-            vim.keymap.set("n", "fdS", builtin.lsp_document_symbols, { silent = true })
+            vim.keymap.set("n", "fdS", builtin.lsp_document_symbols, { desc = "Find document symbols", silent = true })
 
             -- find lsp references for word under the cursor
-            vim.keymap.set("n", "fdr", builtin.lsp_references, { silent = true })
+            vim.keymap.set("n", "fdr", builtin.lsp_references, { desc = "Find references", silent = true })
         end,
     },
 }

@@ -39,7 +39,7 @@ vim.opt.undofile = true
 
 vim.opt.updatetime = 50
 vim.opt.timeout = true
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 300
 
 vim.opt.showmatch = true
 vim.opt.incsearch = true

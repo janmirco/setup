@@ -1,19 +1,3 @@
--- wrapping text with parentheses, brackets, curly braces, single/double quotation marks, ...
-vim.keymap.set("v", "<leader>(", "c(<C-r>\")<Esc>b")
-vim.keymap.set("v", "<leader>[", "c[<C-r>\"]<Esc>b")
-vim.keymap.set("v", "<leader>{", "c{<C-r>\"}<Esc>b")
-vim.keymap.set("v", "<leader>'", "c'<C-r>\"'<Esc>b")
-vim.keymap.set("v", "<leader>\"", "c\"<C-r>\"\"<Esc>b")
-vim.keymap.set("v", "<leader>`", "c`<C-r>\"`<Esc>b")
-vim.keymap.set("v", "<leader><", "c<<C-r>\"><Esc>b")
-vim.keymap.set("v", "<leader>*", "c*<C-r>\"*<Esc>b")
-vim.keymap.set("v", "<leader>~", "c~<C-r>\"~<Esc>b")
-vim.keymap.set("v", "<leader>$", "c$<C-r>\"$<Esc>b")
-vim.keymap.set("v", "<leader>.", "c.<C-r>\".<Esc>b")
-vim.keymap.set("v", "<leader>,", "c,<C-r>\",<Esc>b")
-vim.keymap.set("v", "<leader>:", "c:<C-r>\":<Esc>b")
-vim.keymap.set("v", "<leader>;", "c;<C-r>\";<Esc>b")
-
 -- revisualize after shifting
 vim.keymap.set("v", ">", ">gV", { remap = true })
 vim.keymap.set("v", "<", "<gV", { remap = true })
@@ -32,6 +16,9 @@ vim.keymap.set("v", "<leader>S", "y:%s/<C-r>\"//g<left><left>")
 
 -- search for highlighted area
 vim.keymap.set("v", "<leader>n", "y/<C-r>\"<cr>")
+
+-- open help menu for highlighted area
+vim.keymap.set("v", "H", "y:help <C-r>\"<cr>")
 
 -- store text in registers
 vim.keymap.set("v", "<leader>1", "\"1y")

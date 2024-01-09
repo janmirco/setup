@@ -20,19 +20,13 @@ return {
         vim.keymap.set("n", "<leader>h4", function() harpoon_ui.nav_file(4) end, { silent = true })
         vim.keymap.set("n", "<leader>h5", function() harpoon_ui.nav_file(5) end, { silent = true })
 
-        local harpoon_term = require("harpoon.tmux")
-        vim.keymap.set("n", "<leader>t1", function() harpoon_term.gotoTerminal(1) end, { silent = true })
-        vim.keymap.set("n", "<leader>t2", function() harpoon_term.gotoTerminal(2) end, { silent = true })
-        vim.keymap.set("n", "<leader>t3", function() harpoon_term.gotoTerminal(3) end, { silent = true })
-        vim.keymap.set("n", "<leader>t4", function() harpoon_term.gotoTerminal(4) end, { silent = true })
-        vim.keymap.set("n", "<leader>t5", function() harpoon_term.gotoTerminal(5) end, { silent = true })
         vim.keymap.set("n", "<leader>M", function()
             if vim.env.TMUX ~= nil then
-                harpoon_term.sendCommand(1, "make")
+                require("harpoon.tmux").sendCommand(1, "make")
             else
                 vim.cmd("! make")
             end
-        end, { silent = true })
+        end, { desc = "make (Harpoon)", silent = true })
 
         vim.keymap.set("n", "<leader>hm", ":Telescope harpoon marks<cr>", { silent = true })
     end,

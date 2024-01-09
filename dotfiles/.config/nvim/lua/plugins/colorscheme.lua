@@ -20,7 +20,6 @@ return {
                 vim.opt.background = "dark"
                 vim.cmd("colorscheme catppuccin-frappe")
             end
-            vim.cmd("source " .. vim.env.HOME .. "/.config/nvim/init.lua")
-        end)
+        end, { desc = "Toggle light background", silent = true })
     end,
 }

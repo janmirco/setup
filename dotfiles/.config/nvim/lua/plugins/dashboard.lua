@@ -13,13 +13,9 @@ return {
                 week_header = { enable = true },
                 shortcut = {
                     { desc = "New file", group = "Number", action = function() vim.cmd("enew") end, key = "e" },
-                    { desc = "Update mason", group = "Number", action = function() vim.cmd("MasonUpdate") end, key = "U" },
                     { desc = "Update plugins", group = "Number", action = function() lazy.update({ wait = true }) end, key = "u" },
-                    { desc = "Restore plugins", group = "Number", action = function() lazy.restore({ wait = true }) end, key = "r" },
                     { desc = "Find files", group = "Number", action = function() telescope_builtin.find_files({ hidden = true, no_ignore = true }) end, key = "f" },
-                    { desc = "Find home", group = "Number", action = function() telescope_builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME }) end, key = "h" },
                     { desc = "Find nvim", group = "Number", action = function() telescope_builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.fn.stdpath("config") }) end, key = "n" },
-                    { desc = "Live grep", group = "Number", action = function() telescope_builtin.live_grep() end, key = "l" },
                     {
                         desc = "Close all",
                         group = "Number",

@@ -1,8 +1,7 @@
 -- exit insert mode
 local exit_insert_mode = function()
     local _, column = unpack(vim.api.nvim_win_get_cursor(0))
-    local at_line_start = column == 0
-    if at_line_start then
+    if column == 0 then
         vim.cmd("stopinsert")
     else
         vim.cmd("stopinsert")
@@ -10,6 +9,7 @@ local exit_insert_mode = function()
         vim.api.nvim_feedkeys(keys, "n", true)
     end
 end
+vim.keymap.set("i", "<A-h>", exit_insert_mode)
 vim.keymap.set("i", "hh", exit_insert_mode)
 
 -- parentheses, brackets, curly braces, single/double quotation marks, ...
