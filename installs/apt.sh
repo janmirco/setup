@@ -46,6 +46,7 @@ sudo apt-get install --assume-yes libp4est-*
 sudo apt-get install --assume-yes scalapack-* libscalapack-*
 sudo apt-get install --assume-yes libboost*
 sudo apt-get install --assume-yes libgmp-dev libbinutils libbinutils-dbg
+sudo apt-get install --assume-yes sqlite3 libsqlite3-dev sqlite3-doc
 sudo apt-get install --assume-yes vim vim-runtime vim-doc vim-scripts vim-gtk3
 sudo apt-get install --assume-yes obs-studio
 sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
