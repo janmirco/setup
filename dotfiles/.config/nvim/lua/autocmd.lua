@@ -14,14 +14,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     callback = function() vim.cmd(":silent exec '! stylua --call-parentheses Always --collapse-simple-statement Always --column-width 1000 --indent-type Spaces --indent-width 4 --line-endings Unix --quote-style ForceDouble %'") end,
 })
 
--- matlab
+-- matlab/octave
 local matlab_group = vim.api.nvim_create_augroup("MatlabAugroup", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
     group = matlab_group,
     pattern = "*.m",
     callback = function()
-        -- vim.cmd("nmap gd yiw:vimgrep function.*<C-r>\" ./.**/*.m<cr>/<C-r>\"<cr>")
-        vim.cmd("nmap <silent> gd :! ctags -R .<cr><cr><C-]>:! rm -f tags<cr><cr>")
+        -- vim.keymap.set("n", "gd", "yiw:vimgrep function.*<C-r>\" ./.**/*.m<cr>/<C-r>\"<cr>", { desc = "[LSP] Go to definition", silent = true })
+        vim.keymap.set("n", "gd", ":! ctags -R .<cr><cr><C-]>:! rm -f tags<cr><cr>", { desc = "[LSP] Go to definition", silent = true })
     end,
 })
 
