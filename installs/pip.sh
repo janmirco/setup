@@ -30,3 +30,4 @@ python3 -m pip install --upgrade pip h5py
 python3 -m pip install --upgrade pip yt-dlp
 python3 -m pip install --upgrade pip tldr
 python3 -m pip install --upgrade pip abqpy
+python3 -m pip install --upgrade pip mpi4py
