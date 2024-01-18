@@ -218,7 +218,7 @@ return {
             },
 
             python = {
-                ls.parser.parse_snippet("main", "\"\"\"$1\"\"\"\n" .. "\n" .. "\n" .. "def main():\n" .. "    \"\"\"Main function\"\"\"\n" .. "\n" .. "    $2\n" .. "\n" .. "\n" .. "if __name__ == \"__main__\":\n" .. "    main()"),
+                ls.parser.parse_snippet("main", "\"\"\"$1\"\"\"\n" .. "\n" .. "\n" .. "def main():\n" .. "    $2\n" .. "\n" .. "\n" .. "if __name__ == \"__main__\":\n" .. "    main()"),
                 ls.parser.parse_snippet("def", "def $1($2):\n" .. "    \"\"\"$1 function\"\"\"\n" .. "\n" .. "    $3"),
                 snippet(
                     "o",

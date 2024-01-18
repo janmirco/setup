@@ -25,9 +25,9 @@ vim.cmd("autocmd FileType * set formatoptions-=cro")
 vim.opt.wrap = false
 vim.opt.showbreak = ">>>>"
 vim.opt.listchars = "extends:→,precedes:←"
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 vim.opt.sidescroll = 0
-vim.opt.sidescrolloff = 8
+vim.opt.sidescrolloff = 0
 vim.opt.scrollbind = false
 
 vim.opt.backup = false
@@ -57,3 +57,4 @@ vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
 vim.opt.winbar = nil
+vim.opt.conceallevel = 2

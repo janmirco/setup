@@ -42,7 +42,7 @@ vim.keymap.set("n", "<A-R>", function() toggle("relativenumber") end, { desc = "
 vim.keymap.set("n", "<leader>R", function()
     vim.cmd("edit")
     print(vim.fn.expand("%:t") .. " reloaded")
-end, { desc = "reload current file", silent = true })
+end, { desc = "Reload current file", silent = true })
 vim.keymap.set("n", "<leader>w", function()
     vim.cmd("write")
     print(vim.fn.expand("%:t") .. " written")
@@ -72,7 +72,7 @@ vim.keymap.set("n", "<A-f>", "<C-i>", { silent = true })
 vim.keymap.set("n", "<leader>ow", function()
     vim.cmd("update")
     vim.cmd("only")
-    print("Closed all windows except: " .. vim.fn.expand("%:t"))
+    print("Closed all except current window: " .. vim.fn.expand("%:t"))
 end, { desc = "Close all except current window", silent = true })
 
 -- source init.lua
@@ -138,3 +138,10 @@ vim.keymap.set("n", "<leader>u3", function() vim.cmd("TSUpdate") end, { desc = "
 
 -- make
 vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { desc = "make", silent = true })
+
+-- manual indenting
+vim.keymap.set("n", "<leader><leader>", function()
+    local keys = vim.api.nvim_replace_termcodes("magg=G`azz", true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", true)
+    vim.cmd("delmarks a")
+end, { desc = "Indent current file using neovim", silent = true })
