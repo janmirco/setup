@@ -177,6 +177,7 @@
 /.config/kdeconnect/
 /.config/kdedefaults/
 /.config/khtml/
+/.config/lazygit/
 /.config/libaccounts-glib/
 /.config/libreoffice/
 /.config/menus/
