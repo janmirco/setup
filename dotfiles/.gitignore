@@ -159,6 +159,7 @@
 /.config/abiword/
 /.config/akonadi/
 /.config/autostart/
+/.config/cat_installer/
 /.config/cef_user_data/
 /.config/coc/
 /.config/dconf/
