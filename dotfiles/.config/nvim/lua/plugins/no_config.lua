@@ -6,4 +6,5 @@ return {
     { "tpope/vim-surround" },
     { "vim-scripts/MatlabFilesEdition" },
     { "vim-scripts/matchit.zip" },
+    { "vim-scripts/todo-txt.vim" },
 }

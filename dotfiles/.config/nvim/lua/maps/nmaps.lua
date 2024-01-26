@@ -93,9 +93,6 @@ vim.keymap.set("n", "<leader>rw", ":windo %s/\\s\\+$//ge<cr>:windo update<cr>:ec
 -- search word where cursor hovers over
 vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>", { desc = "Search for word under cursor", silent = true })
 
--- search and replace in file
-vim.keymap.set("n", "<leader>S", ":%s///g<Left><Left><Left>", { desc = "Search and replace", silent = true })
-
 -- window commands (window navigation set in `lua/plugins/vim-tmux-navigator.lua`)
 vim.keymap.set("n", "<C-up>", ":resize +2<cr>", { desc = "Resize window up", silent = true })
 vim.keymap.set("n", "<C-down>", ":resize -2<cr>", { desc = "Resize window down", silent = true })
@@ -145,3 +142,6 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.api.nvim_feedkeys(keys, "n", true)
     vim.cmd("delmarks a")
 end, { desc = "Indent current file using neovim", silent = true })
+
+-- sort entire file
+vim.keymap.set("n", "<leader>S", function() vim.cmd("sort") end, { desc = "Sort entire file", silent = true })
