@@ -9,23 +9,25 @@ return {
                     change = { text = "~" },
                 },
             })
+
+            -- normal mode keymaps
             vim.keymap.set("n", "<A-g>", gitsigns.toggle_signs, { desc = "[Git] Toggle gitsigns", silent = true })
             vim.keymap.set("n", "[g", gitsigns.prev_hunk, { desc = "[Git] Previous hunk", silent = true })
             vim.keymap.set("n", "]g", gitsigns.next_hunk, { desc = "[Git] Next hunk", silent = true })
-            vim.keymap.set("n", "gp", gitsigns.preview_hunk, { desc = "[Git] Preview hunk", silent = true })
-            vim.keymap.set("n", "gu", gitsigns.reset_hunk, { desc = "[Git] Undo hunk", silent = true })
-            vim.keymap.set("n", "gU", gitsigns.undo_stage_hunk, { desc = "[Git] Undo last staged hunk", silent = true })
-            vim.keymap.set("n", "gh", function()
-                local row = unpack(vim.api.nvim_win_get_cursor(0))
-                gitsigns.stage_hunk({ row, row })
-            end, { desc = "[Git] Stage line", silent = true })
-            vim.keymap.set("v", "gh", function()
-                local row_begin, row_end = vim.fn.line("v"), unpack(vim.api.nvim_win_get_cursor(0))
-                gitsigns.stage_hunk({ row_begin, row_end })
-            end, { desc = "[Git] Stage lines", silent = true })
-            vim.keymap.set("n", "gH", gitsigns.stage_hunk, { desc = "[Git] Stage entire hunk", silent = true })
+            vim.keymap.set("n", "gU", gitsigns.undo_stage_hunk, { desc = "[Git] Undo last stage", silent = true })
             vim.keymap.set("n", "gb", gitsigns.blame_line, { desc = "[Git] Blame line", silent = true })
             vim.keymap.set("n", "ge", gitsigns.toggle_deleted, { desc = "[Git] Toggle deleted", silent = true })
+            vim.keymap.set("n", "ghb", gitsigns.stage_buffer, { desc = "Buffer", silent = true })
+            vim.keymap.set("n", "ghh", gitsigns.stage_hunk, { desc = "Hunk", silent = true })
+            vim.keymap.set("n", "ghl", function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line(".") }) end, { desc = "Line", silent = true })
+            vim.keymap.set("n", "gp", gitsigns.preview_hunk, { desc = "[Git] Preview hunk", silent = true })
+            vim.keymap.set("n", "gub", gitsigns.reset_buffer, { desc = "Buffer", silent = true })
+            vim.keymap.set("n", "gul", function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line(".") }) end, { desc = "Line", silent = true })
+            vim.keymap.set("n", "guu", gitsigns.reset_hunk, { desc = "Hunk", silent = true })
+
+            -- visual mode keymaps
+            vim.keymap.set("v", "gh", function() gitsigns.stage_hunk({ vim.fn.line("v"), vim.fn.line(".") }) end, { desc = "[Git] Stage lines", silent = true })
+            vim.keymap.set("v", "gu", function() gitsigns.reset_hunk({ vim.fn.line("v"), vim.fn.line(".") }) end, { desc = "[Git] Undo lines", silent = true })
         end,
     },
     {

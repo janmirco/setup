@@ -59,6 +59,8 @@ return {
                 d = { name = "LSP" },
                 g = { name = "Git" },
             },
+            gh = { name = "[Git] Stage" },
+            gu = { name = "[Git] Undo" },
             gw = { name = "[Git] Show commit" },
             t = {
                 d = { name = "Todo Comments" },
