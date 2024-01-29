@@ -10,6 +10,9 @@ padding.x = 0
 padding.y = 0
 decorations = "None"
 
+[mouse]
+hide_when_typing = true
+
 [font]
 size = 7.75  # best for laptop screen
 
