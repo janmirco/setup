@@ -7,6 +7,7 @@
 # --------------------------------------------------------------------
 #   Config shortcuts
 
+alias aa='$EDITOR $HOME/.config/alacritty/alacritty.toml'
 alias ba='$EDITOR $HOME/.bash_aliases'
 alias bb='$EDITOR $HOME/.bashrc'
 alias gg='$EDITOR $HOME/.gitconfig'
