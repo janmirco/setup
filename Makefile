@@ -5,7 +5,7 @@ update:
 	@make update-installs --silent
 
 update-dotfiles:
-	@rm -rf dotfiles/.config/nvim/
+	@rm -rf dotfiles/.config/alacritty/ && cp -r ~/.config/alacritty/ dotfiles/.config/
 	@cp -r ~/.config/nvim/ dotfiles/.config/
 	@rm -rf dotfiles/uman/
 	@cp -r ~/uman/ dotfiles/
