@@ -1,4 +1,4 @@
-.PHONY: update update-dotfiles update-installs
+.PHONY: update update-dotfiles update-installs undo-dotfiles
 
 update:
 	@make update-dotfiles --silent
@@ -22,3 +22,8 @@ update-dotfiles:
 update-installs:
 	@rm -rf installs/*
 	@cp ~/setup/installs/* installs/
+
+undo-dotfiles:
+	@git checkout -- dotfiles/.bash_aliases
+	@git checkout -- dotfiles/.bash_path
+	@git checkout -- dotfiles/.gitconfig
