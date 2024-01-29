@@ -34,13 +34,7 @@ return {
                 },
                 sync_install = false,
                 auto_install = true,
-                highlight = {
-                    enable = true,
-                    disable = {
-                        "make",
-                        "markdown",
-                    },
-                },
+                highlight = { enable = true },
                 indent = { enable = true },
                 incremental_selection = { enable = true },
                 textobjects = { enable = true },

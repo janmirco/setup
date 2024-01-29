@@ -22,6 +22,7 @@ return {
             vim.keymap.set("n", "ghl", function() gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line(".") }) end, { desc = "Line", silent = true })
             vim.keymap.set("n", "gp", gitsigns.preview_hunk, { desc = "[Git] Preview hunk", silent = true })
             vim.keymap.set("n", "gub", gitsigns.reset_buffer, { desc = "Buffer", silent = true })
+            vim.keymap.set("n", "guh", gitsigns.reset_hunk, { desc = "Hunk", silent = true })
             vim.keymap.set("n", "gul", function() gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line(".") }) end, { desc = "Line", silent = true })
             vim.keymap.set("n", "guu", gitsigns.reset_hunk, { desc = "Hunk", silent = true })
 

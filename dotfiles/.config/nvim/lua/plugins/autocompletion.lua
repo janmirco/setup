@@ -3,6 +3,7 @@ return {
     dependencies = {
         "f3fora/cmp-spell",
         "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-path",
@@ -70,6 +71,24 @@ return {
             snippet = {
                 expand = function(args) luasnip.lsp_expand(args.body) end,
             },
+        })
+
+        -- `/` cmdline setup.
+        cmp.setup.cmdline("/", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "buffer" },
+            },
+        })
+
+        -- `:` cmdline setup.
+        cmp.setup.cmdline(":", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = "path" },
+            }, {
+                { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
+            }),
         })
     end,
 }

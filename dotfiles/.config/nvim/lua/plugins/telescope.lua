@@ -85,6 +85,9 @@ return {
             -- find files in nvim directory
             vim.keymap.set("n", "fn", function() builtin.find_files({ hidden = true, cwd = vim.fn.stdpath("config") }) end, { desc = "Find files in nvim directory", silent = true })
 
+            -- find .md files in current directory
+            vim.keymap.set("n", "fm", function() builtin.find_files({ hidden = true, no_ignore = true, search_file = "*.md" }) end, { desc = "Find .md files in current directory", silent = true })
+
             -- find keymaps
             vim.keymap.set("n", "fk", builtin.keymaps, { desc = "Find keymaps", silent = true })
 
@@ -116,7 +119,7 @@ return {
             vim.keymap.set("n", "fN", ":Telescope neoclip<cr>", { desc = "Find yanks using neoclip", silent = true })
 
             -- find man pages
-            vim.keymap.set("n", "fm", builtin.man_pages, { desc = "Find man pages", silent = true })
+            vim.keymap.set("n", "fM", builtin.man_pages, { desc = "Find man pages", silent = true })
 
             -- find treesitter symbols
             vim.keymap.set("n", "ft", builtin.treesitter, { desc = "Find treesitter symbols", silent = true })

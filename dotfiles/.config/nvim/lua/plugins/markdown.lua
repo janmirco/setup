@@ -4,7 +4,7 @@ return {
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         build = "cd app && yarn install",
         init = function() vim.g.mkdp_filetypes = { "markdown" } end,
-        ft = { "markdown" },
+        ft = "markdown",
         config = function()
             vim.g.mkdp_auto_close = 0
             vim.g.mkdp_theme = "light"
@@ -13,8 +13,13 @@ return {
     },
     {
         "jakewvincent/mkdnflow.nvim",
+        ft = "markdown",
         config = function()
             require("mkdnflow").setup({
+                modules = {
+                    yaml = true,
+                    cmp = false, -- currently only working with perspective.priority = "root"
+                },
                 perspective = {
                     priority = "current",
                 },
@@ -22,6 +27,10 @@ return {
                     conceal = true,
                     transform_explicit = function(text) return text:gsub(" ", "_") end,
                 },
+                to_do = {
+                    symbols = { " ", "x", " " },
+                },
+                -- for most of the following mappings, see ./which_key.lua
                 mappings = {
                     MkdnEnter = { { "n", "v" }, "<cr>" },
                     MkdnTab = false,
@@ -35,19 +44,19 @@ return {
                     MkdnCreateLink = false,
                     MkdnCreateLinkFromClipboard = { { "n", "v" }, "mp" },
                     MkdnFollowLink = false,
-                    MkdnDestroyLink = { "n", "<A-cr>" },
-                    MkdnTagSpan = false,
+                    MkdnDestroyLink = { { "n", "v" }, "<A-cr>" },
+                    MkdnTagSpan = { "v", "ms" },
                     MkdnMoveSource = { "n", "mr" },
-                    MkdnYankAnchorLink = false,
-                    MkdnYankFileAnchorLink = false,
-                    MkdnIncreaseHeading = false,
-                    MkdnDecreaseHeading = false,
+                    MkdnYankAnchorLink = { "n", "mya" },
+                    MkdnYankFileAnchorLink = { "n", "myf" },
+                    MkdnIncreaseHeading = { "n", "mj" },
+                    MkdnDecreaseHeading = { "n", "mk" },
                     MkdnToggleToDo = { { "n", "v" }, "mt" },
                     MkdnNewListItem = false,
-                    MkdnNewListItemBelowInsert = false,
-                    MkdnNewListItemAboveInsert = false,
+                    MkdnNewListItemBelowInsert = { "n", "o" },
+                    MkdnNewListItemAboveInsert = { "n", "O" },
                     MkdnExtendList = false,
-                    MkdnUpdateNumbering = false,
+                    MkdnUpdateNumbering = { "n", "mn" },
                     MkdnTableNextCell = false,
                     MkdnTablePrevCell = false,
                     MkdnTableNextRow = false,
@@ -56,8 +65,8 @@ return {
                     MkdnTableNewRowAbove = false,
                     MkdnTableNewColAfter = false,
                     MkdnTableNewColBefore = false,
-                    MkdnFoldSection = false,
-                    MkdnUnfoldSection = false,
+                    MkdnFoldSection = { "n", "mf" },
+                    MkdnUnfoldSection = { "n", "mF" },
                 },
             })
         end,
