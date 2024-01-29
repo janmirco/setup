@@ -264,6 +264,7 @@ alias tlk='tmux list-keys'
 # --------------------------------------------------------------------
 #   UMAN
 
+alias uAlacritty='$HOME/uman/uAlacritty.sh'
 alias uApt='$HOME/uman/uApt.sh'
 alias uBios='$HOME/uman/uBios.sh'
 alias uDaily='$HOME/uman/uDaily.sh'
