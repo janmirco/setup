@@ -6,8 +6,13 @@
 # /____/
 
 [user]
-    name = First Last
-    email = first.last@email.hello
+    name = Jan Mirco Pfeifer
+
+[include]
+	path = ~/.config/git/private
+
+[includeIf "gitdir:~/github/"]
+	path = ~/.config/git/public
 
 [core]
     editor = nvim
