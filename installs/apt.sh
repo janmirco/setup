@@ -50,22 +50,26 @@ sudo apt-get install --assume-yes libgmp-dev libbinutils libbinutils-dbg
 sudo apt-get install --assume-yes sqlite3 libsqlite3-dev sqlite3-doc
 sudo apt-get install --assume-yes vim vim-runtime vim-doc vim-scripts vim-gtk3
 sudo apt-get install --assume-yes obs-studio
-# sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
 sudo apt-get install --assume-yes pugixml-doc libpugixml*
 sudo apt-get install --assume-yes kdenlive*
 sudo apt-get install --assume-yes default-jre default-jdk
 sudo apt-get install --assume-yes remmina*
 
-# Zoom and VS Code
-#   download .deb from:
-#       * https://zoom.us/download
-#       * https://code.visualstudio.com/download
-#       * https://obsidian.md/download
-#   install:
-#       sudo apt-get update
-#       sudo apt-get install --assume-yes ~/Downloads/code_<VERSION>_amd64.deb
-#       sudo apt-get install --assume-yes ~/Downloads/zoom_amd64.deb
-#       sudo apt-get install --assume-yes ~/Downloads/obsidian_1.3.7_amd64.deb
+# Install virtualbox in a separate window because of license agreement
+# sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
+
+# Some installs via .deb packages.
+#     Download from:
+#         - https://zoom.us/download
+#         - https://code.visualstudio.com/download
+#         - https://obsidian.md/download
+#         - https://www.microsoft.com/en-us/edge/download
+#     Install:
+#         sudo apt-get update && sudo apt-get upgrade --assume-yes
+#         sudo apt-get install --assume-yes ~/Downloads/zoom_amd64.deb
+#         sudo apt-get install --assume-yes ~/Downloads/code_<VERSION>_amd64.deb
+#         sudo apt-get install --assume-yes ~/Downloads/obsidian_<VERSION>_amd64.deb
+#         sudo apt-get install --assume-yes ~/Downloads/microsoft-edge-stable_<VERSION>_amd64.deb
 
 # Brave
 if ! command -v brave-browser &> /dev/null; then
