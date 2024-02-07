@@ -2,16 +2,12 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- window
+config.initial_rows = 30
+config.initial_cols = 150
+config.window_padding = { left = 0, right = 0, top = 0, bottom = 0 }
 config.window_decorations = "NONE"
-config.adjust_window_size_when_changing_font_size = false
 config.hide_tab_bar_if_only_one_tab = true
-config.window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
-}
--- TODO: Set window size at launch similar to alacritty
+config.adjust_window_size_when_changing_font_size = false
 
 -- font
 config.font = wezterm.font("JetBrains Mono")
