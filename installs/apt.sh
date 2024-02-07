@@ -17,6 +17,7 @@ sudo apt-get install --assume-yes python3-setuptools python-setuptools-doc pytho
 sudo apt-get install --assume-yes ipython3
 sudo apt-get install --assume-yes lua5.4
 sudo apt-get install --assume-yes fzf ripgrep silversearcher-ag fd-find bat
+sudo apt-get install --assume-yes doc-base stow
 sudo apt-get install --assume-yes cmake make gcc g++ gfortran git build-essential
 sudo apt-get install --assume-yes libc++-dev libc-dev*
 sudo apt-get install --assume-yes libfmt-dev libfmt-doc
