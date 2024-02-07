@@ -1,32 +1,18 @@
-.PHONY: update update-dotfiles update-installs undo-dotfiles
+.PHONY: update
 
 update:
-	@make update-dotfiles --silent
-	@make update-installs --silent
-
-update-dotfiles:
-	@rm -rf dotfiles/.config/alacritty/ && cp -r ~/.config/alacritty/ dotfiles/.config/
-	@rm -rf dotfiles/.config/fzf/ && cp -r ~/.config/fzf/ dotfiles/.config/
-	@rm -rf dotfiles/.config/nvim/ && cp -r ~/.config/nvim/ dotfiles/.config/
-	@rm -rf dotfiles/.config/wezterm/ && cp -r ~/.config/wezterm/ dotfiles/.config/
-	@rm -rf dotfiles/uman/ && cp -r ~/uman/ dotfiles/
-	@rm -rf dotfiles/scripts/ && cp -r ~/scripts/ dotfiles/
-	@cp ~/.bash_aliases dotfiles/
-	@cp ~/.bash_login dotfiles/
-	@cp ~/.bash_logout dotfiles/
-	@cp ~/.bash_path dotfiles/
-	@cp ~/.bashrc dotfiles/
-	@cp ~/.gdbinit dotfiles/
-	@cp ~/.git-prompt.sh dotfiles/
-	@cp ~/.gitconfig dotfiles/
-	@cp ~/.gitignore dotfiles/
-	@cp ~/.tmux.conf dotfiles/
-
-update-installs:
-	@rm -rf installs/*
-	@cp ~/setup/installs/* installs/
-
-undo-dotfiles:
-	@git checkout -- dotfiles/.bash_aliases
-	@git checkout -- dotfiles/.bash_path
-	@git checkout -- dotfiles/.gitconfig
+	@rm -rf .config/alacritty && cp -r ~/.config/alacritty .config
+	@rm -rf .config/bash && cp -r ~/.config/bash .config
+	@rm -rf .config/fzf && cp -r ~/.config/fzf .config
+	@rm -rf .config/nvim && cp -r ~/.config/nvim .config
+	@rm -rf .config/vim && cp -r ~/.config/vim .config
+	@rm -rf .config/wezterm && cp -r ~/.config/wezterm .config
+	@rm -rf iman && cp -r ~/iman .
+	@rm -rf scripts && cp -r ~/scripts .
+	@rm -rf uman && cp -r ~/uman .
+	@cp ~/.bash_login .
+	@cp ~/.bash_logout .
+	@cp ~/.bashrc .
+	@cp ~/.config/git/config ~/.config/git/public .config/git
+	@cp ~/.config/tmux/tmux.conf .config/tmux
+	@cp ~/.gitignore .config/git/home_ignore
