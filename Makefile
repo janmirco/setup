@@ -6,7 +6,9 @@ update:
 
 update-dotfiles:
 	@rm -rf dotfiles/.config/alacritty/ && cp -r ~/.config/alacritty/ dotfiles/.config/
+	@rm -rf dotfiles/.config/fzf/ && cp -r ~/.config/fzf/ dotfiles/.config/
 	@rm -rf dotfiles/.config/nvim/ && cp -r ~/.config/nvim/ dotfiles/.config/
+	@rm -rf dotfiles/.config/wezterm/ && cp -r ~/.config/wezterm/ dotfiles/.config/
 	@rm -rf dotfiles/uman/ && cp -r ~/uman/ dotfiles/
 	@rm -rf dotfiles/scripts/ && cp -r ~/scripts/ dotfiles/
 	@cp ~/.bash_aliases dotfiles/
