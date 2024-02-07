@@ -35,7 +35,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-set undodir=~/.vim/undodir
+set undodir=~/.local/share/vim/undodir
 set undofile
 
 set updatetime=50
