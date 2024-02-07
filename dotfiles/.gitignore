@@ -182,6 +182,7 @@
 /.config/libaccounts-glib/
 /.config/libreoffice/
 /.config/menus/
+/.config/microsoft-edge/
 /.config/neofetch/
 /.config/nvim/autoload/
 /.config/nvim/undodir/

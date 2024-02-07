@@ -17,6 +17,7 @@ alias ndc='$EDITOR $HOME/.todo-txt/todo.cfg'
 alias nn='$EDITOR $HOME/.config/nvim/init.lua'
 alias nt='$EDITOR $HOME/README.md'
 alias tt='$EDITOR $HOME/.tmux.conf'
+alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
 
 
 # --------------------------------------------------------------------
@@ -39,14 +40,18 @@ alias calcurseExport='$HOME/scripts/calcurse_export.sh'
 alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
+alias cdc='cd "$(fd --type directory . $HOME/git* | fzf --layout=reverse --height=10%)"'  # find and go to any dir in gitbuw and github
+alias cdg='cd "$(fd --type directory '\.git$' $HOME | xargs dirname | fzf --layout=reverse --height=10%)"'  # find and go to any git repo in home
+alias cdh='cd "$(fd --type directory . $HOME | fzf --layout=reverse --height=10%)"'  # find and go to any dir in home
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
+alias cds='cd "$(fd --type directory . $HOME/sciebo | fzf --layout=reverse --height=10%)"'  # find and go to any dir in sciebo
 alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
 alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
 alias chmodfiles='chmod 664'
 alias cht='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
 alias cl='clear; ls -lAhv --group-directories-first --color=always'
-alias ct='clear; tree -avA --dirsfirst -I ".git|node_modules|env"'
+alias ct='clear; tree -avAC --dirsfirst -I ".git|node_modules|env"'
 alias d='todo-txt -d $HOME/.todo-txt/todo.cfg'
 alias da='todo-txt -d $HOME/.todo-txt/todo.cfg add'
 alias dd='todo-txt -d $HOME/.todo-txt/todo.cfg del'
@@ -71,7 +76,9 @@ alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
+alias f='fzf --layout=reverse --height=10%'
 alias fd='fdfind --hidden --no-ignore'
+alias fzf='fzf --layout=reverse --height=10%'
 alias grep='grep --color=always'
 alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
 alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
@@ -94,6 +101,7 @@ alias paste_clipboard_to_note='$HOME/scripts/paste_to_note.sh'
 alias pathlist='echo "$PATH" | tr ":" "\n"'
 alias pngtomp4='ffmpeg -framerate 25 -i image%04d.png movie.mp4'
 alias pp='python3'
+alias ppass="$HOME/scripts/ppass.sh && exit"
 alias pv='paraview'
 alias pvnvidia='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia paraview'
 alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; unset -f f; }; f'
@@ -104,13 +112,13 @@ alias rr='ranger'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
 alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
-alias t='tree -avA --dirsfirst -I ".git|node_modules|env"'
-alias tree1='tree -avA --dirsfirst -I ".git|node_modules|env" -L 1'
-alias tree2='tree -avA --dirsfirst -I ".git|node_modules|env" -L 2'
-alias tree3='tree -avA --dirsfirst -I ".git|node_modules|env" -L 3'
-alias tree4='tree -avA --dirsfirst -I ".git|node_modules|env" -L 4'
-alias tree5='tree -avA --dirsfirst -I ".git|node_modules|env" -L 5'
-alias tree='tree -avA --dirsfirst -I ".git|node_modules|env"'
+alias t='tree -avAC --dirsfirst -I ".git|node_modules|env"'
+alias tree1='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 1'
+alias tree2='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 2'
+alias tree3='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 3'
+alias tree4='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 4'
+alias tree5='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 5'
+alias tree='tree -avAC --dirsfirst -I ".git|node_modules|env"'
 alias unexpand='f(){ unexpand --first-only --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias vim='vi'
 alias wca='echo "lines, words, characters:"; cat $(find ./ -type f) | wc -l -w -m'
@@ -155,8 +163,8 @@ alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[re
 # --------------------------------------------------------------------
 #   Neovim and fzf
 
-alias fcd='dir_name="$(find ./ -type d -not -path "*/\.git*" -not -path "*/node_modules*" | fzf)"; if ! [ "$dir_name" == "" ]; then cd "$dir_name"; fi; unset -v dir_name;'
-alias fcdHome='dir_name="$(find ~/ -type d -not -path "*/\.git*" -not -path "*/node_modules*" | fzf)"; if ! [ "$dir_name" == "" ]; then cd "$dir_name"; fi; unset -v dir_name;'
+alias fcd='dir_name="$(find ./ -type d -not -path "*/\.git*" -not -path "*/node_modules*" | fzf --layout=reverse --height=10%)"; if ! [ "$dir_name" == "" ]; then cd "$dir_name"; fi; unset -v dir_name;'
+alias fcdHome='dir_name="$(find ~/ -type d -not -path "*/\.git*" -not -path "*/node_modules*" | fzf --layout=reverse --height=10%)"; if ! [ "$dir_name" == "" ]; then cd "$dir_name"; fi; unset -v dir_name;'
 
 alias fO='$HOME/scripts/fOpen.sh'
 alias fOexit='$HOME/scripts/fOpen.sh && exit'
@@ -167,7 +175,7 @@ alias fOpicdir='$HOME/scripts/fOpicdir.sh'
 alias fo='$HOME/scripts/fOpenNeovim.sh'
 alias fopen='$HOME/scripts/fOpen.sh'
 
-alias fnv='$EDITOR $(fzf)'
+alias fnv='$EDITOR "$(fzf --layout=reverse --height=10%)"'
 alias nv0='f(){ $EDITOR $(ls | tail --lines "$1"); unset -f f; }; f'
 alias nv1='f(){ $EDITOR $(ls | head --lines "$1"); unset -f f; }; f'
 alias nv='$EDITOR'
@@ -180,9 +188,9 @@ alias nvg='$HOME/scripts/nvg.sh'
 alias nvgi='$HOME/scripts/nvgi.sh'
 alias nvgix='$HOME/scripts/nvgix.sh'
 alias nvgx='$HOME/scripts/nvgx.sh'
-alias nvl='f(){ export EDITOR_LIGHT="yes"; $EDITOR "$@"; unset -v EDITOR_LIGHT; unset -f f; }; f'
+alias nvl='$HOME/scripts/nvl.sh'
 alias nvm='$HOME/scripts/nvm.sh'
-alias nvp='f(){ export EDITOR_FULL_LSP_POWER="yes"; $EDITOR "$@"; unset -v EDITOR_FULL_LSP_POWER; unset -f f; }; f'
+alias nvp='$HOME/scripts/nvp.sh'
 alias nvs='$EDITOR -S $HOME/.config/$EDITOR/sessions/last_session.vim'
 alias nvt='$HOME/scripts/nvt.sh'
 alias nvu='$HOME/scripts/nvu.sh'
@@ -192,13 +200,6 @@ alias nvgrid='f(){ $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd
 alias nvmain='f(){ $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd ="; unset -f f; }; f'
 
 alias nvsudo='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
-
-
-# --------------------------------------------------------------------
-#   Pass
-
-alias ppass='f(){ pass "$1" | xclip -rmlastnl; echo "Clipboard will be cleared and terminal will be closed in 50s ..."; sleep 50; xsel --clear; unset -f f; exit; }; f'
-alias ppass5='f(){ pass "$1" | xclip -rmlastnl; echo "Clipboard will be cleared and terminal will be closed in 5s ..."; sleep 5; xsel --clear; unset -f f; exit; }; f'
 
 
 # --------------------------------------------------------------------
