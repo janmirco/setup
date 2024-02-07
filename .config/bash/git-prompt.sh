@@ -1,10 +1,3 @@
-#                                       __
-#     ____  _________  ____ ___  ____  / /_
-#    / __ \/ ___/ __ \/ __ `__ \/ __ \/ __/    Jan Mirco Pfeifer
-#   / /_/ / /  / /_/ / / / / / / /_/ / /_      https://github.com/janmirco
-#  / .___/_/   \____/_/ /_/ /_/ .___/\__/
-# /_/                        /_/
-
 # bash/zsh git prompt support
 #
 # Copyright (C) 2006,2007 Shawn O. Pearce <spearce@spearce.org>

@@ -7,16 +7,17 @@
 # --------------------------------------------------------------------
 #   Config shortcuts
 
-alias aa='$EDITOR $HOME/.config/alacritty/alacritty.toml'
-alias ba='$EDITOR $HOME/.bash_aliases'
-alias bb='$EDITOR $HOME/.bashrc'
-alias gg='$EDITOR $HOME/.gitconfig'
-alias gi='$EDITOR $HOME/.gitignore'
-alias nd='$EDITOR $HOME/.todo-txt/todo.txt'
-alias ndc='$EDITOR $HOME/.todo-txt/todo.cfg'
-alias nn='$EDITOR $HOME/.config/nvim/init.lua'
-alias nt='$EDITOR $HOME/README.md'
-alias tt='$EDITOR $HOME/.tmux.conf'
+alias aa="$EDITOR $HOME/.config/alacritty/alacritty.toml"
+alias ba="$EDITOR $HOME/.config/bash/aliases.sh"
+alias bb="$EDITOR $HOME/.bashrc"
+alias gg="$EDITOR $HOME/.config/git/config"
+alias gi="$EDITOR $HOME/.gitignore"
+alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
+alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
+alias nn="$EDITOR $HOME/.config/nvim/init.lua"
+alias nt="$EDITOR $HOME/README.md"
+alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
+alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
 
 
@@ -89,8 +90,8 @@ alias lb='f(){ ls -lahFv --group-directories-first --color=always $1 | bat; unse
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -lAhv --group-directories-first --color=always'
 alias mansearch='f(){ man -k "$1"; unset -f f; }; f'
-alias n='$HOME/scripts/notes.sh'
-alias notes='$HOME/scripts/notes.sh'
+alias n='$HOME/notes.sh'
+alias notes='$HOME/notes.sh'
 alias nvidiaopen='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
 alias nvidiawatch='watch -n 1 nvidia-smi'
 alias oo='octave'
@@ -120,13 +121,21 @@ alias tree4='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 4'
 alias tree5='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 5'
 alias tree='tree -avAC --dirsfirst -I ".git|node_modules|env"'
 alias unexpand='f(){ unexpand --first-only --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
-alias vim='vi'
+alias vi="vim -u NONE"
+alias vim="vim -u $HOME/.config/vim/config.vim"
 alias wca='echo "lines, words, characters:"; cat $(find ./ -type f) | wc -l -w -m'
 alias wcx='f(){ echo "lines, words, characters:"; cat $(find ./ -type f -iname \*.$1) | wc -l -w -m; unset -f f; }; f'
 alias webcam='ffplay -fs -i /dev/video0'
 alias xclip_copy='xclip -selection clipboard'  # cat README.md | xclip_copy
 alias xclip_paste='xclip -selection clipboard -out'  # xclip_paste > README.md
 alias yank='yank-cli -- xsel -b'
+
+
+# --------------------------------------------------------------------
+#   Fuck
+
+# set the `fuck` alias to `thefuck` tool (see: https://github.com/nvbn/thefuck)
+eval $(thefuck --alias)
 
 
 # --------------------------------------------------------------------
