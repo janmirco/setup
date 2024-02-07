@@ -196,6 +196,7 @@
 /.config/session/
 /.config/texstudio/
 /.config/thefuck/
+/.config/tmux/plugins
 /.config/vlc/
 /.config/xm1/
 /.config/xsettingsd/
