@@ -66,30 +66,12 @@ return {
         -- register specific markdown keymap descriptions
         local buf = vim.api.nvim_get_current_buf()
         local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-        if ft == "markdown" then
-            wk.register({
-                ["]l"] = { ":MkdnNextLink<cr>", "[Mkdnflow] Next link" },
-                ["[l"] = { ":MkdnPrevLink<cr>", "[Mkdnflow] Previous link" },
-                ["]]"] = { ":MkdnNextHeading<cr>", "[Mkdnflow] Next header" },
-                ["[["] = { ":MkdnPrevHeading<cr>", "[Mkdnflow] Previous header" },
-                m = {
-                    name = "[Mkdnflow]",
-                    p = { ":MkdnCreateLinkFromClipboard<cr>", "CreateLinkFromClipboard" },
-                    s = { ":MkdnTagSpan<cr>", "TagSpan" },
-                    r = { ":MkdnMoveSource<cr>", "MoveSource" },
-                    y = {
-                        name = "Yank",
-                        a = { ":MkdnYankAnchorLink<cr>", "AnchorLink" },
-                        f = { ":MkdnYankFileAnchorLink<cr>", "FileAnchorLink" },
-                    },
-                    j = { ":MkdnIncreaseHeading<cr>", "IncreaseHeading" },
-                    k = { ":MkdnDecreaseHeading<cr>", "DecreaseHeading" },
-                    t = { ":MkdnToggleToDo<cr>", "ToggleToDo" },
-                    n = { ":MkdnUpdateNumbering<cr>", "UpdateNumbering" },
-                    f = { ":MkdnFoldSection<cr>", "FoldSection" },
-                    F = { ":MkdnUnfoldSection<cr>", "UnfoldSection" },
-                },
-            }, {})
-        end
+        if ft == "markdown" then wk.register({
+            m = {
+                name = "[Mkdnflow]",
+                y = { name = "Yank" },
+            },
+            mp = { name = "" },
+        }, {}) end
     end,
 }

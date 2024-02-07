@@ -3,17 +3,18 @@ return {
         "lewis6991/gitsigns.nvim",
         config = function()
             local gitsigns = require("gitsigns")
-            gitsigns.setup({
-                signs = {
-                    add = { text = "+" },
-                    change = { text = "~" },
-                },
-            })
+            gitsigns.setup({ attach_to_untracked = true })
 
             -- normal mode keymaps
             vim.keymap.set("n", "<A-g>", gitsigns.toggle_signs, { desc = "[Git] Toggle gitsigns", silent = true })
-            vim.keymap.set("n", "[g", gitsigns.prev_hunk, { desc = "[Git] Previous hunk", silent = true })
-            vim.keymap.set("n", "]g", gitsigns.next_hunk, { desc = "[Git] Next hunk", silent = true })
+            vim.keymap.set("n", "[g", function()
+                gitsigns.prev_hunk()
+                vim.cmd("normal zz")
+            end, { desc = "[Git] Previous hunk", silent = true })
+            vim.keymap.set("n", "]g", function()
+                gitsigns.next_hunk()
+                vim.cmd("normal zz")
+            end, { desc = "[Git] Next hunk", silent = true })
             vim.keymap.set("n", "gU", gitsigns.undo_stage_hunk, { desc = "[Git] Undo last stage", silent = true })
             vim.keymap.set("n", "gb", gitsigns.blame_line, { desc = "[Git] Blame line", silent = true })
             vim.keymap.set("n", "ge", gitsigns.toggle_deleted, { desc = "[Git] Toggle deleted", silent = true })

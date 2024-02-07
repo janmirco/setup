@@ -5,11 +5,11 @@ local exit_insert_mode = function()
         vim.cmd("stopinsert")
     else
         vim.cmd("stopinsert")
-        local keys = vim.api.nvim_replace_termcodes("l", true, false, true)
-        vim.api.nvim_feedkeys(keys, "n", true)
+        vim.cmd("normal l")
     end
 end
 vim.keymap.set("i", "<A-h>", exit_insert_mode)
+vim.keymap.set("i", "<esc>", exit_insert_mode)
 vim.keymap.set("i", "hh", exit_insert_mode)
 
 -- parentheses, brackets, curly braces, single/double quotation marks, ...

@@ -22,10 +22,10 @@ vim.opt.smartindent = true
 vim.opt.foldmethod = "manual"
 vim.cmd("autocmd FileType * set formatoptions-=cro")
 
+vim.opt.linebreak = true
 vim.opt.wrap = false
-vim.opt.showbreak = ">>>>"
-vim.opt.listchars = "extends:→,precedes:←"
-vim.opt.scrolloff = 4
+vim.opt.smoothscroll = true
+vim.opt.scrolloff = 0
 vim.opt.sidescroll = 0
 vim.opt.sidescrolloff = 0
 vim.opt.scrollbind = false

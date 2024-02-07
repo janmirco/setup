@@ -16,9 +16,18 @@ end
 vim.keymap.set("n", "<A-e>", function() toggle_spell("en_us") end, { desc = "Toggle spell en_us", silent = true })
 vim.keymap.set("n", "<A-d>", function() toggle_spell("de") end, { desc = "Toggle spell de", silent = true })
 
--- some keymaps for spell checking:
--- ]s --> moves forward  through the mistakes
--- [s --> moves backward through the mistakes
+-- more spell keymaps
+local jump_to_spell_error = function(direction)
+    local spell_off = vim.api.nvim_eval("&spell") ~= 1
+    if spell_off then
+        vim.cmd("setlocal spell spelllang=en_us")
+        vim.wo.spell = true
+    end
+    local keys = vim.api.nvim_replace_termcodes(direction .. "szz", true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", true)
+end
+vim.keymap.set("n", "]s", function() jump_to_spell_error("]") end, { desc = "[Spell] Next error", silent = true })
+vim.keymap.set("n", "[s", function() jump_to_spell_error("[") end, { desc = "[Spell] Previous error", silent = true })
 -- z= --> opens dictionary and lets you choose the right word
 -- zg --> add word do dictionary
 
@@ -91,7 +100,7 @@ vim.keymap.set("n", "<leader>t", ":! tree -avn --dirsfirst -I '.git|node_modules
 vim.keymap.set("n", "<leader>rw", ":windo %s/\\s\\+$//ge<cr>:windo update<cr>:echo 'Remove trailing whitespace of all windows'<cr>", { desc = "Remove trailing whitespace of all windows", silent = true })
 
 -- search word where cursor hovers over
-vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>", { desc = "Search for word under cursor", silent = true })
+vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>zz", { desc = "Search for word under cursor", silent = true })
 
 -- window commands (window navigation set in `lua/plugins/vim-tmux-navigator.lua`)
 vim.keymap.set("n", "<C-up>", ":resize +2<cr>", { desc = "Resize window up", silent = true })
@@ -105,6 +114,10 @@ vim.keymap.set("n", "<A-n>", ":update<CR>:e $HOME/.config/nvim/init.lua<cr>", { 
 
 -- jump back to the originally opened file (Buffer 1)
 vim.keymap.set("n", "<A-o>", ":update<CR>:b 1<cr>", { desc = "Jump back to originally opened buffer", silent = true })
+
+-- scrolling
+vim.keymap.set("n", "<s-up>", "<c-e>", { desc = "Scroll current line down without moving cursor", silent = true })
+vim.keymap.set("n", "<s-down>", "<c-y>", { desc = "Scroll current line up without moving cursor", silent = true })
 
 -- yank
 vim.keymap.set("n", "Y", "y$", { silent = true }) -- to the end of the line
@@ -138,10 +151,9 @@ vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { desc = "mak
 
 -- manual indenting
 vim.keymap.set("n", "<leader><leader>", function()
-    local keys = vim.api.nvim_replace_termcodes("magg=G`azz", true, false, true)
-    vim.api.nvim_feedkeys(keys, "n", true)
+    vim.cmd("normal magg=G`azz")
     vim.cmd("delmarks a")
 end, { desc = "Indent current file using neovim", silent = true })
 
 -- sort entire file
-vim.keymap.set("n", "<leader>S", function() vim.cmd("sort") end, { desc = "Sort entire file", silent = true })
+vim.keymap.set("n", "<leader>S", function() vim.cmd("sort i") end, { desc = "Sort entire file", silent = true })

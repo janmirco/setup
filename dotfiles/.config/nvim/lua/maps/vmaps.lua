@@ -9,13 +9,13 @@ vim.keymap.set("v", "g<C-a>", "g<C-a>gV", { remap = true })
 vim.keymap.set("v", "g<C-x>", "g<C-x>gV", { remap = true })
 
 -- sort lines
-vim.keymap.set("v", "<leader>S", ":sort<cr>", { desc = "Sort", silent = true })
+vim.keymap.set("v", "<leader>S", ":sort i<cr>", { desc = "Sort", silent = true })
 
 -- search and replace selected string in file
 vim.keymap.set("v", "<leader>s", "y:%s/<C-r>\"//g<left><left>", { desc = "Search and replace", silent = true })
 
 -- search for highlighted area
-vim.keymap.set("v", "<leader>n", "y/<C-r>\"<cr>", { desc = "Search", silent = true })
+vim.keymap.set("v", "<leader>n", "y/<C-r>\"<cr>zz", { desc = "Search", silent = true })
 
 -- open help menu for highlighted area
 vim.keymap.set("v", "H", "y:help <C-r>\"<cr>", { desc = "Help", silent = true })
