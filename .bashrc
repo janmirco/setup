@@ -74,11 +74,8 @@ white=$(tput setaf 7)
 source "$HOME/.config/bash/git-prompt.sh"
 GIT_PS1_SHOWDIRTYSTATE=true  # for showing staged/unstaged files
 GIT_PS1_SHOWUNTRACKEDFILES=true  # for showing untracked files
-GIT_PS1_SHOWUPSTREAM='auto'  # for showing if head/behind of remote
-PS1='${debian_chroot:+($debian_chroot)}'
-PS1+='${bold}${blue}\W${reset}'
-PS1+=' $(__git_ps1 "%s")${reset}'
-PS1+='\n\$ '
+GIT_PS1_SHOWUPSTREAM=auto  # for showing if ahead/behind of remote
+PS1='${bold}${blue} \W${reset} $(__git_ps1 "%s")${reset}\n󱞪 '
 
 # source additional configs
 source "$HOME/.config/bash/aliases.sh"

@@ -550,18 +550,18 @@ __git_ps1 ()
         gitstring="${reset}${bold}${magenta}$c$b $p${f:+$z$f}$r"
     else
         if [[ "$repo_name" == *"wuppertal"* ]]; then
-            repo_name=${repo_name:25}  # remove "git@git.uni-wuppertal.de:"
+            repo_name="󰮠 ${repo_name:25}"  # remove "git@git.uni-wuppertal.de:"
         elif [[ "$repo_name" == *"rwth"* ]]; then
-            repo_name=${repo_name:23}  # remove "git@git.rwth-aachen.de:"
+            repo_name="󰮠 ${repo_name:23}"  # remove "git@git.rwth-aachen.de:"
         elif [[ "$repo_name" == "https://github"* ]]; then
-            repo_name=${repo_name:19}  # remove "https://github.com/"
+            repo_name="󰊤 ${repo_name:19}"  # remove "https://github.com/"
         elif [[ "$repo_name" == *"github"* ]]; then
-            repo_name=${repo_name:15}  # remove "git@github.com:"
+            repo_name="󰊤 ${repo_name:15}"  # remove "git@github.com:"
         elif [[ "$repo_name" == *"gitlab"* ]]; then
-            repo_name=${repo_name:15}  # remove "git@gitlab.com:"
+            repo_name="󰮠 ${repo_name:15}"  # remove "git@gitlab.com:"
         fi
         repo_name=${repo_name::-4}  # remove ".git"
-        gitstring="${reset}${bold}${magenta}$repo_name | $c$b $p${f:+$z$f}$r"
+        gitstring="${reset}${white}$repo_name ${bold}${magenta} $c$b $p${f:+$z$f}$r"
     fi
 
     if [ $pcmode = yes ]; then
