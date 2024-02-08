@@ -5,7 +5,6 @@
 #  / .___/\__,_/\__/_/ /_/
 # /_/
 
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/bin/neovim/nvim-linux64/bin:$PATH"
 export PATH="$HOME/bin/nodejs/node-linux-x64/bin:$PATH"
 
