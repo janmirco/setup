@@ -10,3 +10,6 @@ vim.cmd("autocmd BufEnter * if &filetype=='dashboard' | set colorcolumn= | endif
 
 -- horizontal ruler
 vim.cmd("set cursorline")
+
+-- reset cursor after leaving neovim
+vim.cmd("autocmd VimLeave * set guicursor=a:ver15") -- see ~/.config/alacritty/alacritty.toml
