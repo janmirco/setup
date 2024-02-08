@@ -31,15 +31,17 @@ return {
 
         local show_spell = function()
             if vim.api.nvim_eval("&spell") == 1 then
-                return "SPELL: " .. vim.api.nvim_eval("&spelllang")
+                return "󰓆 " .. vim.api.nvim_eval("&spelllang")
             else
                 return ""
             end
         end
 
-        local show_light_editor_mode = function()
+        local show_editor_mode = function()
             if vim.env.EDITOR_LIGHT == "yes" then
-                return "Light"
+                return "Light 🪶"
+            elseif vim.env.EDITOR_FULL_LSP_POWER == "yes" then
+                return "Full LSP Power 💪"
             else
                 return ""
             end
@@ -49,13 +51,13 @@ return {
         require("lualine").setup({
             sections = {
                 lualine_b = {
-                    "branch",
+                    { "branch", icon = "" },
                     "diff",
                     "diagnostics",
                     { show_spell },
                 },
                 lualine_c = {
-                    { show_light_editor_mode },
+                    { show_editor_mode },
                     "filename",
                 },
                 lualine_z = {
