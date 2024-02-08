@@ -39,9 +39,9 @@ return {
 
         local show_editor_mode = function()
             if vim.env.EDITOR_LIGHT == "yes" then
-                return "Light 🪶"
+                return "🪶"
             elseif vim.env.EDITOR_FULL_LSP_POWER == "yes" then
-                return "Full LSP Power 💪"
+                return "💪"
             else
                 return ""
             end
@@ -54,11 +54,11 @@ return {
                     { "branch", icon = "" },
                     "diff",
                     "diagnostics",
-                    { show_spell },
                 },
                 lualine_c = {
                     { show_editor_mode },
                     "filename",
+                    { show_spell },
                 },
                 lualine_z = {
                     "location",
