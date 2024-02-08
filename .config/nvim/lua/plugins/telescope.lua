@@ -88,6 +88,22 @@ return {
             -- find .md files in current directory
             vim.keymap.set("n", "fm", function() builtin.find_files({ hidden = true, no_ignore = true, search_file = "*.md" }) end, { desc = "Find .md files in current directory", silent = true })
 
+            -- find files in current directory and open with xdg-open
+            vim.keymap.set("n", "fo", function()
+                builtin.find_files({
+                    hidden = true,
+                    no_ignore = true,
+                    attach_mappings = function(_, map)
+                        map({ "i", "n" }, "<cr>", function(prompt_bufnr)
+                            local entry = action_state.get_selected_entry()
+                            actions.close(prompt_bufnr)
+                            vim.cmd("call jobstart(\"xdg-open " .. entry.filename .. "\")")
+                        end)
+                        return true -- needs to return true if you want to map default_mappings and false if not
+                    end,
+                })
+            end, { desc = "Find files and open with xdg-open", silent = true })
+
             -- find keymaps
             vim.keymap.set("n", "fk", builtin.keymaps, { desc = "Find keymaps", silent = true })
 

@@ -41,8 +41,10 @@ alias calcurseExport='$HOME/scripts/calcurse_export.sh'
 alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
-alias cdc='cd "$(fd --type directory . $HOME/git* | fzf --layout=reverse --height=10%)"'  # find and go to any dir in gitbuw and github
+alias cdc='cd "$(fd --type directory . $HOME/.config | fzf --layout=reverse --height=10%)"'  # find and go to any dir in config
+alias cdd='cd "$(fd --type directory . . | fzf --layout=reverse --height=10%)"'  # find and go to any dir in current dir
 alias cdg='cd "$(fd --type directory '\.git$' $HOME | xargs dirname | fzf --layout=reverse --height=10%)"'  # find and go to any git repo in home
+alias cdG='cd "$(fd --type directory . $HOME/git* | fzf --layout=reverse --height=10%)"'  # find and go to any dir in gitbuw and github
 alias cdh='cd "$(fd --type directory . $HOME | fzf --layout=reverse --height=10%)"'  # find and go to any dir in home
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
 alias cds='cd "$(fd --type directory . $HOME/sciebo | fzf --layout=reverse --height=10%)"'  # find and go to any dir in sciebo
