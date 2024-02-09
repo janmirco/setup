@@ -208,14 +208,13 @@ esac
             "") # no upstream
             p="" ;;
         "0	0") # equal to upstream
-            p="${bold}${cyan}=" ;;
-            # p="" ;;
+            p="${bold}${cyan}" ;;
         "0	"*) # ahead of upstream
-            p="${bold}${cyan}>" ;;
+            p="${bold}${cyan}󱟀" ;;
         *"	0") # behind upstream
-            p="${bold}${cyan}<" ;;
+            p="${bold}${cyan}󱞢" ;;
         *)	    # diverged from upstream
-            p="${bold}${cyan}<>" ;;
+            p="${bold}${cyan}󱞢󱟀" ;;
     esac
 
 else
@@ -496,13 +495,11 @@ __git_ps1 ()
                     [ "$(git config --bool bash.showDirtyState)" != "false" ]
                                 then
 
-            # git diff --no-ext-diff --quiet || w="*"          # original version
-            # git diff --no-ext-diff --cached --quiet || i="+" # original version
-            git diff --no-ext-diff --quiet || w="${bold}${red}•"
-            git diff --no-ext-diff --cached --quiet || i="${bold}${green}•"
+            git diff --no-ext-diff --quiet || w="${bold}${red}•${reset}"
+            git diff --no-ext-diff --cached --quiet || i="${bold}${green}•${reset}"
 
             if [ -z "$short_sha" ] && [ -z "$i" ]; then
-                i="#"
+                i="${bold}${white}󰆧${reset}"
             fi
                 fi
                 if [ -n "${GIT_PS1_SHOWSTASHSTATE-}" ] &&
@@ -515,11 +512,7 @@ __git_ps1 ()
                     [ "$(git config --bool bash.showUntrackedFiles)" != "false" ] &&
                     git ls-files --others --exclude-standard --directory --no-empty-directory --error-unmatch -- ':/*' >/dev/null 2>/dev/null
                                 then
-                                    # u="%${ZSH_VERSION+%}" # original version
-                                    # u="${bold}${yellow}[!]${ZSH_VERSION+[!]}"
-                                    # u="${bold}${yellow}!${ZSH_VERSION+[!]}"
-                                    u="${bold}${yellow}•${ZSH_VERSION+[!]}"
-                                    # u="${bold}${yellow}⚠ ${ZSH_VERSION+[!]}"
+                                    u="${bold}${yellow}•${reset}"
                 fi
 
                 if [ -n "${GIT_PS1_SHOWUPSTREAM-}" ]; then
@@ -541,14 +534,9 @@ __git_ps1 ()
     fi
 
     local f="$s$u$w$i"
-    # local gitstring="$c$b${f:+$z$f}$r$p"
-    # local gitstring="${reset}on ${bold}${magenta}⟟ $c$b $p${f:+$z$f}$r"
-    # local gitstring="${reset}on ${bold}${magenta}⊶ $c$b $p${f:+$z$f}$r"
     local gitstring=""
     local repo_name="$(git config --get remote.origin.url)"
-    if [ "$repo_name" = "" ]; then
-        gitstring="${reset}${bold}${magenta}$c$b $p${f:+$z$f}$r"
-    else
+    if [[ "$repo_name" != "" ]]; then
         if [[ "$repo_name" == *"wuppertal"* ]]; then
             repo_name="󰮠 ${repo_name:25}"  # remove "git@git.uni-wuppertal.de:"
         elif [[ "$repo_name" == *"rwth"* ]]; then
@@ -561,8 +549,9 @@ __git_ps1 ()
             repo_name="󰮠 ${repo_name:15}"  # remove "git@gitlab.com:"
         fi
         repo_name=${repo_name::-4}  # remove ".git"
-        gitstring="${reset}${white}$repo_name ${bold}${magenta} $c$b $p${f:+$z$f}$r"
+        gitstring+="${reset}${white}$repo_name${reset} "
     fi
+    gitstring+="${bold}${magenta} $c$b $p${f:+$z$f}$r"
 
     if [ $pcmode = yes ]; then
         if [ "${__git_printf_supports_v-}" != yes ]; then
