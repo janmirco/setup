@@ -9,13 +9,6 @@ padding.y = 0
 decorations = "None"
 startup_mode = "Maximized"
 
-[cursor]
-thickness = 0.15
-
-[cursor.style]
-shape = "Beam"
-blinking = "Never"
-
 [mouse]
 hide_when_typing = true
 
