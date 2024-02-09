@@ -58,3 +58,5 @@ set mouse=a
 set clipboard=unnamedplus
 set laststatus=3
 set conceallevel=2
+
+set cursorline
