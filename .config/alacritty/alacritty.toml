@@ -3,6 +3,8 @@ import = [
 ]
 
 [window]
+dimensions.lines = 30
+dimensions.columns = 150
 position = "None"  # use window manager to force centering
 padding.x = 0
 padding.y = 0
