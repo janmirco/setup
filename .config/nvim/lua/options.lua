@@ -20,7 +20,6 @@ vim.opt.smarttab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.foldmethod = "manual"
-vim.cmd("autocmd FileType * set formatoptions-=cro")
 
 vim.opt.linebreak = true
 vim.opt.wrap = false

@@ -27,7 +27,7 @@ return {
                         gitsigns = { enabled = true },
                         tmux = { enabled = true },
                     },
-                    on_open = function() vim.cmd("set colorcolumn=") end,
+                    on_open = function() vim.opt.colorcolumn = "" end,
                 })
             end, { silent = true })
         end,

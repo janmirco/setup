@@ -30,8 +30,7 @@ else
     lazy.setup("plugins", opts)
 end
 
-require("syntax")
+require("filetypes")
+vim.cmd("syntax enable") -- turn on syntax highlighting explicitly after filetypes and before options!
 require("options")
 require("maps")
-require("autocmd")
-require("rulers")
