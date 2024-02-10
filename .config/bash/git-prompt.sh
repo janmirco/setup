@@ -208,13 +208,13 @@ esac
             "") # no upstream
             p="" ;;
         "0	0") # equal to upstream
-            p="${bold}${cyan}" ;;
+            p="${bold}${cyan}=${reset}" ;;
         "0	"*) # ahead of upstream
-            p="${bold}${cyan}󱟀" ;;
+            p="${bold}${cyan}>${reset}" ;;
         *"	0") # behind upstream
-            p="${bold}${cyan}󱞢" ;;
+            p="${bold}${cyan}<${reset}" ;;
         *)	    # diverged from upstream
-            p="${bold}${cyan}󱞢󱟀" ;;
+            p="${bold}${cyan}<>${reset}" ;;
     esac
 
 else
