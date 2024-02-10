@@ -41,13 +41,13 @@ alias calcurseExport='$HOME/scripts/calcurse_export.sh'
 alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
-alias cdc='cd "$(fd --type directory . $HOME/.config | fzf --layout=reverse --height=10%)"'  # find and go to any dir in config
-alias cdd='cd "$(fd --type directory . . | fzf --layout=reverse --height=10%)"'  # find and go to any dir in current dir
-alias cdg='cd "$(fd --type directory '\.git$' $HOME | xargs dirname | fzf --layout=reverse --height=10%)"'  # find and go to any git repo in home
-alias cdG='cd "$(fd --type directory . $HOME/git* | fzf --layout=reverse --height=10%)"'  # find and go to any dir in gitbuw and github
-alias cdh='cd "$(fd --type directory . $HOME | fzf --layout=reverse --height=10%)"'  # find and go to any dir in home
+alias cdc='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/.config | fzf --layout=reverse --height=10%)"'  # find and go to any dir in config
+alias cdd='cd "$(fdfind --hidden --no-ignore --type directory . . | fzf --layout=reverse --height=10%)"'  # find and go to any dir in current dir
+alias cdg='cd "$(fdfind --hidden --no-ignore --type directory '\.git$' $HOME | xargs dirname | fzf --layout=reverse --height=10%)"'  # find and go to any git repo in home
+alias cdG='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/git* | fzf --layout=reverse --height=10%)"'  # find and go to any dir in gitbuw and github
+alias cdh='cd "$(fdfind --hidden --no-ignore --type directory . $HOME | fzf --layout=reverse --height=10%)"'  # find and go to any dir in home
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
-alias cds='cd "$(fd --type directory . $HOME/sciebo | fzf --layout=reverse --height=10%)"'  # find and go to any dir in sciebo
+alias cds='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/sciebo | fzf --layout=reverse --height=10%)"'  # find and go to any dir in sciebo
 alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
 alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
@@ -79,9 +79,8 @@ alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
-alias f='fzf --layout=reverse --height=10%'
+alias f='fdfind --hidden --no-ignore . | fzf --layout=reverse --height=10%'
 alias fd='fdfind --hidden --no-ignore'
-alias fzf='fzf --layout=reverse --height=10%'
 alias grep='grep --color=always'
 alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
 alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
@@ -186,7 +185,7 @@ alias fOpicdir='$HOME/scripts/fOpicdir.sh'
 alias fo='$HOME/scripts/fOpenNeovim.sh'
 alias fopen='$HOME/scripts/fOpen.sh'
 
-alias fnv='$EDITOR "$(fzf --layout=reverse --height=10%)"'
+alias fnv='$EDITOR "$(fdfind --hidden --no-ignore . | fzf --layout=reverse --height=10%)"'
 alias nv0='f(){ $EDITOR $(ls | tail --lines "$1"); unset -f f; }; f'
 alias nv1='f(){ $EDITOR $(ls | head --lines "$1"); unset -f f; }; f'
 alias nv='$EDITOR'
