@@ -8,6 +8,7 @@ sudo apt-get install --assume-yes curl xclip tree htop ranger figlet sl ncdu ncd
 sudo apt-get install --assume-yes tmux
 sudo apt-get install --assume-yes ssh net-tools xorgxrdp xrdp
 sudo apt-get install --assume-yes pass xsel
+sudo apt-get install --assume-yes fontconfig*
 sudo apt-get install --assume-yes calcurse todotxt-cli
 sudo apt-get install --assume-yes pandoc librsvg2-*
 sudo apt-get install --assume-yes cmatrix*
