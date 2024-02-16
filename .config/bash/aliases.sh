@@ -41,13 +41,7 @@ alias calcurseExport='$HOME/scripts/calcurse_export.sh'
 alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
-alias cdc='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/.config | fzf --layout=reverse --height=10%)"'  # find and go to any dir in config
-alias cdd='cd "$(fdfind --hidden --no-ignore --type directory . . | fzf --layout=reverse --height=10%)"'  # find and go to any dir in current dir
-alias cdg='cd "$(fdfind --hidden --no-ignore --type directory '\.git$' $HOME | xargs dirname | fzf --layout=reverse --height=10%)"'  # find and go to any git repo in home
-alias cdG='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/git* | fzf --layout=reverse --height=10%)"'  # find and go to any dir in gitbuw and github
-alias cdh='cd "$(fdfind --hidden --no-ignore --type directory . $HOME | fzf --layout=reverse --height=10%)"'  # find and go to any dir in home
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
-alias cds='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/sciebo | fzf --layout=reverse --height=10%)"'  # find and go to any dir in sciebo
 alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
 alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
@@ -80,8 +74,6 @@ alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
-alias f='fdfind --hidden --no-ignore . | fzf --layout=reverse --height=10%'
-alias fd='fdfind --hidden --no-ignore'
 alias grep='grep --color=always'
 alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
 alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
@@ -172,21 +164,33 @@ alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[re
 
 
 # --------------------------------------------------------------------
-#   Neovim and fzf
+#   fzf and fdfind
 
-alias fcd='dir_name="$(find ./ -type d -not -path "*/\.git*" -not -path "*/node_modules*" | fzf --layout=reverse --height=10%)"; if ! [ "$dir_name" == "" ]; then cd "$dir_name"; fi; unset -v dir_name;'
-alias fcdHome='dir_name="$(find ~/ -type d -not -path "*/\.git*" -not -path "*/node_modules*" | fzf --layout=reverse --height=10%)"; if ! [ "$dir_name" == "" ]; then cd "$dir_name"; fi; unset -v dir_name;'
+alias cdc='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/.config | fzf --height=10%)"'  # find and go to any dir in config
+alias cdd='cd "$(fdfind --hidden --no-ignore --type directory . . | fzf --height=10%)"'  # find and go to any dir in current dir
+alias cdg='cd "$(fdfind --hidden --no-ignore --type directory '\.git$' $HOME | xargs dirname | fzf --height=10%)"'  # find and go to any git repo in home
+alias cdG='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/git* | fzf --height=10%)"'  # find and go to any dir in gitbuw and github
+alias cdh='cd "$(fdfind --hidden --no-ignore --type directory . $HOME | fzf --height=10%)"'  # find and go to any dir in home
+alias cds='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/sciebo | fzf --height=10%)"'  # find and go to any dir in sciebo
 
-alias fO='$HOME/scripts/fOpen.sh'
-alias fOexit='$HOME/scripts/fOpen.sh && exit'
-alias fOnvim='$HOME/scripts/fOpenNeovim.sh'
-alias fOnvimHome='$HOME/scripts/fOpenNeovimHome.sh'
-alias fOpic='$HOME/scripts/fOpic.sh'
-alias fOpicdir='$HOME/scripts/fOpicdir.sh'
-alias fo='$HOME/scripts/fOpenNeovim.sh'
-alias fopen='$HOME/scripts/fOpen.sh'
+alias f='fzf'
+alias fd='fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --type file'
 
-alias fnv='$EDITOR "$(fdfind --hidden --no-ignore . | fzf --layout=reverse --height=10%)"'
+alias ff='$HOME/scripts/fopen.sh "" ""'
+alias fh='$HOME/scripts/fopen.sh "$HOME" ""'
+alias fc='$HOME/scripts/fopen.sh "$HOME/.config" ""'
+alias fn='$HOME/scripts/fopen.sh "$HOME/.config/nvim" ""'
+
+alias fo='$HOME/scripts/fopen.sh "" "xdg"'
+alias fO='$HOME/scripts/fopen.sh "$HOME" "xdg"'
+
+alias foexit='$HOME/scripts/fopen.sh "" "xdg" && exit'
+alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" && exit'
+
+
+# --------------------------------------------------------------------
+#   Neovim
+
 alias nv0='f(){ $EDITOR $(ls | tail --lines "$1"); unset -f f; }; f'
 alias nv1='f(){ $EDITOR $(ls | head --lines "$1"); unset -f f; }; f'
 alias nv='$EDITOR'

@@ -84,5 +84,9 @@ PS1+='${bold}${blue} \W${reset} $(__git_ps1 "%s")${reset}\n '
 # source additional configs
 source "$HOME/.config/bash/aliases.sh"
 source "$HOME/.config/bash/path.sh"
+
+# fzf settings
 source "$HOME/.config/fzf/shell/completion.bash"
 source "$HOME/.config/fzf/shell/key-bindings.bash"
+export FZF_DEFAULT_OPTS="--layout=reverse --border"
+export FZF_DEFAULT_COMMAND="fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --type file"
