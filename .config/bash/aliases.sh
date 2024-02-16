@@ -84,8 +84,8 @@ alias lb='f(){ ls -lahFv --group-directories-first --color=always $1 | bat; unse
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -lAhv --group-directories-first --color=always'
 alias mansearch='f(){ man -k "$1"; unset -f f; }; f'
-alias n='$HOME/notes.sh'
-alias notes='$HOME/notes.sh'
+alias n='$HOME/scripts/notes.sh'
+alias notes='$HOME/scripts/notes.sh'
 alias nvidiaopen='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
 alias nvidiawatch='watch -n 1 nvidia-smi'
 alias oo='octave'
@@ -294,6 +294,7 @@ alias uNodejs='$HOME/uman/uNodejs.sh'
 alias uSnap='$HOME/uman/uSnap.sh'
 alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
+alias uYazi='$HOME/uman/uYazi.sh'
 
 
 # --------------------------------------------------------------------
