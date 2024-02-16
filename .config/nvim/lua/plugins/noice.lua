@@ -4,7 +4,7 @@ return {
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     config = function()
         local noice = require("noice")
-        noice.setup()
+        noice.setup({ lsp = { progress = { enabled = false } } })
         vim.keymap.set("n", ",,", function() noice.cmd("dismiss") end, { desc = "Dismiss visible messages", silent = true })
         vim.keymap.set("n", ",t", function() noice.cmd("telescope") end, { desc = "Find message in history", silent = true })
         vim.keymap.set("n", ",h", function() noice.cmd("history") end, { desc = "Open history", silent = true })

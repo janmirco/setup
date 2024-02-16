@@ -10,15 +10,14 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }
 
         -- disable colorcolumn and cursorline for specific filetypes
         local filetypes = {
-            "cmp_docs",
-            "cmp_menu",
+            "cmp",
             "dashboard",
             "notify",
-            "TelescopePrompt",
-            "TelescopePromptBorder",
+            "Telescope",
         }
         for _, filetype in ipairs(filetypes) do
-            if vim.api.nvim_eval("&filetype") == filetype then
+            local current_filetype = vim.api.nvim_eval("&filetype")
+            if string.find(current_filetype, filetype) then
                 vim.opt.colorcolumn = ""
                 vim.opt.cursorline = false
             end

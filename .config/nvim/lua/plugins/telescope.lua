@@ -70,9 +70,6 @@ return {
             local builtin = require("telescope.builtin")
             local utils = require("telescope.utils")
 
-            -- find files in specific directory
-            vim.keymap.set("n", "fc", ":Telescope find_files hidden=true no_ignore=true cwd=", { desc = "Find files in specific directory", silent = true })
-
             -- find files in current directory
             vim.keymap.set("n", "ff", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { desc = "Find files in current directory", silent = true })
 
@@ -82,27 +79,35 @@ return {
             -- find files in home
             vim.keymap.set("n", "fh", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME }) end, { desc = "Find files in home", silent = true })
 
+            -- find files in config
+            vim.keymap.set("n", "fc", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME .. "/.config" }) end, { desc = "Find files in home", silent = true })
+
             -- find files in nvim directory
             vim.keymap.set("n", "fn", function() builtin.find_files({ hidden = true, cwd = vim.fn.stdpath("config") }) end, { desc = "Find files in nvim directory", silent = true })
 
             -- find .md files in current directory
             vim.keymap.set("n", "fm", function() builtin.find_files({ hidden = true, no_ignore = true, search_file = "*.md" }) end, { desc = "Find .md files in current directory", silent = true })
 
-            -- find files in current directory and open with xdg-open
-            vim.keymap.set("n", "fo", function()
+            -- xdg-open file
+            local xdg_find = function(cwd)
                 builtin.find_files({
                     hidden = true,
                     no_ignore = true,
+                    cwd = cwd,
                     attach_mappings = function(_, map)
                         map({ "i", "n" }, "<cr>", function(prompt_bufnr)
                             local entry = action_state.get_selected_entry()
                             actions.close(prompt_bufnr)
-                            vim.cmd("call jobstart(\"xdg-open " .. entry.filename .. "\")")
+                            vim.cmd("call jobstart(\"xdg-open " .. cwd .. "/" .. entry.filename .. "\")")
                         end)
                         return true -- needs to return true if you want to map default_mappings and false if not
                     end,
                 })
-            end, { desc = "Find files and open with xdg-open", silent = true })
+            end
+            -- in current directory
+            vim.keymap.set("n", "fo", function() xdg_find(utils.buffer_dir()) end, { desc = "XDG-Open file in current directory", silent = true })
+            -- in home
+            vim.keymap.set("n", "fO", function() xdg_find(vim.env.HOME) end, { desc = "XDG-Open file in home", silent = true })
 
             -- find keymaps
             vim.keymap.set("n", "fk", builtin.keymaps, { desc = "Find keymaps", silent = true })
