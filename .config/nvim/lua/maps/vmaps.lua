@@ -25,3 +25,6 @@ vim.keymap.set("v", "<leader>1", "\"1y", { desc = "Put in register 1", silent = 
 vim.keymap.set("v", "<leader>2", "\"2y", { desc = "Put in register 2", silent = true })
 vim.keymap.set("v", "<leader>3", "\"3y", { desc = "Put in register 3", silent = true })
 vim.keymap.set("v", "<leader>4", "\"4y", { desc = "Put in register 4", silent = true })
+
+-- print selected region
+vim.keymap.set("v", "#", "g<c-g>", { desc = "Print selected region", silent = true })

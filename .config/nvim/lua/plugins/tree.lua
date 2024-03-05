@@ -6,9 +6,6 @@ return {
         local neo_tree = require("neo-tree")
         local neo_tree_command = require("neo-tree.command")
         neo_tree.setup({
-            event_handlers = {
-                { event = "file_opened", handler = function() neo_tree_command.execute({ action = "close" }) end },
-            },
             filesystem = {
                 filtered_items = {
                     hide_dotfiles = false,

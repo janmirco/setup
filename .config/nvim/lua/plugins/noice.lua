@@ -5,9 +5,9 @@ return {
     config = function()
         local noice = require("noice")
         noice.setup({ lsp = { progress = { enabled = false } } })
-        vim.keymap.set("n", ",,", function() noice.cmd("dismiss") end, { desc = "Dismiss visible messages", silent = true })
-        vim.keymap.set("n", ",t", function() noice.cmd("telescope") end, { desc = "Find message in history", silent = true })
-        vim.keymap.set("n", ",h", function() noice.cmd("history") end, { desc = "Open history", silent = true })
-        vim.keymap.set("n", ",l", function() noice.cmd("last") end, { desc = "Show last message", silent = true })
+        vim.keymap.set({ "n", "v" }, ",,", function() noice.cmd("dismiss") end, { desc = "Dismiss visible messages", silent = true })
+        vim.keymap.set({ "n", "v" }, ",t", function() noice.cmd("telescope") end, { desc = "Find message in history", silent = true })
+        vim.keymap.set({ "n", "v" }, ",h", function() noice.cmd("history") end, { desc = "Open history", silent = true })
+        vim.keymap.set({ "n", "v" }, ",l", function() noice.cmd("last") end, { desc = "Show last message", silent = true })
     end,
 }

@@ -67,7 +67,16 @@ return {
             },
 
             c = {
-                ls.parser.parse_snippet("main", "#include <stdio.h>\n" .. "\n" .. "int main() {\n" .. "    $1\n" .. "}"),
+                ls.parser.parse_snippet(
+                    "main",
+                    [[
+#include <stdio.h>
+
+int main() {
+    $1
+}
+]]
+                ),
                 snippet(
                     "o",
                     fmt(
@@ -81,8 +90,24 @@ return {
             },
 
             cpp = {
-                ls.parser.parse_snippet("main", "#include <iostream>\n" .. "\n" .. "int main() {\n" .. "    $1\n" .. "}"),
-                ls.parser.parse_snippet("for", "for (${1:init-statement}; ${2:condition}; ${3:inc-expression}) {\n" .. "    ${4:statements};\n" .. "}"),
+                ls.parser.parse_snippet(
+                    "main",
+                    [[
+#include <iostream>
+
+int main() {
+    $1
+}
+]]
+                ),
+                ls.parser.parse_snippet(
+                    "for",
+                    [[
+for (${1:init-statement}; ${2:condition}; ${3:inc-expression}) {
+    ${4:statements}
+}
+]]
+                ),
                 snippet(
                     "o",
                     fmt(
@@ -185,14 +210,51 @@ return {
             },
 
             make = {
-                ls.parser.parse_snippet("run", ".PHONY: run\n" .. "\n" .. "run:\n" .. "\t@$1"),
+                ls.parser.parse_snippet(
+                    "run",
+                    [[
+.PHONY: run
+
+run:
+    @$1
+]]
+                ),
             },
 
             markdown = {
                 ls.parser.parse_snippet("h1", "$1\n================================================================================\n"),
                 ls.parser.parse_snippet("h2", "$1\n----------------------------------------------------------------------\n"),
-                ls.parser.parse_snippet("yaml", "---\n" .. "title: $1\n" .. "author:\n" .. "    - $2\n" .. "year: $3\n" .. "place: $4\n" .. "type: $5\n" .. "url: $6\n" .. "keywords:\n" .. "    - $7\n" .. "---\n" .. "\n" .. "[PDF]($8.pdf)\n" .. "\n" .. "# Abstract by the author\n" .. "\n" .. "$9"),
-                ls.parser.parse_snippet("pandoc", "---\n" .. "geometry: left = 2.5cm, right = 2.5cm, top = 2.5cm, bottom = 2.5cm\n" .. "pagestyle: plain\n" .. "papersize: a4\n" .. "fontfamily: lmodern\n" .. "graphics: yes\n" .. "header-includes:\n" .. "    - \\renewcommand*\\familydefault{\\sfdefault}\n" .. "    - \\renewcommand{\\labelitemi}{$\\bullet$}\n" .. "    - \\usepackage{tikz}\n" .. "---\n\n"),
+                ls.parser.parse_snippet(
+                    "yaml",
+                    [[
+---
+title: $1
+author:
+    - $2
+year: $3
+place: $4
+type: $5
+url: $6
+keywords:
+    - $7
+---
+]]
+                ),
+                ls.parser.parse_snippet(
+                    "pandoc",
+                    [[
+---
+geometry: left = 2.5cm, right = 2.5cm, top = 2.5cm, bottom = 2.5cm
+pagestyle: plain
+papersize: a4
+fontfamily: lmodern
+graphics: yes
+header-includes:
+    - \renewcommand*\familydefault{\sfdefault}
+    - \renewcommand{\labelitemi}{$\bullet$}
+---
+]]
+                ),
             },
 
             matlab = {
@@ -218,8 +280,24 @@ return {
             },
 
             python = {
-                ls.parser.parse_snippet("main", "\"\"\"$1\"\"\"\n" .. "\n" .. "\n" .. "def main():\n" .. "    $2\n" .. "\n" .. "\n" .. "if __name__ == \"__main__\":\n" .. "    main()"),
-                ls.parser.parse_snippet("def", "def $1($2):\n" .. "    \"\"\"$1 function\"\"\"\n" .. "\n" .. "    $3"),
+                ls.parser.parse_snippet(
+                    "main",
+                    [[
+def main() -> None:
+    $1
+
+
+if __name__ == "__main__":
+    main()
+]]
+                ),
+                ls.parser.parse_snippet(
+                    "def",
+                    [[
+def $1($2) -> $3:
+    $4
+]]
+                ),
                 snippet(
                     "o",
                     fmt(

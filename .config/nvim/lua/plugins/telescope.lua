@@ -25,8 +25,8 @@ return {
                     mappings = {
                         i = {
                             ["<A-y>"] = yank_current_selection,
-                            ["<A-j>"] = actions.move_selection_next,
-                            ["<A-k>"] = actions.move_selection_previous,
+                            ["<Tab>"] = actions.move_selection_next,
+                            ["<S-Tab>"] = actions.move_selection_previous,
                         },
                         n = {
                             ["<A-y>"] = yank_current_selection,
@@ -34,6 +34,8 @@ return {
                     },
                     file_ignore_patterns = {
                         "^.git/",
+                        "^__pycache__/",
+                        "^env/",
                         "^node_modules/",
                     },
                     vimgrep_arguments = {

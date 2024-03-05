@@ -47,6 +47,21 @@ return {
             end
         end
 
+        local noice = require("noice")
+        local show_noice = function()
+            local mode = noice.api.status.mode.get()
+            if string.match(mode, "recording") then
+                return mode
+            elseif string.match(mode, "VISUAL") then
+                -- only works with start of previously selected region
+                local row_start, col_start = unpack(vim.api.nvim_buf_get_mark(0, "<"))
+                local row_current, col_current = unpack(vim.api.nvim_win_get_cursor(0))
+                local rows_selected = math.abs(row_current - row_start)
+                local cols_selected = math.abs(col_current - col_start)
+                return tostring(rows_selected + 1) .. ":" .. tostring(cols_selected + 1)
+            end
+        end
+
         -- additional sections to default setup
         require("lualine").setup({
             sections = {
@@ -59,6 +74,12 @@ return {
                     { show_editor_mode },
                     "filename",
                     { show_spell },
+                },
+                lualine_x = {
+                    { show_noice, cond = noice.api.status.mode.has },
+                    "encoding",
+                    "fileformat",
+                    "filetype",
                 },
                 lualine_z = {
                     "location",

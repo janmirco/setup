@@ -6,13 +6,8 @@
 #   /____/
 
 # files
-/.Xauthority
 /.anyconnect
 /.bash_history
-/.config/QtProject.conf
-/.config/Trolltech.conf
-/.config/VirtualBoxVMrc
-/.config/VirtualBoxrc
 /.config/akonadi-firstrunrc
 /.config/akonadi_akonotes_resource_0rc
 /.config/akonadi_contacts_resource_0rc
@@ -46,12 +41,12 @@
 /.config/kcminputrc
 /.config/kcmshell5rc
 /.config/kconf_updaterc
+/.config/kde.org/spectacle.conf
 /.config/kde.org/UserFeedback.org.kde.dolphin.conf
 /.config/kde.org/UserFeedback.org.kde.kmail.conf
 /.config/kde.org/UserFeedback.org.kde.kmail2.conf
 /.config/kde.org/UserFeedback.org.kde.plasmashell.conf
 /.config/kde.org/UserFeedback.org.kde.systemsettings.conf
-/.config/kde.org/spectacle.conf
 /.config/kded5rc
 /.config/kded_device_automounterrc
 /.config/kdeglobals
@@ -76,6 +71,7 @@
 /.config/konquerorrc
 /.config/konsolerc
 /.config/korgacrc
+/.config/krdcrc
 /.config/kritadisplayrc
 /.config/kritarc
 /.config/krunnerrc
@@ -105,6 +101,7 @@
 /.config/pulse/c0ac646af5404cfda78184c29d49853e-default-sink
 /.config/pulse/c0ac646af5404cfda78184c29d49853e-device-volumes.tdb
 /.config/pulse/c0ac646af5404cfda78184c29d49853e-stream-volumes.tdb
+/.config/QtProject.conf
 /.config/session/kwin_saved*
 /.config/soffice.binrc
 /.config/specialmailcollectionsrc
@@ -113,8 +110,11 @@
 /.config/systemsettingsrc
 /.config/touchpadrc
 /.config/trashrc
+/.config/Trolltech.conf
 /.config/user-dirs.dirs
 /.config/user-dirs.locale
+/.config/VirtualBoxrc
+/.config/VirtualBoxVMrc
 /.config/vlc/vlc-qt-interface.conf
 /.config/webengineurlinterceptoradblockrc
 /.config/xdg-desktop-portal-kderc
@@ -139,34 +139,29 @@
 /.viminfo
 /.vimspector.log
 /.wget-hsts
+/.Xauthority
 /.xsession-errors
 /.zshenv
 /fonts.conf
 
 # directories
-/.Mathematica/
-/.Wolfram/
 /.byobu/
 /.cache/
 /.cargo/
-/.config/BraveSoftware/
-/.config/Code/
-/.config/GIMP/
-/.config/KDE/
-/.config/ParaView/
-/.config/Unknown\ Organization/
-/.config/VirtualBox/
 /.config/abiword/
 /.config/akonadi/
 /.config/autostart/
+/.config/BraveSoftware/
 /.config/cat_installer/
 /.config/cef_user_data/
 /.config/coc/
+/.config/Code/
 /.config/dconf/
 /.config/enchant/
 /.config/fltk.org/
 /.config/freerdp/
 /.config/ghb/
+/.config/GIMP/
 /.config/google-chrome/
 /.config/gtk-2.0/
 /.config/gtk-3.0/
@@ -175,6 +170,7 @@
 /.config/ibus/
 /.config/inkscape/
 /.config/kde.org/
+/.config/KDE/
 /.config/kdeconnect/
 /.config/kdedefaults/
 /.config/khtml/
@@ -189,6 +185,7 @@
 /.config/obs-studio/
 /.config/obsidian/
 /.config/octave/
+/.config/ParaView/
 /.config/pavucontrol-qt/
 /.config/pulse/
 /.config/remmina/
@@ -197,6 +194,8 @@
 /.config/texstudio/
 /.config/thefuck/
 /.config/tmux/plugins
+/.config/Unknown\ Organization/
+/.config/VirtualBox/
 /.config/vlc/
 /.config/xm1/
 /.config/xsettingsd/
@@ -211,6 +210,7 @@
 /.jupyter/
 /.kde/
 /.local/
+/.Mathematica/
 /.modular/
 /.mplayer/
 /.npm/
@@ -226,21 +226,22 @@
 /.thunderbird/
 /.tmux/
 /.vscode/
+/.Wolfram/
 /.zoom/
+/bin/
 /Desktop/
 /Documents/
 /Downloads/
-/Music/
-/Pictures/
-/Public/
-/Templates/
-/Videos/
-/bin/
 /gitbuw/
 /github/
 /library/
+/Music/
+/Pictures/
+/Public/
 /sciebo/
 /share-files/
 /snap/
+/Templates/
 /vbox/
+/Videos/
 /wiki/

@@ -15,7 +15,7 @@ alias gi="$EDITOR $HOME/.gitignore"
 alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
 alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
 alias nn="$EDITOR $HOME/.config/nvim/init.lua"
-alias nt="$EDITOR $HOME/README.md"
+alias nt="$EDITOR $HOME/gitbuw/japfeifer/japfeifer/research/README.md"
 alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
@@ -47,7 +47,7 @@ alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
 alias chmodfiles='chmod 664'
 alias cht='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
-alias cl='clear; ls -lAhv --group-directories-first --color=always'
+alias cl='clear; ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias ct='clear; tree -avAC --dirsfirst -I ".git|node_modules|env"'
 alias d='todo-txt -d $HOME/.todo-txt/todo.cfg'
 alias da='todo-txt -d $HOME/.todo-txt/todo.cfg add'
@@ -74,15 +74,18 @@ alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
+alias gmsh='/usr/bin/gmsh'
 alias grep='grep --color=always'
 alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
 alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
 alias jupyter-convert='f(){ jupyter nbconvert --to script "$1"; unset -f f; }; f'
-alias l='ls -lAhv --group-directories-first --color=always'
-alias lb='f(){ ls -lahFv --group-directories-first --color=always $1 | bat; unset -f f; }; f'
+alias l='ls -l --almost-all --human-readable --group-directories-first --color=always'
+alias lb='f(){ ls -l --almost-all --human-readable --group-directories-first --color=always $1 | batcat; unset -f f; }; f'
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
-alias ll='ls -lAhv --group-directories-first --color=always'
+alias ll='ls -l --almost-all --human-readable --group-directories-first --color=always'
+alias ls='ls --group-directories-first --color=always'
+alias m='make'
 alias mansearch='f(){ man -k "$1"; unset -f f; }; f'
 alias n='$HOME/scripts/notes.sh'
 alias notes='$HOME/scripts/notes.sh'
@@ -91,12 +94,13 @@ alias nvidiawatch='watch -n 1 nvidia-smi'
 alias oo='octave'
 alias open='xdg-open'
 alias openexit='f(){ xdg-open "$1"; exit; }; f'
+alias p="$HOME/scripts/pass.sh && exit"
 alias pa='$HOME/scripts/paste_to_note.sh'
 alias paste_clipboard_to_note='$HOME/scripts/paste_to_note.sh'
 alias pathlist='echo "$PATH" | tr ":" "\n"'
 alias pngtomp4='ffmpeg -framerate 25 -i image%04d.png movie.mp4'
 alias pp='python3'
-alias ppass="$HOME/scripts/ppass.sh && exit"
+alias ppass="$HOME/scripts/pass.sh && exit"
 alias pv='paraview'
 alias pvnvidia='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia paraview'
 alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; unset -f f; }; f'
@@ -115,6 +119,7 @@ alias tree4='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 4'
 alias tree5='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 5'
 alias tree='tree -avAC --dirsfirst -I ".git|node_modules|env"'
 alias unexpand='f(){ unexpand --first-only --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
+alias usbsaferemove='udisksctl unmount --block-device /dev/sda1 && udisksctl power-off --block-device /dev/sda'
 alias vi="vim -u NONE"
 alias vim="vim -u $HOME/.config/vim/config.vim"
 alias wca='echo "lines, words, characters:"; cat $(find ./ -type f) | wc -l -w -m'
@@ -123,13 +128,6 @@ alias webcam='ffplay -fs -i /dev/video0'
 alias xclip_copy='xclip -selection clipboard'  # cat README.md | xclip_copy
 alias xclip_paste='xclip -selection clipboard -out'  # xclip_paste > README.md
 alias yank='yank-cli -- xsel -b'
-
-
-# --------------------------------------------------------------------
-#   Fuck
-
-# set the `fuck` alias to `thefuck` tool (see: https://github.com/nvbn/thefuck)
-eval $(thefuck --alias)
 
 
 # --------------------------------------------------------------------
@@ -166,15 +164,17 @@ alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[re
 # --------------------------------------------------------------------
 #   fzf and fdfind
 
-alias cdc='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/.config | fzf --height=10%)"'  # find and go to any dir in config
-alias cdd='cd "$(fdfind --hidden --no-ignore --type directory . . | fzf --height=10%)"'  # find and go to any dir in current dir
-alias cdg='cd "$(fdfind --hidden --no-ignore --type directory '\.git$' $HOME | xargs dirname | fzf --height=10%)"'  # find and go to any git repo in home
-alias cdG='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/git* | fzf --height=10%)"'  # find and go to any dir in gitbuw and github
-alias cdh='cd "$(fdfind --hidden --no-ignore --type directory . $HOME | fzf --height=10%)"'  # find and go to any dir in home
-alias cds='cd "$(fdfind --hidden --no-ignore --type directory . $HOME/sciebo | fzf --height=10%)"'  # find and go to any dir in sciebo
+alias cdc='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME/.config | fzf --height=10%)"'  # find and go to any dir in config
+alias cdd='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . . | fzf --height=10%)"'  # find and go to any dir in current dir
+alias cdG='cd "$(fdfind --hidden --no-ignore                                                                           --type directory '\.git$' $HOME | xargs dirname | fzf --height=10%)"'  # find and go to any git repo in home
+alias cdg='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME/git* | fzf --height=10%)"'  # find and go to any dir in gitbuw and github
+alias cdh='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME | fzf --height=10%)"'  # find and go to any dir in home
+alias cds='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME/sciebo | fzf --height=10%)"'  # find and go to any dir in sciebo
+
+alias fcp='$HOME/scripts/fcp.sh'
 
 alias f='fzf'
-alias fd='fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --type file'
+alias fd='fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file'
 
 alias ff='$HOME/scripts/fopen.sh "" ""'
 alias fh='$HOME/scripts/fopen.sh "$HOME" ""'
