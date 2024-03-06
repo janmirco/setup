@@ -55,6 +55,7 @@ sudo apt-get install --assume-yes pugixml-doc libpugixml*
 sudo apt-get install --assume-yes kdenlive*
 sudo apt-get install --assume-yes default-jre default-jdk
 sudo apt-get install --assume-yes remmina*
+sudo apt-get install --assume-yes jq
 
 # Install virtualbox in a separate window because of license agreement
 # sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
