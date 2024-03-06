@@ -93,3 +93,6 @@ export FZF_DEFAULT_COMMAND="fdfind --hidden --no-ignore --exclude .git --exclude
 
 # set the `fuck` alias to `thefuck` tool (see: https://github.com/nvbn/thefuck)
 eval $(thefuck --alias)
+
+# enable klog autocompletion
+source <(klog completion -c bash)

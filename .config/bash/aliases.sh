@@ -131,6 +131,37 @@ alias yank='yank-cli -- xsel -b'
 
 
 # --------------------------------------------------------------------
+#   klog
+
+# Evaluate Files
+#   print     Pretty-print records.
+#   total     Evaluate the total time.
+#   report    Print an aggregated calendar report.
+#   tags      Print total times aggregated by tags.
+#   today     Evaluate the current day.
+#
+# Manipulate Files
+#   track         Add a new entry to a record.
+#   start (in)    Start a new open time range.
+#   stop (out)    Close the open time range.
+#   pause         Pause the open time range.
+#   switch        Close open range and starts a new one.
+#   create        Create a new, empty record.
+
+alias k='clear; klog print $HOME/.klog/worktimes.klg && klog report $HOME/.klog/worktimes.klg --diff --now'
+alias ka='$HOME/scripts/klog_archive.sh'
+alias kd='klog today $HOME/.klog/worktimes.klg --diff --now'
+alias kD='klog total $HOME/.klog/worktimes.klg --diff --now'
+alias ki='klog start $HOME/.klog/worktimes.klg'
+alias kk="$EDITOR $HOME/.klog/worktimes.klg"
+alias ko='klog stop $HOME/.klog/worktimes.klg'
+alias kp='klog print $HOME/.klog/worktimes.klg'
+alias kr='klog report $HOME/.klog/worktimes.klg --diff --now'
+alias kt='klog today $HOME/.klog/worktimes.klg --now'
+alias kT='klog total $HOME/.klog/worktimes.klg --now'
+
+
+# --------------------------------------------------------------------
 #   Git
 
 alias gd='git diff'
@@ -157,8 +188,9 @@ alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 
 alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "[nvim] Update lazy-lock.json"'
-alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "[todo-txt] Update entire dir"'
 alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[readme] Update todos"'
+alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "[todo-txt] Update entire dir"'
+alias gupdateworktimes='cd $HOME && git add $HOME/.klog/ && git commit -m "[klog] Update work times"'
 
 
 # --------------------------------------------------------------------
