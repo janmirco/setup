@@ -19,7 +19,9 @@ update:
 	@cp ~/.gitignore .config/git/home_ignore
 
 install:
-	@mkdir -p ~/.config/{calcurse,git,tmux}
+	@mkdir -p ~/.config/calcurse
+	@mkdir -p ~/.config/git
+	@mkdir -p ~/.config/tmux
 	@rm -rf ~/.config/alacritty && cp -r .config/alacritty ~/.config
 	@rm -rf ~/.config/bash      && cp -r .config/bash ~/.config
 	@rm -rf ~/.config/fzf       && cp -r .config/fzf ~/.config
