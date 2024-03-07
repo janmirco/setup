@@ -209,6 +209,7 @@
 /.julia/
 /.jupyter/
 /.kde/
+/.keras/
 /.local/
 /.Mathematica/
 /.modular/

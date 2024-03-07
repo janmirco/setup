@@ -32,3 +32,4 @@ python3 -m pip install --upgrade pip tldr
 python3 -m pip install --upgrade pip abqpy
 python3 -m pip install --upgrade pip mpi4py
 python3 -m pip install --upgrade pip KratosMultiphysics-all
+python3 -m pip install --upgrade pip tensorflow[and-cuda]
