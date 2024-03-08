@@ -60,6 +60,17 @@ sudo apt-get install --assume-yes jq
 # Install virtualbox in a separate window because of license agreement
 # sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
 
+# Some installs via flatpak.
+#     See: https://flathub.org/setup/Kubuntu
+#     Run:
+#         sudo apt-get install --assume-yes flatpak plasma-discover-backend-flatpak
+#         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#         sudo reboot
+#     Install:
+#         flatpak install flathub org.gnome.World.PikaBackup
+#     If no icon or no desktop entry, see https://github.com/alacritty/alacritty/blob/master/INSTALL.md#desktop-entry and do, e.g., for icon:
+#         sudo cp /var/lib/flatpak/app/org.gnome.World.PikaBackup/current/active/export/share/icons/hicolor/scalable/apps/org.gnome.World.PikaBackup.svg /usr/share/pixmaps/
+
 # Some installs via .deb packages.
 #     Download from:
 #         - https://zoom.us/download

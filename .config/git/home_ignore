@@ -18,6 +18,7 @@
 /.config/arkrc
 /.config/baloofileinformationrc
 /.config/bluedevilglobalrc
+/.config/device_automounter_kcmrc
 /.config/discoverrc
 /.config/dolphinrc
 /.config/drkonqirc
@@ -89,6 +90,7 @@
 /.config/mimeapps.list
 /.config/okularpartrc
 /.config/okularrc
+/.config/partitionmanagerrc
 /.config/plasma-localerc
 /.config/plasma-org.kde.plasma.desktop-appletsrc
 /.config/plasma.emojierrc
@@ -226,6 +228,7 @@
 /.texlive2021/
 /.thunderbird/
 /.tmux/
+/.var/
 /.vscode/
 /.Wolfram/
 /.zoom/

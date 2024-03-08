@@ -119,7 +119,12 @@ alias tree4='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 4'
 alias tree5='tree -avAC --dirsfirst -I ".git|node_modules|env" -L 5'
 alias tree='tree -avAC --dirsfirst -I ".git|node_modules|env"'
 alias unexpand='f(){ unexpand --first-only --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
+alias usbmount='udisksctl mount --block-device /dev/sda1'
+alias usbntfsfix='ntfsfix --clear-bad-sectors /dev/sda1'
+alias usbpoweroff='udisksctl power-off --block-device /dev/sda'
 alias usbsaferemove='udisksctl unmount --block-device /dev/sda1 && udisksctl power-off --block-device /dev/sda'
+alias usbsaferemoveexit='udisksctl unmount --block-device /dev/sda1 && udisksctl power-off --block-device /dev/sda && exit'
+alias usbunmount='udisksctl unmount --block-device /dev/sda1'
 alias vi="vim -u NONE"
 alias vim="vim -u $HOME/.config/vim/config.vim"
 alias wca='echo "lines, words, characters:"; cat $(find ./ -type f) | wc -l -w -m'
@@ -190,7 +195,7 @@ alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "[nvim] Update lazy-lock.json"'
 alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[readme] Update todos"'
 alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "[todo-txt] Update entire dir"'
-alias gupdateworktimes='cd $HOME && git add $HOME/.klog/ && git commit -m "[klog] Update work times"'
+alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "[klog] Update work times"'
 
 
 # --------------------------------------------------------------------
@@ -319,6 +324,7 @@ alias uApt='$HOME/uman/uApt.sh'
 alias uBios='$HOME/uman/uBios.sh'
 alias uDaily='$HOME/uman/uDaily.sh'
 alias uEditor='$HOME/uman/uEditor.sh'
+alias uFlatpak='$HOME/uman/uFlatpak.sh'
 alias uFonts='$HOME/uman/uFonts.sh'
 alias uLazygit='$HOME/uman/uLazygit.sh'
 alias uNeovim='$HOME/uman/uNeovim.sh'
