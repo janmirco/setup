@@ -228,8 +228,8 @@ alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" && exit'
 # --------------------------------------------------------------------
 #   Neovim
 
-alias nv0='f(){ $EDITOR $(ls | tail --lines "$1"); unset -f f; }; f'
-alias nv1='f(){ $EDITOR $(ls | head --lines "$1"); unset -f f; }; f'
+alias nv0='$HOME/scripts/nv0.sh'
+alias nv1='$HOME/scripts/nv1.sh'
 alias nv='$EDITOR'
 alias nvS='$EDITOR -S'
 alias nva='$HOME/scripts/nva.sh'
@@ -332,7 +332,6 @@ alias uNodejs='$HOME/uman/uNodejs.sh'
 alias uSnap='$HOME/uman/uSnap.sh'
 alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
-alias uYazi='$HOME/uman/uYazi.sh'
 
 
 # --------------------------------------------------------------------

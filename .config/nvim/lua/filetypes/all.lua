@@ -12,12 +12,13 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }
         local filetypes = {
             "cmp",
             "dashboard",
+            "mason",
             "notify",
-            "Telescope",
+            "telescope",
         }
         for _, filetype in ipairs(filetypes) do
             local current_filetype = vim.api.nvim_eval("&filetype")
-            if string.find(current_filetype, filetype) then
+            if string.find(string.lower(current_filetype), filetype) then
                 vim.opt.colorcolumn = ""
                 vim.opt.cursorline = false
             end
