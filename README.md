@@ -22,7 +22,7 @@ sudo snap install spotify
 ### Add new user and password
 
 ```
-sudo useradd -m -s /bin/bash -c "Totti Karotti" totti && sudo passwd totti
+sudo useradd --create-home --shell /bin/bash --comment "Totti Karotti" totti && sudo passwd totti
 ```
 
 # GRUB configuration
