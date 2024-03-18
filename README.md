@@ -25,6 +25,30 @@ sudo snap install spotify
 sudo useradd --create-home --shell /bin/bash --comment "Totti Karotti" totti && sudo passwd totti
 ```
 
+### Add user to sudo group
+
+```
+sudo usermod -aG sudo totti
+```
+
+### Rename user
+
+```
+sudo usermod --login bob --comment "Bob Newman" totti
+```
+
+### Rename home directory
+
+```
+sudo usermod --home /home/bob --move-home totti
+```
+
+### Rename user group
+
+```
+sudo --new-name bob totti
+```
+
 # GRUB configuration
 
 See:
