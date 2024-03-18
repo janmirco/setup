@@ -4,7 +4,7 @@
 sudo apt-get update && sudo apt-get upgrade --assume-yes
 
 # apt installs
-sudo apt-get install --assume-yes curl xclip tree htop ranger figlet sl ncdu ncdt rename libaa-bin lolcat tlp
+sudo apt-get install --assume-yes curl xclip tree htop btop ranger figlet sl ncdu ncdt rename libaa-bin lolcat tlp
 sudo apt-get install --assume-yes tmux
 sudo apt-get install --assume-yes ssh net-tools xorgxrdp xrdp
 sudo apt-get install --assume-yes pass xsel

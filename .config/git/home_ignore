@@ -18,6 +18,7 @@
 /.config/arkrc
 /.config/baloofileinformationrc
 /.config/bluedevilglobalrc
+/.config/btop/
 /.config/device_automounter_kcmrc
 /.config/discoverrc
 /.config/dolphinrc
