@@ -33,6 +33,18 @@ return {
         end,
     },
     {
+        "NeogitOrg/neogit",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+            local neogit = require("neogit")
+            neogit.setup()
+            vim.keymap.set("n", "gc", function() neogit.open({ "commit" }) end, { desc = "[Git] Commit", silent = true })
+            vim.keymap.set("n", "gl", function() neogit.open({ "log" }) end, { desc = "[Git] Commit", silent = true })
+            vim.keymap.set("n", "gP", function() neogit.open({ "push" }) end, { desc = "[Git] Push", silent = true })
+            vim.keymap.set("n", "gs", function() neogit.open({ kind = "replace" }) end, { desc = "[Git] Status", silent = true })
+        end,
+    },
+    {
         "tpope/vim-fugitive",
         config = function()
             vim.keymap.set("n", "g,", ":diffget //2<cr>:echo '[GitMerge] Grabbed from left side'<cr>", { desc = "[Git] Diffget from left", silent = true })
@@ -40,11 +52,7 @@ return {
             vim.keymap.set("n", "gB", ":Git blame<cr>", { desc = "[Git] Blame", silent = true })
             vim.keymap.set("n", "gF", ":Git diff<cr>", { desc = "[Git] Diff", silent = true })
             vim.keymap.set("n", "gL", ":Git log --all --date-order --branches --remotes --tags --graph --decorate<cr>", { desc = "[Git] Log all WITHOUT format", silent = true })
-            vim.keymap.set("n", "gP", ":Git push<cr>", { desc = "[Git] Push", silent = true })
-            vim.keymap.set("n", "gc", ":Git commit<cr>", { desc = "[Git] Commit", silent = true })
-            vim.keymap.set("n", "gl", ":Git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:'%h [%ci] %an%  -> %s %d'<cr>", { desc = "[Git] Log all", silent = true })
             vim.keymap.set("n", "gm", ":Gvdiffsplit!<cr>", { desc = "[Git] Vertical diff split (retaining focus)", silent = true })
-            vim.keymap.set("n", "gs", ":Git<cr>", { desc = "[Git] Status", silent = true })
             vim.keymap.set("n", "gv", ":Gvdiffsplit<cr>", { desc = "[Git] Vertical diff split", silent = true })
             vim.keymap.set("n", "gw1", ":Git show HEAD~0<cr>", { desc = "Latest", silent = true })
             vim.keymap.set("n", "gw2", ":Git show HEAD~1<cr>", { desc = "Second latest", silent = true })

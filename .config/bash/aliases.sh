@@ -153,7 +153,7 @@ alias yank='yank-cli -- xsel -b'
 #   switch        Close open range and starts a new one.
 #   create        Create a new, empty record.
 
-alias k='clear; klog print $HOME/.klog/worktimes.klg && klog report $HOME/.klog/worktimes.klg --diff --now'
+alias k='clear; klog print $HOME/.klog/worktimes.klg | tail && klog report $HOME/.klog/worktimes.klg --diff --now'
 alias ka='$HOME/scripts/klog_archive.sh'
 alias kd='klog today $HOME/.klog/worktimes.klg --diff --now'
 alias kD='klog total $HOME/.klog/worktimes.klg --diff --now'

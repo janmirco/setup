@@ -13,14 +13,23 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }
             "cmp",
             "dashboard",
             "mason",
+            "neogit",
             "notify",
             "telescope",
         }
         for _, filetype in ipairs(filetypes) do
             local current_filetype = vim.api.nvim_eval("&filetype")
+
             if string.find(string.lower(current_filetype), filetype) then
                 vim.opt.colorcolumn = ""
                 vim.opt.cursorline = false
+            end
+
+            -- special settings for Neogit commit messages
+            if string.find(string.lower(current_filetype), "neogitcommitmessage") then
+                vim.opt.colorcolumn = { 51, 73 }
+                vim.opt.cursorline = true
+                vim.cmd("setlocal spell spelllang=en_us")
             end
         end
     end,
