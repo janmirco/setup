@@ -152,8 +152,9 @@ vim.keymap.set("n", "<leader>4", "\"4p", { desc = "Access text from register 4",
 
 -- updating
 vim.keymap.set("n", "<leader>u1", function() require("lazy").update({ wait = true }) end, { desc = "Lazy", silent = true })
-vim.keymap.set("n", "<leader>u2", function() vim.cmd("MasonUpdate") end, { desc = "Mason registries", silent = true })
-vim.keymap.set("n", "<leader>u3", function() vim.cmd("TSUpdate") end, { desc = "Treesitter", silent = true })
+vim.keymap.set("n", "<leader>u2", function() vim.cmd("TSUpdate") end, { desc = "Treesitter", silent = true })
+vim.keymap.set("n", "<leader>u3", function() vim.cmd("MasonUpdate") end, { desc = "Mason registries", silent = true })
+vim.keymap.set("n", "<leader>u4", function() vim.cmd("Mason") end, { desc = "Mason", silent = true })
 
 -- make
 vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { desc = "make", silent = true })
