@@ -71,9 +71,9 @@ vim.keymap.set("n", "<leader>v", ":vsplit ", { desc = "vsplit", silent = true })
 vim.keymap.set("n", "<leader>s", ":split ", { desc = "split", silent = true })
 
 -- buffers
-vim.keymap.set("n", "<leader>q", ":bdelete<cr>", { desc = "Unload current buffer and delete it from the buffer list", silent = true })
-vim.keymap.set("n", "<Tab>", ":bnext<cr>", { silent = true })
-vim.keymap.set("n", "<BS>", ":bprevious<cr>", { silent = true })
+vim.keymap.set("n", "<leader>q", function() vim.cmd("bdelete") end, { desc = "Delete current buffer", silent = true })
+vim.keymap.set("n", "<Tab>", function() vim.cmd("bnext") end, { silent = true })
+vim.keymap.set("n", "<S-Tab>", function() vim.cmd("bprevious") end, { silent = true })
 vim.keymap.set("n", "<A-b>", "<C-o>", { silent = true })
 vim.keymap.set("n", "<A-f>", "<C-i>", { silent = true })
 
@@ -85,35 +85,44 @@ vim.keymap.set("n", "<leader>ow", function()
 end, { desc = "Close all except current window", silent = true })
 
 -- source init.lua
-vim.keymap.set("n", "<leader>5", ":source %<cr>", { desc = "Source current buffer", silent = true })
+vim.keymap.set("n", "<leader>5", function() vim.cmd("source %") end, { desc = "Source current buffer", silent = true })
 
 -- print and change working directory
-vim.keymap.set("n", "<leader>pp", ":pwd<cr>", { desc = "Print", silent = true })
-vim.keymap.set("n", "<leader>pg", ":cd %:h<cr>", { desc = "Change to current buffer (global)", silent = true })
-vim.keymap.set("n", "<leader>pl", ":lcd %:h<cr>", { desc = "Change to current buffer (local)", silent = true })
+vim.keymap.set("n", "<leader>pp", function() vim.cmd("pwd") end, { desc = "Print", silent = true })
+vim.keymap.set("n", "<leader>pg", function() vim.cmd("cd %:h") end, { desc = "Change to current buffer (global)", silent = true })
+vim.keymap.set("n", "<leader>pl", function() vim.cmd("lcd %:h") end, { desc = "Change to current buffer (local)", silent = true })
 
 -- show files of current directory and directory tree
-vim.keymap.set("n", "<leader>l", ":! ls -lAhv --group-directories-first<cr>", { desc = "ls", silent = true })
-vim.keymap.set("n", "<leader>t", ":! tree -avn --dirsfirst -I '.git|node_modules|env'<cr>", { desc = "tree", silent = true })
+vim.keymap.set("n", "<leader>l", function() vim.cmd("! ls -l --almost-all --human-readable --group-directories-first") end, { desc = "ls", silent = true })
+vim.keymap.set("n", "<leader>t", function() vim.cmd("! tree -avn --dirsfirst -I '.git|node_modules|env'") end, { desc = "tree", silent = true })
 
 -- remove trailing whitespace and only save if there was any
-vim.keymap.set("n", "<leader>rw", ":windo %s/\\s\\+$//ge<cr>:windo update<cr>:echo 'Remove trailing whitespace of all windows'<cr>", { desc = "Remove trailing whitespace of all windows", silent = true })
+vim.keymap.set("n", "<leader>rw", function()
+    vim.cmd("windo %s/\\s\\+$//ge")
+    vim.cmd("windo update")
+end, { desc = "Remove trailing whitespace of all windows", silent = true })
 
 -- search word where cursor hovers over
 vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>zz", { desc = "Search for word under cursor", silent = true })
 
 -- window commands (window navigation set in `lua/plugins/vim-tmux-navigator.lua`)
-vim.keymap.set("n", "<C-up>", ":resize +2<cr>", { desc = "Resize window up", silent = true })
-vim.keymap.set("n", "<C-down>", ":resize -2<cr>", { desc = "Resize window down", silent = true })
-vim.keymap.set("n", "<C-right>", ":vertical resize +2<cr>", { desc = "Resize window right", silent = true })
-vim.keymap.set("n", "<C-left>", ":vertical resize -2<cr>", { desc = "Resize window left", silent = true })
-vim.keymap.set("n", "<leader>=", ":wincmd =<cr>", { desc = "Equalize all window sizes", silent = true })
+vim.keymap.set("n", "<C-up>", function() vim.cmd("resize +2") end, { desc = "Resize window up", silent = true })
+vim.keymap.set("n", "<C-down>", function() vim.cmd("resize -2") end, { desc = "Resize window down", silent = true })
+vim.keymap.set("n", "<C-right>", function() vim.cmd("vertical resize +2") end, { desc = "Resize window right", silent = true })
+vim.keymap.set("n", "<C-left>", function() vim.cmd("vertical resize -2") end, { desc = "Resize window left", silent = true })
+vim.keymap.set("n", "<leader>=", function() vim.cmd("wincmd =") end, { desc = "Equalize all window sizes", silent = true })
 
--- open neovim config files
-vim.keymap.set("n", "<A-n>", ":update<CR>:e $HOME/.config/nvim/init.lua<cr>", { desc = "Open init.lua", silent = true })
+-- open neovim init.lua
+vim.keymap.set("n", "<A-n>", function()
+    vim.cmd("update")
+    vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
+end, { desc = "Open init.lua", silent = true })
 
--- jump back to the originally opened file (Buffer 1)
-vim.keymap.set("n", "<A-o>", ":update<CR>:b 1<cr>", { desc = "Jump back to originally opened buffer", silent = true })
+-- jump back to first opened file (Buffer 1)
+vim.keymap.set("n", "<A-o>", function()
+    vim.cmd("update")
+    vim.cmd("buffer 1")
+end, { desc = "Jump back to first opened buffer", silent = true })
 
 -- scrolling
 vim.keymap.set("n", "<s-up>", "<c-e>", { desc = "Scroll current line down without moving cursor", silent = true })

@@ -6,10 +6,10 @@ bin_path="$HOME/bin/$bin_name"
 dir_name="$bin_path/node-linux-x64"
 
 echo "$log_sign Current version: "$(node --version)""
-version="$(curl --silent --location https://nodejs.org/en/download/ | sed 's/Latest LTS Version<!-- -->: <strong>/\n/' | head -n 2 | tail -n 1 | sed 's/<\/strong>/\n/' | head -n 1)"
+version="$(curl --silent --location https://nodejs.org/en/download/ | sed 's/Download Node.js v/\n/' | tail -n 2 | head -n 1 | sed 's/<\/a><\/div><\/section>/\n/' | tail -n 2 | head -n 1)"
 echo "$log_sign New version: $version"
 
-tar_name="$bin_path/node-v$version-linux-x64.tar.gz"
+tar_name="$bin_path/node-v$version-linux-x64.tar.xz"
 
 function download {
     url="$1"
@@ -26,13 +26,13 @@ function download {
         fi
 
         echo "$log_sign Removing old tar ..."
-        rm -r "$bin_path"/*.tar.gz
+        rm -r "$bin_path"/*.tar.xz
 
         echo "$log_sign Downloading new version ..."
         curl -L "$url" --output "$tar_name" > "$bin_path/$bin_name"_log.txt 2>&1
 
         echo "$log_sign Extracting tar ..."
-        tar -C "$bin_path" -xvzf "$tar_name" >> "$bin_path/$bin_name"_log.txt 2>&1
+        tar -C "$bin_path" -xvf "$tar_name" >> "$bin_path/$bin_name"_log.txt 2>&1
 
         echo "$log_sign Removing version from dir name ..."
         mv "$bin_path/node-v$version-linux-x64" "$bin_path/node-linux-x64"
@@ -46,5 +46,5 @@ function download {
     fi
 }
 
-download "https://$bin_name.org/dist/v$version/node-v$version-linux-x64.tar.gz"
+download "https://$bin_name.org/dist/v$version/node-v$version-linux-x64.tar.xz"
 echo "$log_sign Finished update."

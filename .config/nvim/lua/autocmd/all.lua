@@ -14,8 +14,10 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }
             "dashboard",
             "mason",
             "neogit",
+            "noice",
             "notify",
             "telescope",
+            "whichkey",
         }
         for _, filetype in ipairs(filetypes) do
             local current_filetype = vim.api.nvim_eval("&filetype")
