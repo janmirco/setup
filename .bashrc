@@ -90,9 +90,3 @@ source "$HOME/.config/fzf/shell/completion.bash"
 source "$HOME/.config/fzf/shell/key-bindings.bash"
 export FZF_DEFAULT_OPTS="--layout=reverse --border"
 export FZF_DEFAULT_COMMAND="fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file"
-
-# set the `fuck` alias to `thefuck` tool (see: https://github.com/nvbn/thefuck)
-eval $(thefuck --alias)
-
-# enable klog autocompletion
-source <(klog completion -c bash)
