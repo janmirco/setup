@@ -290,7 +290,8 @@ alias cpuTemp='sensors | grep -i "core "'
 
 # get the ID of a process
 alias plist='ps -A | less'
-alias pgrepc='ps -A | grep -i' # or simply use `pgrep`
+alias prg='ps -A | rg -i'
+alias pgrep='ps -A | rg -i'
 
 # stop a process
 # kill <PROCESS_ID>
