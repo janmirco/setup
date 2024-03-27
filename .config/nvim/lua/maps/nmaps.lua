@@ -103,7 +103,8 @@ vim.keymap.set("n", "<leader>rw", function()
 end, { desc = "Remove trailing whitespace of all windows", silent = true })
 
 -- search word where cursor hovers over
-vim.keymap.set("n", "<leader>n", "viwy/<C-r>\"<cr>zz", { desc = "Search for word under cursor", silent = true })
+vim.keymap.set("n", "<leader>n", "*", { desc = "Forward  search word under cursor", silent = true })
+vim.keymap.set("n", "<leader>N", "#", { desc = "Backward search word under cursor", silent = true })
 
 -- window commands (window navigation set in `lua/plugins/vim-tmux-navigator.lua`)
 vim.keymap.set("n", "<C-up>", function() vim.cmd("resize +2") end, { desc = "Resize window up", silent = true })
