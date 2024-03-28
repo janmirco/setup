@@ -310,6 +310,7 @@ alias trses='tmux rename-session'  # -t TARGET_SESSION NEW_NAME (unfortunately, 
 alias trwin='tmux rename-window "$(basename "$(pwd)")"'  # -t TARGET_SESSION NEW_NAME (unfortunately, `tr` is the name of a GNU program)
 alias tls='tmux list-sessions'
 alias tlk='tmux list-keys'
+alias ts="$HOME/scripts/tmux_session.sh"
 
 # kill commands to dangerous as an alias! Do it manually by:
 # tmux kill-session  # to kill last attached session
