@@ -29,7 +29,7 @@ return {
         wk.register({
             ["<leader>"] = {
                 name = "Leader",
-                c = { name = "Comment and cquit" },
+                c = { name = "Comment" },
                 d = {
                     name = "Debug",
                     ["1"] = { dap.disconnect, "<F3> Disconnect" },

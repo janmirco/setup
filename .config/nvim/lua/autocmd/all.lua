@@ -12,10 +12,13 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }
         local filetypes = {
             "cmp",
             "dashboard",
+            "man",
             "mason",
+            "neo-tree",
             "neogit",
             "noice",
             "notify",
+            "oil",
             "telescope",
             "whichkey",
         }

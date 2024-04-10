@@ -49,29 +49,6 @@ return {
             vim.keymap.set({ "n", "v" }, "<cr>", function() vim.cmd("MkdnEnter") end, { desc = "[Mkdnflow] Enter", silent = true })
             vim.keymap.set({ "n", "v" }, "mp", function() vim.cmd("MkdnCreateLinkFromClipboard") end, { desc = "[Mkdnflow] CreateLinkFromClipboard", silent = true })
 
-            -- make sections italic/bold
-            vim.keymap.set("n", "mi", function()
-                local keys = vim.api.nvim_replace_termcodes("ciw*<C-r>\"*<esc>b", true, false, true)
-                vim.api.nvim_feedkeys(keys, "n", true)
-            end, { desc = "Make italic", silent = true })
-            vim.keymap.set("n", "mb", function()
-                local keys = vim.api.nvim_replace_termcodes("ciw**<C-r>\"**<esc>bb", true, false, true)
-                vim.api.nvim_feedkeys(keys, "n", true)
-            end, { desc = "Make bold", silent = true })
-            vim.keymap.set("v", "mi", function()
-                local keys = vim.api.nvim_replace_termcodes("c*<C-r>\"*<esc>b", true, false, true)
-                vim.api.nvim_feedkeys(keys, "v", true)
-            end, { desc = "[Mkdnflow] Make italic", silent = true })
-            vim.keymap.set("v", "mb", function()
-                local keys = vim.api.nvim_replace_termcodes("c**<C-r>\"**<esc>bb", true, false, true)
-                vim.api.nvim_feedkeys(keys, "v", true)
-            end, { desc = "[Mkdnflow] Make bold", silent = true })
-
-            -- remove italic/bold by using tpope/vim-surround together with tpope/vim-repeat:
-            --   italic: ds*
-            --   bold: ds*.
-            --   bold italic: ds*..
-
             -- jump commands
             vim.keymap.set("n", "]h", function()
                 vim.cmd("MkdnNextHeading")

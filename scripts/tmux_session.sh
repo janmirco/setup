@@ -1,17 +1,17 @@
 #!/bin/bash
 
-session_1="1"
+session="$(date +%Y-%m-%d)"
 
-if ! tmux has-session -t "$session_1" &> /dev/null; then
-    todo_window="todo"
-    klog_window="klog"
+if ! tmux has-session -t "$session" &> /dev/null; then
+    window="TODO"
+    tmux new-session -d -s "$session" -n "$window" -c "$HOME"
+    tmux send-keys -t "$session":"$window".1 "dlpa" Enter
 
-    tmux new-session -d -s "$session_1" -n "$todo_window" -c "$HOME"
-    tmux new-window -n "$klog_window" -c "$HOME"
+    window="KLOG"
+    tmux new-window -n "$window" -c "$HOME"
+    tmux send-keys -t "$session":"$window".1 "k" Enter
+
     tmux new-window -c "$HOME"
-
-    tmux send-keys -t "$session_1":"$todo_window".1 "dlpa" Enter
-    tmux send-keys -t "$session_1":"$klog_window".1 "k" Enter
 fi
 
-tmux attach-session -t "$session_1"
+tmux attach-session -t "$session"

@@ -17,10 +17,19 @@ return {
             },
         }
 
-        vim.keymap.set({ "n", "v" }, "<leader>cc", "<plug>NERDCommenterComment", { silent = true })
-        vim.keymap.set({ "n", "v" }, "<leader>cu", "<plug>NERDCommenterUncomment", { silent = true })
-        vim.keymap.set({ "n", "v" }, "<leader>cA", "<plug>NERDCommenterAppend", { silent = true })
-        vim.keymap.set({ "n", "v" }, "<leader>c$", "<plug>NERDCommenterToEOL", { silent = true })
-        vim.keymap.set({ "n", "v" }, "<leader>c<leader>", "<plug>NERDCommenterToggle", { silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>c$", "<plug>NERDCommenterToEOL", { desc = "ToEOL", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>c<leader>", "<plug>NERDCommenterToggle", { desc = "Toggle", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cA", "<plug>NERDCommenterAppend", { desc = "Append", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>ca", "<plug>NERDCommenterAltDelims", { desc = "AltDelims", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cb", "<plug>NERDCommenterAlignBoth", { desc = "AlignBoth", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cc", "<plug>NERDCommenterComment", { desc = "Comment", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>ci", "<plug>NERDCommenterInvert", { desc = "Invert", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cl", "<plug>NERDCommenterAlignLeft", { desc = "AlignLeft", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cm", "<plug>NERDCommenterMinimal", { desc = "Minimal", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cn", "<plug>NERDCommenterNested", { desc = "Nested", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cs", "<plug>NERDCommenterSexy", { desc = "Sexy", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>ct", "<plug>NERDCommenterToggle", { desc = "Toggle", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cu", "<plug>NERDCommenterUncomment", { desc = "Uncomment", silent = true })
+        vim.keymap.set({ "n", "v" }, "<leader>cy", "<plug>NERDCommenterYank", { desc = "Yank", silent = true })
     end,
 }
