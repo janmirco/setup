@@ -15,9 +15,11 @@ startup_mode = "Maximized"
 hide_when_typing = true
 
 [font]
+# size = 8.5  # laptop
+# size = 9.25  # monitor (home)
+# size = 10.25  # monitor (home)
 size = 12.75  # monitor (home)
 # size = 14.0  # monitor (office)
-# size = 8.5  # laptop
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"

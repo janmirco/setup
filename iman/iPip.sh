@@ -22,7 +22,6 @@ python3 -m pip install --upgrade pip polars[all]
 python3 -m pip install --upgrade pip meshio[all]
 python3 -m pip install --upgrade pip gstools
 python3 -m pip install --upgrade pip snakeviz
-python3 -m pip install --upgrade pip torch torchvision torchaudio
 python3 -m pip install --upgrade pip python-frontmatter
 python3 -m pip install --upgrade pip beautifulsoup4
 python3 -m pip install --upgrade pip icecream
@@ -32,4 +31,3 @@ python3 -m pip install --upgrade pip tldr
 python3 -m pip install --upgrade pip abqpy
 python3 -m pip install --upgrade pip mpi4py
 python3 -m pip install --upgrade pip KratosMultiphysics-all
-python3 -m pip install --upgrade pip tensorflow[and-cuda]

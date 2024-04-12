@@ -36,6 +36,7 @@ return {
                         "^.git/",
                         "^__pycache__/",
                         "^env/",
+                        "^venv/",
                         "^node_modules/",
                     },
                     vimgrep_arguments = {

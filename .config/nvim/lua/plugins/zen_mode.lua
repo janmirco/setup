@@ -27,7 +27,11 @@ return {
                         gitsigns = { enabled = true },
                         tmux = { enabled = true },
                     },
-                    on_open = function() vim.opt.colorcolumn = "" end,
+                    on_open = function()
+                        vim.opt.colorcolumn = ""
+                        require("noice").cmd("disable")
+                    end,
+                    on_close = function() require("noice").cmd("enable") end,
                 })
             end, { silent = true })
         end,

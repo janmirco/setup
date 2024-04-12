@@ -38,7 +38,10 @@ return {
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
             local neogit = require("neogit")
-            neogit.setup()
+            neogit.setup({
+                disable_insert_on_commit = true,
+                graph_style = "unicode",
+            })
             vim.keymap.set("n", "gc", function() neogit.open({ "commit" }) end, { desc = "[Git] Commit", silent = true })
             vim.keymap.set("n", "gl", function() neogit.open({ "log" }) end, { desc = "[Git] Commit", silent = true })
             vim.keymap.set("n", "gP", function() neogit.open({ "push" }) end, { desc = "[Git] Push", silent = true })
