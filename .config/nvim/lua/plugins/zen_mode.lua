@@ -23,7 +23,7 @@ return {
                             showcmd = false,
                             laststatus = 0,
                         },
-                        twilight = { enabled = true },
+                        twilight = { enabled = false },
                         gitsigns = { enabled = true },
                         tmux = { enabled = true },
                     },
