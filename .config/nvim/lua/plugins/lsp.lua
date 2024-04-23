@@ -12,11 +12,9 @@ return {
                     "clangd",
                     "cmake",
                     "fortls",
-                    "jedi_language_server",
                     "jsonls",
                     "lua_ls",
                     "pyright",
-                    "ruff_lsp",
                     "texlab",
                     "vimls",
                 },
@@ -82,32 +80,12 @@ return {
                 })
             end
 
-            -- python
-            if vim.env.EDITOR_FULL_LSP_POWER == "yes" then
-                lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
-            else
-                lspconfig.jedi_language_server.setup({
-                    capabilities = capabilities,
-                    on_attach = function(client, _)
-                        client.server_capabilities.executeCommandProvider = false
-                        client.server_capabilities.renameProvider = false -- Not as smart as pyright! E.g., does not rename class member where only its type is declared.
-                        on_attach()
-                    end,
-                })
-                lspconfig.ruff_lsp.setup({
-                    capabilities = capabilities,
-                    on_attach = function(client, _)
-                        client.server_capabilities.hoverProvider = false
-                        on_attach()
-                    end,
-                })
-            end
-
             -- language servers without special setup
             lspconfig.bashls.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.cmake.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.fortls.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
+            lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.texlab.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.vimls.setup({ capabilities = capabilities, on_attach = on_attach })
         end,

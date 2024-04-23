@@ -283,7 +283,7 @@ header-includes:
                 ls.parser.parse_snippet(
                     "main",
                     [[
-def main() -> None:
+def main():
     $1
 
 
