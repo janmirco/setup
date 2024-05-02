@@ -8,6 +8,7 @@ return {
         local snippet = ls.snippet
         local insert_node = ls.insert_node
         local function_node = ls.function_node
+        local text_node = ls.text_node
         local choice_node = ls.choice_node
         local fmt = require("luasnip.extras.fmt").fmt
 
@@ -28,6 +29,25 @@ return {
 
         ls.add_snippets(nil, {
             all = {
+                snippet(
+                    "msg",
+                    fmt("{type}{scope}{breaking_change}: {Brief_description}", {
+                        type = choice_node(1, {
+                            text_node("build"),
+                            text_node("ci"),
+                            text_node("docs"),
+                            text_node("feat"),
+                            text_node("fix"),
+                            text_node("perf"),
+                            text_node("refactor"),
+                            text_node("style"),
+                            text_node("test"),
+                        }),
+                        scope = choice_node(2, { text_node(""), fmt("({})", insert_node(1)) }),
+                        breaking_change = choice_node(3, { text_node(""), text_node("!") }),
+                        Brief_description = insert_node(4),
+                    })
+                ),
                 snippet("id", function_node(get_random_id)),
                 snippet("time", function_node(function() return os.date("%H:%M:%S") end)),
                 snippet(
@@ -340,6 +360,11 @@ def $1($2) -> $3:
         -- selecting within list of options
         vim.keymap.set("i", "<A-l>", function()
             if ls.choice_active() then ls.change_choice(1) end
-        end)
+        end, { silent = true })
+
+        -- selecting within list of options
+        vim.keymap.set("i", "<A-h>", function()
+            if ls.choice_active() then ls.change_choice(-1) end
+        end, { silent = true })
     end,
 }

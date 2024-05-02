@@ -193,10 +193,9 @@ alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 
-alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "[nvim] Update lazy-lock.json"'
-alias gupdateoldtodos='cd $HOME && git add $HOME/README.md && git commit -m "[readme] Update todos"'
-alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "[todo-txt] Update entire dir"'
-alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "[klog] Update work times"'
+alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
+alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
+alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
 
 
 # --------------------------------------------------------------------

@@ -23,7 +23,7 @@ vim.opt.foldmethod = "manual"
 
 vim.opt.linebreak = true
 vim.opt.wrap = false
-vim.opt.smoothscroll = true
+if vim.version().minor >= 10 then vim.opt.smoothscroll = true end
 vim.opt.scrolloff = 0
 vim.opt.sidescroll = 0
 vim.opt.sidescrolloff = 0

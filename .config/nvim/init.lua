@@ -12,8 +12,10 @@ vim.g.python3_host_prog = "/bin/python3"
 vim.g.mapleader = " "
 
 -- remove default mappings for commenting
-vim.keymap.del({ "n", "v" }, "gc")
-vim.keymap.del("n", "gcc")
+if vim.version().minor >= 10 then
+    vim.keymap.del({ "n", "v" }, "gc")
+    vim.keymap.del("n", "gcc")
+end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then vim.fn.system({

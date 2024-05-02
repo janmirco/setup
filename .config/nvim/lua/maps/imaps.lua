@@ -8,7 +8,6 @@ local exit_insert_mode = function()
         vim.cmd("normal l")
     end
 end
-vim.keymap.set("i", "<A-h>", exit_insert_mode)
 vim.keymap.set("i", "hh", exit_insert_mode)
 
 -- parentheses, brackets, curly braces, single/double quotation marks, ...

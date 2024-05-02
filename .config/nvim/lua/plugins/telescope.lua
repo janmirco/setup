@@ -10,6 +10,11 @@ return {
             local telescope = require("telescope")
             local actions = require("telescope.actions")
             local action_state = require("telescope.actions.state")
+            local pickers = require("telescope.pickers")
+            local previewers = require("telescope.previewers")
+            local finders = require("telescope.finders")
+            local config_values = require("telescope.config").values
+            local themes = require("telescope.themes")
 
             local yank_current_selection = function(prompt_bufnr)
                 local entry = action_state.get_selected_entry()
@@ -62,7 +67,7 @@ return {
                         case_mode = "smart_case", -- or "ignore_case" or "respect_case", the default case_mode is "smart_case"
                     },
                     ["ui-select"] = {
-                        require("telescope.themes").get_dropdown({}),
+                        themes.get_dropdown({}),
                     },
                 },
             })
@@ -177,6 +182,146 @@ return {
 
             -- find lsp references for word under the cursor
             vim.keymap.set("n", "fdr", builtin.lsp_references, { desc = "Find references", silent = true })
+
+            -- pick a commit type and switch insert mode
+            local conventional_commits_type = function(opts)
+                pickers
+                    .new(opts, {
+                        prompt_title = "Commit type",
+                        finder = finders.new_table({
+                            results = {
+                                -- See: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
+                                {
+                                    type = "feat",
+                                    title = "Features",
+                                    description = {
+                                        "A new feature",
+                                    },
+                                },
+                                {
+                                    type = "fix",
+                                    title = "Bug Fixes",
+                                    description = {
+                                        "A bug fix",
+                                    },
+                                },
+                                {
+                                    type = "docs",
+                                    title = "Documentation",
+                                    description = {
+                                        "Documentation only changes",
+                                    },
+                                },
+                                {
+                                    type = "style",
+                                    title = "Styles",
+                                    description = {
+                                        "Changes that do not affect the",
+                                        "meaning of the code (white-space,",
+                                        "formatting, missing semi-colons, etc)",
+                                    },
+                                },
+                                {
+                                    type = "refactor",
+                                    title = "Code Refactoring",
+                                    description = {
+                                        "A code change that neither fixes a",
+                                        "bug nor adds a feature",
+                                    },
+                                },
+                                {
+                                    type = "perf",
+                                    title = "Performance Improvements",
+                                    description = {
+                                        "A code change that improves",
+                                        "performance",
+                                    },
+                                },
+                                {
+                                    type = "test",
+                                    title = "Tests",
+                                    description = {
+                                        "Adding missing tests or correcting",
+                                        "existing tests",
+                                    },
+                                },
+                                {
+                                    type = "build",
+                                    title = "Builds",
+                                    description = {
+                                        "Changes that affect the build system",
+                                        "or external dependencies",
+                                    },
+                                },
+                                {
+                                    type = "ci",
+                                    title = "Continuous Integrations",
+                                    description = {
+                                        "Changes to the CI configuration files",
+                                        "and scripts",
+                                    },
+                                },
+                                {
+                                    type = "chore",
+                                    title = "Chores",
+                                    description = {
+                                        "Other changes that don't modify src",
+                                        "or test files",
+                                    },
+                                },
+                                {
+                                    type = "revert",
+                                    title = "Reverts",
+                                    description = {
+                                        "Reverts a previous commit",
+                                    },
+                                },
+                            },
+                            entry_maker = function(entry)
+                                return {
+                                    value = entry,
+                                    display = entry.type,
+                                    ordinal = entry.type,
+                                }
+                            end,
+                        }),
+                        sorter = config_values.generic_sorter(opts),
+                        previewer = previewers.new_buffer_previewer({
+                            title = "Description",
+                            define_preview = function(self, entry)
+                                vim.api.nvim_buf_set_lines(
+                                    self.state.bufnr,
+                                    0,
+                                    0,
+                                    true,
+                                    vim.tbl_flatten({
+                                        entry.value.title .. ":",
+                                        "",
+                                        entry.value.description,
+                                    })
+                                )
+                            end,
+                        }),
+                        attach_mappings = function(prompt_bufnr)
+                            actions.select_default:replace(function()
+                                local entry = action_state.get_selected_entry()
+                                actions.close(prompt_bufnr)
+                                local keys = vim.api.nvim_replace_termcodes("i" .. entry.value.type, true, false, true)
+                                vim.api.nvim_feedkeys(keys, "n", true)
+                            end)
+                            return true
+                        end,
+                    })
+                    :find()
+            end
+            vim.keymap.set("n", "<leader>b", function()
+                conventional_commits_type(themes.get_cursor({
+                    layout_config = {
+                        width = 56,
+                        height = 15,
+                    },
+                }))
+            end, { desc = "Pick commit type", silent = true })
         end,
     },
 }

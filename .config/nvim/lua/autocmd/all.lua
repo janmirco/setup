@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }
             "mason",
             "neo-tree",
             "neogit",
+            "alpha",
             "noice",
             "notify",
             "oil",
