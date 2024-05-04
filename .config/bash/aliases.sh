@@ -215,6 +215,8 @@ alias fcp='$HOME/scripts/fcp.sh'
 alias f='fzf'
 alias fd='fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file'
 
+alias fgd='$HOME/scripts/fgd.sh'
+
 alias ff='$HOME/scripts/fopen.sh "" ""'
 alias fh='$HOME/scripts/fopen.sh "$HOME" ""'
 alias fc='$HOME/scripts/fopen.sh "$HOME/.config" ""'
