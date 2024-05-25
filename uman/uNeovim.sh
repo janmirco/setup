@@ -52,5 +52,5 @@ function download {
     fi
 }
 
-download "https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
+download "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
 echo "$log_sign Finished update."

@@ -5,8 +5,8 @@ return {
         local alpha = require("alpha")
         local startify = require("alpha.themes.startify")
 
-        startify.section.top_buttons.val = { startify.button("e", "  New file", ":enew<cr>") }
-        startify.section.bottom_buttons.val = { startify.button("q", "󰅚  Quit", ":qall<cr>") }
+        startify.section.top_buttons.val = { startify.button("e", "  New file", "<cmd>enew<cr>") }
+        startify.section.bottom_buttons.val = { startify.button("q", "󰅚  Quit", "<cmd>qall<cr>") }
 
         alpha.setup(startify.config)
 

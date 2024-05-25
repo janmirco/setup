@@ -3,7 +3,10 @@ return {
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
         local todo_comments = require("todo-comments")
-        todo_comments.setup({ highlight = { comments_only = false } })
+        todo_comments.setup({
+            signs = false,
+            highlight = { comments_only = false },
+        })
         vim.keymap.set("n", "[t", function()
             todo_comments.jump_prev()
             vim.cmd("normal zz")
