@@ -85,6 +85,9 @@ PS1+='${bold}${blue} \W${reset} $(__git_ps1 "%s")${reset}\n '
 source "$HOME/.config/bash/aliases.sh"
 source "$HOME/.config/bash/path.sh"
 
+# bat settings
+export BAT_THEME="Catppuccin Mocha"
+
 # fzf settings
 source "$HOME/.config/fzf/shell/completion.bash"
 source "$HOME/.config/fzf/shell/key-bindings.bash"
