@@ -172,6 +172,8 @@ alias kT='klog total $HOME/.klog/worktimes.klg --now'
 #   Git
 
 alias gd='git diff'
+alias gb='git blame'
+alias gw='git show'
 
 alias gv='git difftool'
 alias gm='git mergetool'
