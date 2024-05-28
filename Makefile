@@ -15,7 +15,7 @@ update:
 	@cp ~/.bash_logout .
 	@cp ~/.bashrc .
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
-	@cp ~/.config/git/config ~/.config/git/public .config/git
+	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/tmux/tmux.conf .config/tmux
 	@cp ~/.gitignore .config/git/home_ignore
 
@@ -37,5 +37,5 @@ install:
 	@cp .bash_logout ~
 	@cp .bashrc ~
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
-	@cp .config/git/config ~/.config/git
+	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
 	@cp .config/tmux/tmux.conf ~/.config/tmux

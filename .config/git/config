@@ -10,6 +10,7 @@
 
 [include]
 	path = ~/.config/git/private
+    path = ~/.config/git/delta_themes
 
 [includeIf "gitdir:~/github/"]
 	path = ~/.config/git/public
@@ -25,6 +26,9 @@
     diffFilter = delta --color-only
 
 [delta]
+    features = colibri
+    dark = true
+    syntax-theme = Catppuccin Mocha
     side-by-side = true
     navigate = true
 
