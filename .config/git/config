@@ -9,11 +9,11 @@
     name = Jan Mirco Pfeifer
 
 [include]
-	path = ~/.config/git/private
+    path = ~/.config/git/private
     path = ~/.config/git/delta_themes
 
 [includeIf "gitdir:~/github/"]
-	path = ~/.config/git/public
+    path = ~/.config/git/public
 
 [init]
     defaultBranch = main
