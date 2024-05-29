@@ -54,5 +54,5 @@ function download {
     fi
 }
 
-download "https://$bin_name.org/dist/$version/node-v$version-linux-x64.tar.xz"
+download "https://$bin_name.org/dist/$version/node-$version-linux-x64.tar.xz"
 echo "$log_sign Finished update."
