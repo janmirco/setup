@@ -109,7 +109,6 @@ alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; uns
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
 alias rg='rg --no-ignore --hidden'
 alias rm='rm -i'
-alias rr='ranger'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
 alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
@@ -285,6 +284,15 @@ alias activate='source */*/activate'
 alias black='python3 -m black'
 alias blackcheck='python3 -m black --color --check --diff'
 alias pip='python3 -m pip'
+
+
+# --------------------------------------------------------------------
+#   Rofi
+
+alias r='rofi -show combi'
+alias rr='rofi -show run'
+alias ra='rofi -show drun'
+alias rw='rofi -show window'
 
 
 # --------------------------------------------------------------------

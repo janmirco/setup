@@ -6,6 +6,7 @@ update:
 	@rm -rf .config/bat       && cp -r ~/.config/bat .config
 	@rm -rf .config/fzf       && cp -r ~/.config/fzf .config
 	@rm -rf .config/nvim      && cp -r ~/.config/nvim .config
+	@rm -rf .config/rofi      && cp -r ~/.config/rofi .config
 	@rm -rf .config/vim       && cp -r ~/.config/vim .config
 	@rm -rf .config/wezterm   && cp -r ~/.config/wezterm .config
 	@rm -rf iman              && cp -r ~/iman .
@@ -28,6 +29,7 @@ install:
 	@rm -rf ~/.config/bat       && cp -r .config/bat ~/.config
 	@rm -rf ~/.config/fzf       && cp -r .config/fzf ~/.config
 	@rm -rf ~/.config/nvim      && cp -r .config/nvim ~/.config
+	@rm -rf ~/.config/rofi      && cp -r .config/rofi ~/.config
 	@rm -rf ~/.config/vim       && cp -r .config/vim ~/.config
 	@rm -rf ~/.config/wezterm   && cp -r .config/wezterm ~/.config
 	@rm -rf ~/iman              && cp -r iman ~

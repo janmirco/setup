@@ -1,0 +1,28 @@
+configuration {
+    modi: "window,drun,run,combi";
+    combi-modi: "window,drun,run";
+    icon-theme: "Oranchelo";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-window: "   Window ";
+    display-drun: " 󰀘  App ";
+    display-run: "   Run ";
+    display-combi: " 󰕘  Combi ";
+    display-Network: " 󰤨  Network ";
+    sidebar-mode: true;
+}
+
+@theme "catppuccin-mocha"
+
+* {
+    font: "JetBrainsMono Nerd Font 14";
+}
+
+window {
+    width: 1280px;
+    height: 720px;
+}
