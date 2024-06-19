@@ -8,6 +8,7 @@
 export PATH="$HOME/bin/klog:$PATH"
 export PATH="$HOME/bin/neovim/nvim-linux64/bin:$PATH"
 export PATH="$HOME/bin/nodejs/node-linux-x64/bin:$PATH"
+export PATH="$HOME/bin/abaqus/commands:$PATH"
 
 # deal.II
 export DEAL_II_DIR="$HOME/bin/dealii/install"

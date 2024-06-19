@@ -3,7 +3,10 @@ return {
         "lewis6991/gitsigns.nvim",
         config = function()
             local gitsigns = require("gitsigns")
-            gitsigns.setup({ attach_to_untracked = true })
+            gitsigns.setup({
+                attach_to_untracked = true,
+                signs_staged_enable = false,
+            })
 
             -- normal mode keymaps
             vim.keymap.set("n", "<A-g>", gitsigns.toggle_signs, { desc = "[Git] Toggle gitsigns", silent = true })

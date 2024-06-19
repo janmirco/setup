@@ -19,6 +19,7 @@ hide_when_typing = true
 # size = 9.25  # monitor (home)
 # size = 10.25  # monitor (home)
 size = 12.75  # monitor (home)
+# size = 13.0  # laptop
 # size = 14.0  # monitor (office)
 
 [font.normal]

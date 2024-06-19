@@ -41,7 +41,7 @@ alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
 alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
-alias checkNonAscii='grep --color='auto' -P -n "[\x80-\xFF]"'
+alias checkNonAscii='grep --color="auto" -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
 alias chmodfiles='chmod 664'
 alias cht='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
@@ -112,6 +112,7 @@ alias rm='rm -i'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
 alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
+alias svg2png='f(){ inkscape --export-type="png" "$1"; unset -f f; }; f'
 alias t='tree -avAC --dirsfirst -I ".git|node_modules|venv"'
 alias tree1='tree -avAC --dirsfirst -I ".git|node_modules|venv" -L 1'
 alias tree2='tree -avAC --dirsfirst -I ".git|node_modules|venv" -L 2'

@@ -119,6 +119,7 @@
 /.config/VirtualBoxrc
 /.config/VirtualBoxVMrc
 /.config/vlc/vlc-qt-interface.conf
+/.config/vlcrc
 /.config/webengineurlinterceptoradblockrc
 /.config/xdg-desktop-portal-kderc
 /.config/yakuakerc
@@ -145,6 +146,7 @@
 /.Xauthority
 /.xsession-errors
 /.zshenv
+/abaqus_2024.gpr
 /fonts.conf
 
 # directories
@@ -188,6 +190,7 @@
 /.config/obs-studio/
 /.config/obsidian/
 /.config/octave/
+/.config/ookla/
 /.config/ParaView/
 /.config/pavucontrol-qt/
 /.config/pulse/
@@ -196,6 +199,7 @@
 /.config/session/
 /.config/texstudio/
 /.config/thefuck/
+/.config/ticktick/
 /.config/tmux/plugins
 /.config/Unknown\ Organization/
 /.config/VirtualBox/
