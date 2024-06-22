@@ -32,6 +32,7 @@ alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 alias animGitHistory='$HOME/scripts/showAnimatedHistory.sh'
 alias ascii='figlet -f big'
+alias bat='bat --pager never'
 alias bl='bluetooth toggle'
 alias blexit='bluetooth toggle && exit'
 alias c='clear'
@@ -205,13 +206,8 @@ alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HO
 #   fzf and fdfind
 
 alias cD="source $HOME/scripts/change_directory.sh && change_directory"
-
-alias cdc='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME/.config | fzf --height=10%)"'  # find and go to any dir in config
-alias cdd='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . . | fzf --height=10%)"'  # find and go to any dir in current dir
-alias cdG='cd "$(fdfind --hidden --no-ignore                                                                           --type directory '\.git$' $HOME | xargs dirname | fzf --height=10%)"'  # find and go to any git repo in home
-alias cdg='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME/git* | fzf --height=10%)"'  # find and go to any dir in gitbuw and github
-alias cdh='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME | fzf --height=10%)"'  # find and go to any dir in home
-alias cds='cd "$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME/sciebo | fzf --height=10%)"'  # find and go to any dir in sciebo
+alias cdd="source $HOME/scripts/change_directory.sh && change_directory current_dir"
+alias cdg="source $HOME/scripts/change_directory.sh && change_directory git_repos"
 
 alias fcp='$HOME/scripts/fcp.sh'
 
