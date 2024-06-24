@@ -9,6 +9,7 @@ update:
 	@rm -rf .config/rofi      && cp -r ~/.config/rofi .config
 	@rm -rf .config/vim       && cp -r ~/.config/vim .config
 	@rm -rf .config/wezterm   && cp -r ~/.config/wezterm .config
+	@rm -rf .config/yazi      && cp -r ~/.config/yazi .config
 	@rm -rf iman              && cp -r ~/iman .
 	@rm -rf scripts           && cp -r ~/scripts .
 	@rm -rf uman              && cp -r ~/uman .
@@ -32,6 +33,7 @@ install:
 	@rm -rf ~/.config/rofi      && cp -r .config/rofi ~/.config
 	@rm -rf ~/.config/vim       && cp -r .config/vim ~/.config
 	@rm -rf ~/.config/wezterm   && cp -r .config/wezterm ~/.config
+	@rm -rf ~/.config/yazi      && cp -r .config/yazi ~/.config
 	@rm -rf ~/iman              && cp -r iman ~
 	@rm -rf ~/scripts           && cp -r scripts ~
 	@rm -rf ~/uman              && cp -r uman ~
