@@ -135,6 +135,7 @@ alias wcx='f(){ echo "lines, words, characters:"; cat $(find ./ -type f -iname \
 alias webcam='ffplay -fs -i /dev/video0'
 alias xclip_copy='xclip -selection clipboard'  # cat README.md | xclip_copy
 alias xclip_paste='xclip -selection clipboard -out'  # xclip_paste > README.md
+alias y='yazi'
 alias yank='yank-cli -- xsel -b'
 
 
