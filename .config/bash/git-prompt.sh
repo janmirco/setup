@@ -538,7 +538,11 @@ __git_ps1 ()
     local repo_name="$(git config --get remote.origin.url)"
     if [[ "$repo_name" != "" ]]; then
         if [[ "$repo_name" == *"wuppertal"* ]]; then
-            repo_name="󰮠 ${repo_name:25}"  # remove "git@git.uni-wuppertal.de:"
+            if [[ "$repo_name" == "https"* ]]; then
+                repo_name="󰮠 ${repo_name:70}"  # remove "https://<access-token-name>:<access-token>@git.uni-wuppertal.de/"
+            else
+                repo_name="󰮠 ${repo_name:25}"  # remove "git@git.uni-wuppertal.de:"
+            fi
         elif [[ "$repo_name" == *"rwth"* ]]; then
             repo_name="󰮠 ${repo_name:23}"  # remove "git@git.rwth-aachen.de:"
         elif [[ "$repo_name" == "https://github"* ]]; then
