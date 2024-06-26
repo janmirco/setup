@@ -222,6 +222,7 @@
 /.modular/
 /.mplayer/
 /.npm/
+/.nv/
 /.openjfx/cache/
 /.org.jabref.gui.JabRefMain/
 /.pki/
