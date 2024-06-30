@@ -37,18 +37,16 @@ function download {
         rm -r "$bin_path"/*.tar.xz
 
         echo "$log_sign Downloading new version ..."
-        curl -L "$url" --output "$tar_name" > "$bin_path/$bin_name"_log.txt 2>&1
+        curl -L "$url" --output "$tar_name"
 
         echo "$log_sign Extracting tar ..."
-        tar -C "$bin_path" -xvf "$tar_name" >> "$bin_path/$bin_name"_log.txt 2>&1
+        tar -C "$bin_path" -xf "$tar_name"
 
         echo "$log_sign Removing version from dir name ..."
         mv "$bin_path/node-$version-linux-x64" "$bin_path/node-linux-x64"
 
         echo "$log_sign Updating npm ..."
-        npm install -g npm >> "$bin_path/$bin_name"_log.txt 2>&1
-
-        echo "$log_sign Wrote stdout and stderr to "$bin_path/$bin_name"_log.txt."
+        npm install -g npm
     else
         echo "$log_sign Given URL not found!"
     fi

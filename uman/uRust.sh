@@ -5,6 +5,7 @@ log_sign="[uRust]"
 # See installed crates using: cargo install --list
 
 echo "$log_sign Starting update ..."
+rustup update
 cargo install alacritty
 cargo install --locked bat
 cargo install eza
