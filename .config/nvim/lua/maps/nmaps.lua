@@ -76,6 +76,7 @@ vim.keymap.set("n", "<Tab>", function() vim.cmd("bnext") end, { silent = true })
 vim.keymap.set("n", "<BS>", function() vim.cmd("bprevious") end, { silent = true })
 vim.keymap.set("n", "<A-b>", "<C-o>", { silent = true })
 vim.keymap.set("n", "<A-f>", "<C-i>", { silent = true })
+vim.keymap.set("n", "<leader>rb", ":bufdo %s///ge | update", { desc = "Buffer-wide search/replace", silent = true })
 
 -- close every window except for the current one
 vim.keymap.set("n", "<leader>ow", function()
