@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check if first argument is empty
 if [ "$1" == "" ]; then

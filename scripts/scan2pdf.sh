@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ "$1" == "" ]; then
     pdf_name="SCAN_$(date +%Y-%m-%d_%H%M%S)"

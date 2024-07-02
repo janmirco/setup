@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 directory="."
 if [[ "$1" != "" ]]; then

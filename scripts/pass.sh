@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo '    ____  ____ ___________'
 echo '   / __ \/ __ `/ ___/ ___/'

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function fzf_git_diff() {
   git log --graph --color=always \

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 exp_dir="$HOME/.calcurse/exports"
 ics_file="$exp_dir/calcurse_$(date +%Y-%m-%d_%H%M%S).ics"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ "$1" == "" ]]; then
     echo "Open all files? Press Enter!"

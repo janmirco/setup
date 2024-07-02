@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # gource --frameless -f --start-date "2021-03-28 06:00"
 gource --frameless --seconds-per-day 0.1

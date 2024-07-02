@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 current_dir="$(pwd)"
 for pdf_file in $(ls "$current_dir"/*.pdf); do

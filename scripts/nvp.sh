@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export EDITOR_FULL_LSP_POWER="yes"
 $EDITOR "$@"

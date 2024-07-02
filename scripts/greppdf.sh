@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 dir_name="$(dirname "$1")"
 base_name="$(basename "$1" .pdf)"
