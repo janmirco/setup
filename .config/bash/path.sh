@@ -12,9 +12,9 @@ export PATH="$HOME/bin/abaqus/commands:$PATH"
 export PATH="$HOME/bin/fzf:$PATH"
 
 # deal.II
-export DEAL_II_DIR="$HOME/bin/dealii/install"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/bin/dealii/install/lib"
-export PYTHONPATH="$PYTHONPATH:$HOME/bin/dealii/install/lib/python3.10/site-packages"
+export DEAL_II_DIR="$HOME/github/dealii/dealii/install"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/github/dealii/dealii/install/lib"
+export PYTHONPATH="$PYTHONPATH:$HOME/github/dealii/dealii/install/lib/python3.10/site-packages"
 
 # modular
 export MODULAR_HOME="$HOME/.modular"
