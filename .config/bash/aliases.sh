@@ -113,7 +113,9 @@ alias rm='rm -i'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
 alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
+alias svg2png192='f(){ inkscape --export-width=192 --export-height=192 --export-type="png" "$1"; unset -f f; }; f'
 alias svg2png='f(){ inkscape --export-type="png" "$1"; unset -f f; }; f'
+alias svg2pngWH='f(){ inkscape --export-width="$2" --export-height="$3" --export-type="png" "$1"; unset -f f; }; f'
 alias t='tree -avAC --dirsfirst -I ".git|node_modules|venv"'
 alias tree1='tree -avAC --dirsfirst -I ".git|node_modules|venv" -L 1'
 alias tree2='tree -avAC --dirsfirst -I ".git|node_modules|venv" -L 2'
