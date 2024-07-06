@@ -89,7 +89,6 @@ source "$HOME/.config/bash/path.sh"
 export BAT_THEME="Catppuccin Mocha"
 
 # fzf settings
-source "$HOME/.config/fzf/shell/completion.bash"
-source "$HOME/.config/fzf/shell/key-bindings.bash"
+eval "$(fzf --bash)"  # set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_OPTS="--layout=reverse --border"
 export FZF_DEFAULT_COMMAND="fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file"
