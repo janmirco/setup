@@ -4,7 +4,7 @@ directory="."
 if [[ "$1" != "" ]]; then
     directory="$1"
 fi
-chosen_file="$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file . $directory | fzf --height=75% --preview 'bat --style=numbers --color=always {}')"
+chosen_file="$(fd --hidden --no-ignore-vcs --type file . $directory | fzf --height=75% --preview 'bat --style=numbers --color=always {}')"
 if [[ $? != 0 ]]; then
     exit 1
 fi

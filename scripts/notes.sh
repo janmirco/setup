@@ -8,7 +8,7 @@ echo "/_/ /_/\____/\__/\___/____/"
 echo
 
 # find all git repos in home
-chosen_git_repo="$(fdfind --hidden --no-ignore --type directory '\.git$' $HOME | xargs dirname | fzf --height=10%)"
+chosen_git_repo="$(fd --hidden --no-ignore --type directory '^.git$' $HOME | xargs dirname | fzf --height=10%)"
 
 # check for error in last command
 if [[ $? != 0 ]]; then

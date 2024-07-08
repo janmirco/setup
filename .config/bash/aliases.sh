@@ -108,7 +108,7 @@ alias pv='paraview'
 alias pvnvidia='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia paraview'
 alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; unset -f f; }; f'
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
-alias rg='rg --no-ignore --hidden'
+alias rg='rg --hidden --no-ignore-vcs -g "!{**/.cache/*,**/.cargo/*,**/.git/*,**/.local/*,**/__pycache__/*,**/env/*,**/node_modules/*,**/venv/*}"'
 alias rm='rm -i'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
@@ -206,7 +206,7 @@ alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HO
 
 
 # --------------------------------------------------------------------
-#   fzf and fdfind
+#   fzf and fd
 
 alias cD="source $HOME/scripts/change_directory.sh && change_directory"
 alias cdd="source $HOME/scripts/change_directory.sh && change_directory current_dir"
@@ -215,7 +215,7 @@ alias cdg="source $HOME/scripts/change_directory.sh && change_directory git_repo
 alias fcp='$HOME/scripts/fcp.sh'
 
 alias f='fzf'
-alias fd='fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file'
+alias fd='fd --hidden --no-ignore-vcs'
 
 alias fgd='$HOME/scripts/fgd.sh'
 

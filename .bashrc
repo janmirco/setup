@@ -91,4 +91,4 @@ export BAT_THEME="Catppuccin Mocha"
 # fzf settings
 eval "$(fzf --bash)"  # set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_OPTS="--layout=reverse --border"
-export FZF_DEFAULT_COMMAND="fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file"
+export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file"

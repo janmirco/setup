@@ -8,13 +8,13 @@ echo '         /_/    /____/'
 echo
 
 echo "What?"
-what="$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type file --type directory . $HOME | fzf --height=10%)"
+what="$(fd --hidden --no-ignore-vcs --type file --type directory . $HOME | fzf --height=10%)"
 if [[ $? != 0 ]]; then exit 1; fi
 echo "-> $what"
 echo
 
 echo "Where to?"
-where="$(fdfind --hidden --no-ignore --exclude .git --exclude node_modules --exclude env --exclude __pycache__ --type directory . $HOME | fzf --height=10%)"
+where="$(fd --hidden --no-ignore-vcs --type directory . $HOME | fzf --height=10%)"
 if [[ $? != 0 ]]; then exit 1; fi
 echo "-> $where"
 echo

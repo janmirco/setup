@@ -4,6 +4,7 @@ update:
 	@rm -rf .config/alacritty && cp -r ~/.config/alacritty .config
 	@rm -rf .config/bash      && cp -r ~/.config/bash .config
 	@rm -rf .config/bat       && cp -r ~/.config/bat .config
+	@rm -rf .config/fd        && cp -r ~/.config/fd .config
 	@rm -rf .config/nvim      && cp -r ~/.config/nvim .config
 	@rm -rf .config/rofi      && cp -r ~/.config/rofi .config
 	@rm -rf .config/vim       && cp -r ~/.config/vim .config
@@ -27,6 +28,7 @@ install:
 	@rm -rf ~/.config/alacritty && cp -r .config/alacritty ~/.config
 	@rm -rf ~/.config/bash      && cp -r .config/bash ~/.config
 	@rm -rf ~/.config/bat       && cp -r .config/bat ~/.config
+	@rm -rf ~/.config/fd        && cp -r .config/fd ~/.config
 	@rm -rf ~/.config/nvim      && cp -r .config/nvim ~/.config
 	@rm -rf ~/.config/rofi      && cp -r .config/rofi ~/.config
 	@rm -rf ~/.config/vim       && cp -r .config/vim ~/.config
