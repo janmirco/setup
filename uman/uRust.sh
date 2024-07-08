@@ -6,12 +6,22 @@ log_sign="[uRust]"
 
 echo "$log_sign Starting update ..."
 rustup update
+# cargo install bandwhich
+# cargo install bottom --locked
+# cargo install du-dust
+# cargo install grex
+# cargo install hyperfine --locked
+# cargo install procs
+# cargo install sd
+# cargo install zoxide --locked
 cargo install alacritty
-cargo install --locked bat
+cargo install bat --locked
 cargo install eza
+cargo install fd-find
 cargo install git-delta
+cargo install ripgrep
 cargo install stylua
 cargo install tokei
 cargo install tree-sitter-cli
-cargo install --locked yazi-fm yazi-cli
+cargo install yazi-fm yazi-cli --locked
 echo "$log_sign Finished update."
