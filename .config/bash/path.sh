@@ -5,11 +5,11 @@
 #  / .___/\__,_/\__/_/ /_/
 # /_/
 
+export PATH="$HOME/bin/abaqus/commands:$PATH"
+export PATH="$HOME/bin/fzf:$PATH"
 export PATH="$HOME/bin/klog:$PATH"
 export PATH="$HOME/bin/neovim/nvim-linux64/bin:$PATH"
 export PATH="$HOME/bin/nodejs/node-linux-x64/bin:$PATH"
-export PATH="$HOME/bin/abaqus/commands:$PATH"
-export PATH="$HOME/bin/fzf:$PATH"
 export PATH="$HOME/bin/slicer/slicer-linux-amd64:$PATH"
 
 # deal.II
