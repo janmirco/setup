@@ -8,7 +8,6 @@ echo "$log_sign Starting update ..."
 rustup update
 # cargo install bandwhich
 # cargo install bottom --locked
-# cargo install du-dust
 # cargo install grex
 # cargo install hyperfine --locked
 # cargo install procs
@@ -16,6 +15,7 @@ rustup update
 # cargo install zoxide --locked
 cargo install alacritty
 cargo install bat --locked
+cargo install du-dust
 cargo install eza
 cargo install fd-find
 cargo install git-delta
