@@ -103,3 +103,6 @@
     # reset        HEAD~1  # points head one commit before latest and puts files back in working directory (previous working directory stays intact) --> default flag: `--mixed`
     undo = checkout --
     unstage = reset HEAD --
+    wta = worktree add
+    wtl = worktree list
+    wtr = worktree remove

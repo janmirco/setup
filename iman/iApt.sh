@@ -16,7 +16,7 @@ sudo apt-get install --assume-yes hollywood
 sudo apt-get install --assume-yes python3 python3-doc python3-pip python3-venv
 sudo apt-get install --assume-yes python3-setuptools python-setuptools-doc python3-dev
 sudo apt-get install --assume-yes ipython3
-sudo apt-get install --assume-yes lua5.4
+sudo apt-get install --assume-yes lua5.1 luarocks
 sudo apt-get install --assume-yes fzf ripgrep silversearcher-ag fd-find bat
 sudo apt-get install --assume-yes doc-base stow
 sudo apt-get install --assume-yes cmake make gcc g++ gfortran git build-essential
