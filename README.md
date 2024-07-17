@@ -49,6 +49,49 @@ Update & reboot:
 
 See [here](https://www.gnu.org/software/grub/manual/grub/html_node/Simple-configuration.html).
 
+# SSH
+
+Check `~/.ssh` for existing keys and delete them if you want to create new ones.
+Set up `~/.ssh/config`, for example:
+
+    Host *
+        IdentitiesOnly yes
+
+    Host github.com
+        Hostname github.com
+        User git
+        Port 22
+        PreferredAuthentications publickey
+        IdentityFile /home/jan/.ssh/id_ed25519_github
+
+Create a new key:
+
+    ssh-keygen -t ed25519 -C "your_email@example.com"
+
+Enter file location with postfix, for example `/home/jan/.ssh/id_ed25519_github`.
+Type a secure (but easy to remember) passphrase or none.
+Add your SSH key to the ssh-agent (with example from above):
+
+    eval "$(ssh-agent -s)"
+    ssh-add /home/jan/.ssh/id_ed25519_github
+
+### Use key pair for a git remote
+
+Copy PUBLIC key, use:
+
+    xclip -selection clipboard < /home/jan/.ssh/id_ed25519_github.pub`
+
+Add the SSH key to your GitHub account.
+Test your SSH connection (`hostname` after `@` can be filled with `TAB`):
+
+    ssh -T git@github.com
+
+### Use key pair for any server/computer
+
+Copy key using the following command:
+
+    ssh-copy-id -i /home/jan/.ssh/id_ed25519_other username@remote_host
+
 # Permssions
 
 See: <https://www.chmodcommand.com>
