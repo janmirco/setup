@@ -18,12 +18,14 @@ update:
 	@cp ~/.bashrc .
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
 	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
+	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
 	@cp ~/.config/tmux/tmux.conf .config/tmux
 	@cp ~/.gitignore .config/git/home_ignore
 
 install:
 	@mkdir -p ~/.config/calcurse
 	@mkdir -p ~/.config/git
+	@mkdir -p ~/.config/lazygit
 	@mkdir -p ~/.config/tmux
 	@rm -rf ~/.config/alacritty && cp -r .config/alacritty ~/.config
 	@rm -rf ~/.config/bash      && cp -r .config/bash ~/.config
@@ -42,4 +44,5 @@ install:
 	@cp .bashrc ~
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
 	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
+	@cp .config/lazygit/config.yml ~/.config/lazygit
 	@cp .config/tmux/tmux.conf ~/.config/tmux

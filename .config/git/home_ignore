@@ -87,6 +87,7 @@
 /.config/kwinrc
 /.config/kwinrulesrc
 /.config/kxkbrc
+/.config/lazygit/state.yml
 /.config/matplotlibrc
 /.config/mimeapps.list
 /.config/okularpartrc
@@ -179,7 +180,6 @@
 /.config/kdeconnect/
 /.config/kdedefaults/
 /.config/khtml/
-/.config/lazygit/
 /.config/libaccounts-glib/
 /.config/libreoffice/
 /.config/menus/
