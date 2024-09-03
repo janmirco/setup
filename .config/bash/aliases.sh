@@ -11,7 +11,6 @@ alias aa="$EDITOR $HOME/.config/alacritty/alacritty.toml"
 alias ba="$EDITOR $HOME/.config/bash/aliases.sh"
 alias bb="$EDITOR $HOME/.bashrc"
 alias gg="$EDITOR $HOME/.config/git/config"
-alias gi="$EDITOR $HOME/.gitignore"
 alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
 alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
 alias ndd="$EDITOR $HOME/.todo-txt/README.md"
@@ -31,8 +30,8 @@ alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 alias abq='abaqus cae -mesa'
-alias abqnogui='abaqus cae noGUI=main.py'
-alias abqscript='abaqus cae -mesa script=main.py'
+alias abqnogui='abaqus cae noGUI=main.py; cp abaqus.rpy abaqus_save.rpy'
+alias abqscript='abaqus cae script=main.py -mesa; cp abaqus.rpy abaqus_save.rpy'
 alias animGitHistory='$HOME/scripts/showAnimatedHistory.sh'
 alias ascii='figlet -f big'
 alias bat='bat --pager never'
@@ -203,6 +202,7 @@ alias gfindrepos='find . -name .git -type d -prune'
 alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
+alias gi='$EDITOR "$(git rev-parse --show-toplevel)"/.gitignore'
 
 alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
 alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'

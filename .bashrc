@@ -85,6 +85,9 @@ PS1+='${bold}${blue} \W${reset} $(__git_ps1 "%s")${reset}\n '
 source "$HOME/.config/bash/aliases.sh"
 source "$HOME/.config/bash/path.sh"
 
+# abaqus settings
+export ABQ_USUB_GFORTRAN=1
+
 # bat settings
 export BAT_THEME="Catppuccin Mocha"
 

@@ -59,6 +59,13 @@ sudo apt-get install --assume-yes jq
 
 # Install virtualbox in a separate window because of license agreement
 # sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
+#
+# If there are problems with virtualbox, installing the newest version might help.
+# Download: https://www.virtualbox.org/wiki/Linux_Downloads
+# Then:
+#     - sudo apt-get update && sudo apt-get upgrade
+#     - sudo apt-get remove virtualbox virtualbox-dkms virtualbox-ext-pack virtualbox-qt
+#     - sudo apt-get install ~/Downloads/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
 
 # Some installs via flatpak.
 #     See: https://flathub.org/setup/Kubuntu

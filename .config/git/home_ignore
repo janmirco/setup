@@ -90,6 +90,7 @@
 /.config/lazygit/state.yml
 /.config/matplotlibrc
 /.config/mimeapps.list
+/.config/notificationhelper
 /.config/okularpartrc
 /.config/okularrc
 /.config/partitionmanagerrc
@@ -149,6 +150,8 @@
 /.zshenv
 /abaqus_2024.gpr
 /fonts.conf
+/package-lock.json
+/package.json
 
 # directories
 /.byobu/
@@ -248,6 +251,7 @@
 /github/
 /library/
 /Music/
+/node_modules/
 /Pictures/
 /Public/
 /sciebo/

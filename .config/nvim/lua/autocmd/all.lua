@@ -1,6 +1,6 @@
 local all_group = vim.api.nvim_create_augroup("AllAugroup", { clear = true })
 
-vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }, {
+vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "BufRead", "BufWinEnter", "FileType" }, {
     group = all_group,
     pattern = "*",
     callback = function()
