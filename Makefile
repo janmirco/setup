@@ -17,7 +17,7 @@ update:
 	@cp ~/.bash_logout .
 	@cp ~/.bashrc .
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
-	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
+	@cp -r ~/.config/git/hooks/ ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
 	@cp ~/.config/tmux/tmux.conf .config/tmux
 	@cp ~/.gitignore .config/git/home_ignore

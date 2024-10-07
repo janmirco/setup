@@ -100,6 +100,7 @@
 /.config/plasmanotifyrc
 /.config/plasmarc
 /.config/plasmashellrc
+/.config/plasmawindowed*
 /.config/powerdevilrc
 /.config/powermanagementprofilesrc
 /.config/print-manager
@@ -168,6 +169,7 @@
 /.config/dconf/
 /.config/enchant/
 /.config/fltk.org/
+/.config/fontforge/
 /.config/freerdp/
 /.config/ghb/
 /.config/GIMP/

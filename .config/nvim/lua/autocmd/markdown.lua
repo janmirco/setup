@@ -1,8 +1,6 @@
--- local markdown_group = vim.api.nvim_create_augroup("MarkdownAutoFormatAugroup", { clear = true })
--- vim.api.nvim_create_autocmd("BufWritePost", {
---     group = markdown_group,
---     pattern = "*.md",
---     callback = function() vim.cmd(":silent exec '! npx prettier --tab-width 4 --write %'") end,
---     -- The problem with wrong formatting of lists when using tab width of 4 should be solved soon. See:
---     -- https://github.com/prettier/prettier/pull/15526#issuecomment-2282854292
--- })
+local markdown_group = vim.api.nvim_create_augroup("MarkdownAutoFormatAugroup", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = markdown_group,
+    pattern = "*.md",
+    callback = function() vim.cmd(":silent exec '! npx prettier --tab-width 4 --write %'") end,
+})
