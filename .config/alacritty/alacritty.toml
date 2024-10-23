@@ -1,3 +1,4 @@
+[general]
 import = [
     "~/.config/alacritty/colors/linux.toml",
 ]
@@ -20,7 +21,7 @@ hide_when_typing = true
 # size = 10.25  # monitor (home)
 size = 12.75  # monitor (home)
 # size = 13.0  # laptop
-# size = 14.0  # monitor (office)
+# size = 14.0  # monitor (office/home)
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"

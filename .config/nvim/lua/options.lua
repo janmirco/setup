@@ -44,7 +44,7 @@ vim.opt.showmatch = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = false
 
-vim.opt.showtabline = 0 -- You do not want tabs! Trust me.
+vim.opt.showtabline = 2 -- You do not want tabs! Trust me. -- I know. I'm bad. But please let me try it out for a few weeks.
 vim.opt.tabpagemax = 100
 
 vim.opt.autoread = true

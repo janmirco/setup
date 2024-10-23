@@ -1,6 +1,9 @@
 -- remap gv (reselection in visual mode) for use with git
 vim.keymap.set("n", "gV", "gv", { desc = "Start visual mode with previous area", silent = true })
 
+-- remap macros in order to enable q to quit buffer
+vim.keymap.set("n", "Q", "q", { desc = "Record macro", silent = true })
+
 -- toggle local spell check
 local toggle_spell = function(language)
     local spell_on = vim.api.nvim_eval("&spell") == 1
@@ -60,6 +63,7 @@ vim.keymap.set("n", "<leader>W", function()
     vim.cmd("wall")
     print("All files written")
 end, { desc = "wall", silent = true })
+vim.keymap.set("n", "<leader>q", function() vim.cmd("quit") end, { desc = "quit", silent = true })
 vim.keymap.set("n", "<leader>Q", function() vim.cmd("qall") end, { desc = "qall", silent = true })
 vim.keymap.set("n", "<leader>a", function()
     vim.cmd("wall")
@@ -71,7 +75,14 @@ vim.keymap.set("n", "<leader>v", ":vsplit ", { desc = "vsplit", silent = true })
 vim.keymap.set("n", "<leader>s", ":split ", { desc = "split", silent = true })
 
 -- buffers
-vim.keymap.set("n", "<leader>q", function() vim.cmd("bdelete") end, { desc = "Delete current buffer", silent = true })
+vim.keymap.set("n", "q", function()
+    local buffer_count = #vim.fn.getbufinfo({ buflisted = 1 })
+    if buffer_count > 1 then
+        vim.cmd("bdelete")
+    else
+        vim.cmd("quit")
+    end
+end, { desc = "Delete current buffer", silent = true })
 vim.keymap.set("n", "<Tab>", function() vim.cmd("bnext") end, { silent = true })
 vim.keymap.set("n", "<BS>", function() vim.cmd("bprevious") end, { silent = true })
 vim.keymap.set("n", "<A-b>", "<C-o>", { silent = true })
