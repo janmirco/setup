@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# ==============================================================================
+#   APT installs
 
 # initial update and upgrade
 sudo apt-get update && sudo apt-get upgrade --assume-yes
@@ -57,39 +60,22 @@ sudo apt-get install --assume-yes default-jre default-jdk
 sudo apt-get install --assume-yes remmina*
 sudo apt-get install --assume-yes jq
 
-# Install virtualbox in a separate window because of license agreement
-# sudo apt-get install --assume-yes virtualbox virtualbox-ext-pack
+# Manual APT installs
 #
-# If there are problems with virtualbox, installing the newest version might help.
-# Download: https://www.virtualbox.org/wiki/Linux_Downloads
-# Then:
-#     - sudo apt-get update && sudo apt-get upgrade
-#     - sudo apt-get remove virtualbox virtualbox-dkms virtualbox-ext-pack virtualbox-qt
-#     - sudo apt-get install ~/Downloads/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
-
-# Some installs via flatpak.
-#     See: https://flathub.org/setup/Kubuntu
-#     Run:
-#         sudo apt-get install --assume-yes flatpak plasma-discover-backend-flatpak
-#         flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-#         sudo reboot
-#     Install:
-#         flatpak install flathub org.gnome.World.PikaBackup
-#     If no icon or no desktop entry, see https://github.com/alacritty/alacritty/blob/master/INSTALL.md#desktop-entry and do, e.g., for icon:
-#         sudo cp /var/lib/flatpak/app/org.gnome.World.PikaBackup/current/active/export/share/icons/hicolor/scalable/apps/org.gnome.World.PikaBackup.svg /usr/share/pixmaps/
-
-# Some installs via .deb packages.
-#     Download from:
-#         - https://zoom.us/download
-#         - https://code.visualstudio.com/download
-#         - https://obsidian.md/download
-#         - https://www.microsoft.com/en-us/edge/download
-#     Install:
-#         sudo apt-get update && sudo apt-get upgrade --assume-yes
-#         sudo apt-get install --assume-yes ~/Downloads/zoom_amd64.deb
-#         sudo apt-get install --assume-yes ~/Downloads/code_<VERSION>_amd64.deb
-#         sudo apt-get install --assume-yes ~/Downloads/obsidian_<VERSION>_amd64.deb
-#         sudo apt-get install --assume-yes ~/Downloads/microsoft-edge-stable_<VERSION>_amd64.deb
+# Downloads:
+#
+# - https://zoom.us/download
+# - https://code.visualstudio.com/download
+# - https://obsidian.md/download
+# - https://www.virtualbox.org/wiki/Linux_Downloads
+#
+# Commands:
+#
+#     sudo apt-get update && sudo apt-get upgrade --assume-yes
+#     sudo apt-get install --assume-yes ~/Downloads/zoom_amd64.deb
+#     sudo apt-get install --assume-yes ~/Downloads/code_<VERSION>_amd64.deb
+#     sudo apt-get install --assume-yes ~/Downloads/obsidian_<VERSION>_amd64.deb
+#     sudo apt-get install --assume-yes ~/Downloads/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
 
 # Brave
 if ! command -v brave-browser &> /dev/null; then
@@ -102,3 +88,26 @@ fi
 
 # final update and upgrade
 sudo apt-get update && sudo apt-get upgrade --assume-yes
+
+# ==============================================================================
+#   Snap installs
+
+sudo snap refresh
+sudo snap install chromium  # chromium will be set as default --> manually change back to firefox
+sudo snap install chromium-ffmpeg
+sudo snap install jabref
+sudo snap install spotify
+sudo snap refresh
+
+# ==============================================================================
+#   Flatpak installs
+
+# See: https://flathub.org/setup/Kubuntu
+#
+# Commands:
+#
+#     sudo apt-get install --assume-yes flatpak plasma-discover-backend-flatpak
+#     sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#     sudo reboot
+#     sudo flatpak install flathub org.gnome.World.PikaBackup
+#     sudo flatpak update
