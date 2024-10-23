@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 bin_name="nodejs"
 log_sign="[uNodejs]"

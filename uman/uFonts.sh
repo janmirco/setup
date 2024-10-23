@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 log_sign="[uFonts]"
 echo "$log_sign Starting update ..."

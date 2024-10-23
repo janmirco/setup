@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 bin_name="neovim"
 log_sign="[uNeovim]"
