@@ -83,6 +83,22 @@ Copy key using the following command:
 
     ssh-copy-id -i /home/jan/.ssh/id_ed25519_other username@remote_host
 
+# Rsync
+
+You can back up all of your files to an external hard drive with the following command.
+
+    rsync -aAXzv SOURCE DESTINATION
+
+    --archive, -a            archive mode is -rlptgoD (no -A,-X,-U,-N,-H)
+    --acls, -A               preserve ACLs (implies --perms)
+    --xattrs, -X             preserve extended attributes
+    --verbose, -v
+    --compress, -z           compress file data during the transfer
+
+You can use `rsync` over SSH to a remote location using the following command.
+
+    rsync -aAXzv -e ssh SOURCE DESTINATION
+
 # Permssions
 
 See: <https://www.chmodcommand.com>
