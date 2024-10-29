@@ -3,5 +3,5 @@
 log_sign="[uFlatpak]"
 
 echo "$log_sign Starting update ..."
-sudo flatpak update
+sudo flatpak update --assumeyes
 echo "$log_sign Finished update."
