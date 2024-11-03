@@ -95,3 +95,7 @@ export BAT_THEME="Catppuccin Mocha"
 eval "$(fzf --bash)"  # set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_OPTS="--layout=reverse --border"
 export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file"
+
+# starship settings
+eval "$(starship init bash)"
+export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"

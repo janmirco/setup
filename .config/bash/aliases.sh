@@ -15,6 +15,7 @@ alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
 alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
 alias ndd="$EDITOR $HOME/.todo-txt/README.md"
 alias nn="$EDITOR $HOME/.config/nvim/init.lua"
+alias ss="$EDITOR $HOME/.config/starship/config.toml"
 alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
@@ -361,6 +362,7 @@ alias uNodejs='$HOME/uman/uNodejs.sh'
 alias uRust='$HOME/uman/uRust.sh'
 alias uSlicer='$HOME/uman/uSlicer.sh'
 alias uSnap='$HOME/uman/uSnap.sh'
+alias uStarship='$HOME/uman/uStarship.sh'
 alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
 

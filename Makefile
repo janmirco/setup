@@ -7,6 +7,7 @@ update:
 	@rm -rf .config/fd        && cp -r ~/.config/fd .config
 	@rm -rf .config/nvim      && cp -r ~/.config/nvim .config
 	@rm -rf .config/rofi      && cp -r ~/.config/rofi .config
+	@rm -rf .config/starship  && cp -r ~/.config/starship .config
 	@rm -rf .config/vim       && cp -r ~/.config/vim .config
 	@rm -rf .config/wezterm   && cp -r ~/.config/wezterm .config
 	@rm -rf .config/yazi      && cp -r ~/.config/yazi .config
@@ -33,6 +34,7 @@ install:
 	@rm -rf ~/.config/fd        && cp -r .config/fd ~/.config
 	@rm -rf ~/.config/nvim      && cp -r .config/nvim ~/.config
 	@rm -rf ~/.config/rofi      && cp -r .config/rofi ~/.config
+	@rm -rf ~/.config/starship  && cp -r .config/starship ~/.config
 	@rm -rf ~/.config/vim       && cp -r .config/vim ~/.config
 	@rm -rf ~/.config/wezterm   && cp -r .config/wezterm ~/.config
 	@rm -rf ~/.config/yazi      && cp -r .config/yazi ~/.config

@@ -1,0 +1,51 @@
+add_newline = false
+format = '$directory$custom$all'
+
+[character]
+success_symbol = ''
+error_symbol = ''
+
+[directory]
+format = '[ $path]($style)[$read_only]($read_only_style) '
+style = 'bold blue'
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+symbol = ' '
+
+[git_status]
+format = '[($ahead_behind )($all_status )]($style)'
+ahead = '[󰁝](bold cyan)'
+behind = '[󰁅](bold cyan)'
+diverged = '[󰹹](bold cyan)'
+up_to_date = '[=](bold cyan)'
+staged = '[+](bold green)'
+untracked = '[?](bold yellow)'
+conflicted = '󰖓 '
+stashed = ''
+
+[c]
+disabled = true
+
+[cmake]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[lua]
+disabled = true
+
+[perl]
+disabled = true
+
+[python]
+format = '[($symbol$virtualenv )]($style)'
+symbol = '󰌠 '
+style = 'yellow'
+
+[custom.git_repo]
+command = 'repo_url="$(git config --get remote.origin.url)"; repo_name=$(basename "$repo_url" ".git"); if [[ "$repo_url" == *"github"* ]]; then repo_name="󰊤 $repo_name"; else repo_name="󰮠 $repo_name"; fi; echo "$repo_name"'
+when = ''' [[ "$(git config --get remote.origin.url)" != "" ]] '''
+format = '[$output]($style) '
+style = ''

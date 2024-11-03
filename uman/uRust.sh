@@ -13,6 +13,7 @@ cargo install eza
 cargo install fd-find
 cargo install git-delta
 cargo install ripgrep
+cargo install starship --locked
 cargo install stylua
 cargo install tokei
 cargo install tree-sitter-cli
