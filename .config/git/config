@@ -62,6 +62,7 @@
     ci = commit
     cia = commit --amend
     cianoedit = commit --amend --no-edit
+    cin = commit --no-verify
     cl = clean -dx --dry-run
     clf = clean -dx --force
     co = checkout
