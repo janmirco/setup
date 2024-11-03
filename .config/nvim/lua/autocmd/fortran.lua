@@ -9,7 +9,7 @@ end
 local fortran_free_group = vim.api.nvim_create_augroup("FortranFreeAugroup", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter", "BufRead" }, {
     group = fortran_free_group,
-    pattern = { "*.f90", "Irun*", "feap*" },
+    pattern = { "*.f90", "Irun*", "*feap*" },
     callback = function()
         vim.cmd("setfiletype fortran")
         vim.g.fortran_free_source = 1

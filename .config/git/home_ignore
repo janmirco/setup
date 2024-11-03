@@ -9,6 +9,7 @@
 /.anyconnect
 /.bash_history
 /.config/akonadi-firstrunrc
+/.config/akonadi-migrationrc
 /.config/akonadi_akonotes_resource_0rc
 /.config/akonadi_contacts_resource_0rc
 /.config/akonadi_ical_resource_0rc
@@ -18,7 +19,6 @@
 /.config/arkrc
 /.config/baloofileinformationrc
 /.config/bluedevilglobalrc
-/.config/btop/
 /.config/device_automounter_kcmrc
 /.config/discoverrc
 /.config/dolphinrc
@@ -94,6 +94,7 @@
 /.config/okularpartrc
 /.config/okularrc
 /.config/partitionmanagerrc
+/.config/phishingurlrc
 /.config/plasma-localerc
 /.config/plasma-org.kde.plasma.desktop-appletsrc
 /.config/plasma.emojierrc
@@ -163,6 +164,7 @@
 /.config/akonadi/
 /.config/autostart/
 /.config/BraveSoftware/
+/.config/btop/
 /.config/cat_installer/
 /.config/cef_user_data/
 /.config/coc/

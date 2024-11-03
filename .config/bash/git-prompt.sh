@@ -535,24 +535,14 @@ __git_ps1 ()
 
     local f="$s$u$w$i"
     local gitstring=""
-    local repo_name="$(git config --get remote.origin.url)"
-    if [[ "$repo_name" != "" ]]; then
-        if [[ "$repo_name" == *"wuppertal"* ]]; then
-            if [[ "$repo_name" == "https"* ]]; then
-                repo_name="󰮠 ${repo_name:70}"  # remove "https://<access-token-name>:<access-token>@git.uni-wuppertal.de/"
-            else
-                repo_name="󰮠 ${repo_name:25}"  # remove "git@git.uni-wuppertal.de:"
-            fi
-        elif [[ "$repo_name" == *"rwth"* ]]; then
-            repo_name="󰮠 ${repo_name:23}"  # remove "git@git.rwth-aachen.de:"
-        elif [[ "$repo_name" == "https://github"* ]]; then
-            repo_name="󰊤 ${repo_name:19}"  # remove "https://github.com/"
-        elif [[ "$repo_name" == *"github"* ]]; then
-            repo_name="󰊤 ${repo_name:15}"  # remove "git@github.com:"
-        elif [[ "$repo_name" == *"gitlab"* ]]; then
-            repo_name="󰮠 ${repo_name:15}"  # remove "git@gitlab.com:"
+    local repo_url="$(git config --get remote.origin.url)"
+    if [[ "$repo_url" != "" ]]; then
+        local repo_name=$(basename "$repo_url" ".git")
+        if [[ "$repo_url" == *"github"* ]]; then
+            repo_name="󰊤 $repo_name"
+        else
+            repo_name="󰮠 $repo_name"
         fi
-        repo_name=${repo_name::-4}  # remove ".git"
         gitstring+="${reset}${white}$repo_name${reset} "
     fi
     gitstring+="${bold}${magenta} $c$b $p${f:+$z$f}$r"
