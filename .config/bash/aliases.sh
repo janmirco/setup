@@ -191,6 +191,8 @@ alias gw='git show'
 alias gv='git difftool'
 alias gm='git mergetool'
 
+alias gc='$EDITOR -c "lua require(\"neogit\").open({ \"commit\" })"'
+
 git_format="%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an%  ->%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"
 
 alias gl='git log    -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
@@ -199,8 +201,8 @@ alias gbr='git log --all --date-order --branches --remotes --tags --graph --abbr
 alias glist='git ls-tree --full-tree -r --name-only HEAD'
 
 alias G='$HOME/bin/lazygit/lazygit'
-alias g='clear    && git status --short && echo                    && echo && git log  -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
-alias gs='clear && git status --short'
+alias g='clear    && git status --short'
+alias gs='clear   && git status --short && echo                    && echo && git log  -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
 alias gss='clear  && git status         && echo && git diff --stat && echo && git log -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
 alias gsss='clear && git status && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
 

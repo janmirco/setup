@@ -1,5 +1,12 @@
 add_newline = false
-format = '$directory$custom$all'
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$directory\
+${custom.git_repo}\
+$all"""
 
 [character]
 success_symbol = ''
@@ -8,6 +15,9 @@ error_symbol = ''
 [directory]
 format = '[ $path]($style)[$read_only]($read_only_style) '
 style = 'bold blue'
+
+[fill]
+symbol = ' '
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
@@ -41,11 +51,18 @@ disabled = true
 
 [python]
 format = '[($symbol$virtualenv )]($style)'
-symbol = '󰌠 '
-style = 'yellow'
 
 [custom.git_repo]
-command = 'repo_url="$(git config --get remote.origin.url)"; repo_name=$(basename "$repo_url" ".git"); if [[ "$repo_url" == *"github"* ]]; then repo_name="󰊤 $repo_name"; else repo_name="󰮠 $repo_name"; fi; echo "$repo_name"'
-when = ''' [[ "$(git config --get remote.origin.url)" != "" ]] '''
 format = '[$output]($style) '
 style = ''
+when = ''' [[ "$(git config --get remote.origin.url)" != "" ]] '''
+command = '''
+repo_url="$(git config --get remote.origin.url)"
+repo_name=$(basename "$repo_url" ".git")
+if [[ "$repo_url" == *"github"* ]]; then
+    repo_name="󰊤 $repo_name"
+else
+    repo_name="󰮠 $repo_name"
+fi
+echo "$repo_name"
+'''
