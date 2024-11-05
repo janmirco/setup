@@ -55,7 +55,8 @@ format = '[$symbol$branch(:$remote_branch)]($style) '
 symbol = ' '
 
 [git_status]
-format = '[($ahead_behind )($all_status )]($style)'
+format = '[(\[$ahead_behind)( $all_status)]($style)'
+style = ''
 # ahead_behind
 ahead = '[󰁝](bold cyan)'
 behind = '[󰁅](bold cyan)'
@@ -72,12 +73,12 @@ staged = ''
 untracked = '[?](bold yellow)'
 
 [custom.git_staged]
-format = '[($output )]($style)'
+format = '[( $output)]($style)\] '
 style = 'bold green'
 when = ''
 command = '''
 staged=""
-if git status --porcelain | grep -E '^(A  |AD |D  |M  |R  )' > /dev/null; then
+if git status --porcelain | grep -E '^(A  |AD |D  |M  |R  |RD )' > /dev/null; then
     staged="+"
 fi
 echo "$staged"
