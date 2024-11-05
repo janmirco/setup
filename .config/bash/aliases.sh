@@ -184,6 +184,8 @@ alias kT='klog total $HOME/.klog/worktimes.klg --now'
 # --------------------------------------------------------------------
 #   Git
 
+alias G='$HOME/bin/lazygit/lazygit'
+
 alias gd='git diff'
 alias gb='git blame'
 alias gw='git show'
@@ -195,16 +197,17 @@ alias gc='$EDITOR -c "lua require(\"neogit\").open({ \"commit\" })"'
 
 git_format="%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an%  ->%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"
 
-alias gl='git log    -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
-alias gll='git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
-alias gbr='git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --simplify-by-decoration --oneline'
-alias glist='git ls-tree --full-tree -r --name-only HEAD'
+alias gl='git log    -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
+alias gll='git log  -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
+alias gL='git log --all --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
 
-alias G='$HOME/bin/lazygit/lazygit'
-alias g='clear    && git status --short'
-alias gs='clear   && git status --short && echo                    && echo && git log  -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
-alias gss='clear  && git status         && echo && git diff --stat && echo && git log -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format" && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
-alias gsss='clear && git status && echo && echo "${bold}${yellow}[STASH LIST]:${reset}" && git stash list'
+alias glbr='git log --all --simplify-by-decoration --oneline'
+alias glistfiles='git ls-tree --full-tree -r --name-only HEAD'
+
+alias cg='clear; git status --short'
+alias g='git status --short'
+alias gs='git status --short && echo && git diff --stat && echo && echo ${bold}${black}[STASH LIST]:${reset} && git stash list'
+alias gss='git status        && echo && git diff --stat && echo && echo ${bold}${black}[STASH LIST]:${reset} && git stash list'
 
 alias gfindrepos='find . -name .git -type d -prune'
 alias gcountrepos='find . -name .git -type d -prune | wc --lines'

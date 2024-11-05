@@ -9,6 +9,12 @@ $localip\
 $shlvl\
 $directory\
 ${custom.git_repo}\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+${custom.git_staged}\
 $all"""
 
 [character]
@@ -29,21 +35,6 @@ disabled = false
 # ==============================================================================
 #   Git
 
-[git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style) '
-symbol = ' '
-
-[git_status]
-format = '[($ahead_behind )($all_status )]($style)'
-ahead = '[󰁝](bold cyan)'
-behind = '[󰁅](bold cyan)'
-diverged = '[󰹹](bold cyan)'
-up_to_date = '[=](bold cyan)'
-staged = '[+](bold green)'
-untracked = '[?](bold yellow)'
-conflicted = '󰖓 '
-stashed = ''
-
 [custom.git_repo]
 format = '[$output]($style) '
 style = ''
@@ -57,6 +48,39 @@ else
     repo_name="󰮠 $repo_name"
 fi
 echo "$repo_name"
+'''
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+symbol = ' '
+
+[git_status]
+format = '[($ahead_behind )($all_status )]($style)'
+# ahead_behind
+ahead = '[󰁝](bold cyan)'
+behind = '[󰁅](bold cyan)'
+diverged = '[󰹹](bold cyan)'
+up_to_date = '[=](bold cyan)'
+# all_status
+conflicted = '[󰖓 ](bold red)'
+stashed = '[\$](bold black)'
+deleted = '[✘](bold black)'
+renamed = '[»](bold black)'
+modified = '[!](bold red)'
+typechanged = '[«](bold black)'
+staged = ''
+untracked = '[?](bold yellow)'
+
+[custom.git_staged]
+format = '[($output )]($style)'
+style = 'bold green'
+when = ''
+command = '''
+staged=""
+if git status --porcelain | grep -E '^(A  |AD |D  |M  |R  )' > /dev/null; then
+    staged="+"
+fi
+echo "$staged"
 '''
 
 # ==============================================================================
