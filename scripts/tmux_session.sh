@@ -17,6 +17,7 @@ function new_window {
     if [[ "$3" != "1" ]]; then
         tmux new-window -t "$1":"$3" -n "$4" -c "$2"
     fi
+    tmux rename-window -t "$1":"$3" "$4"
 }
 
 function top_bottom {
