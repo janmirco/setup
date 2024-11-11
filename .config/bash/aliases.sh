@@ -184,7 +184,7 @@ alias kT='klog total $HOME/.klog/worktimes.klg --now'
 # --------------------------------------------------------------------
 #   Git
 
-alias G='$HOME/bin/lazygit/lazygit'
+alias G='lazygit'
 
 alias gd='git diff'
 alias gb='git blame'
@@ -333,20 +333,17 @@ alias pgrep='ps -A | rg -i'
 # --------------------------------------------------------------------
 #   TMUX
 
-alias tn='tmux -u'
-alias tnew='tmux -u new -s "$(basename "$(pwd)")"'  # -s SESSION_NAME
-alias ta='tmux -u attach'  # -t TARGET_SESSION
-alias td='tmux detach'  # -t TARGET_SESSION
-alias trses='tmux rename-session'  # -t TARGET_SESSION NEW_NAME (unfortunately, `tr` is the name of a GNU program)
-alias trwin='tmux rename-window "$(basename "$(pwd)")"'  # -t TARGET_SESSION NEW_NAME (unfortunately, `tr` is the name of a GNU program)
-alias tls='tmux list-sessions'
+alias ta='tmux -u attach'
+alias tat='tmux -u attach -t'
+alias td='tmux detach'
+alias tkt='tmux kill-session -t'
+alias tl='tmux list-sessions'
 alias tlk='tmux list-keys'
+alias tn='tmux -u'
+alias tnew='tmux -u new -s "$(basename "$(pwd)")"'
+alias trses='tmux rename-session'
+alias trwin='tmux rename-window "$(basename "$(pwd)")"'
 alias ts="$HOME/scripts/tmux_session.sh"
-
-# kill commands to dangerous as an alias! Do it manually by:
-# tmux kill-session  # to kill last attached session
-# tmux kill-session -t TARGET_SESSION
-# tmux kill-server
 
 
 # --------------------------------------------------------------------
