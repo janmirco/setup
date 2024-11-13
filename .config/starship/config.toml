@@ -55,7 +55,7 @@ format = '[$symbol$branch(:$remote_branch)]($style) '
 symbol = ' '
 
 [git_status]
-format = '[(\[$ahead_behind)( $all_status)]($style)'
+format = '\[[($ahead_behind)( $all_status)]($style)'
 style = ''
 # ahead_behind
 ahead = '[󰁝](bold cyan)'
@@ -78,7 +78,7 @@ style = 'bold green'
 when = ''
 command = '''
 staged=""
-if git status --porcelain | grep -E '^(A  |AD |D  |M  |R  |RD )' > /dev/null; then
+if git status --porcelain | grep -E '^(A  |AD |AM |D  |M  |R  |RD )' > /dev/null; then
     staged="+"
 fi
 echo "$staged"
