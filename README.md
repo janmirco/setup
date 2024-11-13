@@ -99,6 +99,10 @@ You can use `rsync` over SSH to a remote location using the following command.
 
     rsync -aAXzv -e ssh SOURCE DESTINATION
 
+For example, you can copy/update the file `some.txt` from your home directory to a remote home directory with this command.
+
+    rsync -aAXzv -e ssh ~/some.txt USER_NAME@IP_ADDRESS:~
+
 # Permssions
 
 See: <https://www.chmodcommand.com>
