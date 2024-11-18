@@ -5,6 +5,7 @@ update:
 	@rm -rf .config/bash      && cp -r ~/.config/bash .config
 	@rm -rf .config/bat       && cp -r ~/.config/bat .config
 	@rm -rf .config/fd        && cp -r ~/.config/fd .config
+	@rm -rf .config/glow      && cp -r ~/.config/glow .config
 	@rm -rf .config/nvim      && cp -r ~/.config/nvim .config
 	@rm -rf .config/rofi      && cp -r ~/.config/rofi .config
 	@rm -rf .config/starship  && cp -r ~/.config/starship .config
@@ -32,6 +33,7 @@ install:
 	@rm -rf ~/.config/bash      && cp -r .config/bash ~/.config
 	@rm -rf ~/.config/bat       && cp -r .config/bat ~/.config
 	@rm -rf ~/.config/fd        && cp -r .config/fd ~/.config
+	@rm -rf ~/.config/glow      && cp -r .config/glow ~/.config
 	@rm -rf ~/.config/nvim      && cp -r .config/nvim ~/.config
 	@rm -rf ~/.config/rofi      && cp -r .config/rofi ~/.config
 	@rm -rf ~/.config/starship  && cp -r .config/starship ~/.config
