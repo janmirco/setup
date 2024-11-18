@@ -54,6 +54,7 @@
 /.config/kdeglobals
 /.config/kdenlive-layoutsrc
 /.config/kdenliverc
+/.config/kdialogrc
 /.config/kdiff3fileitemactionrc
 /.config/keditfiletyperc
 /.config/kfontinstuirc

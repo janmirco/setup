@@ -12,6 +12,14 @@ return {
         end,
     },
     {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        opts = {
+            sign = { enabled = false },
+            latex = { enabled = false },
+        },
+    },
+    {
         "jakewvincent/mkdnflow.nvim",
         ft = "markdown",
         config = function()
@@ -25,7 +33,7 @@ return {
                     priority = "current",
                 },
                 links = {
-                    conceal = true,
+                    conceal = false,
                     transform_explicit = function(text) return text:gsub(" ", "_") end,
                 },
                 to_do = {
