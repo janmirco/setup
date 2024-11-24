@@ -24,7 +24,8 @@ return {
 
             telescope.setup({
                 defaults = {
-                    prompt_prefix = "> ",
+                    prompt_prefix = " ",
+                    selection_caret = "󰁔 ",
                     layout_config = { prompt_position = "top" },
                     sorting_strategy = "ascending",
                     mappings = {
@@ -32,6 +33,8 @@ return {
                             ["<A-y>"] = yank_current_selection,
                             ["<Tab>"] = actions.move_selection_next,
                             ["<S-Tab>"] = actions.move_selection_previous,
+                            ["<A-j>"] = "preview_scrolling_down", -- <C-d>
+                            ["<A-k>"] = "preview_scrolling_up", -- <C-u>
                         },
                         n = {
                             ["<A-y>"] = yank_current_selection,

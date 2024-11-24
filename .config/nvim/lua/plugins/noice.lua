@@ -14,7 +14,10 @@ return {
         config = function()
             local noice = require("noice")
             noice.setup({
-                lsp = { progress = { enabled = false } },
+                lsp = {
+                    progress = { enabled = false },
+                    signature = { auto_open = { enabled = false } },
+                },
                 presets = {
                     command_palette = true,
                     lsp_doc_border = true,

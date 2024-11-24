@@ -1,0 +1,9 @@
+[[manager.prepend_keymap]]
+on = ["<A-j>"]
+run = "seek 1"
+desc = "Scroll to next page in preview"
+
+[[manager.prepend_keymap]]
+on = ["<A-k>"]
+run = "seek -1"
+desc = "Scroll to previous page in preview"

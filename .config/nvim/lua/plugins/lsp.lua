@@ -30,6 +30,7 @@ return {
             local on_attach = function()
                 vim.keymap.set("n", "<leader>L", function() vim.lsp.stop_client(vim.lsp.get_clients()) end, { desc = "[LSP] Stop client", silent = true })
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "[LSP] Hover", silent = true })
+                vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "[LSP] Show signature help", silent = true }) -- when typing function arguments
                 vim.keymap.set("n", "[d", function()
                     vim.diagnostic.goto_prev()
                     vim.cmd("normal zz")
