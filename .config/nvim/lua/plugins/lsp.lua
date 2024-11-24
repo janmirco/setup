@@ -95,6 +95,7 @@ return {
             lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.texlab.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.vimls.setup({ capabilities = capabilities, on_attach = on_attach })
+            lspconfig.zls.setup({ capabilities = capabilities, on_attach = on_attach })
         end,
     },
 }

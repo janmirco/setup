@@ -368,6 +368,7 @@ alias uSnap='$HOME/uman/uSnap.sh'
 alias uStarship='$HOME/uman/uStarship.sh'
 alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
+alias uZig='$HOME/uman/uZig.sh'
 
 
 # --------------------------------------------------------------------

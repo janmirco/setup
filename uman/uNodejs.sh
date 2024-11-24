@@ -8,7 +8,7 @@ dir_name="$bin_path/node-linux-x64"
 echo "$log_sign Current version: "$(node --version)""
 
 # find new stable version number
-version="$(curl --silent --location https://nodejs.org/en/download/)"
+version="$(curl --silent --location https://nodejs.org/en)"
 if [[ "$version" =~ v2[0-9]\.[0-9][0-9]\.[0-9][0-9]? ]]; then
     version="${BASH_REMATCH[0]}"
 else

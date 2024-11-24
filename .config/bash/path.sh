@@ -13,6 +13,7 @@ export PATH="$HOME/bin/marp:$PATH"
 export PATH="$HOME/bin/neovim/nvim-linux64/bin:$PATH"
 export PATH="$HOME/bin/nodejs/node-linux-x64/bin:$PATH"
 export PATH="$HOME/bin/slicer/slicer-linux-amd64:$PATH"
+export PATH="$HOME/bin/zig/zig:$PATH"
 
 # deal.II
 export DEAL_II_DIR="$HOME/github/dealii/dealii/install"

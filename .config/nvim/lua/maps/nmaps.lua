@@ -45,6 +45,17 @@ local toggle_winbar = function()
 end
 vim.keymap.set("n", "<A-W>", toggle_winbar, { desc = "Toggle winbar", silent = true })
 
+-- toggle tabline
+local toggle_tabline = function()
+    local tabline_off = vim.api.nvim_eval("&showtabline") == 0
+    if tabline_off then
+        vim.opt.showtabline = 2
+    else
+        vim.opt.showtabline = 0
+    end
+end
+vim.keymap.set("n", "<A-b>", toggle_tabline, { desc = "Toggle tabline", silent = true })
+
 -- toggle any option
 local toggle = function(option) vim.opt[option] = not (vim.api.nvim_eval("&" .. option) == 1) end
 vim.keymap.set("n", "<A-w>", function() toggle("wrap") end, { desc = "Toggle wrap", silent = true })
@@ -85,8 +96,6 @@ vim.keymap.set("n", "q", function()
 end, { desc = "Delete current buffer", silent = true })
 vim.keymap.set("n", "<Tab>", function() vim.cmd("bnext") end, { silent = true })
 vim.keymap.set("n", "<BS>", function() vim.cmd("bprevious") end, { silent = true })
-vim.keymap.set("n", "<A-b>", "<C-o>", { silent = true })
-vim.keymap.set("n", "<A-f>", "<C-i>", { silent = true })
 vim.keymap.set("n", "<leader>rb", ":bufdo %s///ge | update", { desc = "Buffer-wide search/replace", silent = true })
 
 -- close every window except for the current one

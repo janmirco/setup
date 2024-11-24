@@ -50,21 +50,16 @@ if ! tmux has-session -t "$session" &> /dev/null; then
 
     # Window 1
     window="1"
-    program="yazi"
-    top_bottom "$session" "$where" "$window" "$program"
-
-    # Window 2
-    window="2"
     program="lazygit"
     main_only "$session" "$where" "$window" "$program"
 
-    # Window 3
-    window="3"
-    program="$EDITOR"
-    main_split "$session" "$where" "$window" "$program"
+    # Window 2
+    window="2"
+    program="yazi"  # make sure to choose this as your selected window, else yazi does not start properly
+    main_only "$session" "$where" "$window" "$program"
 
-    # Select first window
-    tmux select-window -t "$session":1
+    # Select specific window
+    tmux select-window -t "$session":2
 fi
 
 tmux attach-session -t "$session"

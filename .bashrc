@@ -87,8 +87,6 @@ source "$HOME/.config/bash/path.sh"
 
 # abaqus settings
 export ABQ_USUB_GFORTRAN=1
-export LD_PRELOAD="$LD_PRELOAD:/usr/lib/x86_64-linux-gnu/liblapack.so"
-export LD_PRELOAD="$LD_PRELOAD:/usr/lib/x86_64-linux-gnu/libblas.so"
 
 # bat settings
 export BAT_THEME="Catppuccin Mocha"
