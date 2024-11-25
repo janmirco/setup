@@ -12,6 +12,8 @@ return {
         "saadparwaiz1/cmp_luasnip",
     },
     config = function()
+        vim.opt.pumheight = 5 -- limit max item number in completion menu
+
         local cmp = require("cmp")
         local luasnip = require("luasnip")
 
