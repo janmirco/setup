@@ -1,7 +1,6 @@
-.PHONY: update install
+.PHONY: update install add_missing_dirs
 
 update:
-	@mkdir -p ~/.config/nushell
 	@rm -rf .config/alacritty && cp -r ~/.config/alacritty .config
 	@rm -rf .config/bash      && cp -r ~/.config/bash .config
 	@rm -rf .config/bat       && cp -r ~/.config/bat .config
@@ -19,6 +18,7 @@ update:
 	@cp ~/.bash_login .
 	@cp ~/.bash_logout .
 	@cp ~/.bashrc .
+	@make add_missing_dirs --silent
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
 	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
@@ -27,11 +27,6 @@ update:
 	@cp ~/.gitignore .config/git/home_ignore
 
 install:
-	@mkdir -p ~/.config/calcurse
-	@mkdir -p ~/.config/git
-	@mkdir -p ~/.config/lazygit
-	@mkdir -p ~/.config/nushell
-	@mkdir -p ~/.config/tmux
 	@rm -rf ~/.config/alacritty && cp -r .config/alacritty ~/.config
 	@rm -rf ~/.config/bash      && cp -r .config/bash ~/.config
 	@rm -rf ~/.config/bat       && cp -r .config/bat ~/.config
@@ -49,8 +44,16 @@ install:
 	@cp .bash_login ~
 	@cp .bash_logout ~
 	@cp .bashrc ~
+	@make add_missing_dirs --silent
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
 	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
 	@cp .config/lazygit/config.yml ~/.config/lazygit
 	@cp .config/nushell/config.nu .config/nushell/env.nu ~/.config/nushell
 	@cp .config/tmux/tmux.conf ~/.config/tmux
+
+add_missing_dirs:
+	@mkdir -p ~/.config/calcurse
+	@mkdir -p ~/.config/git
+	@mkdir -p ~/.config/lazygit
+	@mkdir -p ~/.config/nushell
+	@mkdir -p ~/.config/tmux
