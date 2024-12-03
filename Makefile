@@ -53,8 +53,8 @@ install:
 	@cp .gitignore ~
 
 add_missing_dirs:
-	@mkdir -p ~/.config/calcurse
-	@mkdir -p ~/.config/git
-	@mkdir -p ~/.config/lazygit
-	@mkdir -p ~/.config/nushell
-	@mkdir -p ~/.config/tmux
+	@mkdir -p .config/calcurse
+	@mkdir -p .config/git
+	@mkdir -p .config/lazygit
+	@mkdir -p .config/nushell
+	@mkdir -p .config/tmux
