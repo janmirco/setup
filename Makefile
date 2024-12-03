@@ -24,7 +24,7 @@ update:
 	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
 	@cp ~/.config/nushell/config.nu ~/.config/nushell/env.nu .config/nushell
 	@cp ~/.config/tmux/tmux.conf .config/tmux
-	@cp ~/.gitignore .config/git/home_ignore
+	@cp ~/.gitignore .
 
 install:
 	@rm -rf ~/.config/alacritty && cp -r .config/alacritty ~/.config
@@ -50,6 +50,7 @@ install:
 	@cp .config/lazygit/config.yml ~/.config/lazygit
 	@cp .config/nushell/config.nu .config/nushell/env.nu ~/.config/nushell
 	@cp .config/tmux/tmux.conf ~/.config/tmux
+	@cp .gitignore ~
 
 add_missing_dirs:
 	@mkdir -p ~/.config/calcurse
