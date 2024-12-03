@@ -1,6 +1,7 @@
 .PHONY: update install
 
 update:
+	@mkdir -p ~/.config/nushell
 	@rm -rf .config/alacritty && cp -r ~/.config/alacritty .config
 	@rm -rf .config/bash      && cp -r ~/.config/bash .config
 	@rm -rf .config/bat       && cp -r ~/.config/bat .config
@@ -21,6 +22,7 @@ update:
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
 	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
+	@cp ~/.config/nushell/config.nu ~/.config/nushell/env.nu .config/nushell
 	@cp ~/.config/tmux/tmux.conf .config/tmux
 	@cp ~/.gitignore .config/git/home_ignore
 
@@ -28,6 +30,7 @@ install:
 	@mkdir -p ~/.config/calcurse
 	@mkdir -p ~/.config/git
 	@mkdir -p ~/.config/lazygit
+	@mkdir -p ~/.config/nushell
 	@mkdir -p ~/.config/tmux
 	@rm -rf ~/.config/alacritty && cp -r .config/alacritty ~/.config
 	@rm -rf ~/.config/bash      && cp -r .config/bash ~/.config
@@ -49,4 +52,5 @@ install:
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
 	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
 	@cp .config/lazygit/config.yml ~/.config/lazygit
+	@cp .config/nushell/config.nu .config/nushell/env.nu ~/.config/nushell
 	@cp .config/tmux/tmux.conf ~/.config/tmux

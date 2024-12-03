@@ -92,6 +92,7 @@
 /.config/matplotlibrc
 /.config/mimeapps.list
 /.config/notificationhelper
+/.config/nushell/history.txt
 /.config/okularpartrc
 /.config/okularrc
 /.config/partitionmanagerrc
