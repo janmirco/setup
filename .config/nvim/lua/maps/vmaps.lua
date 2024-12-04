@@ -29,3 +29,6 @@ vim.keymap.set("v", "<leader>4", "\"4y", { desc = "Put in register 4", silent = 
 
 -- print selected region
 vim.keymap.set("v", "#", "g<c-g>", { desc = "Print selected region", silent = true })
+
+-- execute lua code
+vim.keymap.set("v", "<leader>x", ":lua<cr>", { desc = "Execute visual selection", silent = true })
