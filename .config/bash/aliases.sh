@@ -85,7 +85,6 @@ alias gmsh='/usr/bin/gmsh'
 alias grep='grep --color=always'
 alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
 alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
-alias inkscape='flatpak run org.inkscape.Inkscape'
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
 alias jupyter-convert='f(){ jupyter nbconvert --to script "$1"; unset -f f; }; f'
 alias l='ls -l --almost-all --human-readable --group-directories-first --color=always'
@@ -120,7 +119,11 @@ alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; uns
 alias qr='f(){ qrencode --type PNG --output qr_code.png --size 10 --level H "$1"; unset -f f; }; f'
 alias qrsvg='f(){ qrencode --type SVG --output qr_code.svg "$1"; unset -f f; }; f'
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
-alias rg='rg --hidden --no-ignore-vcs --glob "!{**/*egg-info/*,**/.*cache*/*,**/.byobu/*,**/.cache/*,**/.cargo/*,**/.config/abiword/*,**/.config/akonadi/*,**/.config/autostart/*,**/.config/BraveSoftware/*,**/.config/cat_installer/*,**/.config/cef_user_data/*,**/.config/coc/*,**/.config/Code/*,**/.config/dconf/*,**/.config/enchant/*,**/.config/fltk.org/*,**/.config/freerdp/*,**/.config/ghb/*,**/.config/GIMP/*,**/.config/google-chrome/*,**/.config/gtk-2.0/*,**/.config/gtk-3.0/*,**/.config/gtk-4.0/*,**/.config/htop/*,**/.config/ibus/*,**/.config/inkscape/*,**/.config/kde.org/*,**/.config/KDE/*,**/.config/kdeconnect/*,**/.config/kdedefaults/*,**/.config/khtml/*,**/.config/lazygit/*,**/.config/libaccounts-glib/*,**/.config/libreoffice/*,**/.config/menus/*,**/.config/microsoft-edge/*,**/.config/neofetch/*,**/.config/nvim/autoload/*,**/.config/nvim/undodir/*,**/.config/obs-studio/*,**/.config/obsidian/*,**/.config/octave/*,**/.config/ookla/*,**/.config/ParaView/*,**/.config/pavucontrol-qt/*,**/.config/pulse/*,**/.config/remmina/*,**/.config/sciebo/*,**/.config/session/*,**/.config/texstudio/*,**/.config/thefuck/*,**/.config/ticktick/*,**/.config/tmux/plugins*,**/.config/Unknown\ Organization/*,**/.config/VirtualBox/*,**/.config/vlc/*,**/.config/xm1/*,**/.config/xsettingsd/*,**/.dotnet/*,**/.fltk/*,**/.fonts/*,**/.git/*,**/.gnome/*,**/.gnupg/*,**/.imageio/*,**/.ipython/*,**/.java/*,**/.julia/*,**/.jupyter/*,**/.kde/*,**/.keras/*,**/.local/*,**/.Mathematica/*,**/.modular/*,**/.mozilla/*,**/.mplayer/*,**/.npm/*,**/.nv/*,**/.openjfx/cache/*,**/.org.jabref.gui.JabRefMain/*,**/.pki/*,**/.pulsesecure/*,**/.rpmdb/*,**/.rustup/*,**/.texlive2021/*,**/.thunderbird/*,**/.var/*,**/.Wolfram/*,**/.zoom/*,**/__pycache__/*,**/CATSettings/*,**/env/*,**/node_modules/*,**/snap/*,**/vbox/*,**/venv/*}"'
+rg_glob="!{**/*egg-info/*,**/.*cache*/*,**/.byobu/*,**/.cache/*,**/.cargo/*,**/.config/abiword/*,**/.config/akonadi/*,**/.config/autostart/*,**/.config/BraveSoftware/*,**/.config/cat_installer/*,**/.config/cef_user_data/*,**/.config/coc/*,**/.config/Code/*,**/.config/dconf/*,**/.config/enchant/*,**/.config/fltk.org/*,**/.config/freerdp/*,**/.config/ghb/*,**/.config/GIMP/*,**/.config/google-chrome/*,**/.config/gtk-2.0/*,**/.config/gtk-3.0/*,**/.config/gtk-4.0/*,**/.config/htop/*,**/.config/ibus/*,**/.config/inkscape/*,**/.config/kde.org/*,**/.config/KDE/*,**/.config/kdeconnect/*,**/.config/kdedefaults/*,**/.config/khtml/*,**/.config/lazygit/*,**/.config/libaccounts-glib/*,**/.config/libreoffice/*,**/.config/menus/*,**/.config/microsoft-edge/*,**/.config/neofetch/*,**/.config/nvim/autoload/*,**/.config/nvim/undodir/*,**/.config/obs-studio/*,**/.config/obsidian/*,**/.config/octave/*,**/.config/ookla/*,**/.config/ParaView/*,**/.config/pavucontrol-qt/*,**/.config/pulse/*,**/.config/remmina/*,**/.config/sciebo/*,**/.config/session/*,**/.config/texstudio/*,**/.config/thefuck/*,**/.config/ticktick/*,**/.config/tmux/plugins*,**/.config/Unknown\ Organization/*,**/.config/VirtualBox/*,**/.config/vlc/*,**/.config/xm1/*,**/.config/xsettingsd/*,**/.dotnet/*,**/.fltk/*,**/.fonts/*,**/.git/*,**/.gnome/*,**/.gnupg/*,**/.imageio/*,**/.ipython/*,**/.java/*,**/.julia/*,**/.jupyter/*,**/.kde/*,**/.keras/*,**/.local/*,**/.Mathematica/*,**/.modular/*,**/.mozilla/*,**/.mplayer/*,**/.npm/*,**/.nv/*,**/.openjfx/cache/*,**/.org.jabref.gui.JabRefMain/*,**/.pki/*,**/.pulsesecure/*,**/.rpmdb/*,**/.rustup/*,**/.texlive2021/*,**/.thunderbird/*,**/.var/*,**/.Wolfram/*,**/.zoom/*,**/__pycache__/*,**/CATSettings/*,**/env/*,**/node_modules/*,**/snap/*,**/vbox/*,**/venv/*}"
+alias rg='rg --hidden --no-ignore-vcs --glob "$rg_glob"'
+alias rgi='rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case'
+alias rgix='f(){ rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --glob "*.$1" "$2"; unset -f f; }; f'
+alias rgx='f(){ rg --hidden --no-ignore-vcs --glob "$rg_glob" --glob "*.$1" "$2"; unset -f f; }; f'
 alias rm='rm -i'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
@@ -151,6 +154,14 @@ alias xclip_copy='xclip -selection clipboard'  # cat README.md | xclip_copy
 alias xclip_paste='xclip -selection clipboard -out'  # xclip_paste > README.md
 alias y='yazi'
 alias yank='yank-cli -- xsel -b'
+
+
+# --------------------------------------------------------------------
+#   flatpak
+
+alias inkscape='flatpak run org.inkscape.Inkscape'
+alias pikabackup='flatpak run org.gnome.World.PikaBackup'
+alias zen='flatpak run io.github.zen_browser.zen'
 
 
 # --------------------------------------------------------------------
