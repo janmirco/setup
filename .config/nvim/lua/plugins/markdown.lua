@@ -8,7 +8,7 @@ return {
         config = function()
             vim.g.mkdp_auto_close = 0
             vim.g.mkdp_theme = "light"
-            vim.g.mkdp_browser = "brave-browser-stable"
+            vim.g.mkdp_browser = "brave-browser"
             vim.keymap.set("n", "<A-p>", "<Plug>MarkdownPreview", { silent = true })
         end,
     },
