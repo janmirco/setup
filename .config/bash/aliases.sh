@@ -144,6 +144,7 @@ alias usbntfsfix='ntfsfix --clear-bad-sectors /dev/sda1'
 alias usbpoweroff='udisksctl power-off --block-device /dev/sda'
 alias usbsaferemove='udisksctl unmount --block-device /dev/sda1 && udisksctl power-off --block-device /dev/sda'
 alias usbsaferemoveexit='udisksctl unmount --block-device /dev/sda1 && udisksctl power-off --block-device /dev/sda && exit'
+alias usbsaferemoveshutdown='udisksctl unmount --block-device /dev/sda1 && udisksctl power-off --block-device /dev/sda && shutdown now'
 alias usbunmount='udisksctl unmount --block-device /dev/sda1'
 alias vi="vim -u NONE"
 alias vim="vim -u $HOME/.config/vim/config.vim"
