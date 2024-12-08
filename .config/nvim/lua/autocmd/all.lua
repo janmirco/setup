@@ -10,13 +10,14 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "Buf
 
         -- disable colorcolumn and cursorline for specific filetypes
         local filetypes = {
+            "alpha",
             "cmp",
             "dashboard",
+            "lazy",
             "man",
             "mason",
             "neo-tree",
             "neogit",
-            "alpha",
             "noice",
             "notify",
             "oil",
