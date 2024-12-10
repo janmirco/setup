@@ -17,6 +17,30 @@ return {
                 },
                 formats = {
                     key = function(item) return { { "[", hl = "special" }, { item.key, hl = "key" }, { "]", hl = "special" } } end,
+                    icon = function(item)
+                        -- The following setting is necessary because snacks is
+                        -- not displaying icons for files without extensions
+                        -- like .bashrc, Makefile, and so on. This may be fixed
+                        -- in a future release of snacks and can be removed.
+                        if item.icon == "file" then
+                            local filename = vim.fn.fnamemodify(item.file, ":t")
+                            local extension = vim.fn.fnamemodify(item.file, ":e")
+                            local icon, icon_hl
+                            local devicons = require("nvim-web-devicons")
+
+                            if extension == "" then
+                                -- For files without extensions, use the full filename
+                                icon, icon_hl = devicons.get_icon(filename, "", { default = true })
+                            else
+                                icon, icon_hl = devicons.get_icon(filename, extension, { default = true })
+                            end
+
+                            return icon and { icon .. " ", hl = icon_hl } or { "", width = 0, hl = "icon" }
+                        else
+                            -- To preserve, for example, bookmark icons
+                            return { item.icon, hl = "icon" }
+                        end
+                    end,
                 },
                 sections = {
                     { section = "header" },
