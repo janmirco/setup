@@ -12,6 +12,10 @@ return {
                     keys = {
                         { icon = " ", key = "e", desc = "New File", action = ":enew" },
                         { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        { icon = "󰒲 ", key = "a", desc = "Lazy Update", action = ":Lazy update" },
+                        { icon = "󰐅 ", key = "s", desc = "Treesitter Update Parsers", action = ":TSUpdate" },
+                        { icon = "󱁤 ", key = "d", desc = "Mason Update Registries", action = ":MasonUpdate" },
+                        { icon = "󱁤 ", key = "f", desc = "Mason Open", action = ":Mason" },
                         { icon = " ", key = "q", desc = "Quit", action = ":qall" },
                     },
                 },
@@ -80,8 +84,8 @@ return {
             { ",,", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
             { ",h", function() Snacks.notifier.show_history() end, desc = "Notification History" },
             { "<A-m>", function() Snacks.terminal.toggle() end, desc = "Toggle Terminal", mode = { "n", "t" } },
-            { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-            { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+            { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t", "v" } },
+            { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t", "v" } },
         },
     },
 }
