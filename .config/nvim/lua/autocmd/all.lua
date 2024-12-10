@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "Buf
             "noice",
             "notify",
             "oil",
+            "snacks_dashboard",
             "telescope",
             "whichkey",
         }

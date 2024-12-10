@@ -1,5 +1,6 @@
 gui:
   mainPanelSplitMode: horizontal
+
   # use catppuccin mocha theme with the blue accent
   theme:
     activeBorderColor:
@@ -24,3 +25,5 @@ gui:
 
   authorColors:
     '*': '#b4befe'
+
+  nerdFontsVersion: "3"

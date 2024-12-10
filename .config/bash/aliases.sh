@@ -200,6 +200,7 @@ alias kT='klog total $HOME/.klog/worktimes.klg --now'
 #   Git
 
 alias G='lazygit'
+alias L='lazygit log'
 
 alias gd='git diff'
 alias gb='git blame'
@@ -210,7 +211,7 @@ alias gm='git mergetool'
 
 alias gc='$EDITOR -c "lua require(\"neogit\").open({ \"commit\" })"'
 
-git_format="%C(bold blue)%h%C(reset) %C(bold green)[%ci]%C(reset) %C(dim white)%an%  ->%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"
+git_format="%C(bold blue)%h%C(reset) %C(bold green)%ci%C(reset) %C(dim white)%an%C(reset) -> %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"
 
 alias gl='git log    -5 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'
 alias gll='git log  -15 --date-order --branches --remotes --tags --graph --abbrev-commit --decorate --format=format:"$git_format"'

@@ -4,7 +4,7 @@ return {
     { "AckslD/nvim-neoclip.lua", config = function() require("neoclip").setup({ keys = { telescope = { i = { paste = "<cr>" } } } }) end },
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
+        tag = "0.1.8",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
             local telescope = require("telescope")
