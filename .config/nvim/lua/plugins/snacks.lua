@@ -25,7 +25,7 @@ return {
 
                         if item.icon ~= "file" then
                             -- To preserve, for example, bookmark icons
-                            return { item.icon, hl = "icon" }
+                            return { item.icon, width = 2, hl = "icon" }
                         end
 
                         local filename = vim.fn.fnamemodify(item.file, ":t")
