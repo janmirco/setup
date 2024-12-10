@@ -23,24 +23,19 @@ return {
                         -- like .bashrc, Makefile, and so on. This may be fixed
                         -- in a future release of snacks and can be removed.
 
-                        if item.icon ~= "file" then
-                            -- To preserve, for example, bookmark icons
-                            return { item.icon, width = 2, hl = "icon" }
-                        end
+                        local icon = item.icon
+                        local icon_hl = "icon"
 
-                        local filename = vim.fn.fnamemodify(item.file, ":t")
-                        local extension = vim.fn.fnamemodify(item.file, ":e")
-                        local icon, icon_hl
-                        local devicons = require("nvim-web-devicons")
-
-                        if extension == "" then
-                            -- For files without extensions, use the full filename
-                            icon, icon_hl = devicons.get_icon(filename, "", { default = true })
-                        else
+                        -- Make sure to only use devicons when item is a file.
+                        -- This preserves icons for bookmarks.
+                        if item.icon == "file" then
+                            local filename = vim.fn.fnamemodify(item.file, ":t")
+                            local extension = vim.fn.fnamemodify(item.file, ":e")
+                            local devicons = require("nvim-web-devicons")
                             icon, icon_hl = devicons.get_icon(filename, extension, { default = true })
                         end
 
-                        return icon and { icon .. " ", hl = icon_hl } or { "", width = 0, hl = "icon" }
+                        return { icon, width = 2, hl = icon_hl }
                     end,
                 },
                 sections = {
