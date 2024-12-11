@@ -89,20 +89,8 @@ echo "$staged"
 # ==============================================================================
 #   Languages
 
-[c]
-disabled = true
-
-[cmake]
-disabled = true
-
 [nodejs]
-disabled = true
-
-[lua]
 disabled = true
 
 [perl]
 disabled = true
-
-[python]
-format = '[($symbol$virtualenv )]($style)'

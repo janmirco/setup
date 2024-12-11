@@ -94,6 +94,7 @@ return {
             lspconfig.fortls.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach })
+            lspconfig.rust_analyzer.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.texlab.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.vimls.setup({ capabilities = capabilities, on_attach = on_attach })
             lspconfig.zls.setup({ capabilities = capabilities, on_attach = on_attach })
