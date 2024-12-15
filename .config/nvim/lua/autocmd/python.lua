@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     group = py_group,
     pattern = "*.py",
     callback = function()
-        vim.cmd(":silent exec '! python3 -m isort --profile=black --line-length=1000 %'")
-        vim.cmd(":silent exec '! python3 -m black --line-length=1000 %'")
+        vim.cmd(":silent exec '! ruff check --select I --fix %'") -- sort imports
+        vim.cmd(":silent exec '! ruff format %'")
     end,
 })
