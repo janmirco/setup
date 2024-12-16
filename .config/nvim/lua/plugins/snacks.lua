@@ -59,6 +59,7 @@ return {
                 top_down = false,
             },
             quickfile = { enabled = true },
+            scroll = { enabled = true },
             terminal = { enabled = true },
             words = { enabled = true },
             styles = {
