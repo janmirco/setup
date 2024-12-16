@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 bin_name="fzf"
-version="0.54.0"
+version="0.57.0"
 log_sign="[uFzf]"
 bin_path="$HOME/bin/$bin_name"
 dir_name="$bin_name-linux_amd64"
