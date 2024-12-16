@@ -317,6 +317,7 @@ alias activate='source */*/activate'
 alias black='python3 -m black'
 alias blackcheck='python3 -m black --color --check --diff'
 alias pip='python3 -m pip'
+alias uvi='uv init --no-workspace --vcs none'
 
 
 # --------------------------------------------------------------------
@@ -384,6 +385,7 @@ alias uSnap='$HOME/uman/uSnap.sh'
 alias uStarship='$HOME/uman/uStarship.sh'
 alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
+alias uUv='$HOME/uman/uUv.sh'
 alias uZig='$HOME/uman/uZig.sh'
 
 

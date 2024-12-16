@@ -99,3 +99,6 @@ export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file"
 # starship settings
 eval "$(starship init bash)"
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
+
+# uv settings
+eval "$(uv generate-shell-completion bash)"
