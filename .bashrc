@@ -93,7 +93,7 @@ export BAT_THEME="Catppuccin Mocha"
 
 # fzf settings
 eval "$(fzf --bash)"  # set up fzf key bindings and fuzzy completion
-export FZF_DEFAULT_OPTS="--layout=reverse --border"
+export FZF_DEFAULT_OPTS="--layout=reverse --border --bind 'tab:down,shift-tab:up'"
 export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file"
 
 # starship settings
