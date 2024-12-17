@@ -155,7 +155,7 @@ vim.keymap.set("n", "<s-down>", "<c-y>", { desc = "Scroll current line up withou
 
 -- yank
 vim.keymap.set("n", "Y", "y$", { silent = true }) -- to the end of the line
-vim.keymap.set("n", "<C-y>", "ggVGy", { desc = "Yank entire file", silent = true }) -- entire content of current file
+vim.keymap.set("n", "<C-y>", ":%y+<cr>", { desc = "Yank entire file", silent = true })
 
 -- keeping it centered
 vim.keymap.set("n", "n", "nzz", { silent = true })
