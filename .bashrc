@@ -93,7 +93,7 @@ export BAT_THEME="Catppuccin Mocha"
 
 # conda settings
 function run_conda_settings() {
-    local __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    local __conda_setup="$($HOME/miniconda3/bin/conda shell.bash hook 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
