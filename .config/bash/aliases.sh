@@ -319,6 +319,12 @@ alias blackcheck='python3 -m black --color --check --diff'
 alias pip='python3 -m pip'
 alias uvi='uv init --no-workspace --vcs none'
 
+alias condafenicsx_activate='run_conda_settings && conda activate fenicsx-env'
+alias condafenicsx_deactivate='conda deactivate && conda deactivate'
+
+alias cfa='run_conda_settings && conda activate fenicsx-env'
+alias cfd='conda deactivate && conda deactivate'
+
 
 # --------------------------------------------------------------------
 #   Rofi

@@ -1,5 +1,6 @@
 return {
     "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         local show_tw = function()
             local space = vim.fn.search([[\s\+$]], "nwc")
@@ -48,18 +49,22 @@ return {
         end
 
         local noice = require("noice")
-        local show_noice = function()
-            local mode = noice.api.status.mode.get()
-            if string.match(mode, "recording") then
-                return mode
-            elseif string.match(mode, "VISUAL") then
-                -- only works with start of previously selected region
-                local row_start, col_start = unpack(vim.api.nvim_buf_get_mark(0, "<"))
-                local row_current, col_current = unpack(vim.api.nvim_win_get_cursor(0))
-                local rows_selected = math.abs(row_current - row_start)
-                local cols_selected = math.abs(col_current - col_start)
-                return tostring(rows_selected + 1) .. ":" .. tostring(cols_selected + 1)
-            end
+        local show_selected_and_recording = function()
+            local mode = string.lower(noice.api.status.mode.get())
+
+            -- early returns for any non-visual mode
+            if string.find(mode, "recording") then return mode end
+            if not string.find(mode, "v") then return "" end
+
+            -- get positions
+            local start_pos = vim.fn.getpos("v")
+            local end_pos = vim.fn.getpos(".")
+
+            -- calculate number of lines and chars
+            local rows = math.abs(end_pos[2] - start_pos[2]) + 1
+            local cols = math.abs(end_pos[3] - start_pos[3]) + 1
+
+            return string.format("%d:%d", rows, cols)
         end
 
         -- additional sections to default setup
@@ -76,7 +81,7 @@ return {
                     { show_spell },
                 },
                 lualine_x = {
-                    { show_noice, cond = noice.api.status.mode.has },
+                    { show_selected_and_recording, cond = noice.api.status.mode.has },
                     "encoding",
                     "fileformat",
                     "filetype",

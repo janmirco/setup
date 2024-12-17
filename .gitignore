@@ -162,6 +162,7 @@
 /.byobu/
 /.cache/
 /.cargo/
+/.conda/
 /.config/abiword/
 /.config/akonadi/
 /.config/autostart/
@@ -258,6 +259,7 @@
 /gitbuw/
 /github/
 /library/
+/miniconda3/
 /Music/
 /node_modules/
 /Pictures/
