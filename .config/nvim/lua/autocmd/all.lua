@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "Buf
             "alpha",
             "cmp",
             "dashboard",
+            "float",
             "lazy",
             "man",
             "mason",

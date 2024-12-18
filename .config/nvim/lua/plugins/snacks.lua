@@ -60,7 +60,6 @@ return {
             },
             quickfile = { enabled = true },
             scroll = { enabled = true },
-            terminal = { enabled = true },
             words = { enabled = true },
             styles = {
                 notification = {
@@ -84,7 +83,6 @@ return {
             { "LL", function() Snacks.lazygit.log() end, desc = "Lazygit Current File History" },
             { ",,", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
             { ",h", function() Snacks.notifier.show_history() end, desc = "Notification History" },
-            { "<A-m>", function() Snacks.terminal.toggle() end, desc = "Toggle Terminal", mode = { "n", "t" } },
             { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t", "v" } },
             { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t", "v" } },
         },
