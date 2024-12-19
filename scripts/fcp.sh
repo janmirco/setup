@@ -8,13 +8,13 @@ echo '         /_/    /____/'
 echo
 
 echo "What?"
-what="$(fd --hidden --no-ignore-vcs --type file --type directory . $HOME | fzf --height=10%)"
+what="$(fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file --type directory . $HOME | fzf --height=10%)"
 if [[ $? != 0 ]]; then exit 1; fi
 echo "-> $what"
 echo
 
 echo "Where to?"
-where="$(fd --hidden --no-ignore-vcs --type directory . $HOME | fzf --height=10%)"
+where="$(fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type directory . $HOME | fzf --height=10%)"
 if [[ $? != 0 ]]; then exit 1; fi
 echo "-> $where"
 echo

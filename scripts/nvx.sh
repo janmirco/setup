@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-$EDITOR $(fd "$1"$)
+$EDITOR $(fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file "$1"$)

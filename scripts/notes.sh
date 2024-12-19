@@ -8,7 +8,7 @@ echo "/_/ /_/\____/\__/\___/____/"
 echo
 
 # find all dirs in home
-chosen_git_repo="$(fd --hidden --no-ignore --type directory . $HOME | fzf --height=10%)"
+chosen_git_repo="$(fd --hidden --no-ignore $MY_FZF_EXCLUDES --type directory . $HOME | fzf --height=10%)"
 
 # check for error in last command
 if [[ $? != 0 ]]; then
