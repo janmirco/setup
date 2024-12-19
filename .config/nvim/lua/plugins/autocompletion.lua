@@ -10,6 +10,7 @@ return {
         "kdheepak/cmp-latex-symbols",
         "onsails/lspkind.nvim",
         "saadparwaiz1/cmp_luasnip",
+        "L3MON4D3/LuaSnip",
     },
     config = function()
         vim.opt.pumheight = 5 -- limit max item number in completion menu

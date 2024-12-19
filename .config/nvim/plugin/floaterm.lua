@@ -48,45 +48,31 @@ local toggle_floaterm = function()
     end
 end
 
+local update_window_config = function()
+    vim.api.nvim_win_set_config(state.floating.win, {
+        style = "minimal",
+        border = "rounded",
+        relative = "editor",
+        height = state.floating.dim.height,
+        width = state.floating.dim.width,
+        row = state.floating.dim.row,
+        col = state.floating.dim.col,
+    })
+end
+
 local resize_floating_window = function(delta_height, delta_width)
-    if vim.api.nvim_win_is_valid(state.floating.win) then
-        local win_config = vim.api.nvim_win_get_config(state.floating.win)
-
-        -- Calculate and store new window dimensions
-        state.floating.dim.height = math.max(1, win_config.height + delta_height)
-        state.floating.dim.width = math.max(1, win_config.width + delta_width)
-        state.floating.dim.row = math.floor((vim.o.lines - state.floating.dim.height) / 2.0)
-        state.floating.dim.col = math.floor((vim.o.columns - state.floating.dim.width) / 2.0)
-
-        -- Update window configuration
-        vim.api.nvim_win_set_config(state.floating.win, {
-            style = "minimal",
-            border = "rounded",
-            relative = "editor",
-            height = state.floating.dim.height,
-            width = state.floating.dim.width,
-            row = state.floating.dim.row,
-            col = state.floating.dim.col,
-        })
-    end
+    if not vim.api.nvim_win_is_valid(state.floating.win) then return end
+    state.floating.dim.height = math.max(1, state.floating.dim.height + delta_height)
+    state.floating.dim.width = math.max(1, state.floating.dim.width + delta_width)
+    state.floating.dim.row = math.floor((vim.o.lines - state.floating.dim.height) / 2.0)
+    state.floating.dim.col = math.floor((vim.o.columns - state.floating.dim.width) / 2.0)
+    update_window_config()
 end
 
 local resize_default_floating_window = function()
-    if vim.api.nvim_win_is_valid(state.floating.win) then
-        -- Calculate and store new window dimensions
-        state.floating.dim = default_window_dimensions(state.floating.dim)
-
-        -- Update window configuration
-        vim.api.nvim_win_set_config(state.floating.win, {
-            style = "minimal",
-            border = "rounded",
-            relative = "editor",
-            height = state.floating.dim.height,
-            width = state.floating.dim.width,
-            row = state.floating.dim.row,
-            col = state.floating.dim.col,
-        })
-    end
+    if not vim.api.nvim_win_is_valid(state.floating.win) then return end
+    state.floating.dim = default_window_dimensions(state.floating.dim)
+    update_window_config()
 end
 
 vim.keymap.set({ "n", "i", "v", "t" }, "<A-m>", toggle_floaterm, { desc = "Toggle FloaTerm", silent = true })

@@ -4,7 +4,7 @@ return {
     config = function()
         local todo_comments = require("todo-comments")
         todo_comments.setup({
-            signs = false,
+            signs = true,
             highlight = { comments_only = false },
         })
         vim.keymap.set("n", "[t", function()

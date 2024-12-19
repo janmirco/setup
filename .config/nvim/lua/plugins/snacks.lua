@@ -52,6 +52,7 @@ return {
                     { section = "recent_files", limit = 5, padding = 1 },
                 },
             },
+            input = { enabled = true },
             lazygit = { enabled = true },
             notifier = {
                 enabled = true,
@@ -59,7 +60,23 @@ return {
                 top_down = false,
             },
             quickfile = { enabled = true },
+            scope = {
+                enabled = true,
+                keys = {
+                    jump = {
+                        ["]p"] = { -- default is ]i
+                            bottom = true,
+                            desc = "Jump to bottom of scope",
+                        },
+                        ["[p"] = { -- default is [i
+                            bottom = false,
+                            desc = "Jump to top of scope",
+                        },
+                    },
+                },
+            },
             scroll = { enabled = true },
+            statuscolumn = { enabled = true },
             words = { enabled = true },
             styles = {
                 notification = {

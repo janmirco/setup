@@ -24,9 +24,10 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp" },
         config = function()
             vim.diagnostic.config({
-                signs = false,
+                signs = true,
                 underline = true,
                 virtual_text = { spacing = 4 },
             })
