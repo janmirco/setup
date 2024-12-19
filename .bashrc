@@ -108,7 +108,8 @@ function run_conda_settings() {
 # fzf settings
 eval "$(fzf --bash)"  # set up fzf key bindings and fuzzy completion
 export FZF_DEFAULT_OPTS="--layout=reverse --border --bind 'tab:down,shift-tab:up'"
-export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs --type file"
+export MY_FZF_EXCLUDES="--exclude .env --exclude .venv --exclude env --exclude venv --exclude node_modules --exclude .git --exclude __pycache__"
+export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file"
 
 # starship settings
 eval "$(starship init bash)"
