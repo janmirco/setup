@@ -317,6 +317,8 @@ alias activate='source */*/activate'
 alias black='python3 -m black'
 alias blackcheck='python3 -m black --color --check --diff'
 alias pip='python3 -m pip'
+
+alias uva='source .venv/bin/activate'
 alias uvi='uv init --no-workspace --vcs none'
 
 alias condafenicsx_activate='run_conda_settings && conda activate fenicsx-env'
