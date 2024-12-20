@@ -14,9 +14,10 @@ return {
     },
     {
         "jakewvincent/mkdnflow.nvim",
-        ft = "markdown",
+        ft = { "markdown", "python" },
         config = function()
             require("mkdnflow").setup({
+                filetypes = { md = true, rmd = true, markdown = true, py = true, python = true },
                 modules = {
                     maps = false, -- set keymaps explicitly below
                     yaml = true,
@@ -67,6 +68,28 @@ return {
                 vim.cmd("MkdnPrevLink")
                 vim.cmd("normal zz")
             end, { desc = "[Mkdnflow] Previous link", silent = true })
+
+            -- make sections italic/bold
+            vim.keymap.set("n", "mi", function()
+                local keys = vim.api.nvim_replace_termcodes("ciw*<C-r>\"*<esc>b", true, false, true)
+                vim.api.nvim_feedkeys(keys, "n", true)
+            end, { desc = "Make italic", silent = true })
+            vim.keymap.set("n", "mb", function()
+                local keys = vim.api.nvim_replace_termcodes("ciw**<C-r>\"**<esc>bb", true, false, true)
+                vim.api.nvim_feedkeys(keys, "n", true)
+            end, { desc = "Make bold", silent = true })
+            vim.keymap.set("v", "mi", function()
+                local keys = vim.api.nvim_replace_termcodes("c*<C-r>\"*<esc>b", true, false, true)
+                vim.api.nvim_feedkeys(keys, "v", true)
+            end, { desc = "[Mkdnflow] Make italic", silent = true })
+            vim.keymap.set("v", "mb", function()
+                local keys = vim.api.nvim_replace_termcodes("c**<C-r>\"**<esc>bb", true, false, true)
+                vim.api.nvim_feedkeys(keys, "v", true)
+            end, { desc = "[Mkdnflow] Make bold", silent = true })
+            -- remove italic/bold by using tpope/vim-surround together with tpope/vim-repeat:
+            --   italic: ds*
+            --   bold: ds*.
+            --   bold italic: ds*..
         end,
     },
 }

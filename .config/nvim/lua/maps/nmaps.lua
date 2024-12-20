@@ -192,25 +192,3 @@ end, { desc = "Indent current file using neovim", silent = true })
 
 -- sort entire file
 vim.keymap.set("n", "<leader>S", function() vim.cmd("sort i") end, { desc = "Sort entire file", silent = true })
-
--- make sections italic/bold in markdown (used for markdown and python files prior to converting to jupyter notebooks)
-vim.keymap.set("n", "mi", function()
-    local keys = vim.api.nvim_replace_termcodes("ciw*<C-r>\"*<esc>b", true, false, true)
-    vim.api.nvim_feedkeys(keys, "n", true)
-end, { desc = "Make italic", silent = true })
-vim.keymap.set("n", "mb", function()
-    local keys = vim.api.nvim_replace_termcodes("ciw**<C-r>\"**<esc>bb", true, false, true)
-    vim.api.nvim_feedkeys(keys, "n", true)
-end, { desc = "Make bold", silent = true })
-vim.keymap.set("v", "mi", function()
-    local keys = vim.api.nvim_replace_termcodes("c*<C-r>\"*<esc>b", true, false, true)
-    vim.api.nvim_feedkeys(keys, "v", true)
-end, { desc = "[Mkdnflow] Make italic", silent = true })
-vim.keymap.set("v", "mb", function()
-    local keys = vim.api.nvim_replace_termcodes("c**<C-r>\"**<esc>bb", true, false, true)
-    vim.api.nvim_feedkeys(keys, "v", true)
-end, { desc = "[Mkdnflow] Make bold", silent = true })
--- remove italic/bold by using tpope/vim-surround together with tpope/vim-repeat:
---   italic: ds*
---   bold: ds*.
---   bold italic: ds*..
