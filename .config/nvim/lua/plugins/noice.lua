@@ -14,9 +14,13 @@ return {
                     lsp_doc_border = true,
                 },
             })
-            -- see snacks.lua for dismiss and history commands
-            vim.keymap.set({ "n", "v" }, ",t", function() noice.cmd("telescope") end, { desc = "Find message in history", silent = true })
-            vim.keymap.set({ "n", "v" }, ",l", function() noice.cmd("last") end, { desc = "Show last message", silent = true })
+            -- see also notifier keymaps in snacks.lua
+            vim.keymap.set({ "n", "v" }, ",e", function() noice.cmd("errors") end, { desc = "Noice errors", silent = true })
+            vim.keymap.set({ "n", "v" }, ",h", function() noice.cmd("history") end, { desc = "Noice history", silent = true })
+            vim.keymap.set({ "n", "v" }, ",l", function() noice.cmd("last") end, { desc = "Noice last", silent = true })
+            vim.keymap.set({ "n", "v" }, ",m", function() vim.cmd("messages") end, { desc = "Show old messages", silent = true })
+            vim.keymap.set({ "n", "v" }, ",s", function() noice.cmd("stats") end, { desc = "Noice stats", silent = true })
+            vim.keymap.set({ "n", "v" }, ",t", function() noice.cmd("telescope") end, { desc = "Noice telescope", silent = true })
         end,
     },
 }
