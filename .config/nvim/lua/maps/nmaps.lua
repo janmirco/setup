@@ -130,7 +130,11 @@ end, { desc = "Remove trailing whitespace of all windows", silent = true })
 vim.keymap.set("n", "<leader>n", "*", { desc = "Forward  search word under cursor", silent = true })
 vim.keymap.set("n", "<leader>N", "#", { desc = "Backward search word under cursor", silent = true })
 
--- window commands (window navigation set in `lua/plugins/vim-tmux-navigator.lua`)
+-- window commands
+vim.keymap.set("n", "<C-h>", function() vim.cmd("wincmd h") end, { desc = "Move one window left", silent = true })
+vim.keymap.set("n", "<C-j>", function() vim.cmd("wincmd j") end, { desc = "Move one window down", silent = true })
+vim.keymap.set("n", "<C-k>", function() vim.cmd("wincmd k") end, { desc = "Move one window up", silent = true })
+vim.keymap.set("n", "<C-l>", function() vim.cmd("wincmd l") end, { desc = "Move one window right", silent = true })
 vim.keymap.set("n", "<C-up>", function() vim.cmd("resize +2") end, { desc = "Resize window up", silent = true })
 vim.keymap.set("n", "<C-down>", function() vim.cmd("resize -2") end, { desc = "Resize window down", silent = true })
 vim.keymap.set("n", "<C-right>", function() vim.cmd("vertical resize +2") end, { desc = "Resize window right", silent = true })
