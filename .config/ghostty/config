@@ -1,0 +1,16 @@
+bold-is-bright = true
+cursor-style = bar
+cursor-style-blink = false
+font-family = JetBrainsMono Nerd Font
+font-size = 13.0
+keybind = ctrl+shift+j=goto_split:next
+keybind = ctrl+shift+k=goto_split:previous
+keybind = ctrl+shift+p=new_split:down
+mouse-hide-while-typing = true
+shell-integration-features = no-cursor,no-sudo,title
+theme = LinuxColors
+unfocused-split-opacity = 0.7
+window-height = 1000
+window-padding-x = 0
+window-padding-y = 0
+window-width = 1000
