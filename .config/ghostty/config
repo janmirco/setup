@@ -5,11 +5,6 @@ cursor-style = bar
 cursor-style-blink = false
 mouse-hide-while-typing = true
 
-# colors
-bold-is-bright = true
-theme = LinuxColors
-unfocused-split-opacity = 0.7
-
 # font
 font-family = JetBrainsMono Nerd Font
 font-size = 13.0
@@ -24,8 +19,10 @@ window-height = 1000
 # keybinds
 keybind = ctrl+s>s=new_split:down
 keybind = ctrl+s>v=new_split:right
-keybind = ctrl+s>j=goto_split:next
-keybind = ctrl+s>k=goto_split:previous
+keybind = ctrl+s>h=goto_split:left
+keybind = ctrl+s>j=goto_split:bottom
+keybind = ctrl+s>k=goto_split:top
+keybind = ctrl+s>l=goto_split:right
 keybind = ctrl+s>z=toggle_split_zoom
 keybind = ctrl+s>equal=equalize_splits
 
