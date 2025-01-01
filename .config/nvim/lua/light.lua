@@ -2,7 +2,6 @@ return {
     require("plugins/bufferline"),
     require("plugins/colorscheme"),
     require("plugins/comment"),
-    require("plugins/harpoon"),
     require("plugins/leap"),
     require("plugins/lualine"),
     require("plugins/maximizer"),

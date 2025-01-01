@@ -109,7 +109,8 @@ end, { desc = "Close all except current window", silent = true })
 vim.keymap.set("n", "<leader>5", function() vim.cmd("source %") end, { desc = "Source current file", silent = true })
 
 -- execute lua code
-vim.keymap.set("n", "<leader>x", ":.lua<cr>", { desc = "Execute current line", silent = true })
+vim.keymap.set("n", "<leader>x", ":luafile %<cr>", { desc = "Execute current file", silent = true })
+vim.keymap.set("n", "<leader>X", ":.lua<cr>", { desc = "Execute current line", silent = true })
 
 -- print and change working directory
 vim.keymap.set("n", "<leader>pp", function() vim.cmd("pwd") end, { desc = "Print", silent = true })

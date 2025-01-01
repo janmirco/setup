@@ -203,6 +203,7 @@ alias kT='klog total $HOME/.klog/worktimes.klg --now'
 
 alias G='lazygit'
 alias L='lazygit log'
+alias S='lazygit status'
 
 alias gd='git diff'
 alias gb='git blame'
