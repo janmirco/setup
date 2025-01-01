@@ -20,7 +20,11 @@ update:
 	@cp ~/.bash_login .
 	@cp ~/.bash_logout .
 	@cp ~/.bashrc .
-	@make add_missing_dirs --silent
+	@mkdir --parents .config/calcurse
+	@mkdir --parents .config/git
+	@mkdir --parents .config/lazygit
+	@mkdir --parents .config/nushell
+	@mkdir --parents .config/tmux
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
 	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
@@ -48,17 +52,14 @@ install:
 	@cp .bash_login ~
 	@cp .bash_logout ~
 	@cp .bashrc ~
-	@make add_missing_dirs --silent
+	@mkdir --parents ~/.config/calcurse
+	@mkdir --parents ~/.config/git
+	@mkdir --parents ~/.config/lazygit
+	@mkdir --parents ~/.config/nushell
+	@mkdir --parents ~/.config/tmux
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
 	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
 	@cp .config/lazygit/config.yml ~/.config/lazygit
 	@cp .config/nushell/config.nu .config/nushell/env.nu ~/.config/nushell
 	@cp .config/tmux/tmux.conf ~/.config/tmux
 	@cp .gitignore ~
-
-add_missing_dirs:
-	@mkdir -p .config/calcurse
-	@mkdir -p .config/git
-	@mkdir -p .config/lazygit
-	@mkdir -p .config/nushell
-	@mkdir -p .config/tmux
