@@ -95,10 +95,10 @@ You can back up all of your files to an external hard drive with the following c
     --verbose, -v
     --compress, -z           compress file data during the transfer
 
-Excluding `.cache` directory can be done using the `--exclude` flag.
+Excluding directories can be done using the `--exclude` flag.
 Here is an example for a manual backup.
 
-    rsync -aAXzv --exclude='.cache' /home/jan/ /media/jan/WD5TB/manual-backups/laptop-home/jan/
+    rsync -aAXzv --exclude={'.cache','.local'} /home/jan/ /media/jan/WD5TB/manual-backups/laptop-home/jan/
 
 You can use `rsync` over SSH to a remote location using the following command.
 
