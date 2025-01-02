@@ -100,6 +100,7 @@ sudo snap install chromium  # chromium will be set as default --> manually chang
 sudo snap install chromium-ffmpeg
 sudo snap install jabref
 sudo snap install spotify
+sudo snap install ticktick
 sudo snap refresh
 
 # ==============================================================================
