@@ -62,6 +62,7 @@ sudo apt-get install --assume-yes jq
 sudo apt-get install --assume-yes libxcb-xinerama0 libxcb-cursor0 lsb-core
 sudo apt-get install --assume-yes libgtk-4-dev libadwaita-1-dev
 sudo apt-get install --assume-yes gcc-multilib
+sudo apt-get install --assume-yes rofi*
 
 # Manual APT installs
 #
