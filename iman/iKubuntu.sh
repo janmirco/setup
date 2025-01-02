@@ -18,16 +18,16 @@ sudo apt-get install --assume-yes cmatrix*
 sudo apt-get install --assume-yes hollywood
 sudo apt-get install --assume-yes python3 python3-doc python3-pip python3-venv
 sudo apt-get install --assume-yes python3-setuptools python-setuptools-doc python3-dev
-sudo apt-get install --assume-yes ipython3
-sudo apt-get install --assume-yes lua5.1 luarocks
-sudo apt-get install --assume-yes fzf ripgrep silversearcher-ag fd-find bat
+sudo apt-get install --assume-yes ipython3 python3-ipykernel
+sudo apt-get install --assume-yes lua5.1 luarocks luajit
+sudo apt-get install --assume-yes silversearcher-ag
 sudo apt-get install --assume-yes doc-base stow
 sudo apt-get install --assume-yes cmake make gcc g++ gfortran git build-essential
 sudo apt-get install --assume-yes libc++-dev libc-dev*
 sudo apt-get install --assume-yes libfmt-dev libfmt-doc
 sudo apt-get install --assume-yes csh tcsh ksh
 sudo apt-get install --assume-yes libstdc++5 libjpeg62 libmotif-dev
-sudo apt-get install --assume-yes clangd clangd-14 libclang-14-dev
+sudo apt-get install --assume-yes clangd libclang-dev
 sudo apt-get install --assume-yes gdb cppcheck*
 sudo apt-get install --assume-yes indent*
 sudo apt-get install --assume-yes octave octave-*
@@ -59,6 +59,9 @@ sudo apt-get install --assume-yes kdenlive*
 sudo apt-get install --assume-yes default-jre default-jdk
 sudo apt-get install --assume-yes remmina*
 sudo apt-get install --assume-yes jq
+sudo apt-get install --assume-yes libxcb-xinerama0 libxcb-cursor0 lsb-core
+sudo apt-get install --assume-yes libgtk-4-dev libadwaita-1-dev
+sudo apt-get install --assume-yes gcc-multilib
 
 # Manual APT installs
 #
