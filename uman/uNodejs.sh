@@ -47,6 +47,12 @@ function download {
 
         echo "$log_sign Updating npm ..."
         npm install -g npm
+
+        echo "$log_sign Updating node-provider ..."
+        npm install -g neovim
+
+        echo "$log_sign Updating yarn ..."
+        npm install -g yarn
     else
         echo "$log_sign Given URL not found!"
     fi

@@ -3,5 +3,6 @@
 log_sign="[uTldr]"
 
 echo "$log_sign Starting update ..."
-tldr --update_cache
+uv tool install tldr
+tldr --update
 echo "$log_sign Finished update."

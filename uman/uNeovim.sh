@@ -30,17 +30,8 @@ function download {
         echo "$log_sign Extracting tar ..."
         tar -C "$bin_path" -xzf "$bin_path/$tar_name"
 
-        echo "$log_sign Updating npm ..."
-        npm install -g npm
-
-        echo "$log_sign Updating node-provider ..."
-        npm install -g neovim
-
-        echo "$log_sign Updating yarn ..."
-        npm install -g yarn
-
         echo "$log_sign Updating python-provider ..."
-        python3 -m pip install --upgrade pip pynvim
+        uv tool install pynvim
 
         echo "$log_sign Updating tree-sitter-cli ..."
         cargo install tree-sitter-cli

@@ -73,6 +73,7 @@
 /.config/konq_history
 /.config/konquerorrc
 /.config/konsolerc
+/.config/konsolesshconfig
 /.config/korgacrc
 /.config/krdcrc
 /.config/kritadisplayrc
@@ -99,7 +100,9 @@
 /.config/phishingurlrc
 /.config/plasma-localerc
 /.config/plasma-org.kde.plasma.desktop-appletsrc
+/.config/plasma-welcomerc
 /.config/plasma.emojierrc
+/.config/PlasmaDiscoverUpdates
 /.config/plasmanotifyrc
 /.config/plasmarc
 /.config/plasmashellrc
@@ -174,6 +177,7 @@
 /.config/Code/
 /.config/dconf/
 /.config/enchant/
+/.config/fcitx5/
 /.config/fltk.org/
 /.config/fontforge/
 /.config/freerdp/
@@ -209,6 +213,7 @@
 /.config/sciebo/
 /.config/session/
 /.config/slicer.org/
+/.config/systemd/
 /.config/texstudio/
 /.config/thefuck/
 /.config/ticktick/
@@ -245,6 +250,7 @@
 /.ssh/
 /.texlive2021/
 /.thunderbird/
+/.tldr/
 /.tmux/
 /.var/
 /.vscode/
