@@ -165,6 +165,7 @@
 /.byobu/
 /.cache/
 /.cargo/
+/.cisco/
 /.conda/
 /.config/abiword/
 /.config/akonadi/
@@ -224,6 +225,7 @@
 /.config/xm1/
 /.config/xsettingsd/
 /.dotnet/
+/.vpn/
 /.fltk/
 /.fonts/
 /.gnome/

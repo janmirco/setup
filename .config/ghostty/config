@@ -16,6 +16,9 @@ window-padding-y = 0
 window-width = 1000
 window-height = 1000
 
+# tabs
+gtk-wide-tabs = false
+
 # keybinds
 keybind = ctrl+s>s=new_split:down
 keybind = ctrl+s>v=new_split:right
@@ -28,6 +31,7 @@ keybind = ctrl+s>equal=equalize_splits
 
 keybind = ctrl+s>f=toggle_fullscreen
 keybind = ctrl+s>w=toggle_window_decorations
+keybind = ctrl+s>t=toggle_tab_overview
 
 keybind = ctrl+s>c=new_tab
 keybind = ctrl+s>n=next_tab
@@ -40,5 +44,6 @@ keybind = ctrl+s>five=goto_tab:5
 keybind = ctrl+s>six=goto_tab:6
 keybind = ctrl+s>seven=goto_tab:7
 keybind = ctrl+s>eight=goto_tab:8
+keybind = ctrl+s>nine=goto_tab:9
 
 keybind = ctrl+s>r=reload_config
