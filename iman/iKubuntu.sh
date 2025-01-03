@@ -120,3 +120,13 @@ sudo snap refresh
 #     sudo reboot
 #     sudo flatpak install flathub org.gnome.World.PikaBackup
 #     sudo flatpak update
+
+# ==============================================================================
+#   Fix: NTFS drives only mounting using sudo
+
+# On Kubuntu 24.04, automatic mounting is not working properly for NTFS drives.
+# To fix this problem, run the following command to disable `ntfs3` and reboot your system.
+#
+#     echo 'blacklist ntfs3' | sudo tee /etc/modprobe.d/disable-ntfs3.conf
+#
+# Afterwards, you can go into your system settings and enable automatic mounting for your removable devices.
