@@ -127,3 +127,14 @@ See: <https://www.chmodcommand.com>
 - `cp -r <BACKUP_PATH>/.password-store ~ && chmod 700 ~/.password-store && cd ~/.password-store && chmod 600 .gpg-id *.gpg && cd`
 - `cp -r <BACKUP_PATH>/.gnupg ~          && chmod 700 ~/.gnupg          && cd ~/.gnupg          && chmod 600 *.kbx* *seed *.gpg **/*.key **/*.rev && chmod 700 openpgp-revocs.d private-keys-v1.d && cd`
 - `cp -r <BACKUP_PATH>/.ssh ~            && chmod 700 ~/.ssh            && cd ~/.ssh            && chmod 600 id* config known_hosts* && cd`
+
+# Mounting
+
+On Kubuntu 24.04, automatic mounting is not working properly.
+Add manual entry in `/etc/fstab`.
+
+    UUID=<DEVICE_UUID> /media/jan/WD5TB ntfs defaults,uid=1000,gid=1000,umask=022,errors=remount-ro 0 0
+
+Use `blkid /dev/sda1` to check and replace `<DEVICE_UUID>`.
+Create permanent mounting point `/media/jan/WD5TB`.
+Check if `uid` and `gid` are correct using `id` command.
