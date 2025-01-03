@@ -269,6 +269,8 @@ alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" && exit'
 # --------------------------------------------------------------------
 #   Neovim
 
+alias snv='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
+
 alias nv0='$HOME/scripts/nv0.sh'
 alias nv1='$HOME/scripts/nv1.sh'
 alias nv='$EDITOR'
