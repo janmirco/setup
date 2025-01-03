@@ -64,6 +64,10 @@ sudo apt-get install --assume-yes libgtk-4-dev libadwaita-1-dev
 sudo apt-get install --assume-yes gcc-multilib
 sudo apt-get install --assume-yes rofi*
 
+# Nvidia installs
+#     sudo apt-get install --assume-yes nvidia-settings
+#     sudo ubuntu-drivers autoinstall
+
 # Manual APT installs
 #
 # Downloads:
