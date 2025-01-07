@@ -64,14 +64,29 @@ local resize_floating_window = function(delta_height, delta_width)
     if not vim.api.nvim_win_is_valid(state.floating.win) then return end
     state.floating.dim.height = math.max(1, state.floating.dim.height + delta_height)
     state.floating.dim.width = math.max(1, state.floating.dim.width + delta_width)
-    state.floating.dim.row = math.floor((vim.o.lines - state.floating.dim.height) / 2.0)
-    state.floating.dim.col = math.floor((vim.o.columns - state.floating.dim.width) / 2.0)
     update_window_config()
 end
 
-local resize_default_floating_window = function()
+local back_default_floating_window = function()
     if not vim.api.nvim_win_is_valid(state.floating.win) then return end
     state.floating.dim = default_window_dimensions(state.floating.dim)
+    update_window_config()
+end
+
+local move_floating_window = function(direction)
+    if not vim.api.nvim_win_is_valid(state.floating.win) then return end
+    if direction == "up" then
+        state.floating.dim.row = math.floor(state.floating.dim.row - 1)
+    elseif direction == "down" then
+        state.floating.dim.row = math.floor(state.floating.dim.row + 1)
+    elseif direction == "right" then
+        state.floating.dim.col = math.floor(state.floating.dim.col + 1)
+    elseif direction == "left" then
+        state.floating.dim.col = math.floor(state.floating.dim.col - 1)
+    elseif direction == "center" then
+        state.floating.dim.row = math.floor((vim.o.lines - state.floating.dim.height) / 2.0)
+        state.floating.dim.col = math.floor((vim.o.columns - state.floating.dim.width) / 2.0)
+    end
     update_window_config()
 end
 
@@ -80,4 +95,9 @@ vim.keymap.set({ "n", "t" }, "<A-Up>", function() resize_floating_window(2, 0) e
 vim.keymap.set({ "n", "t" }, "<A-Down>", function() resize_floating_window(-2, 0) end, { desc = "Decrease FloaTerm height", silent = true })
 vim.keymap.set({ "n", "t" }, "<A-Right>", function() resize_floating_window(0, 2) end, { desc = "Increase FloaTerm width", silent = true })
 vim.keymap.set({ "n", "t" }, "<A-Left>", function() resize_floating_window(0, -2) end, { desc = "Decrease FloaTerm width", silent = true })
-vim.keymap.set({ "n", "t" }, "<A-=>", resize_default_floating_window, { desc = "Resize FloaTerm back to default", silent = true })
+vim.keymap.set({ "n", "t" }, "<A-=>", back_default_floating_window, { desc = "FloaTerm back to default position and size", silent = true })
+vim.keymap.set({ "n", "t" }, "<A-S-Up>", function() move_floating_window("up") end, { desc = "Move FloaTerm up", silent = true })
+vim.keymap.set({ "n", "t" }, "<A-S-Down>", function() move_floating_window("down") end, { desc = "Move FloaTerm down", silent = true })
+vim.keymap.set({ "n", "t" }, "<A-S-Right>", function() move_floating_window("right") end, { desc = "Move FloaTerm right", silent = true })
+vim.keymap.set({ "n", "t" }, "<A-S-Left>", function() move_floating_window("left") end, { desc = "Move FloaTerm left", silent = true })
+vim.keymap.set({ "n", "t" }, "<A-S-=>", function() move_floating_window("center") end, { desc = "Move FloaTerm to center", silent = true })

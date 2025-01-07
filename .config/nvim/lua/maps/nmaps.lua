@@ -206,8 +206,10 @@ vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { desc = "mak
 
 -- manual indenting
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("normal magg=G`azz")
-    vim.cmd("delmarks a")
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd("normal! gg=G")
+    vim.api.nvim_win_set_cursor(0, cursor_pos)
+    vim.cmd("normal! ^zz")
 end, { desc = "Indent current file using neovim", silent = true })
 
 -- sort entire file

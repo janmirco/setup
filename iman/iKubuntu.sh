@@ -63,6 +63,8 @@ sudo apt-get install --assume-yes libxcb-xinerama0 libxcb-cursor0 lsb-core
 sudo apt-get install --assume-yes libgtk-4-dev libadwaita-1-dev
 sudo apt-get install --assume-yes gcc-multilib
 sudo apt-get install --assume-yes rofi*
+sudo apt-get install --assume-yes evolution evolution-ews
+sudo apt-get install --assume-yes hunspell hunspell-en-us hunspell-de-de
 
 # Nvidia installs
 #     sudo apt-get install --assume-yes nvidia-settings

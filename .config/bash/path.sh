@@ -12,6 +12,7 @@ export PATH="$HOME/bin/lazygit:$PATH"
 export PATH="$HOME/bin/marp:$PATH"
 export PATH="$HOME/bin/neovim/nvim-linux64/bin:$PATH"
 export PATH="$HOME/bin/nodejs/node-linux-x64/bin:$PATH"
+export PATH="$HOME/bin/odin/odin-linux-amd64:$PATH"
 export PATH="$HOME/bin/slicer/slicer-linux-amd64:$PATH"
 export PATH="$HOME/bin/zig/zig:$PATH"
 

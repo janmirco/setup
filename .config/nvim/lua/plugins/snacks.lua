@@ -1,7 +1,7 @@
 return {
     {
         "folke/snacks.nvim",
-        dependencies = "nvim-tree/nvim-web-devicons",
+        dependencies = { "nvim-tree/nvim-web-devicons", "lewis6991/gitsigns.nvim" },
         priority = 1000,
         lazy = false,
         opts = {
