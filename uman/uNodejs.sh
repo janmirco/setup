@@ -53,6 +53,9 @@ function download {
 
         echo "$log_sign Updating yarn ..."
         npm install -g yarn
+
+        echo "$log_sign Updating prettier ..."
+        npm install -g prettier
     else
         echo "$log_sign Given URL not found!"
     fi
