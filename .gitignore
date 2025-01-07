@@ -178,6 +178,7 @@
 /.config/Code/
 /.config/dconf/
 /.config/enchant/
+/.config/evolution/
 /.config/fcitx5/
 /.config/fltk.org/
 /.config/fontforge/
