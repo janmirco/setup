@@ -12,7 +12,7 @@ return {
         vim.cmd("highlight FloatermBorder guibg=background guifg=foreground")
 
         -- toggle light theme
-        vim.keymap.set("n", "<A-l>", function()
+        vim.keymap.set("n", "<A-L>", function()
             if vim.api.nvim_eval("&background") == "dark" then
                 vim.opt.background = "light"
                 vim.cmd("colorscheme catppuccin-latte")

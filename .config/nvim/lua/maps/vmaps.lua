@@ -1,7 +1,3 @@
--- revisualize after shifting
-vim.keymap.set("v", ">", ">gV", { remap = true })
-vim.keymap.set("v", "<", "<gV", { remap = true })
-
 -- increase and decrease numbers in bulk
 vim.keymap.set("v", "<C-a>", "<C-a>gV", { remap = true })
 vim.keymap.set("v", "<C-x>", "<C-x>gV", { remap = true })

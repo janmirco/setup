@@ -4,6 +4,22 @@ vim.keymap.set("n", "gV", "gv", { desc = "Start visual mode with previous area",
 -- remap macros in order to enable q to quit buffer
 vim.keymap.set("n", "Q", "q", { desc = "Record macro", silent = true })
 
+-- set different keymaps for neovim default commenting
+--   This function is necessary because otherwise `remap = true` would be
+--   necessary for the different keymaps for commenting below. Using
+--   `remap = true` would result in not being able to delete corresponding
+--   keymaps. And this is necessary if you want to be able to use `<leader>c` in
+--   normal mode and `gc` for `git commit`.
+local copy_keymap = function(mode, new_lhs, cur_lhs)
+    local map_data = vim.fn.maparg(cur_lhs, mode, false, true)
+    map_data.lhs, map_data.lhsraw = new_lhs, vim.keycode(new_lhs)
+    vim.fn.mapset(map_data)
+end
+copy_keymap("n", "<leader>c", "gcc") -- use 3<leader>c to comment 3 lines (current line and next two)
+copy_keymap("v", "<leader>c", "gc")
+vim.keymap.del("n", "gcc")
+vim.keymap.del("v", "gc")
+
 -- toggle local spell check
 local toggle_spell = function(language)
     local spell_on = vim.api.nvim_eval("&spell") == 1
@@ -80,7 +96,6 @@ vim.keymap.set("n", "<leader>a", function()
     vim.cmd("wall")
     vim.cmd("qall")
 end, { desc = "wall; qall", silent = true })
-vim.keymap.set("n", "<leader>cq", function() vim.cmd("cquit") end, { desc = "cquit", silent = true })
 vim.keymap.set("n", "<leader>e", ":edit ", { desc = "edit", silent = true })
 vim.keymap.set("n", "<leader>v", ":vsplit ", { desc = "vsplit", silent = true })
 vim.keymap.set("n", "<leader>s", ":split ", { desc = "split", silent = true })

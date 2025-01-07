@@ -10,20 +10,6 @@ local exit_insert_mode = function()
 end
 vim.keymap.set("i", "hh", exit_insert_mode)
 
--- parentheses, brackets, curly braces, single/double quotation marks, ...
-vim.keymap.set("i", "( ", "()<left>")
-vim.keymap.set("i", "[ ", "[]<left>")
-vim.keymap.set("i", "{ ", "{}<left>")
-vim.keymap.set("i", "' ", "''<left>")
-vim.keymap.set("i", "\" ", "\"\"<left>")
-vim.keymap.set("i", "` ", "``<left>")
-vim.keymap.set("i", "< ", "<><left>")
-vim.keymap.set("i", "$ ", "$$<left>")
-vim.keymap.set("i", "(<cr>", "()<left><cr>")
-vim.keymap.set("i", "[<cr>", "[]<left><cr>")
-vim.keymap.set("i", "{<cr>", "{}<left><cr>")
-vim.keymap.set("i", "$<cr>", "$$$$<left><left><cr>")
-
 -- paste commands from normal mode
 vim.keymap.set("i", "<A-p>", "<Esc>:normal p<cr>i")
 vim.keymap.set("i", "<A-P>", "<Esc>:normal P<cr>i")
