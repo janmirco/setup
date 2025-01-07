@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "Buf
 
             -- special settings for Neogit commit messages
             local is_neogitcommitmessage = string.find(string.lower(current_filetype), "neogitcommitmessage")
-            local is_gitcommit = string.find(string.lower(current_filetype), "gitcommit")
+            local is_gitcommit = string.lower(current_filetype) == "gitcommit"
             if is_neogitcommitmessage or is_gitcommit then
                 vim.opt.colorcolumn = { 51, 73 }
                 vim.opt.cursorline = true
