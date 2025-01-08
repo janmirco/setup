@@ -180,7 +180,6 @@ vim.keymap.set("n", "<C-y>", ":%y+<cr>", { desc = "Yank entire file", silent = t
 -- keeping it centered
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
-vim.keymap.set("n", "J", "maJ`a:delmarks a<cr>", { silent = true })
 
 -- move current line
 vim.keymap.set("n", "<A-j>", "<S-v>dp", { desc = "Move current line down", silent = true })
