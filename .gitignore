@@ -7,6 +7,7 @@
 
 # files
 /.anyconnect
+/.aspell*
 /.bash_history
 /.config/akonadi-firstrunrc
 /.config/akonadi-migrationrc
