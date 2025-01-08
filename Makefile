@@ -29,7 +29,7 @@ update:
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
 	@cp ~/.config/evolution/accels .config/evolution
 	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
-	@cp ~/.config/lazygit/config.yml .config/lazygit/config.yml
+	@cp ~/.config/lazygit/config.yml .config/lazygit
 	@cp ~/.config/nushell/config.nu ~/.config/nushell/env.nu .config/nushell
 	@cp ~/.config/tmux/tmux.conf .config/tmux
 	@cp ~/.gitignore .
