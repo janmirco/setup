@@ -21,13 +21,11 @@ update:
 	@cp ~/.bash_logout .
 	@cp ~/.bashrc .
 	@mkdir --parents .config/calcurse
-	@mkdir --parents .config/evolution
 	@mkdir --parents .config/git
 	@mkdir --parents .config/lazygit
 	@mkdir --parents .config/nushell
 	@mkdir --parents .config/tmux
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
-	@cp ~/.config/evolution/accels .config/evolution
 	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/lazygit/config.yml .config/lazygit
 	@cp ~/.config/nushell/config.nu ~/.config/nushell/env.nu .config/nushell
@@ -55,13 +53,11 @@ install:
 	@cp .bash_logout ~
 	@cp .bashrc ~
 	@mkdir --parents ~/.config/calcurse
-	@mkdir --parents ~/.config/evolution
 	@mkdir --parents ~/.config/git
 	@mkdir --parents ~/.config/lazygit
 	@mkdir --parents ~/.config/nushell
 	@mkdir --parents ~/.config/tmux
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
-	@cp .config/evolution/accels ~/.config/evolution
 	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
 	@cp .config/lazygit/config.yml ~/.config/lazygit
 	@cp .config/nushell/config.nu .config/nushell/env.nu ~/.config/nushell
