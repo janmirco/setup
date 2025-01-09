@@ -323,7 +323,7 @@ alias blackcheck='python3 -m black --color --check --diff'
 alias pip='python3 -m pip'
 
 alias uva='source .venv/bin/activate'
-alias uvi='uv init --no-workspace --vcs none'
+alias uvi='uv init --no-workspace --vcs none --author-from git'
 
 alias condafenicsx_activate='run_conda_settings && conda activate fenicsx-env'
 alias condafenicsx_deactivate='conda deactivate && conda deactivate'

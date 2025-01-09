@@ -33,7 +33,7 @@ sudo apt-get install --assume-yes indent*
 sudo apt-get install --assume-yes octave octave-*
 sudo apt-get install --assume-yes gmsh gmsh-doc
 sudo apt-get install --assume-yes paraview paraview-dev paraview-doc
-sudo apt-get install --assume-yes inkscape gimp ffmpeg imagemagick
+sudo apt-get install --assume-yes inkscape gimp ffmpeg imagemagick libmagickwand-dev libgraphicsmagick1-dev
 sudo apt-get install --assume-yes texlive texlive-lang-german texlive-latex-extra texlive-fonts-extra texlive-science texlive-bibtex-extra biber fontforge fontforge-doc fontforge-extras latexmk
 sudo apt-get install --assume-yes texmaker* texstudio* kile*
 sudo apt-get install --assume-yes gnuplot gnuplot-doc

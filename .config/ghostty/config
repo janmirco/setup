@@ -5,6 +5,11 @@ cursor-style = bar
 cursor-style-blink = false
 mouse-hide-while-typing = true
 
+# opacity and blur
+cursor-opacity = 0.9
+background-opacity = 0.9
+background-blur-radius = 20
+
 # font
 font-family = JetBrainsMono Nerd Font
 font-size = 13.0
@@ -15,9 +20,6 @@ window-padding-x = 0
 window-padding-y = 0
 window-width = 1000
 window-height = 1000
-
-# tabs
-gtk-wide-tabs = false
 
 # keybinds
 keybind = ctrl+s>s=new_split:down

@@ -18,5 +18,6 @@ cargo install starship --locked
 cargo install stylua
 cargo install tokei
 cargo install tree-sitter-cli
+cargo install viu
 cargo install yazi-fm yazi-cli --locked
 echo "$log_sign Finished update."
