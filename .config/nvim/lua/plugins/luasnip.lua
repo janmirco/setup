@@ -343,6 +343,32 @@ def $1($2) -> $3:
                     )
                 ),
             },
+            toml = {
+                ls.parser.parse_snippet(
+                    "pyproject",
+                    [[
+[project]
+name = "$1"
+version = "0.1.0"
+description = "$2"
+readme = "README.md"
+authors = [
+    { name = "Jan Mirco Pfeifer", email = "126580858+janmirco@users.noreply.github.com" }
+]
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+]]
+                ),
+            },
         })
 
         -- expand or jump forward
