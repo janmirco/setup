@@ -5,10 +5,12 @@ cursor-style = bar
 cursor-style-blink = false
 mouse-hide-while-typing = true
 
-# opacity and blur
+# opacity
 cursor-opacity = 0.9
 background-opacity = 0.9
-background-blur-radius = 20
+
+# blur (has to be set globally in KDE's Desktop Effects)
+background-blur-radius = true
 
 # font
 font-family = JetBrainsMono Nerd Font
@@ -29,6 +31,10 @@ keybind = ctrl+s>j=goto_split:bottom
 keybind = ctrl+s>k=goto_split:top
 keybind = ctrl+s>l=goto_split:right
 keybind = ctrl+s>z=toggle_split_zoom
+keybind = ctrl+s>left=resize_split:left,100
+keybind = ctrl+s>down=resize_split:down,100
+keybind = ctrl+s>up=resize_split:up,100
+keybind = ctrl+s>right=resize_split:right,100
 keybind = ctrl+s>equal=equalize_splits
 
 keybind = ctrl+s>f=toggle_fullscreen

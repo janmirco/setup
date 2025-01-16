@@ -11,6 +11,7 @@ log_sign="[uGhostty]"
 
 echo "$log_sign Starting update ..."
 cd $HOME/github/ghostty-org/ghostty
+ghostty +version |& tee latest_working_version.txt
 git pull
 zig build -p $HOME/.local -Doptimize=ReleaseFast
 echo "$log_sign Finished update."

@@ -25,7 +25,7 @@ vim.opt.linebreak = true
 vim.opt.wrap = false
 vim.opt.smoothscroll = true
 vim.opt.scrolloff = 0
-vim.opt.sidescroll = 0
+vim.opt.sidescroll = 1
 vim.opt.sidescrolloff = 0
 vim.opt.scrollbind = false
 
