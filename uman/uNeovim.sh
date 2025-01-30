@@ -3,7 +3,7 @@
 bin_name="neovim"
 log_sign="[uNeovim]"
 bin_path="$HOME/bin/$bin_name"
-dir_name="nvim-linux64"
+dir_name="nvim-linux-x86_64"
 tar_name="$dir_name.tar.gz"
 
 function download {
@@ -37,9 +37,9 @@ function download {
         cargo install tree-sitter-cli
     else
         echo "$log_sign Given URL for nightly build not found! Trying latest stable version ..."
-        download "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+        download "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz"
     fi
 }
 
-download "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+download "https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz"
 echo "$log_sign Finished update."

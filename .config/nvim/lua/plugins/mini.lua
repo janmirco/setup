@@ -18,9 +18,5 @@ return {
         end,
     },
     { "echasnovski/mini.move", version = "*", config = function() require("mini.move").setup() end },
-    {
-        "echasnovski/mini.pairs",
-        version = "*",
-        config = function() require("mini.pairs").setup({ modes = { command = true } }) end,
-    },
+    { "echasnovski/mini.pairs", version = "*", config = function() require("mini.pairs").setup({ modes = { command = true } }) end },
 }
