@@ -1,6 +1,10 @@
 return {
     "mfussenegger/nvim-dap",
-    dependencies = { "rcarriga/nvim-dap-ui", "nvim-neotest/nvim-nio" },
+    dependencies = {
+        "rcarriga/nvim-dap-ui",
+        "theHamsta/nvim-dap-virtual-text",
+        "nvim-neotest/nvim-nio",
+    },
     config = function()
         local dap = require("dap")
         dap.adapters.python = function(cb, config)
@@ -60,5 +64,7 @@ return {
         vim.keymap.set("n", "<F8>", dap.step_over, { silent = true })
         vim.keymap.set("n", "<F9>", dap.step_out, { silent = true })
         vim.keymap.set("n", "<F10>", dapui.toggle, { silent = true })
+
+        require("nvim-dap-virtual-text").setup()
     end,
 }

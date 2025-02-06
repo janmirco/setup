@@ -10,14 +10,15 @@ cursor-opacity = 0.9
 background-opacity = 0.9
 
 # blur (has to be set globally in KDE's Desktop Effects)
-background-blur-radius = true
+background-blur = true
 
 # font
 font-family = JetBrainsMono Nerd Font
 font-size = 13.0
 
 # windows
-window-decoration = false
+window-decoration = none
+window-padding-color = extend
 window-padding-x = 0
 window-padding-y = 0
 window-width = 1000

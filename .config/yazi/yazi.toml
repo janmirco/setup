@@ -1,2 +1,7 @@
 [manager]
 show_hidden = false
+ratio = [1, 2, 5]
+
+[preview]
+max_width = 3840
+max_height = 2160
