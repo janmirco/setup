@@ -21,6 +21,7 @@ elif [[ "$1" == "json" ]]; then
     volume: (if .volume then (.volume | tonumber?) else null end),
     number: (if .issue then (.issue | tonumber?) else null end),
     pages: (.page // null),
+    PDF: "[[]]",
     DOI: ("https://doi.org/" + (.DOI // "")),
     ISSN: (.ISSN // null),
     abstract: ((.abstract // "") | gsub("<[^>]*>"; "") | gsub("\n"; " ") | gsub("\\s+"; " "))
@@ -38,6 +39,7 @@ elif [[ "$1" == "yaml" ]]; then
     volume: (if .volume then (.volume | tonumber?) else null end),
     number: (if .issue then (.issue | tonumber?) else null end),
     pages: (.page // null),
+    PDF: "[[]]",
     DOI: ("https://doi.org/" + (.DOI // "")),
     ISSN: (.ISSN // null),
     abstract: ((.abstract // "") | gsub("<[^>]*>"; "") | gsub("\n"; " ") | gsub("\\s+"; " "))
