@@ -42,20 +42,12 @@ elif [[ "$1" == "yaml" ]]; then
     ISSN: (.ISSN // null),
     abstract: ((.abstract // "") | gsub("<[^>]*>"; "") | gsub("\n"; " ") | gsub("\\s+"; " "))
 }' | python3 -c '
+import json
 import sys
 import yaml
-import json
 
-class OrderedLoader(yaml.SafeLoader):
-    pass
-
-def construct_mapping(loader, node):
-    loader.flatten_mapping(node)
-    return dict(loader.construct_pairs(node))
-
-OrderedLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, construct_mapping)
 json_data = json.loads(sys.stdin.read())
-print(yaml.dump(json_data, sort_keys=False, allow_unicode=True))
+print(yaml.safe_dump(json_data, allow_unicode=True, sort_keys=False))
 '
 
 fi
