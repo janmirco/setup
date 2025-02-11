@@ -115,6 +115,8 @@ alias png2gif="$HOME/scripts/png2gif.sh"
 alias pngtomp4='ffmpeg -framerate 25 -i image%04d.png movie.mp4'
 alias pp='python3'
 alias ppass="$HOME/scripts/pass.sh && exit"
+alias prettiercheck='f(){ prettier --tab-width 4 --check *."$1"; unset -f f; }; f'
+alias prettierwrite='f(){ prettier --tab-width 4 --write *."$1"; unset -f f; }; f'
 alias pv='paraview'
 alias pvnvidia='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia paraview'
 alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; unset -f f; }; f'
