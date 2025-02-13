@@ -14,6 +14,7 @@ cargo install fd-find
 cargo install git-delta
 cargo install nu --locked
 cargo install ripgrep
+cargo install sd
 cargo install starship --locked
 cargo install stylua
 cargo install tokei

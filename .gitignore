@@ -31,6 +31,7 @@
 /.config/gtkrc
 /.config/gtkrc-2.0
 /.config/gwenviewrc
+/.config/harunarc
 /.config/ibus/bus/c0ac646af5404cfda78184c29d49853e-unix-0
 /.config/kactivitymanagerd-statsrc
 /.config/kactivitymanagerd-switcher
@@ -191,6 +192,7 @@
 /.config/gtk-2.0/
 /.config/gtk-3.0/
 /.config/gtk-4.0/
+/.config/haruna/
 /.config/htop/
 /.config/ibus/
 /.config/inkscape/
@@ -228,7 +230,6 @@
 /.config/xm1/
 /.config/xsettingsd/
 /.dotnet/
-/.vpn/
 /.fltk/
 /.fonts/
 /.gnome/
@@ -259,6 +260,7 @@
 /.tldr/
 /.tmux/
 /.var/
+/.vpn/
 /.vscode/
 /.Wolfram/
 /.zoom/

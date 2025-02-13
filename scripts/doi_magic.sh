@@ -64,7 +64,8 @@ elif [[ "$1" == "obsidian" || "$1" == "obs" || "$1" == "md" || "$1" == "wiki" ]]
     PDF: "[[]]",
     DOI: ("https://doi.org/" + (.DOI // "")),
     ISSN: (.ISSN // null),
-    abstract: ((.abstract // "") | gsub("<[^>]*>"; "") | gsub("\n"; " ") | gsub("\\s+"; " "))
+    abstract: ((.abstract // "") | gsub("<[^>]*>"; "") | gsub("\n"; " ") | gsub("\\s+"; " ")),
+    tags: ["#literature"]
 }' | python3 -c '
 import json
 import sys

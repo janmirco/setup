@@ -129,6 +129,7 @@ alias rgi='rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case'
 alias rgix='f(){ rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --glob "*.$2" "$1"; unset -f f; }; f'
 alias rgx='f(){ rg --hidden --no-ignore-vcs --glob "$rg_glob" --glob "*.$2" "$1"; unset -f f; }; f'
 alias rm='rm -i'
+alias search_replace='f(){ sd "$1" "$2" **/*.$3; unset -f f; }; f'
 alias show_path='echo "$PATH" | tr ":" "\n"'
 alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
 alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
