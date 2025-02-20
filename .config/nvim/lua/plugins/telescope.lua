@@ -128,8 +128,8 @@ return {
             -- find files by using grep
             vim.keymap.set("n", "fl", builtin.live_grep, { desc = "Find files using grep", silent = true })
 
-            -- find files by using grep in directory of buffer
-            vim.keymap.set("n", "fL", function() builtin.live_grep({ cwd = utils.buffer_dir() }) end, { desc = "Find files using grep in directory of buffer", silent = true })
+            -- find files by using grep in open buffers
+            vim.keymap.set("n", "fL", function() builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Buffers" }) end, { desc = "Find files using grep in open buffers", silent = true })
 
             -- find spell suggestions
             vim.keymap.set("n", "fs", builtin.spell_suggest, { desc = "Find spell suggestions", silent = true })
