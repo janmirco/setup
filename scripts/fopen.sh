@@ -4,7 +4,12 @@ directory="."
 if [[ "$1" != "" ]]; then
     directory="$1"
 fi
-chosen_file="$(fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file . $directory | fzf --height=75% --preview 'bat --style=numbers --color=always {}')"
+if [[ "$3" != "" ]]; then
+    file_extension="$3"
+    chosen_file="$(fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --extension $file_extension --type file . $directory | fzf --height=75% --preview 'bat --style=numbers --color=always {}')"
+else
+    chosen_file="$(fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES                             --type file . $directory | fzf --height=75% --preview 'bat --style=numbers --color=always {}')"
+fi
 if [[ $? != 0 ]]; then
     exit 1
 fi

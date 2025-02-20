@@ -254,21 +254,22 @@ alias cdg="source $HOME/scripts/change_directory.sh && change_directory git_repo
 alias fcp='$HOME/scripts/fcp.sh'
 alias fdiff='$HOME/scripts/fdiff.sh'
 
-alias f='fzf'
 alias fd='fd --hidden --no-ignore-vcs'
 
 alias fgd='$HOME/scripts/fgd.sh'
 
-alias ff='$HOME/scripts/fopen.sh "" ""'
-alias fh='$HOME/scripts/fopen.sh "$HOME" ""'
-alias fc='$HOME/scripts/fopen.sh "$HOME/.config" ""'
-alias fn='$HOME/scripts/fopen.sh "$HOME/.config/nvim" ""'
+alias f='$HOME/scripts/fopen.sh "" "" ""'
+alias fh='$HOME/scripts/fopen.sh "$HOME" "" ""'
+alias fc='$HOME/scripts/fopen.sh "$HOME/.config" "" ""'
+alias fn='$HOME/scripts/fopen.sh "$HOME/.config/nvim" "" ""'
+alias fmd='$HOME/scripts/fopen.sh "" "" "md"'
+alias fx='$HOME/scripts/fopen.sh "" ""'
 
-alias fo='$HOME/scripts/fopen.sh "" "xdg"'
-alias fO='$HOME/scripts/fopen.sh "$HOME" "xdg"'
+alias fo='$HOME/scripts/fopen.sh "" "xdg" ""'
+alias fO='$HOME/scripts/fopen.sh "$HOME" "xdg" ""'
 
-alias foexit='$HOME/scripts/fopen.sh "" "xdg" && exit'
-alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" && exit'
+alias foexit='$HOME/scripts/fopen.sh "" "xdg" "" && exit'
+alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" "" && exit'
 
 
 # --------------------------------------------------------------------
