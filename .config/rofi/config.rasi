@@ -23,6 +23,8 @@ configuration {
 }
 
 window {
+    location: north;
+    y-offset: 20px;
     width: 1280px;
     height: 720px;
 }
