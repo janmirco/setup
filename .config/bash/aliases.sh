@@ -82,6 +82,7 @@ alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
+alias ghosttime='npx ghosttime --no-focus-pause'
 alias glow='glow --pager'
 alias gmsh='/usr/bin/gmsh'
 alias grep='grep --color=always'
@@ -242,6 +243,8 @@ alias gi='$EDITOR "$(git rev-parse --show-toplevel)"/.gitignore'
 alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
 alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
 alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
+
+alias greadme='git restore --staged :/ && git add README.md && git commit -m "update readme" && git push'
 
 
 # --------------------------------------------------------------------
