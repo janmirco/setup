@@ -76,7 +76,10 @@ return {
                 },
             },
             statuscolumn = { enabled = true },
-            words = { enabled = true },
+            words = {
+                enabled = true,
+                modes = { "n", "i", "c", "v" },
+            },
             styles = {
                 notification = {
                     wo = { wrap = true },
@@ -99,8 +102,8 @@ return {
             { "LL", function() Snacks.lazygit.log() end, desc = "Lazygit Current File History" },
             { ",,", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
             { ",.", function() Snacks.notifier.show_history() end, desc = "Notification History" },
-            { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t", "v" } },
-            { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t", "v" } },
+            { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "v" } },
+            { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "v" } },
         },
     },
 }
