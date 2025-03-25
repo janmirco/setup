@@ -16,6 +16,13 @@ shell 'xclip -selection clipboard < "$1"' --confirm
 desc = "Copy file content"
 
 [[manager.prepend_keymap]]
+on = ["<A-y>"]
+run = '''
+shell 'readlink -f "$1" | xclip -selection clipboard' --confirm
+'''
+desc = "Copy absolute path to clipboard"
+
+[[manager.prepend_keymap]]
 on = ["z"]
 run = '''
 shell 'zip -r "$(basename "$1").zip" "$(basename "$1")"' --confirm

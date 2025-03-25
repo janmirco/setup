@@ -16,6 +16,7 @@ alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
 alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
 alias ndd="$EDITOR $HOME/.todo-txt/README.md"
 alias nn="$EDITOR $HOME/.config/nvim/init.lua"
+alias rr="$EDITOR $HOME/.config/rofi/config.rasi"
 alias ss="$EDITOR $HOME/.config/starship/config.toml"
 alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
@@ -340,15 +341,6 @@ alias condafenicsx_deactivate='conda deactivate && conda deactivate && export TE
 
 alias cfa='run_conda_settings && conda activate fenicsx-env'
 alias cfd='conda deactivate && conda deactivate'
-
-
-# --------------------------------------------------------------------
-#   Rofi
-
-alias r='rofi -show combi'
-alias rr='rofi -show run'
-alias ra='rofi -show drun'
-alias rw='rofi -show window'
 
 
 # --------------------------------------------------------------------

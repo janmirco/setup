@@ -5,9 +5,6 @@ configuration {
     show-icons: true;
     terminal: "ghostty";
     drun-display-format: "{icon} {name}";
-    location: 0;
-    disable-history: false;
-    hide-scrollbar: true;
     display-window: "   Window ";
     display-drun: " 󰀘  App ";
     display-run: "   Run ";
@@ -23,8 +20,6 @@ configuration {
 }
 
 window {
-    location: north;
-    y-offset: 20px;
     width: 1280px;
     height: 360px;
 }
