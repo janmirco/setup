@@ -87,15 +87,6 @@ sudo apt-get install --assume-yes hunspell hunspell-en-us hunspell-de-de
 #     sudo apt-get install --assume-yes ~/Downloads/obsidian_<VERSION>_amd64.deb
 #     sudo apt-get install --assume-yes ~/Downloads/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
 
-# Brave
-if ! command -v brave-browser &> /dev/null; then
-    sudo apt-get update
-    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-    sudo apt-get update
-    sudo apt-get install --assume-yes brave-browser
-fi
-
 # final update and upgrade
 sudo apt-get update && sudo apt-get upgrade --assume-yes
 
@@ -121,6 +112,8 @@ sudo snap refresh
 #     sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #     sudo reboot
 #     sudo flatpak install flathub org.gnome.World.PikaBackup
+#     sudo flatpak install flathub org.inkscape.Inkscape
+#     sudo flatpak install flathub app.zen_browser.zen
 #     sudo flatpak update
 
 # ==============================================================================
