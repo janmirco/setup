@@ -13,6 +13,7 @@ cargo install eza
 cargo install fd-find
 cargo install git-delta
 cargo install nu --locked
+cargo install resvg
 cargo install ripgrep
 cargo install sd
 cargo install starship --locked

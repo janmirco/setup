@@ -7,6 +7,7 @@
 
 # files
 /.anyconnect
+/.apport-ignore.xml
 /.aspell*
 /.bash_history
 /.config/akonadi-firstrunrc
@@ -117,6 +118,7 @@
 /.config/pulse/c0ac646af5404cfda78184c29d49853e-device-volumes.tdb
 /.config/pulse/c0ac646af5404cfda78184c29d49853e-stream-volumes.tdb
 /.config/QtProject.conf
+/.config/sciebo
 /.config/session/kwin_saved*
 /.config/soffice.binrc
 /.config/specialmailcollectionsrc
@@ -204,6 +206,7 @@
 /.config/libaccounts-glib/
 /.config/libreoffice/
 /.config/menus/
+/.config/metadata-editor/
 /.config/microsoft-edge/
 /.config/neofetch/
 /.config/nvim/autoload/
@@ -217,6 +220,7 @@
 /.config/pulse/
 /.config/remmina/
 /.config/sciebo/
+/.config/Sciebo/
 /.config/session/
 /.config/slicer.org/
 /.config/systemd/

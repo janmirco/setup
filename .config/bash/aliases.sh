@@ -90,7 +90,6 @@ alias grep='grep --color=always'
 alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
 alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
-alias jupyter-convert='f(){ jupyter nbconvert --to script "$1"; unset -f f; }; f'
 alias l='ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias lb='f(){ ls -l --almost-all --human-readable --group-directories-first --color=always $1 | bat; unset -f f; }; f'
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
@@ -287,7 +286,6 @@ alias nv='$EDITOR'
 alias nvS='$EDITOR -S'
 alias nva='$HOME/scripts/nva.sh'
 alias nvd='$EDITOR -d'
-alias nvdiff='$EDITOR -d'
 alias nvf='$HOME/scripts/nvf.sh'
 alias nvg='$HOME/scripts/nvg.sh'
 alias nvgi='$HOME/scripts/nvgi.sh'
@@ -304,6 +302,9 @@ alias nvyearmd='nv *{1,2}???*.md'
 
 alias nvgrid='f(){ $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd l | split "$4" | wincmd k | wincmd h | wincmd ="; unset -f f; }; f'
 alias nvmain='f(){ $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd ="; unset -f f; }; f'
+
+alias nvdiff='git difftool'
+alias nvmerge='git mergetool'
 
 alias nvsudo='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
 
@@ -337,11 +338,13 @@ alias uva='source .venv/bin/activate'
 alias uvi='uv init --no-workspace --vcs none --author-from git'
 alias uvupdate='uv lock && uv sync'
 
+alias conda_run_settings='export TERM=xterm-256color && run_conda_settings'
+alias conda_deactivate='conda deactivate && export TERM=xterm-ghostty'
+
 alias condafenicsx_activate='export TERM=xterm-256color && run_conda_settings && conda activate fenicsx-env'
 alias condafenicsx_deactivate='conda deactivate && conda deactivate && export TERM=xterm-ghostty'
-
-alias cfa='run_conda_settings && conda activate fenicsx-env'
-alias cfd='conda deactivate && conda deactivate'
+alias cfa='export TERM=xterm-256color && run_conda_settings && conda activate fenicsx-env'
+alias cfd='conda deactivate && conda deactivate && export TERM=xterm-ghostty'
 
 
 # --------------------------------------------------------------------

@@ -42,7 +42,7 @@
     prompt = false
     trustExitCode = true
 [mergetool "nvmerge"]
-    cmd = nvim -d $LOCAL $MERGED $REMOTE -c 'wincmd l'
+    cmd = nvim -d "$LOCAL" "$MERGED" "$REMOTE" -c 'wincmd l'
 
 [diff]
     tool = nvdiff
@@ -51,7 +51,7 @@
     prompt = false
     trustExitCode = true
 [difftool "nvdiff"]
-    cmd = nvim -d $LOCAL $REMOTE -c 'wincmd l'
+    cmd = nvim -d "$LOCAL" "$REMOTE" -c 'wincmd l'
 
 [alias]
     ap = add --patch
@@ -83,6 +83,8 @@
     mg = merge
     mga = merge --abort
     mgc = merge --continue
+    mguseours = merge --strategy-option ours
+    mgusetheirs = merge --strategy-option theirs
     pl = pull
     ps = push
     rb = rebase

@@ -19,6 +19,7 @@ sudo apt-get install --assume-yes hollywood
 sudo apt-get install --assume-yes python3 python3-doc python3-pip python3-venv
 sudo apt-get install --assume-yes python3-setuptools python-setuptools-doc python3-dev
 sudo apt-get install --assume-yes ipython3 python3-ipykernel
+sudo apt-get install --assume-yes jupyter
 sudo apt-get install --assume-yes lua5.1 luarocks luajit
 sudo apt-get install --assume-yes silversearcher-ag
 sudo apt-get install --assume-yes doc-base stow
