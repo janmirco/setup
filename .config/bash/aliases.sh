@@ -21,6 +21,7 @@ alias ss="$EDITOR $HOME/.config/starship/config.toml"
 alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
+alias yy="$EDITOR $HOME/.config/yazi/yazi.toml"
 
 
 # --------------------------------------------------------------------
@@ -47,6 +48,7 @@ alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
+alias change_git_access_token="$HOME/scripts/change_git_access_token.sh"
 alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
 alias checkNonAscii='grep --color="auto" -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
@@ -336,7 +338,7 @@ alias pip='python3 -m pip'
 
 alias uva='source .venv/bin/activate'
 alias uvi='uv init --no-workspace --vcs none --author-from git'
-alias uvupdate='uv lock && uv sync'
+alias uvupdate='uv lock --upgrade && uv sync'
 
 alias conda_run_settings='export TERM=xterm-256color && run_conda_settings'
 alias conda_deactivate='conda deactivate && export TERM=xterm-ghostty'

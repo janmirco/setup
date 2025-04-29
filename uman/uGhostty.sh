@@ -3,8 +3,8 @@
 log_sign="[uGhostty]"
 
 # Dependencies:
-#   - Zig 0.13
-#   - `sudo apt-get install libgtk-4-dev libadwaita-1-dev git`
+#   - Zig 0.14
+#   - `sudo apt-get install libgtk-4-dev libadwaita-1-dev git blueprint-compiler gettext libxml2-utils`
 #
 # See:
 #   - https://ghostty.org/docs/install/build

@@ -27,9 +27,6 @@ return {
                     priority = "current",
                 },
                 links = {
-                    style = "wiki",
-                    name_is_source = true,
-                    conceal = true,
                     transform_explicit = function(text) return text:gsub(" ", "_") end,
                 },
                 to_do = {

@@ -260,6 +260,7 @@
 /.sage/
 /.ssh/
 /.texlive2021/
+/.texlive2023/
 /.thunderbird/
 /.tldr/
 /.tmux/
@@ -270,6 +271,7 @@
 /.zoom/
 /backups/
 /bin/
+/ble-*/
 /data/
 /Desktop/
 /Documents/

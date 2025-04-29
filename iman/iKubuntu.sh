@@ -109,7 +109,7 @@ sudo snap refresh
 #
 # Commands:
 #
-#     sudo apt-get install --assume-yes flatpak plasma-discover-backend-flatpak
+#     sudo apt-get install --assume-yes flatpak plasma-discover-backend-flatpak kde-config-flatpak
 #     sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #     sudo reboot
 #     sudo flatpak install flathub org.gnome.World.PikaBackup
