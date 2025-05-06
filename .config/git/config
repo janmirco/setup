@@ -7,13 +7,10 @@
 
 [user]
     name = Jan Mirco Pfeifer
+    email = 126580858+janmirco@users.noreply.github.com
 
 [include]
-    path = ~/.config/git/private
     path = ~/.config/git/delta_themes
-
-[includeIf "gitdir:~/github/"]
-    path = ~/.config/git/public
 
 [init]
     defaultBranch = main
@@ -29,7 +26,7 @@
     features = colibri
     dark = true
     syntax-theme = Catppuccin Mocha
-    side-by-side = true
+    side-by-side = false
     navigate = true
 
 [pull]
