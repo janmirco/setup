@@ -6,7 +6,9 @@ update:
 	@rm -rf .config/bat       && cp -r ~/.config/bat .config
 	@rm -rf .config/fd        && cp -r ~/.config/fd .config
 	@rm -rf .config/ghostty   && cp -r ~/.config/ghostty .config
+	@rm -rf .config/git       && cp -r ~/.config/git .config
 	@rm -rf .config/glow      && cp -r ~/.config/glow .config
+	@rm -rf .config/jj        && cp -r ~/.config/jj .config
 	@rm -rf .config/nvim      && cp -r ~/.config/nvim .config
 	@rm -rf .config/rofi      && cp -r ~/.config/rofi .config
 	@rm -rf .config/starship  && cp -r ~/.config/starship .config
@@ -21,12 +23,10 @@ update:
 	@cp ~/.bash_logout .
 	@cp ~/.bashrc .
 	@mkdir --parents .config/calcurse
-	@mkdir --parents .config/git
 	@mkdir --parents .config/lazygit
 	@mkdir --parents .config/nushell
 	@mkdir --parents .config/tmux
 	@cp ~/.config/calcurse/conf ~/.config/calcurse/keys .config/calcurse
-	@cp ~/.config/git/config ~/.config/git/delta_themes ~/.config/git/public .config/git
 	@cp ~/.config/lazygit/config.yml .config/lazygit
 	@cp ~/.config/nushell/config.nu ~/.config/nushell/env.nu .config/nushell
 	@cp ~/.config/tmux/tmux.conf .config/tmux
@@ -38,7 +38,9 @@ install:
 	@rm -rf ~/.config/bat       && cp -r .config/bat ~/.config
 	@rm -rf ~/.config/fd        && cp -r .config/fd ~/.config
 	@rm -rf ~/.config/ghostty   && cp -r .config/ghostty ~/.config
+	@rm -rf ~/.config/git       && cp -r .config/git ~/.config
 	@rm -rf ~/.config/glow      && cp -r .config/glow ~/.config
+	@rm -rf ~/.config/jj        && cp -r .config/jj ~/.config
 	@rm -rf ~/.config/nvim      && cp -r .config/nvim ~/.config
 	@rm -rf ~/.config/rofi      && cp -r .config/rofi ~/.config
 	@rm -rf ~/.config/starship  && cp -r .config/starship ~/.config
@@ -53,12 +55,10 @@ install:
 	@cp .bash_logout ~
 	@cp .bashrc ~
 	@mkdir --parents ~/.config/calcurse
-	@mkdir --parents ~/.config/git
 	@mkdir --parents ~/.config/lazygit
 	@mkdir --parents ~/.config/nushell
 	@mkdir --parents ~/.config/tmux
 	@cp .config/calcurse/conf .config/calcurse/keys ~/.config/calcurse
-	@cp .config/git/config .config/git/delta_themes .config/git/public ~/.config/git
 	@cp .config/lazygit/config.yml ~/.config/lazygit
 	@cp .config/nushell/config.nu .config/nushell/env.nu ~/.config/nushell
 	@cp .config/tmux/tmux.conf ~/.config/tmux
