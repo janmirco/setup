@@ -12,6 +12,7 @@ cargo install du-dust
 cargo install eza
 cargo install fd-find
 cargo install git-delta
+cargo install jj-cli --locked --bin jj
 cargo install nu --locked
 cargo install resvg
 cargo install ripgrep
