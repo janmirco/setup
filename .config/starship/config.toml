@@ -26,6 +26,8 @@ error_symbol = ''
 [directory]
 format = '[ $path]($style)[$read_only]($read_only_style) '
 style = 'bold blue'
+truncation_length = 1000
+truncate_to_repo = false
 
 [fill]
 symbol = ' '
