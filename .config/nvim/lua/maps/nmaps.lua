@@ -135,7 +135,7 @@ vim.keymap.set("n", "<leader>pl", function() vim.cmd("lcd %:h") end, { desc = "C
 
 -- show files of current directory and directory tree
 vim.keymap.set("n", "<leader>l", function() vim.cmd("! ls -l --almost-all --human-readable --group-directories-first") end, { desc = "ls", silent = true })
-vim.keymap.set("n", "<leader>t", function() vim.cmd("! tree -avn --dirsfirst -I '.git|node_modules|env'") end, { desc = "tree", silent = true })
+vim.keymap.set("n", "<leader>t", function() vim.cmd("! tree -avn --dirsfirst -I '.git|.jj|node_modules|venv|.venv|env'") end, { desc = "tree", silent = true })
 
 -- remove trailing whitespace and only save if there was any
 vim.keymap.set("n", "<leader>rw", function()
