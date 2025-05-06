@@ -1,0 +1,8 @@
+[user]
+name = "Jan Mirco Pfeifer"
+email = "126580858+janmirco@users.noreply.github.com"
+
+[ui]
+default-command = "status"
+editor = "nvim"
+diff-editor = ":builtin"
