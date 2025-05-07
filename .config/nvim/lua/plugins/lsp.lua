@@ -18,6 +18,7 @@ return {
                     "ruff",
                     "texlab",
                     "vimls",
+                    "zls",
                 },
             })
         end,
@@ -32,7 +33,6 @@ return {
                 virtual_text = { spacing = 4 },
             })
 
-            local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             local on_attach = function()
@@ -57,8 +57,20 @@ return {
                 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "[LSP] Go to type definition", silent = true })
             end
 
+            vim.lsp.enable("bashls")
+            vim.lsp.enable("clangd")
+            vim.lsp.enable("cmake")
+            vim.lsp.enable("fortls")
+            vim.lsp.enable("jsonls")
+            vim.lsp.enable("lua_ls")
+            vim.lsp.enable("pyright")
+            vim.lsp.enable("ruff")
+            vim.lsp.enable("texlab")
+            vim.lsp.enable("vimls")
+            vim.lsp.enable("zls")
+
             -- lua
-            lspconfig.lua_ls.setup({
+            vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -78,9 +90,9 @@ return {
 
             -- c/c++
             if vim.env.EDITOR_FULL_LSP_POWER == "yes" then
-                lspconfig.clangd.setup({ capabilities = capabilities, on_attach = on_attach })
+                vim.lsp.config("clangd", { capabilities = capabilities, on_attach = on_attach })
             else
-                lspconfig.clangd.setup({
+                vim.lsp.config("clangd", {
                     capabilities = capabilities,
                     on_attach = function(client, _)
                         local namespace = vim.lsp.diagnostic.get_namespace(client.id)
@@ -91,16 +103,15 @@ return {
             end
 
             -- language servers without special setup
-            lspconfig.bashls.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.cmake.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.fortls.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.jsonls.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.pyright.setup({ capabilities = capabilities, on_attach = on_attach, handlers = { ["textDocument/publishDiagnostics"] = function() end } })
-            lspconfig.ruff.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.rust_analyzer.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.texlab.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.vimls.setup({ capabilities = capabilities, on_attach = on_attach })
-            lspconfig.zls.setup({ capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("bashls", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("cmake", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("fortls", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("jsonls", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("pyright", { capabilities = capabilities, on_attach = on_attach, handlers = { ["textDocument/publishDiagnostics"] = function() end } })
+            vim.lsp.config("ruff", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("texlab", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("vimls", { capabilities = capabilities, on_attach = on_attach })
+            vim.lsp.config("zls", { capabilities = capabilities, on_attach = on_attach })
         end,
     },
 }

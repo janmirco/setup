@@ -7,6 +7,7 @@ return {
             noice.setup({
                 lsp = {
                     progress = { enabled = false },
+                    hover = { silent = true },
                     signature = { auto_open = { enabled = false } },
                 },
                 presets = {
