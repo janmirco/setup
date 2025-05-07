@@ -2,6 +2,7 @@ return {
     { "folke/twilight.nvim" },
     {
         "folke/zen-mode.nvim",
+        dependencies = { "folke/noice.nvim", "lewis6991/gitsigns.nvim" },
         config = function()
             vim.keymap.set("n", "<A-z>", function()
                 require("zen-mode").toggle({

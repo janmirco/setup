@@ -8,6 +8,7 @@ return {
             gitsigns.setup({
                 attach_to_untracked = true,
                 signs_staged_enable = false,
+                preview_config = { border = "rounded" },
             })
 
             -- normal mode keymaps

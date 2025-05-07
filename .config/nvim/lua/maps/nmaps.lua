@@ -22,13 +22,10 @@ vim.keymap.del("v", "gc")
 
 -- toggle local spell check
 local toggle_spell = function(language)
-    local spell_on = vim.api.nvim_eval("&spell") == 1
-    local current_lang = vim.api.nvim_eval("&spelllang")
-
-    if spell_on and current_lang == language then
+    if vim.wo.spell and vim.bo.spelllang == language then
         vim.wo.spell = false
     else
-        vim.cmd("setlocal spell spelllang=" .. language)
+        vim.bo.spelllang = language
         vim.wo.spell = true
     end
 end

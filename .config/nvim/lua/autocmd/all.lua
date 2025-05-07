@@ -4,12 +4,12 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "Buf
     group = all_group,
     pattern = "*",
     callback = function()
-        vim.opt.formatoptions = { c = false, r = false, o = false }
-        vim.opt.colorcolumn = { 81, 161 }
-        vim.opt.cursorline = true
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+        vim.opt_local.colorcolumn = { 81, 161 }
+        vim.opt_local.cursorline = true
 
-        -- disable colorcolumn and cursorline for specific filetypes
-        local filetypes = {
+        -- Disable colorcolumn and cursorline for specific filetypes
+        local excluded_filetypes = {
             "alpha",
             "cmp",
             "dashboard",
@@ -26,21 +26,27 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "Buf
             "telescope",
             "whichkey",
         }
-        for _, filetype in ipairs(filetypes) do
-            local current_filetype = vim.api.nvim_eval("&filetype")
-
-            if string.find(string.lower(current_filetype), filetype) then
-                vim.opt.colorcolumn = ""
-                vim.opt.cursorline = false
+        for _, excluded_filetype in ipairs(excluded_filetypes) do
+            if vim.bo.filetype:lower():find(excluded_filetype) then
+                vim.opt_local.colorcolumn = ""
+                vim.opt_local.cursorline = false
+                return
             end
+        end
 
-            -- special settings for Neogit commit messages
-            local is_neogitcommitmessage = string.find(string.lower(current_filetype), "neogitcommitmessage")
-            local is_gitcommit = string.lower(current_filetype) == "gitcommit"
-            if is_neogitcommitmessage or is_gitcommit then
-                vim.opt.colorcolumn = { 51, 73 }
-                vim.opt.cursorline = true
-                vim.cmd("setlocal spell spelllang=en_us")
+        -- Enable spell and set custom colorcolumn for version control messages
+        local version_control_filetypes = {
+            "gitcommit",
+            "neogitcommitmessage",
+            "jjdescription",
+        }
+        for _, version_control_filetype in ipairs(version_control_filetypes) do
+            if vim.bo.filetype:lower():find(version_control_filetype) then
+                vim.opt_local.colorcolumn = { 51, 73 }
+                vim.opt_local.cursorline = true
+                vim.opt_local.spelllang = "en_us"
+                vim.opt_local.spell = true
+                return
             end
         end
     end,
