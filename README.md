@@ -28,6 +28,18 @@
 
     sudo --new-name bob totti
 
+### Give specific user access to files of other user
+
+    sudo setfacl --recursive           --modify=u:targetuser:rwx /home/sourceuser
+    sudo setfacl --recursive --default --modify=u:targetuser:rwx /home/sourceuser
+
+The first command sets current _Access Control Lists_ (ACLs) on all existing files and directories, so `targetuser` gets immediate access.
+The second command sets default ACLs on all directories, so any new files or directories created in the future will automatically grant `targetuser` the same access.
+
+### Check user access permissions
+
+    getfacl /home/sourceuser
+
 # GRUB configuration
 
 Edit `/etc/default/grub`:
