@@ -1,8 +1,8 @@
 return {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
     priority = 1000,
+    lazy = false,
     config = function()
         vim.opt.termguicolors = true -- colors will be more vivid
         vim.cmd("colorscheme catppuccin-frappe")

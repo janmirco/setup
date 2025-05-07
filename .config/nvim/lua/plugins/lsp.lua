@@ -1,3 +1,19 @@
+local servers = {
+    bashls = false,
+    clangd = "special",
+    cmake = false,
+    fortls = false,
+    jsonls = false,
+    lua_ls = "special",
+    pyright = "special",
+    ruff = false,
+    texlab = false,
+    vimls = false,
+    zls = false,
+}
+
+local language_servers = vim.tbl_keys(servers)
+
 return {
     {
         "williamboman/mason.nvim",
@@ -7,27 +23,19 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "bashls",
-                    "clangd",
-                    "cmake",
-                    "fortls",
-                    "jsonls",
-                    "lua_ls",
-                    "pyright",
-                    "ruff",
-                    "texlab",
-                    "vimls",
-                    "zls",
-                },
+                ensure_installed = language_servers,
+                automatic_enable = true,
             })
         end,
     },
     {
         "neovim/nvim-lspconfig",
-        dependencies = { "hrsh7th/nvim-cmp", "hrsh7th/cmp-nvim-lsp" },
+        priority = 4000,
         lazy = false,
-        priority = 1000,
+        dependencies = {
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = function()
             vim.diagnostic.config({
                 signs = true,
@@ -59,17 +67,13 @@ return {
                 vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "[LSP] Go to type definition", silent = true })
             end
 
-            vim.lsp.enable("bashls")
-            vim.lsp.enable("clangd")
-            vim.lsp.enable("cmake")
-            vim.lsp.enable("fortls")
-            vim.lsp.enable("jsonls")
-            vim.lsp.enable("lua_ls")
-            vim.lsp.enable("pyright")
-            vim.lsp.enable("ruff")
-            vim.lsp.enable("texlab")
-            vim.lsp.enable("vimls")
-            vim.lsp.enable("zls")
+            -- language servers without special setup
+            for server, special in pairs(servers) do
+                if not special then vim.lsp.config(server, {
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                }) end
+            end
 
             -- lua
             vim.lsp.config("lua_ls", {
@@ -104,16 +108,30 @@ return {
                 })
             end
 
-            -- language servers without special setup
-            vim.lsp.config("bashls", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("cmake", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("fortls", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("jsonls", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("pyright", { capabilities = capabilities, on_attach = on_attach, handlers = { ["textDocument/publishDiagnostics"] = function() end } })
-            vim.lsp.config("ruff", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("texlab", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("vimls", { capabilities = capabilities, on_attach = on_attach })
-            vim.lsp.config("zls", { capabilities = capabilities, on_attach = on_attach })
+            -- python
+            vim.lsp.config("pyright", {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                handlers = { ["textDocument/publishDiagnostics"] = function() end },
+            })
+
+            -- enable all language servers
+            vim.lsp.enable(language_servers)
+
+            -- use temporary fix to avoid race condition when using nvim v0.11+ and lazy package manager
+            -- different solution would be to move LSP config outside of lazy.nvim
+            local lsp_group = vim.api.nvim_create_augroup("LSPAttachAugroup", { clear = true })
+            vim.api.nvim_create_autocmd("VimEnter", {
+                group = lsp_group,
+                callback = function()
+                    local bufnr = vim.api.nvim_get_current_buf()
+                    local filename = vim.api.nvim_buf_get_name(bufnr)
+                    if filename ~= "" and vim.bo[bufnr].buftype == "" then
+                        -- Re-edit the file to trigger LSP attach
+                        vim.cmd("edit!")
+                    end
+                end,
+            })
         end,
     },
 }

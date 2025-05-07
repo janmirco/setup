@@ -1,7 +1,7 @@
 return {
     {
         "lewis6991/gitsigns.nvim",
-        priority = 1000,
+        priority = 3000,
         lazy = false,
         config = function()
             local gitsigns = require("gitsigns")

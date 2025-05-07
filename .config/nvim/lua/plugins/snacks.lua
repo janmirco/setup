@@ -1,9 +1,12 @@
 return {
     {
         "folke/snacks.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons", "lewis6991/gitsigns.nvim" },
-        priority = 1000,
+        priority = 2000,
         lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+            "lewis6991/gitsigns.nvim",
+        },
         opts = {
             bigfile = { enabled = true },
             dashboard = {
