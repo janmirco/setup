@@ -50,11 +50,15 @@ alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
 alias change_git_access_token="$HOME/scripts/change_git_access_token.sh"
-alias cheat='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
+cheat() { 
+    curl --silent cht.sh/"$1"/"$2" | bat
+}
 alias checkNonAscii='grep --color="auto" -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
 alias chmodfiles='chmod 664'
-alias cht='f(){ curl --silent cht.sh/"$1"/"$2" | bat; unset -f f; }; f'
+cht() { 
+    curl --silent cht.sh/"$1"/"$2" | bat 
+}
 alias cl='clear; ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias cm='clear; make'
 alias crop='$HOME/scripts/crop.sh'
@@ -81,26 +85,32 @@ alias dlpe='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri e'
 alias doi='$HOME/scripts/doi_magic.sh'
 alias dp='todo-txt -d $HOME/.todo-txt/todo.cfg pri'
 alias dr='todo-txt -d $HOME/.todo-txt/todo.cfg replace'
-alias du='f(){ du --human-readable --max-depth=1 "$1" | sort --human-numeric-sort --reverse; unset -f f; }; f'
 alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
-alias expand='f(){ expand --initial --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
 alias ghosttime='npx ghosttime --no-focus-pause'
 alias glow='glow --pager'
 alias gmsh='/usr/bin/gmsh'
 alias grep='grep --color=always'
-alias helpgrep='f() { "$1" --help | grep --color=always -i "$2"; unset -f f; }; f'
-alias hexToDec='f(){ echo "ibase=16; $1" | bc; unset -f f; }; f'
+helpgrep() { 
+    "$1" --help | grep --color=always -i "$2" 
+}
+hextodec() { 
+    echo "ibase=16; $1" | bc 
+}
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
 alias l='ls -l --almost-all --human-readable --group-directories-first --color=always'
-alias lb='f(){ ls -l --almost-all --human-readable --group-directories-first --color=always $1 | bat; unset -f f; }; f'
+lb(){ 
+    ls -l --almost-all --human-readable --group-directories-first --color=always "$1" | bat 
+}
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias ls='ls --group-directories-first --color=always'
 alias lsyearmd='ls *{1,2}???*.md'
 alias m='make'
-alias mansearch='f(){ man -k "$1"; unset -f f; }; f'
+mansearch() { 
+    man -k "$1" 
+}
 alias n='$HOME/scripts/notes.sh'
 alias notes='$HOME/scripts/notes.sh'
 alias nushell='nu'
@@ -110,7 +120,10 @@ alias o='$HOME/scripts/open.sh'
 alias oo='octave'
 alias open='$HOME/scripts/open.sh'
 alias openall='$HOME/scripts/open.sh'
-alias openexit='f(){ $HOME/scripts/open.sh "$@"; exit; }; f'
+openexit() { 
+    $HOME/scripts/open.sh "$@"
+    exit
+}
 alias openpdfs='$HOME/scripts/open.sh pdf'
 alias p="$HOME/scripts/pass.sh && exit"
 alias pa='$HOME/scripts/paste_to_note.sh'
@@ -120,27 +133,54 @@ alias png2gif="$HOME/scripts/png2gif.sh"
 alias pngtomp4='ffmpeg -framerate 25 -i image%04d.png movie.mp4'
 alias pp='python3'
 alias ppass="$HOME/scripts/pass.sh && exit"
-alias prettiercheck='f(){ prettier --tab-width 4 --check *."$1"; unset -f f; }; f'
-alias prettierwrite='f(){ prettier --tab-width 4 --write *."$1"; unset -f f; }; f'
+prettiercheck() { 
+    prettier --tab-width 4 --check *."$1"
+}
+prettierwrite() { 
+    prettier --tab-width 4 --write *."$1"
+}
 alias pv='paraview'
 alias pvnvidia='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia paraview'
-alias pvvtu='f(){ $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd; unset -f f; }; f'
-alias qr='f(){ qrencode --type PNG --output qr_code.png --size 10 --level H "$1"; unset -f f; }; f'
-alias qrsvg='f(){ qrencode --type SVG --output qr_code.svg "$1"; unset -f f; }; f'
+pvvtu() { 
+    $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd 
+}
+qr() { 
+    qrencode --type PNG --output qr_code.png --size 10 --level H "$1"
+}
+qrsvg() { 
+    qrencode --type SVG --output qr_code.svg "$1"
+}
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
 rg_glob="!{**/*egg-info/*,**/.*cache*/*,**/.byobu/*,**/.cache/*,**/.cargo/*,**/.config/abiword/*,**/.config/akonadi/*,**/.config/autostart/*,**/.config/BraveSoftware/*,**/.config/cat_installer/*,**/.config/cef_user_data/*,**/.config/coc/*,**/.config/Code/*,**/.config/dconf/*,**/.config/enchant/*,**/.config/fltk.org/*,**/.config/freerdp/*,**/.config/ghb/*,**/.config/GIMP/*,**/.config/google-chrome/*,**/.config/gtk-2.0/*,**/.config/gtk-3.0/*,**/.config/gtk-4.0/*,**/.config/htop/*,**/.config/ibus/*,**/.config/inkscape/*,**/.config/kde.org/*,**/.config/KDE/*,**/.config/kdeconnect/*,**/.config/kdedefaults/*,**/.config/khtml/*,**/.config/lazygit/*,**/.config/libaccounts-glib/*,**/.config/libreoffice/*,**/.config/menus/*,**/.config/microsoft-edge/*,**/.config/neofetch/*,**/.config/nvim/autoload/*,**/.config/nvim/undodir/*,**/.config/obs-studio/*,**/.config/obsidian/*,**/.config/octave/*,**/.config/ookla/*,**/.config/ParaView/*,**/.config/pavucontrol-qt/*,**/.config/pulse/*,**/.config/remmina/*,**/.config/sciebo/*,**/.config/session/*,**/.config/texstudio/*,**/.config/thefuck/*,**/.config/ticktick/*,**/.config/tmux/plugins*,**/.config/Unknown\ Organization/*,**/.config/VirtualBox/*,**/.config/vlc/*,**/.config/xm1/*,**/.config/xsettingsd/*,**/.dotnet/*,**/.fltk/*,**/.fonts/*,**/.git/*,**/.gnome/*,**/.gnupg/*,**/.imageio/*,**/.ipython/*,**/.java/*,**/.jj/*,**/.julia/*,**/.jupyter/*,**/.kde/*,**/.keras/*,**/.local/*,**/.Mathematica/*,**/.modular/*,**/.mozilla/*,**/.mplayer/*,**/.npm/*,**/.nv/*,**/.openjfx/cache/*,**/.org.jabref.gui.JabRefMain/*,**/.pki/*,**/.pulsesecure/*,**/.rpmdb/*,**/.rustup/*,**/.texlive2021/*,**/.thunderbird/*,**/.var/*,**/.Wolfram/*,**/.zoom/*,**/__pycache__/*,**/CATSettings/*,**/env/*,**/node_modules/*,**/snap/*,**/vbox/*,**/venv/*,**/.venv/*}"
-alias rg='rg --hidden --no-ignore-vcs --glob "$rg_glob"'
-alias rgi='rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case'
-alias rgix='f(){ rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --glob "*.$2" "$1"; unset -f f; }; f'
-alias rgx='f(){ rg --hidden --no-ignore-vcs --glob "$rg_glob" --glob "*.$2" "$1"; unset -f f; }; f'
+rgi() {
+  rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --color=always "$@" | less -FRX
+}
+rgix() {
+  rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --glob "*.$2" "$1" --color=always | less -FRX
+}
+rgx() {
+  rg --hidden --no-ignore-vcs --glob "$rg_glob" --glob "*.$2" "$1" --color=always | less -FRX
+}
 alias rm='rm -i'
-alias search_replace='f(){ sd "$1" "$2" **/*.$3; unset -f f; }; f'
+search_replace() { 
+    sd "$1" "$2" **/*.$3 
+}
 alias show_path='echo "$PATH" | tr ":" "\n"'
-alias softlink='f(){ ln -s "$1" "$2"; unset -f f; }; f'  # 1: source with absolute path, 2: soft link
-alias softlinkimplicit='f(){ ln -s "$1" $(basename "$1"); unset -f f; }; f'  # 1: source with absolute path
-alias svg2png192='f(){ inkscape --export-width=192 --export-height=192 --export-type="png" "$1"; unset -f f; }; f'
-alias svg2png='f(){ inkscape --export-type="png" "$1"; unset -f f; }; f'
-alias svg2pngWH='f(){ inkscape --export-width="$2" --export-height="$3" --export-type="png" "$1"; unset -f f; }; f'
+softlink() { 
+    ln -s "$1" "$2"  # 1: source with absolute path, 2: soft link
+}  
+softlinkimplicit() { 
+    ln -s "$1" $(basename "$1")  # 1: source with absolute path
+}  
+svg2png192() { 
+    inkscape --export-width=192 --export-height=192 --export-type="png" "$1" 
+}
+svg2png() { 
+    inkscape --export-type="png" "$1" 
+}
+svg2pngWH() { 
+    inkscape --export-width="$2" --export-height="$3" --export-type="png" "$1" 
+}
 alias t='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
 alias tree1='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 1'
 alias tree2='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 2'
@@ -148,7 +188,6 @@ alias tree3='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L
 alias tree4='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 4'
 alias tree5='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 5'
 alias tree='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
-alias unexpand='f(){ unexpand --first-only --tabs=4 "$1" > tmp.txt; rm -f "$1"; mv tmp.txt "$1"; unset -f f; }; f'
 alias usbmount='udisksctl mount --block-device /dev/sda1'
 alias usbntfsfix='ntfsfix --clear-bad-sectors /dev/sda1'
 alias usbpoweroff='udisksctl power-off --block-device /dev/sda'
@@ -160,7 +199,10 @@ alias usbunmount='udisksctl unmount --block-device /dev/sda1'
 alias vi="vim -u NONE"
 alias vim="vim -u $HOME/.config/vim/config.vim"
 alias wca='tokei'  # https://github.com/XAMPPRocky/tokei
-alias wcx='f(){ echo "lines, words, characters:"; cat $(find ./ -type f -iname \*.$1) | wc -l -w -m; unset -f f; }; f'
+wcx() { 
+    echo "lines, words, characters:" 
+    cat $(find ./ -type f -iname \*.$1) | wc -l -w -m 
+}
 alias webcam='ffplay -fs -i /dev/video0'
 alias xclip_copy='xclip -selection clipboard'  # cat README.md | xclip_copy
 alias xclip_paste='xclip -selection clipboard -out'  # xclip_paste > README.md
@@ -256,8 +298,8 @@ alias greadme='git restore --staged :/ && git add README.md && git commit -m "up
 alias j='jj'
 alias ja='jj abandon'
 alias jb='jj bookmark'
-alias jba='jj bookmark list --all'
-alias jbm='jj bookmark set main -r @-'
+alias jbl='jj bookmark list'
+alias jbla='jj bookmark list --all'
 alias jC='jj commit --interactive'
 alias jc='jj describe'
 alias jd='jj diff'
@@ -265,11 +307,13 @@ alias je='jj edit'
 alias ji='jj git init --colocate'
 alias jl='jj log --limit 5'
 alias jll='jj log --revisions "all()"'
+alias jm='jj bookmark set main -r @-'
 alias jn='jj new'
 alias jp='jj git fetch'
 alias jP='jj git push'
 alias jr='jj rebase'
 alias js='jj status'
+alias ju='jj undo'
 
 
 # --------------------------------------------------------------------
@@ -287,6 +331,7 @@ alias fd='fd --hidden --no-ignore-vcs'
 alias fgd='$HOME/scripts/fgd.sh'
 
 alias f='$HOME/scripts/fopen.sh "" "" ""'
+alias ff='$HOME/scripts/fopen.sh "" "" ""'
 alias fh='$HOME/scripts/fopen.sh "$HOME" "" ""'
 alias fc='$HOME/scripts/fopen.sh "$HOME/.config" "" ""'
 alias fn='$HOME/scripts/fopen.sh "$HOME/.config/nvim" "" ""'
@@ -325,8 +370,12 @@ alias nvu='$HOME/scripts/nvu.sh'
 alias nvx='$HOME/scripts/nvx.sh'
 alias nvyearmd='nv *{1,2}???*.md'
 
-alias nvgrid='f(){ $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd l | split "$4" | wincmd k | wincmd h | wincmd ="; unset -f f; }; f'
-alias nvmain='f(){ $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd ="; unset -f f; }; f'
+nvgrid() { 
+    $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd l | split "$4" | wincmd k | wincmd h | wincmd =" 
+}
+nvmain() { 
+    $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd =" 
+}
 
 alias nvdiff='git difftool'
 alias nvmerge='git mergetool'
@@ -338,12 +387,23 @@ alias nvsudo='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
 #   PDFs
 
 alias combinepdfs='$HOME/scripts/combinepdfs.sh'
-alias compresspdf='f(){ name="$(basename "$1" .pdf)"; ps2pdf "$name".pdf "$name"_compressed.pdf; unset -v name; unset -f f; }; f'
-alias convert2pdf='f(){ name="$(basename "$1" .png)"; convert "$name".png "$name".pdf; unset -v name; unset -f f; }; f'
+compresspdf() { 
+    name="$(basename "$1" .pdf)" 
+    ps2pdf "$name".pdf "$name"_compressed.pdf 
+}
+convert2pdf() { 
+    name="$(basename "$1" .png)" 
+    convert "$name".png "$name".pdf 
+}
 alias greppdf='$HOME/scripts/greppdf.sh'
 alias greppdfmulti='$HOME/scripts/greppdfmulti.sh'
-alias numPagespdf='f(){ pdftk "$1" dump_data | grep NumberOfPages | awk "{print \$2}"; unset -f f; }; f'
-alias removepdfpassword='f(){ name="$(basename "$1" .pdf)"; pdftk "$name".pdf input_pw "$2" output "$name"_unprotected.pdf; unset -v name; unset -f f; }; f'
+numpagespdf() { 
+    pdftk "$1" dump_data | grep NumberOfPages | awk "{print \$2}" 
+}
+removepdfpassword() { 
+    name="$(basename "$1" .pdf)" 
+    pdftk "$name".pdf input_pw "$2" output "$name"_unprotected.pdf 
+}
 alias renamepdfs='rename "s/\ /_/g" *.pdf; rename "s/(\(|\)|\[|\]|\{|\})//g" *.pdf; rename "y/A-Z/a-z/" *.pdf'
 alias rotatepdfclock='$HOME/scripts/rotatepdf.sh'
 alias rotatepdfanti='$HOME/scripts/rotatepdfanti.sh'

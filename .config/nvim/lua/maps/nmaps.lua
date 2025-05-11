@@ -34,9 +34,8 @@ vim.keymap.set("n", "<A-d>", function() toggle_spell("de") end, { desc = "Toggle
 
 -- more spell keymaps
 local jump_to_spell_error = function(direction)
-    local spell_off = vim.api.nvim_eval("&spell") ~= 1
-    if spell_off then
-        vim.cmd("setlocal spell spelllang=en_us")
+    if not vim.wo.spell then
+        vim.bo.spelllang = "en_us"
         vim.wo.spell = true
     end
     local keys = vim.api.nvim_replace_termcodes(direction .. "szz", true, false, true)
