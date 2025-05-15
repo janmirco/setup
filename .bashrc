@@ -9,8 +9,9 @@ export LANG="en_US.UTF-8"
 
 # set editor and pager
 export EDITOR="nvim"
-export VISUAL="nvim"
+export VISUAL="$EDITOR"
 export PAGER="less -FRX"
+export MANPAGER="$EDITOR +Man!"
 
 # If not running interactively, don't do anything
 case $- in

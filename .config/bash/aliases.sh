@@ -50,14 +50,14 @@ alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
 alias change_git_access_token="$HOME/scripts/change_git_access_token.sh"
-cheat() { 
+cheat() {
     curl --silent cht.sh/"$1"/"$2" | bat
 }
 alias checkNonAscii='grep --color="auto" -P -n "[\x80-\xFF]"'
 alias chmoddirs='chmod 775'
 alias chmodfiles='chmod 664'
-cht() { 
-    curl --silent cht.sh/"$1"/"$2" | bat 
+cht() {
+    curl --silent cht.sh/"$1"/"$2" | bat
 }
 alias cl='clear; ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias cm='clear; make'
@@ -92,24 +92,24 @@ alias ghosttime='npx ghosttime --no-focus-pause'
 alias glow='glow --pager'
 alias gmsh='/usr/bin/gmsh'
 alias grep='grep --color=always'
-helpgrep() { 
-    "$1" --help | grep --color=always -i "$2" 
+helpgrep() {
+    "$1" --help | grep --color=always -i "$2"
 }
-hextodec() { 
-    echo "ibase=16; $1" | bc 
+hextodec() {
+    echo "ibase=16; $1" | bc
 }
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
 alias l='ls -l --almost-all --human-readable --group-directories-first --color=always'
-lb(){ 
-    ls -l --almost-all --human-readable --group-directories-first --color=always "$1" | bat 
+lb(){
+    ls -l --almost-all --human-readable --group-directories-first --color=always "$1" | bat
 }
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias ls='ls --group-directories-first --color=always'
 alias lsyearmd='ls *{1,2}???*.md'
 alias m='make'
-mansearch() { 
-    man -k "$1" 
+mansearch() {
+    man -k "$1"
 }
 alias n='$HOME/scripts/notes.sh'
 alias notes='$HOME/scripts/notes.sh'
@@ -120,7 +120,7 @@ alias o='$HOME/scripts/open.sh'
 alias oo='octave'
 alias open='$HOME/scripts/open.sh'
 alias openall='$HOME/scripts/open.sh'
-openexit() { 
+openexit() {
     $HOME/scripts/open.sh "$@"
     exit
 }
@@ -133,21 +133,21 @@ alias png2gif="$HOME/scripts/png2gif.sh"
 alias pngtomp4='ffmpeg -framerate 25 -i image%04d.png movie.mp4'
 alias pp='python3'
 alias ppass="$HOME/scripts/pass.sh && exit"
-prettiercheck() { 
+prettiercheck() {
     prettier --tab-width 4 --check *."$1"
 }
-prettierwrite() { 
+prettierwrite() {
     prettier --tab-width 4 --write *."$1"
 }
 alias pv='paraview'
 alias pvnvidia='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia paraview'
-pvvtu() { 
-    $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd 
+pvvtu() {
+    $HOME/scripts/create_pvd.py "$1" && paraview "$1"/run.pvd
 }
-qr() { 
+qr() {
     qrencode --type PNG --output qr_code.png --size 10 --level H "$1"
 }
-qrsvg() { 
+qrsvg() {
     qrencode --type SVG --output qr_code.svg "$1"
 }
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
@@ -162,24 +162,24 @@ rgx() {
   rg --hidden --no-ignore-vcs --glob "$rg_glob" --glob "*.$2" "$1" --color=always | less -FRX
 }
 alias rm='rm -i'
-search_replace() { 
-    sd "$1" "$2" **/*.$3 
+search_replace() {
+    sd "$1" "$2" **/*.$3
 }
 alias show_path='echo "$PATH" | tr ":" "\n"'
-softlink() { 
+softlink() {
     ln -s "$1" "$2"  # 1: source with absolute path, 2: soft link
-}  
-softlinkimplicit() { 
+}
+softlinkimplicit() {
     ln -s "$1" $(basename "$1")  # 1: source with absolute path
-}  
-svg2png192() { 
-    inkscape --export-width=192 --export-height=192 --export-type="png" "$1" 
 }
-svg2png() { 
-    inkscape --export-type="png" "$1" 
+svg2png192() {
+    inkscape --export-width=192 --export-height=192 --export-type="png" "$1"
 }
-svg2pngWH() { 
-    inkscape --export-width="$2" --export-height="$3" --export-type="png" "$1" 
+svg2png() {
+    inkscape --export-type="png" "$1"
+}
+svg2pngWH() {
+    inkscape --export-width="$2" --export-height="$3" --export-type="png" "$1"
 }
 alias t='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
 alias tree1='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 1'
@@ -199,9 +199,9 @@ alias usbunmount='udisksctl unmount --block-device /dev/sda1'
 alias vi="vim -u NONE"
 alias vim="vim -u $HOME/.config/vim/config.vim"
 alias wca='tokei'  # https://github.com/XAMPPRocky/tokei
-wcx() { 
-    echo "lines, words, characters:" 
-    cat $(find ./ -type f -iname \*.$1) | wc -l -w -m 
+wcx() {
+    echo "lines, words, characters:"
+    cat $(find ./ -type f -iname \*.$1) | wc -l -w -m
 }
 alias webcam='ffplay -fs -i /dev/video0'
 alias xclip_copy='xclip -selection clipboard'  # cat README.md | xclip_copy
@@ -285,11 +285,11 @@ alias gcountrepos='find . -name .git -type d -prune | wc --lines'
 alias g.='cd "$(git rev-parse --show-toplevel)"'  # go to git root directory
 alias gi='$EDITOR "$(git rev-parse --show-toplevel)"/.gitignore'
 
+alias gcurrentstate='cd "$(git rev-parse --show-toplevel)" && git add . && git commit -m "feat: add current state"'
+alias greadme='git restore --staged :/ && git add README.md && git commit -m "update readme" && git push'
 alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
 alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
 alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
-
-alias greadme='git restore --staged :/ && git add README.md && git commit -m "update readme" && git push'
 
 
 # --------------------------------------------------------------------
@@ -306,14 +306,26 @@ alias jd='jj diff'
 alias je='jj edit'
 alias ji='jj git init --colocate'
 alias jl='jj log --limit 5'
-alias jll='jj log --revisions "all()"'
-alias jm='jj bookmark set main -r @-'
+alias jlg='jj log --limit 5 --git'
+alias jll='jj log --revisions ::'
+alias jllg='jj log --revisions :: --git'
+alias jlls='jj log --revisions :: --stat'
+alias jls='jj log --limit 5 --stat'
+alias jm='jj bookmark set main --revision @-'
 alias jn='jj new'
 alias jp='jj git fetch'
 alias jP='jj git push'
 alias jr='jj rebase'
 alias js='jj status'
 alias ju='jj undo'
+alias jw='jj show'
+
+alias j.='cd "$(jj root)"'  # go to jj workspace root directory
+alias ji='$EDITOR "$(jj root)"/.gitignore'
+
+alias jcurrentstate='cd "$(jj root)" && jj commit -m "feat: add current state"'
+alias jreadme='jj commit README.md -m "update readme" && jj bookmark set main --revision @- && jj git push'
+alias jupdatelazylock='cd $HOME && jj commit ~/.config/nvim/lazy-lock.json -m "chore(nvim): update lazy-lock.json"'
 
 
 # --------------------------------------------------------------------
@@ -370,11 +382,11 @@ alias nvu='$HOME/scripts/nvu.sh'
 alias nvx='$HOME/scripts/nvx.sh'
 alias nvyearmd='nv *{1,2}???*.md'
 
-nvgrid() { 
-    $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd l | split "$4" | wincmd k | wincmd h | wincmd =" 
+nvgrid() {
+    $EDITOR "$1" -c "vsplit "$2" | wincmd h | split "$3" | wincmd l | split "$4" | wincmd k | wincmd h | wincmd ="
 }
-nvmain() { 
-    $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd =" 
+nvmain() {
+    $EDITOR "$1" -c "vsplit "$2" | split "$3" | split "$4" | wincmd h | wincmd ="
 }
 
 alias nvdiff='git difftool'
@@ -387,22 +399,22 @@ alias nvsudo='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
 #   PDFs
 
 alias combinepdfs='$HOME/scripts/combinepdfs.sh'
-compresspdf() { 
-    name="$(basename "$1" .pdf)" 
-    ps2pdf "$name".pdf "$name"_compressed.pdf 
+compresspdf() {
+    name="$(basename "$1" .pdf)"
+    ps2pdf "$name".pdf "$name"_compressed.pdf
 }
-convert2pdf() { 
-    name="$(basename "$1" .png)" 
-    convert "$name".png "$name".pdf 
+convert2pdf() {
+    name="$(basename "$1" .png)"
+    convert "$name".png "$name".pdf
 }
 alias greppdf='$HOME/scripts/greppdf.sh'
 alias greppdfmulti='$HOME/scripts/greppdfmulti.sh'
-numpagespdf() { 
-    pdftk "$1" dump_data | grep NumberOfPages | awk "{print \$2}" 
+numpagespdf() {
+    pdftk "$1" dump_data | grep NumberOfPages | awk "{print \$2}"
 }
-removepdfpassword() { 
-    name="$(basename "$1" .pdf)" 
-    pdftk "$name".pdf input_pw "$2" output "$name"_unprotected.pdf 
+removepdfpassword() {
+    name="$(basename "$1" .pdf)"
+    pdftk "$name".pdf input_pw "$2" output "$name"_unprotected.pdf
 }
 alias renamepdfs='rename "s/\ /_/g" *.pdf; rename "s/(\(|\)|\[|\]|\{|\})//g" *.pdf; rename "y/A-Z/a-z/" *.pdf'
 alias rotatepdfclock='$HOME/scripts/rotatepdf.sh'
