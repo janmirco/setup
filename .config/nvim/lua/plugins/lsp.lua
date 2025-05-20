@@ -8,6 +8,7 @@ local servers = {
     pyright = "special",
     ruff = false,
     texlab = false,
+    tinymist = false,
     vimls = false,
     zls = false,
 }
