@@ -287,9 +287,9 @@ alias gi='$EDITOR "$(git rev-parse --show-toplevel)"/.gitignore'
 
 alias gcurrentstate='cd "$(git rev-parse --show-toplevel)" && git add . && git commit -m "feat: add current state"'
 alias greadme='git restore --staged :/ && git add README.md && git commit -m "update readme" && git push'
-alias gupdatelazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
-alias gupdatetodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
-alias gupdateworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
+alias glazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
+alias gtodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
+alias gworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
 
 
 # --------------------------------------------------------------------
@@ -325,7 +325,7 @@ alias ji='$EDITOR "$(jj root)"/.gitignore'
 
 alias jcurrentstate='cd "$(jj root)" && jj commit -m "feat: add current state"'
 alias jreadme='jj commit README.md -m "update readme" && jj bookmark set main --revision @- && jj git push'
-alias jupdatelazylock='cd $HOME && jj commit ~/.config/nvim/lazy-lock.json -m "chore(nvim): update lazy-lock.json"'
+alias jlazylock='cd $HOME && jj commit ~/.config/nvim/lazy-lock.json -m "chore(nvim): update lazy-lock.json"'
 
 
 # --------------------------------------------------------------------
