@@ -96,8 +96,8 @@ return {
             -- find files in nvim directory
             vim.keymap.set("n", "fn", function() builtin.find_files({ hidden = true, cwd = vim.fn.stdpath("config") }) end, { desc = "Find files in nvim directory", silent = true })
 
-            -- find .md files in current directory
-            vim.keymap.set("n", "fm", function() builtin.find_files({ hidden = true, no_ignore = true, search_file = "*.md" }) end, { desc = "Find .md files in current directory", silent = true })
+            -- find marks
+            vim.keymap.set("n", "fm", builtin.marks, { desc = "Find marks", silent = true })
 
             -- xdg-open file
             local xdg_find = function(cwd)

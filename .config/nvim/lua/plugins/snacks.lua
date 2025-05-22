@@ -55,6 +55,7 @@ return {
                     { section = "recent_files", limit = 5, padding = 1 },
                 },
             },
+            indent = { enabled = false },
             input = { enabled = true },
             lazygit = { enabled = true },
             notifier = {
@@ -107,6 +108,18 @@ return {
             { ",.", function() Snacks.notifier.show_history() end, desc = "Notification History" },
             { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "v" } },
             { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "v" } },
+            {
+                "<A-i>",
+                function()
+                    if Snacks.indent.enabled then
+                        Snacks.indent.disable()
+                    else
+                        Snacks.indent.enable()
+                    end
+                end,
+                desc = "Toggle indent guides",
+                mode = { "n", "v" },
+            },
         },
     },
 }

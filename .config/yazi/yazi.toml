@@ -1,6 +1,7 @@
 [manager]
 show_hidden = false
 ratio = [1, 2, 5]
+scrolloff = 100
 
 [preview]
 max_width = 3840

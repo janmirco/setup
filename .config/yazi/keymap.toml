@@ -23,15 +23,23 @@ shell 'readlink -f "$1" | xclip -selection clipboard' --confirm
 desc = "Copy absolute path to clipboard"
 
 [[manager.prepend_keymap]]
-on = ["z"]
+on = ["<A-z>"]
 run = '''
 shell 'zip -r "$(basename "$1").zip" "$(basename "$1")"' --confirm
 '''
 desc = "Zip file or directory"
 
 [[manager.prepend_keymap]]
-on = ["Z"]
+on = ["<A-Z>"]
 run = '''
 shell 'unzip "$(basename "$1")"' --confirm
 '''
 desc = "Unzip file or directory"
+
+[[manager.prepend_keymap]]
+on = "z"
+run = "noop"
+
+[[manager.prepend_keymap]]
+on = "Z"
+run = "noop"
