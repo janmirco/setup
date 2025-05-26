@@ -30,11 +30,10 @@
 
 ### Give specific user access to files of other user
 
-    sudo setfacl --recursive           --modify=u:targetuser:rwx /home/sourceuser
-    sudo setfacl --recursive --default --modify=u:targetuser:rwx /home/sourceuser
+    sudo setfacl --recursive --modify=u:targetuser:rwX,d:u:targetuser:rwX /home/sourceuser
 
-The first command sets current _Access Control Lists_ (ACLs) on all existing files and directories, so `targetuser` gets immediate access.
-The second command sets default ACLs on all directories, so any new files or directories created in the future will automatically grant `targetuser` the same access.
+This command sets _Access Control Lists_ (ACLs) on all files and directories, so `targetuser` gets full access to read, write, and execute.
+Check ACLs using `getfacl /home/sourceuser`.
 
 ### Check user access permissions
 
