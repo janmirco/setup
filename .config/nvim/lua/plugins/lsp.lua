@@ -47,6 +47,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             local on_attach = function()
+                vim.keymap.set("n", "<A-I>", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "[LSP] Toggle inlay hint", silent = true })
                 vim.keymap.set("n", "<leader>L", function() vim.lsp.stop_client(vim.lsp.get_clients()) end, { desc = "[LSP] Stop client", silent = true })
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "[LSP] Hover", silent = true })
                 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "[LSP] Show signature help", silent = true }) -- when typing function arguments

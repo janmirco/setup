@@ -13,9 +13,6 @@ alias bb="$EDITOR $HOME/.bashrc"
 alias gg="$EDITOR $HOME/.config/git/config"
 alias hh="$EDITOR $HOME/.config/ghostty/config"
 alias jjc="$EDITOR $HOME/.config/jj/config.toml"
-alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
-alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
-alias ndd="$EDITOR $HOME/.todo-txt/README.md"
 alias nn="$EDITOR $HOME/.config/nvim/init.lua"
 alias rr="$EDITOR $HOME/.config/rofi/config.rasi"
 alias ss="$EDITOR $HOME/.config/starship/config.toml"
@@ -23,7 +20,6 @@ alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
 alias yy="$EDITOR $HOME/.config/yazi/yazi.toml"
-
 
 # --------------------------------------------------------------------
 #   General
@@ -64,28 +60,11 @@ alias cm='clear; make'
 alias crop='$HOME/scripts/crop.sh'
 alias crop_png='$HOME/scripts/crop_png.sh'
 alias ct='clear; tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
-alias d='todo-txt -d $HOME/.todo-txt/todo.cfg'
-alias da='todo-txt -d $HOME/.todo-txt/todo.cfg add'
-alias dd='todo-txt -d $HOME/.todo-txt/todo.cfg del'
 alias diff='diff --side-by-side --color=always --report-identical-files'
 alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
 alias disk_usage='$HOME/scripts/disk_usage.sh'
 alias disk_usage_tui='ncdu'
-alias dl='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list'
-alias dla='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listall'
-alias dlc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listcon'
-alias dlh='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list | head'
-alias dlj='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listproj'
-alias dlp='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri'
-alias dlpa='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri a'
-alias dlpb='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri b'
-alias dlpc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri c'
-alias dlpd='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri d'
-alias dlpe='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri e'
 alias doi='$HOME/scripts/doi_magic.sh'
-alias dp='todo-txt -d $HOME/.todo-txt/todo.cfg pri'
-alias dr='todo-txt -d $HOME/.todo-txt/todo.cfg replace'
-alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
 alias eza='eza --long --all --group-directories-first --sort Name'
 alias ezat='eza --long --all --group-directories-first --sort Name --total-size'
 alias ghosttime='npx ghosttime --no-focus-pause'
@@ -209,14 +188,12 @@ alias xclip_paste='xclip -selection clipboard -out'  # xclip_paste > README.md
 alias y='yazi'
 alias yank='yank-cli -- xsel -b'
 
-
 # --------------------------------------------------------------------
 #   flatpak
 
 alias inkscape='flatpak run org.inkscape.Inkscape'
 alias pikabackup='flatpak run org.gnome.World.PikaBackup'
 alias zen='flatpak run io.github.zen_browser.zen'
-
 
 # --------------------------------------------------------------------
 #   klog
@@ -248,6 +225,7 @@ alias kr='klog report $HOME/.klog/worktimes.klg --diff --now'
 alias kt='klog today $HOME/.klog/worktimes.klg --now'
 alias kT='klog total $HOME/.klog/worktimes.klg --now'
 
+alias gworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
 
 # --------------------------------------------------------------------
 #   Git
@@ -288,9 +266,6 @@ alias gi='$EDITOR "$(git rev-parse --show-toplevel)"/.gitignore'
 alias gcurrentstate='cd "$(git rev-parse --show-toplevel)" && git add . && git commit -m "feat: add current state"'
 alias greadme='git restore --staged :/ && git add README.md && git commit -m "update readme" && git push'
 alias glazylock='cd $HOME && git add $HOME/.config/nvim/lazy-lock.json && git commit -m "chore(nvim): update lazy-lock.json"'
-alias gtodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
-alias gworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.klog/ && git commit -m "chore(klog): update work times"'
-
 
 # --------------------------------------------------------------------
 #   Jujutsu
@@ -327,7 +302,6 @@ alias jcurrentstate='cd "$(jj root)" && jj commit -m "feat: add current state"'
 alias jreadme='jj commit README.md -m "update readme" && jj bookmark set main --revision @- && jj git push'
 alias jlazylock='cd $HOME && jj commit ~/.config/nvim/lazy-lock.json -m "chore(nvim): update lazy-lock.json"'
 
-
 # --------------------------------------------------------------------
 #   fzf and fd
 
@@ -355,7 +329,6 @@ alias fO='$HOME/scripts/fopen.sh "$HOME" "xdg" ""'
 
 alias foexit='$HOME/scripts/fopen.sh "" "xdg" "" && exit'
 alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" "" && exit'
-
 
 # --------------------------------------------------------------------
 #   Neovim
@@ -394,7 +367,6 @@ alias nvmerge='git mergetool'
 
 alias nvsudo='sudo $HOME/bin/neovim/nvim-linux64/bin/nvim'
 
-
 # --------------------------------------------------------------------
 #   PDFs
 
@@ -422,7 +394,6 @@ alias rotatepdfanti='$HOME/scripts/rotatepdfanti.sh'
 alias scan2pdf='$HOME/scripts/scan2pdf.sh'
 alias separatepdf='$HOME/scripts/separatepdf.sh'
 
-
 # --------------------------------------------------------------------
 #   Python
 
@@ -443,7 +414,6 @@ alias condafenicsx_deactivate='conda deactivate && conda deactivate && export TE
 alias cfa='export TERM=xterm-256color && run_conda_settings && conda activate fenicsx-env'
 alias cfd='conda deactivate && conda deactivate && export TERM=xterm-ghostty'
 
-
 # --------------------------------------------------------------------
 #   System and processes
 
@@ -462,7 +432,6 @@ alias pgrep='ps -A | rg -i'
 # pkill <PROGRAMM_NAME>
 # e.g.: pkill nvim (kills ALL running nvim processes)
 
-
 # --------------------------------------------------------------------
 #   TMUX
 
@@ -478,6 +447,32 @@ alias trses='tmux rename-session'
 alias trwin='tmux rename-window "$(basename "$(pwd)")"'
 alias ts="$HOME/scripts/tmux_session.sh"
 
+# --------------------------------------------------------------------
+#   todo-txt
+
+alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
+alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
+alias ndd="$EDITOR $HOME/.todo-txt/README.md"
+
+alias d='todo-txt -d $HOME/.todo-txt/todo.cfg'
+alias da='todo-txt -d $HOME/.todo-txt/todo.cfg add'
+alias dd='todo-txt -d $HOME/.todo-txt/todo.cfg del'
+alias dl='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list'
+alias dla='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listall'
+alias dlc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listcon'
+alias dlh='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list | head'
+alias dlj='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listproj'
+alias dlp='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri'
+alias dlpa='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri a'
+alias dlpb='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri b'
+alias dlpc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri c'
+alias dlpd='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri d'
+alias dlpe='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri e'
+alias dp='todo-txt -d $HOME/.todo-txt/todo.cfg pri'
+alias dr='todo-txt -d $HOME/.todo-txt/todo.cfg replace'
+alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
+
+alias gtodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
 
 # --------------------------------------------------------------------
 #   UMAN
@@ -504,7 +499,6 @@ alias uSystem='$HOME/uman/uSystem.sh'
 alias uTldr='$HOME/uman/uTldr.sh'
 alias uUv='$HOME/uman/uUv.sh'
 alias uZig='$HOME/uman/uZig.sh'
-
 
 # --------------------------------------------------------------------
 #   Youtube-DL

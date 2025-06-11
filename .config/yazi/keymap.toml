@@ -1,45 +1,45 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<A-j>"]
 run = "seek 1"
 desc = "Scroll to next page in preview"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<A-k>"]
 run = "seek -1"
 desc = "Scroll to previous page in preview"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["c", "x"]
 run = '''
 shell 'xclip -selection clipboard < "$1"' --confirm
 '''
 desc = "Copy file content"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<A-y>"]
 run = '''
 shell 'readlink -f "$1" | xclip -selection clipboard' --confirm
 '''
 desc = "Copy absolute path to clipboard"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<A-z>"]
 run = '''
 shell 'zip -r "$(basename "$1").zip" "$(basename "$1")"' --confirm
 '''
 desc = "Zip file or directory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["<A-Z>"]
 run = '''
 shell 'unzip "$(basename "$1")"' --confirm
 '''
 desc = "Unzip file or directory"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "z"
 run = "noop"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "Z"
 run = "noop"

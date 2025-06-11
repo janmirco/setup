@@ -97,6 +97,7 @@ sudo apt-get update && sudo apt-get upgrade --assume-yes
 sudo snap refresh
 sudo snap install chromium  # chromium will be set as default --> manually change back to firefox
 sudo snap install chromium-ffmpeg
+sudo snap install vivaldi
 sudo snap install jabref
 sudo snap install spotify
 sudo snap install ticktick

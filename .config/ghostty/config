@@ -43,8 +43,8 @@ keybind = ctrl+s>w=toggle_window_decorations
 keybind = ctrl+s>t=toggle_tab_overview
 
 keybind = ctrl+s>c=new_tab
-keybind = ctrl+s>n=next_tab
-keybind = ctrl+s>p=previous_tab
+keybind = ctrl+s>]=next_tab
+keybind = ctrl+s>[=previous_tab
 keybind = ctrl+s>one=goto_tab:1
 keybind = ctrl+s>two=goto_tab:2
 keybind = ctrl+s>three=goto_tab:3

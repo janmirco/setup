@@ -86,6 +86,7 @@
 /.config/kservicemenurc
 /.config/ksmserverrc
 /.config/ktimezonedrc
+/.config/ktouch2rc
 /.config/kwalletmanager5rc
 /.config/kwalletrc
 /.config/kwin_rules_dialogrc
@@ -229,6 +230,7 @@
 /.config/ticktick/
 /.config/tmux/plugins
 /.config/Unknown\ Organization/
+/.config/Vial/
 /.config/VirtualBox/
 /.config/vlc/
 /.config/xm1/
