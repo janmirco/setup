@@ -1,6 +1,13 @@
+@theme "launchers/type-2/style-2.rasi"
+@import "colors/onedark.rasi"
+
+* {
+    font: "JetBrainsMono Nerd Font 10";
+}
+
 configuration {
-    modi: "combi,window,drun,run";
-    combi-modi: "window,drun";
+    modi: "combi,window,drun,run,filebrowser";
+    combi-modi: "window,drun,filebrowser";
     icon-theme: "Oranchelo";
     show-icons: true;
     terminal: "ghostty";
@@ -11,15 +18,7 @@ configuration {
     display-combi: " 󰕘  Combi ";
     display-Network: " 󰤨  Network ";
     sidebar-mode: true;
-}
-
-@theme "catppuccin-mocha"
-
-* {
-    font: "JetBrainsMono Nerd Font 14";
-}
-
-window {
-    width: 1280px;
-    height: 360px;
+    filebrowser {
+        directory: "~/Documents/literature";
+    }
 }
