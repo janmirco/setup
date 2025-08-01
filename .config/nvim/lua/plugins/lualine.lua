@@ -68,7 +68,8 @@ return {
         end
 
         -- additional sections to default setup
-        require("lualine").setup({
+        local lualine = require("lualine")
+        lualine.setup({
             sections = {
                 lualine_b = {
                     { "branch", icon = "" },
@@ -100,5 +101,20 @@ return {
                 },
             },
         })
+
+        -- Toggle lualine and statusline
+        local lualine_active = true
+        local toggle_lualine = function()
+            if lualine_active then
+                lualine.hide()
+                vim.opt.laststatus = 0
+                lualine_active = false
+            else
+                lualine.hide({ unhide = true })
+                vim.opt.laststatus = 3
+                lualine_active = true
+            end
+        end
+        vim.keymap.set("n", "<A-B>", toggle_lualine, { desc = "Toggle lualine", silent = true })
     end,
 }

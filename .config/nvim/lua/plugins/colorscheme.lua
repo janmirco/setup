@@ -5,11 +5,8 @@ return {
     lazy = false,
     config = function()
         vim.opt.termguicolors = true -- colors will be more vivid
+        require("catppuccin").setup({ float = { transparent = true } })
         vim.cmd("colorscheme catppuccin-frappe")
-
-        -- floaterm settings
-        vim.cmd("highlight Floaterm guibg=background")
-        vim.cmd("highlight FloatermBorder guibg=background guifg=foreground")
 
         -- toggle light theme
         vim.keymap.set("n", "<A-L>", function()
