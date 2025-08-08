@@ -1,6 +1,6 @@
 local default_window_dimensions = function(sfd)
-    sfd.height = math.floor(vim.o.lines * 0.2)
-    sfd.width = math.floor(vim.o.columns * 0.75)
+    sfd.height = math.floor(vim.o.lines * 0.5)
+    sfd.width = math.floor(vim.o.columns * 0.8)
     sfd.row = 2
     sfd.col = math.floor((vim.o.columns - sfd.width) / 2.0)
     return sfd
