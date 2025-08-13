@@ -1,4 +1,32 @@
 return {
+    {
+        "ibhagwan/fzf-lua",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        opts = {},
+        config = function()
+            local fzf_lua = require("fzf-lua")
+            fzf_lua.setup({
+                keymap = {
+                    builtin = {
+                        ["<A-j>"] = "preview-page-down",
+                        ["<A-k>"] = "preview-page-up",
+                    },
+                },
+                fzf_opts = {
+                    ["--cycle"] = true,
+                },
+                files = { no_ignore = true },
+            })
+            vim.keymap.set("n", "ff", function() fzf_lua.files() end, { desc = "Find files in current directory", silent = true })
+            vim.keymap.set("n", "fh", function() fzf_lua.files({ cwd = "~" }) end, { desc = "Find files in home directory", silent = true })
+            vim.keymap.set("n", "fc", function() fzf_lua.files({ cwd = "~/.config" }) end, { desc = "Find files in config directory", silent = true })
+            vim.keymap.set("n", "fn", function() fzf_lua.files({ cwd = "~/.config/nvim" }) end, { desc = "Find files in nvim directory", silent = true })
+            vim.keymap.set("n", "fm", function() fzf_lua.marks() end, { desc = "Find marks", silent = true })
+            vim.keymap.set("n", "fk", function() fzf_lua.keymaps() end, { desc = "Find keymaps", silent = true })
+            vim.keymap.set("n", "fb", function() fzf_lua.buffers() end, { desc = "Find buffers", silent = true })
+            vim.keymap.set("n", "fl", function() fzf_lua.live_grep() end, { desc = "Find files using live grep", silent = true })
+        end,
+    },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "AckslD/nvim-neoclip.lua", config = function() require("neoclip").setup({ keys = { telescope = { i = { paste = "<cr>" } } } }) end },
@@ -81,23 +109,8 @@ return {
             local builtin = require("telescope.builtin")
             local utils = require("telescope.utils")
 
-            -- find files in current directory
-            vim.keymap.set("n", "ff", function() builtin.find_files({ hidden = true, no_ignore = true }) end, { desc = "Find files in current directory", silent = true })
-
             -- find files in directory of buffer
             vim.keymap.set("n", "fF", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = utils.buffer_dir() }) end, { desc = "Find files in directory of buffer", silent = true })
-
-            -- find files in home
-            vim.keymap.set("n", "fh", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME }) end, { desc = "Find files in home", silent = true })
-
-            -- find files in config
-            vim.keymap.set("n", "fc", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = vim.env.HOME .. "/.config" }) end, { desc = "Find files in home", silent = true })
-
-            -- find files in nvim directory
-            vim.keymap.set("n", "fn", function() builtin.find_files({ hidden = true, cwd = vim.fn.stdpath("config") }) end, { desc = "Find files in nvim directory", silent = true })
-
-            -- find marks
-            vim.keymap.set("n", "fm", builtin.marks, { desc = "Find marks", silent = true })
 
             -- xdg-open file
             local xdg_find = function(cwd)
@@ -119,15 +132,6 @@ return {
             vim.keymap.set("n", "fo", function() xdg_find(utils.buffer_dir()) end, { desc = "XDG-Open file in current directory", silent = true })
             -- in home
             vim.keymap.set("n", "fO", function() xdg_find(vim.env.HOME) end, { desc = "XDG-Open file in home", silent = true })
-
-            -- find keymaps
-            vim.keymap.set("n", "fk", builtin.keymaps, { desc = "Find keymaps", silent = true })
-
-            -- find buffers
-            vim.keymap.set("n", "fb", builtin.buffers, { desc = "Find buffers", silent = true })
-
-            -- find files by using grep
-            vim.keymap.set("n", "fl", builtin.live_grep, { desc = "Find files using grep", silent = true })
 
             -- find files by using grep in open buffers
             vim.keymap.set("n", "fL", function() builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Buffers" }) end, { desc = "Find files using grep in open buffers", silent = true })

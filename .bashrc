@@ -109,7 +109,13 @@ function run_conda_settings() {
 
 # fzf settings
 eval "$(fzf --bash)"  # set up fzf key bindings and fuzzy completion
-export FZF_DEFAULT_OPTS="--layout=reverse --border --bind 'tab:down,shift-tab:up'"
+export FZF_CATPPUCCIN_FRAPPE=" \
+    --color=bg+:#414559,bg:#303446,spinner:#F2D5CF,hl:#E78284 \
+    --color=fg:#C6D0F5,header:#E78284,info:#CA9EE6,pointer:#F2D5CF \
+    --color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284 \
+    --color=selected-bg:#51576D \
+    --color=border:#737994,label:#C6D0F5"
+export FZF_DEFAULT_OPTS="--layout=reverse --border --bind 'tab:down,shift-tab:up' $FZF_CATPPUCCIN_FRAPPE"
 export MY_FZF_EXCLUDES="--exclude .env --exclude .venv --exclude env --exclude venv --exclude node_modules --exclude .git --exclude .jj --exclude __pycache__"
 export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file"
 

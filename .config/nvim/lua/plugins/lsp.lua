@@ -7,6 +7,7 @@ local servers = {
     lua_ls = "special",
     pyright = "special",
     ruff = false,
+    rust_analyzer = false,
     texlab = false,
     tinymist = false,
     vimls = false,
