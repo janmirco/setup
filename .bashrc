@@ -115,7 +115,12 @@ export FZF_CATPPUCCIN_FRAPPE=" \
     --color=marker:#BABBF1,fg+:#C6D0F5,prompt:#CA9EE6,hl+:#E78284 \
     --color=selected-bg:#51576D \
     --color=border:#737994,label:#C6D0F5"
-export FZF_DEFAULT_OPTS="--layout=reverse --border --bind 'tab:down,shift-tab:up' $FZF_CATPPUCCIN_FRAPPE"
+export FZF_KEY_BINDS=" \
+    --bind 'tab:down' \
+    --bind 'shift-tab:up' \
+    --bind 'alt-j:preview-page-down' \
+    --bind 'alt-k:preview-page-up'"
+export FZF_DEFAULT_OPTS="--layout=reverse --border $FZF_KEY_BINDS $FZF_CATPPUCCIN_FRAPPE"
 export MY_FZF_EXCLUDES="--exclude .env --exclude .venv --exclude env --exclude venv --exclude node_modules --exclude .git --exclude .jj --exclude __pycache__"
 export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file"
 
