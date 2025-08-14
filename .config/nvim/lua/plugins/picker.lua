@@ -25,6 +25,20 @@ return {
             vim.keymap.set("n", "fk", function() fzf_lua.keymaps() end, { desc = "Find keymaps", silent = true })
             vim.keymap.set("n", "fb", function() fzf_lua.buffers() end, { desc = "Find buffers", silent = true })
             vim.keymap.set("n", "fl", function() fzf_lua.live_grep() end, { desc = "Find files using live grep", silent = true })
+            vim.keymap.set("n", "fs", function() fzf_lua.spell_suggest() end, { desc = "Find spell suggestions", silent = true })
+            vim.keymap.set("n", "fr", function() fzf_lua.registers() end, { desc = "Find registers", silent = true })
+            vim.keymap.set("n", "fH", function() fzf_lua.helptags() end, { desc = "Find help tags", silent = true })
+            vim.keymap.set("n", "fM", function() fzf_lua.manpages() end, { desc = "Find man pages", silent = true })
+            vim.keymap.set("n", "ft", function() fzf_lua.treesitter() end, { desc = "Find treesitter symbols", silent = true })
+            vim.keymap.set("n", "fgf", function() fzf_lua.git_files() end, { desc = "Find Git tracked files", silent = true })
+            vim.keymap.set("n", "fgs", function() fzf_lua.git_status() end, { desc = "Find Git status", silent = true })
+            vim.keymap.set("n", "fgl", function() fzf_lua.git_commits() end, { desc = "Find Git commits in log", silent = true })
+            vim.keymap.set("n", "fgb", function() fzf_lua.git_branches() end, { desc = "Find Git branches", silent = true })
+            vim.keymap.set("n", "fdd", function() fzf_lua.lsp_document_diagnostics() end, { desc = "Find LSP document diagnostics", silent = true })
+            vim.keymap.set("n", "fdD", function() fzf_lua.lsp_workspace_diagnostics() end, { desc = "Find LSP workspace diagnostics", silent = true })
+            vim.keymap.set("n", "fds", function() fzf_lua.lsp_document_symbols() end, { desc = "Find LSP document symbols", silent = true })
+            vim.keymap.set("n", "fdS", function() fzf_lua.lsp_workspace_symbols() end, { desc = "Find LSP workspace symbols", silent = true })
+            vim.keymap.set("n", "fdr", function() fzf_lua.lsp_references() end, { desc = "Find LSP references", silent = true })
         end,
     },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -136,15 +150,6 @@ return {
             -- find files by using grep in open buffers
             vim.keymap.set("n", "fL", function() builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Buffers" }) end, { desc = "Find files using grep in open buffers", silent = true })
 
-            -- find spell suggestions
-            vim.keymap.set("n", "fs", builtin.spell_suggest, { desc = "Find spell suggestions", silent = true })
-
-            -- find registers and edit with <C-e>
-            vim.keymap.set("n", "fr", builtin.registers, { desc = "Find registers and edit with <C-e>", silent = true })
-
-            -- find help tags
-            vim.keymap.set("n", "fH", builtin.help_tags, { desc = "Find help tags", silent = true })
-
             -- find string in current buffer
             vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { desc = "Find string in current buffer", silent = true })
 
@@ -154,41 +159,11 @@ return {
             -- find yanks
             vim.keymap.set("n", "fN", ":Telescope neoclip<cr>", { desc = "Find yanks using neoclip", silent = true })
 
-            -- find man pages
-            vim.keymap.set("n", "fM", builtin.man_pages, { desc = "Find man pages", silent = true })
-
-            -- find treesitter symbols
-            vim.keymap.set("n", "ft", builtin.treesitter, { desc = "Find treesitter symbols", silent = true })
-
             -- find planets
             vim.keymap.set("n", "fp", builtin.planets, { desc = "Find planets", silent = true })
 
-            -- find files tracked by git
-            vim.keymap.set("n", "fgf", builtin.git_files, { desc = "Find tracked files", silent = true })
-
             -- find files tracked by git in directory of buffer
             vim.keymap.set("n", "fgF", function() builtin.git_files({ cwd = utils.buffer_dir() }) end, { desc = "Find tracked files in directory of buffer", silent = true })
-
-            -- git status
-            vim.keymap.set("n", "fgs", builtin.git_status, { desc = "Status", silent = true })
-
-            -- find git commits in git log
-            vim.keymap.set("n", "fgl", builtin.git_commits, { desc = "Find commits in log", silent = true })
-
-            -- find git branches
-            vim.keymap.set("n", "fgb", builtin.git_branches, { desc = "Find branches", silent = true })
-
-            -- find diagnostics
-            vim.keymap.set("n", "fdd", builtin.diagnostics, { desc = "Find diagnostics", silent = true })
-
-            -- find lsp workspace symbols
-            vim.keymap.set("n", "fds", builtin.lsp_workspace_symbols, { desc = "Find workspace symbols", silent = true })
-
-            -- find lsp document symbols
-            vim.keymap.set("n", "fdS", builtin.lsp_document_symbols, { desc = "Find document symbols", silent = true })
-
-            -- find lsp references for word under the cursor
-            vim.keymap.set("n", "fdr", builtin.lsp_references, { desc = "Find references", silent = true })
 
             -- pick a commit type and switch insert mode
             local conventional_commits_type = function(opts)
