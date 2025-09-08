@@ -24,7 +24,8 @@ return {
             vim.keymap.set("n", "fm", function() fzf_lua.marks() end, { desc = "Find marks", silent = true })
             vim.keymap.set("n", "fk", function() fzf_lua.keymaps() end, { desc = "Find keymaps", silent = true })
             vim.keymap.set("n", "fb", function() fzf_lua.buffers() end, { desc = "Find buffers", silent = true })
-            vim.keymap.set("n", "fl", function() fzf_lua.live_grep() end, { desc = "Find files using live grep", silent = true })
+            vim.keymap.set("n", "fl", function() fzf_lua.lines() end, { desc = "Find files using live grep in open buffers", silent = true })
+            vim.keymap.set("n", "fL", function() fzf_lua.live_grep() end, { desc = "Find files using live grep", silent = true })
             vim.keymap.set("n", "fs", function() fzf_lua.spell_suggest() end, { desc = "Find spell suggestions", silent = true })
             vim.keymap.set("n", "fr", function() fzf_lua.registers() end, { desc = "Find registers", silent = true })
             vim.keymap.set("n", "fH", function() fzf_lua.helptags() end, { desc = "Find help tags", silent = true })
@@ -146,9 +147,6 @@ return {
             vim.keymap.set("n", "fo", function() xdg_find(utils.buffer_dir()) end, { desc = "XDG-Open file in current directory", silent = true })
             -- in home
             vim.keymap.set("n", "fO", function() xdg_find(vim.env.HOME) end, { desc = "XDG-Open file in home", silent = true })
-
-            -- find files by using grep in open buffers
-            vim.keymap.set("n", "fL", function() builtin.live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Buffers" }) end, { desc = "Find files using grep in open buffers", silent = true })
 
             -- find string in current buffer
             vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { desc = "Find string in current buffer", silent = true })

@@ -60,6 +60,7 @@ alias cm='clear; make'
 alias crop='$HOME/scripts/crop.sh'
 alias crop_png='$HOME/scripts/crop_png.sh'
 alias ct='clear; tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
+alias d='sudo docker'
 alias diff='diff --side-by-side --color=always --report-identical-files'
 alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
 alias disk_usage='$HOME/scripts/disk_usage.sh'
@@ -348,7 +349,6 @@ alias nvgix='$HOME/scripts/nvgix.sh'
 alias nvgx='$HOME/scripts/nvgx.sh'
 alias nvl='$HOME/scripts/nvl.sh'
 alias nvm='$HOME/scripts/nvm.sh'
-alias nvp='$HOME/scripts/nvp.sh'
 alias nvs='$EDITOR -S $HOME/.config/$EDITOR/sessions/last_session.vim'
 alias nvt='$HOME/scripts/nvt.sh'
 alias nvu='$HOME/scripts/nvu.sh'
@@ -446,33 +446,6 @@ alias tnew='tmux -u new -s "$(basename "$(pwd)")"'
 alias trses='tmux rename-session'
 alias trwin='tmux rename-window "$(basename "$(pwd)")"'
 alias ts="$HOME/scripts/tmux_session.sh"
-
-# --------------------------------------------------------------------
-#   todo-txt
-
-alias nd="$EDITOR $HOME/.todo-txt/todo.txt"
-alias ndc="$EDITOR $HOME/.todo-txt/todo.cfg"
-alias ndd="$EDITOR $HOME/.todo-txt/README.md"
-
-alias d='todo-txt -d $HOME/.todo-txt/todo.cfg'
-alias da='todo-txt -d $HOME/.todo-txt/todo.cfg add'
-alias dd='todo-txt -d $HOME/.todo-txt/todo.cfg del'
-alias dl='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list'
-alias dla='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listall'
-alias dlc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listcon'
-alias dlh='clear; todo-txt -d $HOME/.todo-txt/todo.cfg list | head'
-alias dlj='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listproj'
-alias dlp='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri'
-alias dlpa='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri a'
-alias dlpb='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri b'
-alias dlpc='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri c'
-alias dlpd='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri d'
-alias dlpe='clear; todo-txt -d $HOME/.todo-txt/todo.cfg listpri e'
-alias dp='todo-txt -d $HOME/.todo-txt/todo.cfg pri'
-alias dr='todo-txt -d $HOME/.todo-txt/todo.cfg replace'
-alias dx='todo-txt -d $HOME/.todo-txt/todo.cfg do'
-
-alias gtodotxtdir='cd $HOME && git add $HOME/.todo-txt/ && git commit -m "chore(todo-txt): update entire dir"'
 
 # --------------------------------------------------------------------
 #   UMAN

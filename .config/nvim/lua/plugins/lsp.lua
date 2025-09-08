@@ -1,7 +1,8 @@
 local servers = {
     bashls = false,
-    clangd = "special",
+    clangd = false,
     cmake = false,
+    docker_language_server = false,
     fortls = false,
     jsonls = false,
     lua_ls = "special",
@@ -96,20 +97,6 @@ return {
                     },
                 },
             })
-
-            -- c/c++
-            if vim.env.EDITOR_FULL_LSP_POWER == "yes" then
-                vim.lsp.config("clangd", { capabilities = capabilities, on_attach = on_attach })
-            else
-                vim.lsp.config("clangd", {
-                    capabilities = capabilities,
-                    on_attach = function(client, _)
-                        local namespace = vim.lsp.diagnostic.get_namespace(client.id)
-                        vim.diagnostic.disable(nil, namespace)
-                        on_attach()
-                    end,
-                })
-            end
 
             -- python
             vim.lsp.config("pyright", {

@@ -41,8 +41,6 @@ return {
         local show_editor_mode = function()
             if vim.env.EDITOR_LIGHT == "yes" then
                 return "🪶"
-            elseif vim.env.EDITOR_FULL_LSP_POWER == "yes" then
-                return "💪"
             else
                 return ""
             end

@@ -103,6 +103,7 @@
 /.config/partitionmanagerrc
 /.config/phishingurlrc
 /.config/plasma-localerc
+/.config/plasma-nm
 /.config/plasma-org.kde.plasma.desktop-appletsrc
 /.config/plasma-welcomerc
 /.config/plasma.emojierrc

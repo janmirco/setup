@@ -9,3 +9,6 @@ AlignAfterOpenBracket: AlwaysBreak
 AlwaysBreakTemplateDeclarations: Yes
 PackConstructorInitializers: Never
 BreakConstructorInitializers: AfterColon
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false

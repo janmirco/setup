@@ -9,7 +9,6 @@ return {
     require("plugins/oil"),
     require("plugins/snacks"),
     require("plugins/telescope"),
-    require("plugins/tree"),
     require("plugins/treesitter"),
     require("plugins/zen_mode"),
 }
