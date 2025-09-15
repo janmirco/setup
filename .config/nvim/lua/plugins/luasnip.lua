@@ -30,22 +30,23 @@ return {
         ls.add_snippets(nil, {
             all = {
                 snippet(
-                    "msg",
-                    fmt("{type}{scope}{breaking_change}: {Brief_description}", {
+                    "cc", -- see: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
+                    fmt("{type}{scope}: {summary}", {
                         type = choice_node(1, {
-                            text_node("build"),
-                            text_node("ci"),
-                            text_node("docs"),
-                            text_node("feat"),
-                            text_node("fix"),
-                            text_node("perf"),
-                            text_node("refactor"),
-                            text_node("style"),
-                            text_node("test"),
+                            text_node("feat"), -- A new feature
+                            text_node("fix"), -- A bug fix
+                            text_node("docs"), -- Documentation only changes
+                            text_node("chore"), -- Other changes that don't modify src or test files
+                            text_node("style"), -- Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+                            text_node("refactor"), -- A code change that neither fixes a bug nor adds a feature
+                            text_node("ci"), -- Changes to the CI configuration files and scripts
+                            text_node("perf"), -- A code change that improves performance
+                            text_node("test"), -- Adding missing tests or correcting existing tests
+                            text_node("build"), -- Changes that affect the build system or external dependencies
+                            text_node("revert"), -- Reverts a previous commit
                         }),
                         scope = choice_node(2, { text_node(""), fmt("({})", insert_node(1)) }),
-                        breaking_change = choice_node(3, { text_node(""), text_node("!") }),
-                        Brief_description = insert_node(4),
+                        summary = insert_node(3),
                     })
                 ),
                 snippet("id", function_node(get_random_id)),

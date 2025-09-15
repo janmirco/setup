@@ -22,6 +22,8 @@ cargo install stylua
 cargo install tokei
 cargo install tree-sitter-cli
 cargo install typst-cli --locked
+cargo install typstyle --locked
 cargo install viu
 cargo install yazi-fm yazi-cli --locked
+cargo install zoxide --locked
 echo "$log_sign Finished update."

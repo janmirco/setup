@@ -133,3 +133,6 @@ export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 
 # uv settings
 eval "$(uv generate-shell-completion bash)"
+
+# zoxide settings
+eval "$(zoxide init bash)"

@@ -41,7 +41,8 @@ alias bl='bluetooth toggle'
 alias blexit='bluetooth toggle && exit'
 alias c='clear'
 alias calcurseExport='$HOME/scripts/calcurse_export.sh'
-alias cc='calcurse'
+alias cc="$HOME/scripts/gum/conventional_commits.sh"
+# alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
@@ -281,9 +282,9 @@ alias jc='jj describe'
 alias jd='jj diff'
 alias je='jj edit'
 alias jgi='jj git init --colocate'
-alias jl='jj log --limit 5'
+alias jl='jj log -T builtin_log_compact'
 alias jlg='jj log --limit 5 --git'
-alias jll='jj log --revisions ::'
+alias jll='jj log -T builtin_log_compact_full_description --revisions ::'
 alias jllg='jj log --revisions :: --git'
 alias jlls='jj log --revisions :: --stat'
 alias jls='jj log --limit 5 --stat'
@@ -330,6 +331,8 @@ alias fO='$HOME/scripts/fopen.sh "$HOME" "xdg" ""'
 
 alias foexit='$HOME/scripts/fopen.sh "" "xdg" "" && exit'
 alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" "" && exit'
+
+alias fl='$HOME/scripts/live_grep.sh'
 
 # --------------------------------------------------------------------
 #   Neovim

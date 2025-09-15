@@ -21,6 +21,7 @@ return {
             vim.keymap.set("n", "fh", function() fzf_lua.files({ cwd = "~" }) end, { desc = "Find files in home directory", silent = true })
             vim.keymap.set("n", "fc", function() fzf_lua.files({ cwd = "~/.config" }) end, { desc = "Find files in config directory", silent = true })
             vim.keymap.set("n", "fn", function() fzf_lua.files({ cwd = "~/.config/nvim" }) end, { desc = "Find files in nvim directory", silent = true })
+            vim.keymap.set("n", "fo", function() fzf_lua.oldfiles() end, { desc = "Find old (recently opened) files", silent = true })
             vim.keymap.set("n", "fm", function() fzf_lua.marks() end, { desc = "Find marks", silent = true })
             vim.keymap.set("n", "fk", function() fzf_lua.keymaps() end, { desc = "Find keymaps", silent = true })
             vim.keymap.set("n", "fb", function() fzf_lua.buffers() end, { desc = "Find buffers", silent = true })
@@ -40,6 +41,46 @@ return {
             vim.keymap.set("n", "fds", function() fzf_lua.lsp_document_symbols() end, { desc = "Find LSP document symbols", silent = true })
             vim.keymap.set("n", "fdS", function() fzf_lua.lsp_workspace_symbols() end, { desc = "Find LSP workspace symbols", silent = true })
             vim.keymap.set("n", "fdr", function() fzf_lua.lsp_references() end, { desc = "Find LSP references", silent = true })
+
+            -- conventional commits
+            vim.keymap.set("n", "<leader>b", function()
+                local conv_commits = {
+                    -- See: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
+                    feat = { title = "Features", description = "A new feature" },
+                    fix = { title = "Bug Fixes", description = "A bug fix" },
+                    docs = { title = "Documentation", description = "Documentation only changes" },
+                    style = { title = "Styles", description = "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)" },
+                    refactor = { title = "Code Refactoring", description = "A code change that neither fixes a bug nor adds a feature" },
+                    perf = { title = "Performance Improvements", description = "A code change that improves performance" },
+                    test = { title = "Tests", description = "Adding missing tests or correcting existing tests" },
+                    build = { title = "Builds", description = "Changes that affect the build system or external dependencies" },
+                    ci = { title = "Continuous Integrations", description = "Changes to the CI configuration files and scripts" },
+                    chore = { title = "Chores", description = "Other changes that don't modify src or test files" },
+                    revert = { title = "Reverts", description = "Reverts a previous commit" },
+                }
+                local conv_commit_types = {}
+                for key, _ in pairs(conv_commits) do
+                    table.insert(conv_commit_types, key)
+                end
+                require("fzf-lua").fzf_exec(conv_commit_types, {
+                    complete = function(selected, _, line, col)
+                        local newline = line:sub(1, col) .. selected[1]
+                        local keys = vim.api.nvim_replace_termcodes("A(): <left><left><left>", true, false, true)
+                        vim.api.nvim_feedkeys(keys, "n", true)
+                        return newline, #newline - 1
+                    end,
+                    preview = function(selected)
+                        local key = selected[1]
+                        return conv_commits[key].title .. "\n\n" .. conv_commits[key].description
+                    end,
+                    winopts = {
+                        title = "Conventional commit types",
+                        title_pos = "left",
+                        height = #conv_commit_types + 4,
+                        preview = { wrap = true },
+                    },
+                })
+            end, { desc = "Pick conventional commit type", silent = true })
         end,
     },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -53,10 +94,6 @@ return {
             local telescope = require("telescope")
             local actions = require("telescope.actions")
             local action_state = require("telescope.actions.state")
-            local pickers = require("telescope.pickers")
-            local previewers = require("telescope.previewers")
-            local finders = require("telescope.finders")
-            local config_values = require("telescope.config").values
             local themes = require("telescope.themes")
 
             local yank_current_selection = function(prompt_bufnr)
@@ -127,27 +164,6 @@ return {
             -- find files in directory of buffer
             vim.keymap.set("n", "fF", function() builtin.find_files({ hidden = true, no_ignore = true, cwd = utils.buffer_dir() }) end, { desc = "Find files in directory of buffer", silent = true })
 
-            -- xdg-open file
-            local xdg_find = function(cwd)
-                builtin.find_files({
-                    hidden = true,
-                    no_ignore = true,
-                    cwd = cwd,
-                    attach_mappings = function(_, map)
-                        map({ "i", "n" }, "<cr>", function(prompt_bufnr)
-                            local entry = action_state.get_selected_entry()
-                            actions.close(prompt_bufnr)
-                            vim.cmd("call jobstart(\"xdg-open " .. cwd .. "/" .. entry.filename .. "\")")
-                        end)
-                        return true -- needs to return true if you want to map default_mappings and false if not
-                    end,
-                })
-            end
-            -- in current directory
-            vim.keymap.set("n", "fo", function() xdg_find(utils.buffer_dir()) end, { desc = "XDG-Open file in current directory", silent = true })
-            -- in home
-            vim.keymap.set("n", "fO", function() xdg_find(vim.env.HOME) end, { desc = "XDG-Open file in home", silent = true })
-
             -- find string in current buffer
             vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { desc = "Find string in current buffer", silent = true })
 
@@ -162,146 +178,6 @@ return {
 
             -- find files tracked by git in directory of buffer
             vim.keymap.set("n", "fgF", function() builtin.git_files({ cwd = utils.buffer_dir() }) end, { desc = "Find tracked files in directory of buffer", silent = true })
-
-            -- pick a commit type and switch insert mode
-            local conventional_commits_type = function(opts)
-                pickers
-                    .new(opts, {
-                        prompt_title = "Commit type",
-                        finder = finders.new_table({
-                            results = {
-                                -- See: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
-                                {
-                                    type = "feat",
-                                    title = "Features",
-                                    description = {
-                                        "A new feature",
-                                    },
-                                },
-                                {
-                                    type = "fix",
-                                    title = "Bug Fixes",
-                                    description = {
-                                        "A bug fix",
-                                    },
-                                },
-                                {
-                                    type = "docs",
-                                    title = "Documentation",
-                                    description = {
-                                        "Documentation only changes",
-                                    },
-                                },
-                                {
-                                    type = "style",
-                                    title = "Styles",
-                                    description = {
-                                        "Changes that do not affect the",
-                                        "meaning of the code (white-space,",
-                                        "formatting, missing semi-colons, etc)",
-                                    },
-                                },
-                                {
-                                    type = "refactor",
-                                    title = "Code Refactoring",
-                                    description = {
-                                        "A code change that neither fixes a",
-                                        "bug nor adds a feature",
-                                    },
-                                },
-                                {
-                                    type = "perf",
-                                    title = "Performance Improvements",
-                                    description = {
-                                        "A code change that improves",
-                                        "performance",
-                                    },
-                                },
-                                {
-                                    type = "test",
-                                    title = "Tests",
-                                    description = {
-                                        "Adding missing tests or correcting",
-                                        "existing tests",
-                                    },
-                                },
-                                {
-                                    type = "build",
-                                    title = "Builds",
-                                    description = {
-                                        "Changes that affect the build system",
-                                        "or external dependencies",
-                                    },
-                                },
-                                {
-                                    type = "ci",
-                                    title = "Continuous Integrations",
-                                    description = {
-                                        "Changes to the CI configuration files",
-                                        "and scripts",
-                                    },
-                                },
-                                {
-                                    type = "chore",
-                                    title = "Chores",
-                                    description = {
-                                        "Other changes that don't modify src",
-                                        "or test files",
-                                    },
-                                },
-                                {
-                                    type = "revert",
-                                    title = "Reverts",
-                                    description = {
-                                        "Reverts a previous commit",
-                                    },
-                                },
-                            },
-                            entry_maker = function(entry)
-                                return {
-                                    value = entry,
-                                    display = entry.type,
-                                    ordinal = entry.type,
-                                }
-                            end,
-                        }),
-                        sorter = config_values.generic_sorter(opts),
-                        previewer = previewers.new_buffer_previewer({
-                            title = "Description",
-                            define_preview = function(self, entry)
-                                vim.api.nvim_buf_set_lines(
-                                    self.state.bufnr,
-                                    0,
-                                    0,
-                                    true,
-                                    vim.tbl_flatten({
-                                        entry.value.title .. ":",
-                                        "",
-                                        entry.value.description,
-                                    })
-                                )
-                            end,
-                        }),
-                        attach_mappings = function(prompt_bufnr)
-                            actions.select_default:replace(function()
-                                local entry = action_state.get_selected_entry()
-                                actions.close(prompt_bufnr)
-                                local keys = vim.api.nvim_replace_termcodes("i" .. entry.value.type, true, false, true)
-                                vim.api.nvim_feedkeys(keys, "n", true)
-                            end)
-                            return true
-                        end,
-                    })
-                    :find()
-            end
-            vim.keymap.set("n", "<leader>b", function()
-                conventional_commits_type(themes.get_cursor({
-                    layout_config = {
-                        width = 56,
-                        height = 15,
-                    },
-                }))
-            end, { desc = "Pick commit type", silent = true })
         end,
     },
 }
