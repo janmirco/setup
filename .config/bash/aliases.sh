@@ -67,8 +67,6 @@ alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
 alias disk_usage='$HOME/scripts/disk_usage.sh'
 alias disk_usage_tui='ncdu'
 alias doi='$HOME/scripts/doi_magic.sh'
-alias e='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git'
-alias et='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env" --tree'
 alias ghosttime='npx ghosttime --no-focus-pause'
 alias glow='glow --pager'
 alias gmsh='/usr/bin/gmsh'
@@ -80,7 +78,9 @@ hextodec() {
     echo "ibase=16; $1" | bc
 }
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
-alias l='ls -l --almost-all --human-readable --group-directories-first --color=always'
+alias less='less -R'
+alias l='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git'
+alias lt='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env|*pycache*|*build*|*output*|*results*" --tree'
 lb(){
     ls -l --almost-all --human-readable --group-directories-first --color=always "$1" | bat
 }
