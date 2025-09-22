@@ -6,7 +6,6 @@ log_sign="[uRust]"
 
 echo "$log_sign Starting update ..."
 rustup update
-cargo install alacritty@0.13.2
 cargo install bat --locked
 cargo install du-dust
 cargo install eza

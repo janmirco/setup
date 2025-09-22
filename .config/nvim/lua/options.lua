@@ -55,7 +55,8 @@ vim.opt.path = { ".", "/usr/include", "", "**" }
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.laststatus = 3
-vim.opt.winbar = nil
+vim.opt.winbar = ""
+vim.opt.winborder = "" -- This will mess with certain plugins with pop-up windows, for example, Lazy and Mason.
 vim.opt.conceallevel = 2
 vim.opt.guicursor = table.concat({
     "n-v-sm:block",
