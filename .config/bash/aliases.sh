@@ -56,11 +56,11 @@ alias chmodfiles='chmod 664'
 cht() {
     curl --silent cht.sh/"$1"/"$2" | bat
 }
-alias cl='clear; ls -l --almost-all --human-readable --group-directories-first --color=always'
+alias cl='clear; eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git | less -FRX'
 alias cm='clear; make'
 alias crop='$HOME/scripts/crop.sh'
 alias crop_png='$HOME/scripts/crop_png.sh'
-alias ct='clear; tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
+alias ct='clear; eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env|.obsidian|*pycache*|*build*|*output*|*results*" --tree | less -FRX'
 alias d='sudo docker'
 alias diff='diff --side-by-side --color=always --report-identical-files'
 alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
@@ -78,9 +78,9 @@ hextodec() {
     echo "ibase=16; $1" | bc
 }
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
-alias less='less -R'
-alias l='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git'
-alias lt='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env|*pycache*|*build*|*output*|*results*" --tree'
+alias less='less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init'  # less -FRX
+alias l='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git | less -FRX'
+alias lt='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env|.obsidian|*pycache*|*build*|*output*|*results*" --tree | less -FRX'
 lb(){
     ls -l --almost-all --human-readable --group-directories-first --color=always "$1" | bat
 }
@@ -426,7 +426,7 @@ alias systemInfo='sudo tlp-stat -b -c -d -e -g -p -r -s -t -u -w -v'
 alias cpuTemp='sensors | grep -i "core "'
 
 # get the ID of a process
-alias plist='ps -A | less'
+alias plist='ps -A | less -FRX'
 alias prg='ps -A | rg -i'
 alias pgrep='ps -A | rg -i'
 
