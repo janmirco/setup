@@ -39,7 +39,8 @@
     prompt = false
     trustExitCode = true
 [mergetool "nvmerge"]
-    cmd = nvim -d "$LOCAL" "$MERGED" "$REMOTE" -c 'wincmd l'
+    cmd = nvim -d "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+    layout = "LOCAL,BASE,REMOTE / MERGED"
 
 [diff]
     tool = nvdiff

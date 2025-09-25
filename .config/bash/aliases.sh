@@ -22,6 +22,32 @@ alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
 alias yy="$EDITOR $HOME/.config/yazi/yazi.toml"
 
 # --------------------------------------------------------------------
+#   Commands, functions, and more to reduce code duplication
+
+RG_GLOB="!{**/*egg-info/*,**/.*cache*/*,**/.byobu/*,**/.cache/*,**/.cargo/*,**/.config/abiword/*,**/.config/akonadi/*,**/.config/autostart/*,**/.config/BraveSoftware/*,**/.config/cat_installer/*,**/.config/cef_user_data/*,**/.config/coc/*,**/.config/Code/*,**/.config/dconf/*,**/.config/enchant/*,**/.config/fltk.org/*,**/.config/freerdp/*,**/.config/ghb/*,**/.config/GIMP/*,**/.config/google-chrome/*,**/.config/gtk-2.0/*,**/.config/gtk-3.0/*,**/.config/gtk-4.0/*,**/.config/htop/*,**/.config/ibus/*,**/.config/inkscape/*,**/.config/kde.org/*,**/.config/KDE/*,**/.config/kdeconnect/*,**/.config/kdedefaults/*,**/.config/khtml/*,**/.config/lazygit/*,**/.config/libaccounts-glib/*,**/.config/libreoffice/*,**/.config/menus/*,**/.config/microsoft-edge/*,**/.config/neofetch/*,**/.config/nvim/autoload/*,**/.config/nvim/undodir/*,**/.config/obs-studio/*,**/.config/obsidian/*,**/.config/octave/*,**/.config/ookla/*,**/.config/ParaView/*,**/.config/pavucontrol-qt/*,**/.config/pulse/*,**/.config/remmina/*,**/.config/sciebo/*,**/.config/session/*,**/.config/texstudio/*,**/.config/thefuck/*,**/.config/ticktick/*,**/.config/tmux/plugins*,**/.config/Unknown\ Organization/*,**/.config/VirtualBox/*,**/.config/vlc/*,**/.config/xm1/*,**/.config/xsettingsd/*,**/.dotnet/*,**/.fltk/*,**/.fonts/*,**/.git/*,**/.gnome/*,**/.gnupg/*,**/.imageio/*,**/.ipython/*,**/.java/*,**/.jj/*,**/.julia/*,**/.jupyter/*,**/.kde/*,**/.keras/*,**/.local/*,**/.Mathematica/*,**/.modular/*,**/.mozilla/*,**/.mplayer/*,**/.npm/*,**/.nv/*,**/.openjfx/cache/*,**/.org.jabref.gui.JabRefMain/*,**/.pki/*,**/.pulsesecure/*,**/.rpmdb/*,**/.rustup/*,**/.texlive2021/*,**/.thunderbird/*,**/.var/*,**/.Wolfram/*,**/.zoom/*,**/__pycache__/*,**/CATSettings/*,**/env/*,**/node_modules/*,**/snap/*,**/vbox/*,**/venv/*,**/.venv/*}"
+EZA_GLOB=".git|.jj|node_modules|venv|.venv|env|.obsidian|*pycache*|*build*|*output*|*results*"
+
+EZA_CMD="eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git"
+EZA_TREE_CMD="$EZA_CMD --tree --ignore-glob $EZA_GLOB"
+LESS_CMD="less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init"  # less -FRX
+
+EZA_FUNC() {
+    if [[ "$1" == "" ]]; then
+        $EZA_CMD | $LESS_CMD
+    else
+        $EZA_CMD "$@" | $LESS_CMD
+    fi
+}
+
+EZA_TREE_FUNC() {
+    if [[ "$1" == "" ]]; then
+        $EZA_TREE_CMD | $LESS_CMD
+    else
+        $EZA_TREE_CMD "$@" | $LESS_CMD
+    fi
+}
+
+# --------------------------------------------------------------------
 #   General
 
 alias ..='cd ../'
@@ -41,8 +67,7 @@ alias bl='bluetooth toggle'
 alias blexit='bluetooth toggle && exit'
 alias c='clear'
 alias calcurseExport='$HOME/scripts/calcurse_export.sh'
-alias cc="$HOME/scripts/gum/conventional_commits.sh"
-# alias cc='calcurse'
+alias cc='calcurse'
 alias ccExport='$HOME/scripts/calcurse_export.sh'
 alias cdb='cd -'  # go to previous dir
 alias cdn='cd $HOME/.config/nvim'  # go to nvim dir
@@ -56,11 +81,17 @@ alias chmodfiles='chmod 664'
 cht() {
     curl --silent cht.sh/"$1"/"$2" | bat
 }
-alias cl='clear; eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git | less -FRX'
+cl() {
+    clear
+    EZA_FUNC "$@"
+}
 alias cm='clear; make'
 alias crop='$HOME/scripts/crop.sh'
 alias crop_png='$HOME/scripts/crop_png.sh'
-alias ct='clear; eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env|.obsidian|*pycache*|*build*|*output*|*results*" --tree | less -FRX'
+ct() {
+    clear
+    EZA_TREE_FUNC "$@"
+}
 alias d='sudo docker'
 alias diff='diff --side-by-side --color=always --report-identical-files'
 alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
@@ -78,9 +109,10 @@ hextodec() {
     echo "ibase=16; $1" | bc
 }
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
-alias less='less --quit-if-one-screen --RAW-CONTROL-CHARS --no-init'  # less -FRX
-alias l='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git | less -FRX'
-alias lt='eza --long --all --group-directories-first --sort name --color=always --icons=always --time-style long-iso --git --ignore-glob ".git|.jj|node_modules|venv|.venv|env|.obsidian|*pycache*|*build*|*output*|*results*" --tree | less -FRX'
+alias less=$LESS_CMD
+l() {
+    EZA_FUNC "$@"
+}
 lb(){
     ls -l --almost-all --human-readable --group-directories-first --color=always "$1" | bat
 }
@@ -132,15 +164,14 @@ qrsvg() {
     qrencode --type SVG --output qr_code.svg "$1"
 }
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
-rg_glob="!{**/*egg-info/*,**/.*cache*/*,**/.byobu/*,**/.cache/*,**/.cargo/*,**/.config/abiword/*,**/.config/akonadi/*,**/.config/autostart/*,**/.config/BraveSoftware/*,**/.config/cat_installer/*,**/.config/cef_user_data/*,**/.config/coc/*,**/.config/Code/*,**/.config/dconf/*,**/.config/enchant/*,**/.config/fltk.org/*,**/.config/freerdp/*,**/.config/ghb/*,**/.config/GIMP/*,**/.config/google-chrome/*,**/.config/gtk-2.0/*,**/.config/gtk-3.0/*,**/.config/gtk-4.0/*,**/.config/htop/*,**/.config/ibus/*,**/.config/inkscape/*,**/.config/kde.org/*,**/.config/KDE/*,**/.config/kdeconnect/*,**/.config/kdedefaults/*,**/.config/khtml/*,**/.config/lazygit/*,**/.config/libaccounts-glib/*,**/.config/libreoffice/*,**/.config/menus/*,**/.config/microsoft-edge/*,**/.config/neofetch/*,**/.config/nvim/autoload/*,**/.config/nvim/undodir/*,**/.config/obs-studio/*,**/.config/obsidian/*,**/.config/octave/*,**/.config/ookla/*,**/.config/ParaView/*,**/.config/pavucontrol-qt/*,**/.config/pulse/*,**/.config/remmina/*,**/.config/sciebo/*,**/.config/session/*,**/.config/texstudio/*,**/.config/thefuck/*,**/.config/ticktick/*,**/.config/tmux/plugins*,**/.config/Unknown\ Organization/*,**/.config/VirtualBox/*,**/.config/vlc/*,**/.config/xm1/*,**/.config/xsettingsd/*,**/.dotnet/*,**/.fltk/*,**/.fonts/*,**/.git/*,**/.gnome/*,**/.gnupg/*,**/.imageio/*,**/.ipython/*,**/.java/*,**/.jj/*,**/.julia/*,**/.jupyter/*,**/.kde/*,**/.keras/*,**/.local/*,**/.Mathematica/*,**/.modular/*,**/.mozilla/*,**/.mplayer/*,**/.npm/*,**/.nv/*,**/.openjfx/cache/*,**/.org.jabref.gui.JabRefMain/*,**/.pki/*,**/.pulsesecure/*,**/.rpmdb/*,**/.rustup/*,**/.texlive2021/*,**/.thunderbird/*,**/.var/*,**/.Wolfram/*,**/.zoom/*,**/__pycache__/*,**/CATSettings/*,**/env/*,**/node_modules/*,**/snap/*,**/vbox/*,**/venv/*,**/.venv/*}"
 rgi() {
-  rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --color=always "$@" | less -FRX
+  rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --color=always "$@" | $LESS_CMD
 }
 rgix() {
-  rg --hidden --no-ignore-vcs --glob "$rg_glob" --ignore-case --glob "*.$2" "$1" --color=always | less -FRX
+  rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --glob "*.$2" "$1" --color=always | $LESS_CMD
 }
 rgx() {
-  rg --hidden --no-ignore-vcs --glob "$rg_glob" --glob "*.$2" "$1" --color=always | less -FRX
+  rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --glob "*.$2" "$1" --color=always | $LESS_CMD
 }
 alias rm='rm -i'
 search_replace() {
@@ -162,7 +193,9 @@ svg2png() {
 svg2pngWH() {
     inkscape --export-width="$2" --export-height="$3" --export-type="png" "$1"
 }
-alias t='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env"'
+t() {
+    EZA_TREE_FUNC "$@"
+}
 alias tree1='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 1'
 alias tree2='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 2'
 alias tree3='tree -avAC --dirsfirst -I ".git|.jj|node_modules|venv|.venv|env" -L 3'
@@ -426,7 +459,7 @@ alias systemInfo='sudo tlp-stat -b -c -d -e -g -p -r -s -t -u -w -v'
 alias cpuTemp='sensors | grep -i "core "'
 
 # get the ID of a process
-alias plist='ps -A | less -FRX'
+alias plist="ps -A | $LESS_CMD"
 alias prg='ps -A | rg -i'
 alias pgrep='ps -A | rg -i'
 
