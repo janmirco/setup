@@ -55,11 +55,11 @@ return {
                 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "[LSP] Show signature help", silent = true }) -- when typing function arguments
                 vim.keymap.set("n", "[d", function()
                     vim.diagnostic.goto_prev()
-                    vim.cmd("normal zz")
+                    vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
                 end, { desc = "[LSP] Previous diagnostic", silent = true })
                 vim.keymap.set("n", "]d", function()
                     vim.diagnostic.goto_next()
-                    vim.cmd("normal zz")
+                    vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
                 end, { desc = "[LSP] Next diagnostic", silent = true })
                 vim.keymap.set("n", "gC", vim.lsp.buf.code_action, { desc = "[LSP] Code action", silent = true })
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[LSP] Go to declaration", silent = true })

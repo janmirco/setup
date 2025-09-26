@@ -53,19 +53,19 @@ return {
             -- jump commands
             vim.keymap.set("n", "]h", function()
                 vim.cmd("MkdnNextHeading")
-                vim.cmd("normal zz")
+                vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
             end, { desc = "[Mkdnflow] Next header", silent = true })
             vim.keymap.set("n", "[h", function()
                 vim.cmd("MkdnPrevHeading")
-                vim.cmd("normal zz")
+                vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
             end, { desc = "[Mkdnflow] Previous header", silent = true })
             vim.keymap.set("n", "]l", function()
                 vim.cmd("MkdnNextLink")
-                vim.cmd("normal zz")
+                vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
             end, { desc = "[Mkdnflow] Next link", silent = true })
             vim.keymap.set("n", "[l", function()
                 vim.cmd("MkdnPrevLink")
-                vim.cmd("normal zz")
+                vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
             end, { desc = "[Mkdnflow] Previous link", silent = true })
 
             -- make sections italic/bold

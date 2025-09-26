@@ -15,11 +15,11 @@ return {
             vim.keymap.set("n", "<A-g>", gitsigns.toggle_signs, { desc = "[Git] Toggle gitsigns", silent = true })
             vim.keymap.set("n", "[g", function()
                 gitsigns.prev_hunk()
-                vim.cmd("normal zz")
+                vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
             end, { desc = "[Git] Previous hunk", silent = true })
             vim.keymap.set("n", "]g", function()
                 gitsigns.next_hunk()
-                vim.cmd("normal zz")
+                vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
             end, { desc = "[Git] Next hunk", silent = true })
             vim.keymap.set("n", "gU", gitsigns.undo_stage_hunk, { desc = "[Git] Undo last stage", silent = true })
             vim.keymap.set("n", "gb", gitsigns.blame_line, { desc = "[Git] Blame line", silent = true })

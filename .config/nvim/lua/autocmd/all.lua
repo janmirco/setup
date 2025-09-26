@@ -57,3 +57,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
     callback = function() vim.highlight.on_yank() end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    desc = "Keep it centered and Jump to Git hunk",
+    group = vim.api.nvim_create_augroup("keep-it-centered-and-jump-to-git-hunk", { clear = true }),
+    callback = function(args)
+        if vim.b[args.buf].jumped_to_git_hunk then
+            -- do not jump to next hunk if already jumped, only keep it centered
+            vim.defer_fn(function() vim.cmd("normal! zz") end, 10)
+            return
+        else
+            -- jump to next hunk and keep it centered
+            local delay_in_ms = 100
+            vim.defer_fn(function() require("gitsigns").next_hunk() end, delay_in_ms)
+            vim.defer_fn(function() vim.cmd("normal! zz") end, delay_in_ms + 10)
+            vim.b[args.buf].jumped_to_git_hunk = true
+        end
+    end,
+})

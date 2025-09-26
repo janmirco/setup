@@ -9,11 +9,11 @@ return {
         })
         vim.keymap.set("n", "[t", function()
             todo_comments.jump_prev()
-            vim.cmd("normal zz")
+            vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
         end, { desc = "[Todo] Previous comment", silent = true })
         vim.keymap.set("n", "]t", function()
             todo_comments.jump_next()
-            vim.cmd("normal zz")
+            vim.defer_fn(function() vim.cmd("normal! zz") end, 10) -- delay in ms
         end, { desc = "[Todo] Next comment", silent = true })
         vim.keymap.set("n", "tdt", function() vim.cmd("TodoTrouble") end, { desc = "Open using Trouble", silent = true })
         vim.keymap.set("n", "tdc", function() vim.cmd("TodoTelescope") end, { desc = "Open using Telescope", silent = true })
