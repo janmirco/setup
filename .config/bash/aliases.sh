@@ -62,7 +62,6 @@ alias abqnogui='abaqus cae noGUI=main.py; cp abaqus.rpy abaqus_save.rpy'
 alias abqscript='abaqus cae script=main.py; cp abaqus.rpy abaqus_save.rpy'
 alias animGitHistory='$HOME/scripts/showAnimatedHistory.sh'
 alias ascii='figlet -f big'
-alias bat='bat --pager never'
 alias bl='bluetooth toggle'
 alias blexit='bluetooth toggle && exit'
 alias c='clear'
@@ -264,6 +263,12 @@ alias gworktimes='cd $HOME && $HOME/scripts/klog_archive.sh && git add $HOME/.kl
 
 # --------------------------------------------------------------------
 #   Git
+
+git_clone_with_gitbuw_token() {
+    url="$1"
+    url_with_token="${url/https:\/\//https://"$GITBUW_TOKEN@"}"
+    git clone "$url_with_token"
+}
 
 alias G='lazygit'
 alias L='lazygit log'

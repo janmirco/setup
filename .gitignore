@@ -10,6 +10,7 @@
 /.apport-ignore.xml
 /.aspell*
 /.bash_history
+/.bash_secrets
 /.config/akonadi-firstrunrc
 /.config/akonadi-migrationrc
 /.config/akonadi_akonotes_resource_0rc
@@ -123,6 +124,7 @@
 /.config/QtProject.conf
 /.config/sciebo
 /.config/session/kwin_saved*
+/.config/sioyekrc
 /.config/soffice.binrc
 /.config/specialmailcollectionsrc
 /.config/spectaclerc

@@ -83,6 +83,7 @@ fi
 PS1+='${bold}${blue} \W${reset} $(__git_ps1 "%s")${reset}\n '
 
 # source additional configs
+source "$HOME/.bash_secrets"
 source "$HOME/.config/bash/aliases.sh"
 source "$HOME/.config/bash/path.sh"
 

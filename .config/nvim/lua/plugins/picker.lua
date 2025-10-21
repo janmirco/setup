@@ -32,15 +32,11 @@ return {
             vim.keymap.set("n", "fH", function() fzf_lua.helptags() end, { desc = "Find help tags", silent = true })
             vim.keymap.set("n", "fM", function() fzf_lua.manpages() end, { desc = "Find man pages", silent = true })
             vim.keymap.set("n", "ft", function() fzf_lua.treesitter() end, { desc = "Find treesitter symbols", silent = true })
-            vim.keymap.set("n", "fgf", function() fzf_lua.git_files() end, { desc = "Find Git tracked files", silent = true })
-            vim.keymap.set("n", "fgs", function() fzf_lua.git_status() end, { desc = "Find Git status", silent = true })
-            vim.keymap.set("n", "fgl", function() fzf_lua.git_commits() end, { desc = "Find Git commits in log", silent = true })
-            vim.keymap.set("n", "fgb", function() fzf_lua.git_branches() end, { desc = "Find Git branches", silent = true })
-            vim.keymap.set("n", "fdd", function() fzf_lua.lsp_document_diagnostics() end, { desc = "Find LSP document diagnostics", silent = true })
-            vim.keymap.set("n", "fdD", function() fzf_lua.lsp_workspace_diagnostics() end, { desc = "Find LSP workspace diagnostics", silent = true })
-            vim.keymap.set("n", "fds", function() fzf_lua.lsp_document_symbols() end, { desc = "Find LSP document symbols", silent = true })
-            vim.keymap.set("n", "fdS", function() fzf_lua.lsp_workspace_symbols() end, { desc = "Find LSP workspace symbols", silent = true })
-            vim.keymap.set("n", "fdr", function() fzf_lua.lsp_references() end, { desc = "Find LSP references", silent = true })
+            vim.keymap.set("n", "fg", function() fzf_lua.git_files() end, { desc = "Find Git tracked files", silent = true })
+            vim.keymap.set("n", "fd", function() fzf_lua.lsp_document_diagnostics() end, { desc = "Find LSP document diagnostics", silent = true })
+            vim.keymap.set("n", "fD", function() fzf_lua.lsp_workspace_diagnostics() end, { desc = "Find LSP workspace diagnostics", silent = true })
+            vim.keymap.set("n", "fS", function() fzf_lua.lsp_document_symbols() end, { desc = "Find LSP document symbols", silent = true })
+            vim.keymap.set("n", "fR", function() fzf_lua.lsp_references() end, { desc = "Find LSP references", silent = true })
 
             -- conventional commits
             vim.keymap.set("n", "<leader>b", function()
@@ -166,9 +162,6 @@ return {
 
             -- find string in current buffer
             vim.keymap.set("n", "fB", builtin.current_buffer_fuzzy_find, { desc = "Find string in current buffer", silent = true })
-
-            -- find string under cursor
-            vim.keymap.set("n", "fS", builtin.grep_string, { desc = "Find string under cursor", silent = true })
 
             -- find yanks
             vim.keymap.set("n", "fN", ":Telescope neoclip<cr>", { desc = "Find yanks using neoclip", silent = true })

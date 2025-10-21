@@ -40,10 +40,28 @@ return {
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
+            -- Use same symbols as diagnostics from lualine
+            local symbols = {
+                icons = {
+                    error = "󰅚 ", -- x000f015a
+                    warn = "󰀪 ", -- x000f002a
+                    info = "󰋽 ", -- x000f02fd
+                    hint = "󰌶 ", -- x000f0336
+                },
+                no_icons = { error = "E:", warn = "W:", info = "I:", hint = "H:" },
+            }
+
             vim.diagnostic.config({
-                signs = true,
                 underline = true,
-                virtual_text = { spacing = 4 },
+                virtual_lines = { current_line = true },
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = symbols.icons.error,
+                        [vim.diagnostic.severity.WARN] = symbols.icons.warn,
+                        [vim.diagnostic.severity.INFO] = symbols.icons.info,
+                        [vim.diagnostic.severity.HINT] = symbols.icons.hint,
+                    },
+                },
             })
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()

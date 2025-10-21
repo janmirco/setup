@@ -1,26 +1,31 @@
 #!/usr/bin/env bash
 
 if [ "$1" == "" ]; then
-    pdf_name="SCAN_$(date +%Y-%m-%d_%H%M%S)"
-    echo "[PDF] No name was given. Chose $pdf_name.pdf."
+    pdf_name="scan_$(date +%Y-%m-%d_%H%M%S)"
+    echo "[Scanner] No name was given. Chose $pdf_name.pdf."
 else
     pdf_name="$1"
 fi
 
-echo "[PDF] Scanning to .png ..."
+# NOTE:
+# You can also specify the format directly with the following command.
+#     scanimage --format "pdf" > "$pdf_name".pdf`
+# But the produced PDF is a bit larger than the approach below. And, more
+# importantly, at least Okular is throwing errors (although it seems to be able
+# to open it fine).
+
+echo "[Scanner] Scanning to PNG ..."
 scanimage > "$pdf_name".png
 
-echo "[PDF] Converting to uncompressed .pdf ..."
+echo "[Scanner] Converting to uncompressed PDF ..."
 convert "$pdf_name".png "$pdf_name"_large.pdf
 
-echo "[PDF] Compressing .pdf ..."
+echo "[Scanner] Compressing PDF ..."
 ps2pdf "$pdf_name"_large.pdf "$pdf_name".pdf
 
-printf "[PDF] Do not remove .png and uncompressed .pdf? Then type NO: "
+printf "[Scanner] Do not want to remove PNG and uncompressed PDF? Then type NO: "
 read want_remove
 if ! [ "$want_remove" == "NO" ]; then
-    echo "[PDF] Removing unnecessary output ..."
+    echo "[Scanner] Removing unnecessary output ..."
     rm "$pdf_name".png "$pdf_name"_large.pdf
 fi
-
-unset -v pdf_name want_remove
