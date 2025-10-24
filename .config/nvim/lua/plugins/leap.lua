@@ -1,19 +1,35 @@
 return {
-    {
-        "ggandor/leap.nvim",
-        config = function() require("leap").add_default_mappings() end,
-    },
-    {
-        "ggandor/leap-spooky.nvim",
-        config = function()
-            require("leap-spooky").setup()
-            -- yirw[leap] -> yank in remote word
+    "ggandor/leap.nvim",
+    config = function()
+        -- =====================================================================
+        --   Mappings
 
-            -- switch y for c/d -> change/delete
-            -- switch i for a -> around
-            -- switch r for R -> remote from other windows
-            -- switch r/R for m/M -> "magnetic" cursor moves to the targeted object and stays there
-            -- switch w for p -> paragraph
-        end,
-    },
+        vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-anywhere)")
+
+        -- =====================================================================
+        --   Suggested additional tweaks
+
+        -- Highly recommended: define a preview filter to reduce visual noise
+        -- and the blinking effect after the first keypress
+        -- (`:h leap.opts.preview`). You can still target any visible
+        -- positions if needed, but you can define what is considered an
+        -- exceptional case.
+        -- Exclude whitespace and the middle of alphabetic words from preview:
+        --   foobar[baaz] = quux
+        --   ^----^^^--^^-^-^--^
+        require("leap").opts.preview = function(ch0, ch1, ch2) return not (ch1:match("%s") or (ch0:match("%a") and ch1:match("%a") and ch2:match("%a"))) end
+
+        -- Define equivalence classes for brackets and quotes, in addition to
+        -- the default whitespace group:
+        require("leap").opts.equivalence_classes = {
+            " \t\r\n",
+            "([{",
+            ")]}",
+            "'\"`",
+        }
+
+        -- Use the traversal keys to repeat the previous motion without
+        -- explicitly invoking Leap:
+        require("leap.user").set_repeat_keys("<enter>", "<backspace>")
+    end,
 }
