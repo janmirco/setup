@@ -14,7 +14,7 @@ background-blur = true
 
 # font
 font-family = JetBrainsMono Nerd Font
-font-size = 13.0
+font-size = 11.0
 
 # windows
 window-decoration = none

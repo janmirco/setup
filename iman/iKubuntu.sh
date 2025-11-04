@@ -100,7 +100,6 @@ sudo snap install chromium-ffmpeg
 sudo snap install vivaldi
 sudo snap install jabref
 sudo snap install spotify
-sudo snap install ticktick
 sudo snap refresh
 
 # ==============================================================================

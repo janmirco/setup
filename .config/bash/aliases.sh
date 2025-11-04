@@ -446,6 +446,7 @@ alias pip='python3 -m pip'
 alias uva='source .venv/bin/activate'
 alias uvi='uv init --no-workspace --vcs none --author-from git'
 alias uvupdate='uv lock --upgrade && uv sync'
+alias uvupdateworkspace='uv lock --upgrade && uv sync --all-packages'
 
 alias conda_run_settings='export TERM=xterm-256color && run_conda_settings'
 alias conda_deactivate='conda deactivate && export TERM=xterm-ghostty'
