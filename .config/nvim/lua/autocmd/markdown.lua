@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             clear_syntax_highlighting()
         end
 
-        -- open file using enter key
+        -- Open file using enter key
         vim.keymap.set("n", "<CR>", function()
             local path = vim.fn.expand("<cfile>")
             if path:match("^https?://") or path:match("%.pdf$") or path:match("%.jpg$") or path:match("%.png$") or path:match("%.svg$") then
@@ -57,7 +57,18 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             end
         end, { desc = "Open file/url under cursor", silent = true })
 
-        -- make sections italic/bold
+        -- Toggle to-dos
+        vim.keymap.set("n", "mt", function()
+            local line = vim.api.nvim_get_current_line()
+            if line:match("^%- %[ %]") then
+                line = line:gsub("^%- %[ %]", "- [x]")
+            elseif line:match("^%- %[[x]%]") then
+                line = line:gsub("^%- %[[x]%]", "- [ ]")
+            end
+            vim.api.nvim_set_current_line(line)
+        end, { desc = "Toggle to-dos", silent = true })
+
+        -- Make sections italic/bold
         vim.keymap.set("n", "mi", function()
             local keys = vim.api.nvim_replace_termcodes("ciw*<C-r>\"*<esc>b", true, false, true)
             vim.api.nvim_feedkeys(keys, "n", true)
@@ -74,7 +85,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             local keys = vim.api.nvim_replace_termcodes("c**<C-r>\"**<esc>bb", true, false, true)
             vim.api.nvim_feedkeys(keys, "v", true)
         end, { desc = "Make bold", silent = true })
-        -- remove italic/bold by using tpope/vim-surround together with tpope/vim-repeat:
+        -- Remove italic/bold by using tpope/vim-surround together with tpope/vim-repeat:
         --   italic: ds*
         --   bold: ds*.
         --   bold italic: ds*..
@@ -95,28 +106,56 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "BufReadPost", "TextCh
         -- Clear previous extmarks in namespace
         vim.api.nvim_buf_clear_namespace(buf, ns_id, 0, -1)
 
-        local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+        -- Initialize necessary state variables
         local in_section = false
-        local section_start = 0
-        local task_count = 0
+        local in_archive = false
+        local section_start = 1
+        local task_open_count = 0
+        local task_done_count = 0
         local section_headers = {}
 
+        -- Loop over all lines
+        local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
         for i, line in ipairs(lines) do
             if line:match("^# ") then
-                if in_section then section_headers[section_start] = task_count end
-                section_start = i - 1
-                task_count = 0
+                -- Save state variables of previous H1 section
+                if in_section then section_headers[section_start] = { task_open_count, task_done_count, in_archive } end
+
+                -- Reset state variables for next H1 section
                 in_section = true
+                if line:match("^# ARCHIVE") then
+                    in_archive = true
+                else
+                    in_archive = false
+                end
+                section_start = i
+                task_open_count = 0
+                task_done_count = 0
             elseif in_section and line:match("^- %[ %]") then
-                task_count = task_count + 1
+                task_open_count = task_open_count + 1
+            elseif in_section and line:match("^- %[x%]") then
+                task_done_count = task_done_count + 1
             end
         end
 
-        if in_section then section_headers[section_start] = task_count end
+        -- Save state variables of final H1 section
+        if in_section then section_headers[section_start] = { task_open_count, task_done_count, in_archive } end
 
-        for line_num, count in pairs(section_headers) do
-            vim.api.nvim_buf_set_extmark(buf, ns_id, line_num, -1, {
-                virt_text = { { " [" .. count .. " open tasks]", "Comment" } },
+        -- Write virtual text next to H1 section headers
+        for line_num, state in pairs(section_headers) do
+            local open_count, done_count, archive = unpack(state)
+            local virtual_text = ""
+            if archive then
+                virtual_text = " [" .. done_count .. " done tasks]"
+            else
+                if done_count == 0 then
+                    virtual_text = " [" .. open_count .. " open tasks]"
+                else
+                    virtual_text = " [" .. open_count .. " open tasks, " .. done_count .. " done tasks]"
+                end
+            end
+            vim.api.nvim_buf_set_extmark(buf, ns_id, line_num - 1, -1, {
+                virt_text = { { virtual_text, "Comment" } },
                 virt_text_pos = "eol",
             })
         end
