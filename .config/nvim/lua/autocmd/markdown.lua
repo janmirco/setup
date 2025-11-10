@@ -40,10 +40,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             vim.cmd("highlight MyMarkdownTag guifg=" .. frappe["mauve"] .. " gui=bold")
             vim.cmd("highlight MyMarkdownURL gui=underline")
 
-            -- Clear existing matches if valid
-            if vim.g.markdown_tag_match ~= nil and vim.g.markdown_tag_match >= 1 then vim.fn.matchdelete(vim.g.markdown_tag_match) end
-            if vim.g.markdown_url_match ~= nil and vim.g.markdown_url_match >= 1 then vim.fn.matchdelete(vim.g.markdown_url_match) end
-
             -- Add matches
             vim.g.markdown_tag_match = vim.fn.matchadd("MyMarkdownTag", "#\\w\\+")
             vim.g.markdown_url_match = vim.fn.matchadd("MyMarkdownURL", "\\[[^\\]]*\\](\\([^\\)]*\\))")
