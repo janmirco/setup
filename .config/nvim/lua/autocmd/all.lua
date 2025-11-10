@@ -1,12 +1,19 @@
 local all_group = vim.api.nvim_create_augroup("AllAugroup", { clear = true })
 
-vim.api.nvim_create_autocmd({ "BufAdd", "BufEnter", "BufNew", "BufNewFile", "BufRead", "BufWinEnter", "FileType" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
     group = all_group,
     pattern = "*",
     callback = function()
         vim.opt_local.formatoptions:remove({ "c", "r", "o" })
         vim.opt_local.colorcolumn = { 81, 161 }
         vim.opt_local.cursorline = true
+
+        -- Remove any fold appearance changes and open all folds
+        vim.opt_local.foldmethod = "expr"
+        vim.opt_local.fillchars = { fold = " " }
+        vim.opt_local.foldtext = ""
+        vim.cmd("highlight Folded guibg=normal")
+        vim.cmd("normal! zR")
 
         -- Disable colorcolumn and cursorline for specific filetypes
         local excluded_filetypes = {

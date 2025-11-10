@@ -16,7 +16,7 @@ alias jjc="$EDITOR $HOME/.config/jj/config.toml"
 alias nn="$EDITOR $HOME/.config/nvim/init.lua"
 alias rr="$EDITOR $HOME/.config/rofi/config.rasi"
 alias ss="$EDITOR $HOME/.config/starship/config.toml"
-alias tt="$EDITOR $HOME/.config/tmux/tmux.conf"
+alias tt="$EDITOR $HOME/TODO.md"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
 alias yy="$EDITOR $HOME/.config/yazi/yazi.toml"
@@ -97,7 +97,7 @@ alias disk_free='df --human-readable | sort --human-numeric-sort --reverse'
 alias disk_usage='$HOME/scripts/disk_usage.sh'
 alias disk_usage_tui='ncdu'
 alias doi='$HOME/scripts/doi_magic.sh'
-alias ghosttime='npx ghosttime --no-focus-pause'
+alias ghosttime='ghostty +boo'
 alias glow='glow --pager'
 alias gmsh='/usr/bin/gmsh'
 alias grep='grep --color=always'
@@ -340,6 +340,7 @@ alias ji='$EDITOR "$(jj root)"/.gitignore'
 
 alias jcurrentstate='cd "$(jj root)" && jj commit -m "feat: add current state"'
 alias jreadme='jj commit README.md -m "update readme" && jj bookmark set main --revision @- && jj git push'
+alias jtodo='cd $HOME && jj commit ~/TODO.md ~/todo -m "feat: update to-dos"'
 alias jlazylock='cd $HOME && jj commit ~/.config/nvim/lazy-lock.json -m "chore(nvim): update lazy-lock.json"'
 
 # --------------------------------------------------------------------

@@ -8,10 +8,6 @@
 --   Delay: 400 ms
 --   Rate: 40 repeats/s
 
-vim.g.python3_host_prog = "/bin/python3"
-vim.g.mapleader = " "
-
-vim.cmd("syntax enable") -- turn on syntax highlighting explicitly after autocmd and before options!
 require("options") -- needs to be set before plugin manager configurations!
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

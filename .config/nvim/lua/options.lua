@@ -1,3 +1,9 @@
+vim.g.python3_host_prog = "/bin/python3"
+vim.g.mapleader = " "
+vim.g.markdown_folding = 1
+
+vim.cmd("syntax enable") -- turn on syntax highlighting explicitly before options!
+
 vim.opt.errorbells = false
 
 vim.opt.encoding = "utf-8"

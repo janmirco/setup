@@ -79,7 +79,13 @@ return {
                     },
                 },
             },
-            statuscolumn = { enabled = true },
+            statuscolumn = {
+                enabled = true,
+                folds = {
+                    open = true, -- show open fold icons
+                    git_hl = true, -- use Git Signs hl for fold icons
+                },
+            },
             words = {
                 enabled = true,
                 modes = { "n", "i", "c", "v" },
