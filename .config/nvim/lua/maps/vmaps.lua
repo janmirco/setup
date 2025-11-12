@@ -12,7 +12,7 @@ vim.keymap.set("v", "<leader>S", ":sort! i<cr>", { desc = "Sort reversed", silen
 vim.keymap.set("v", "<leader>r", "y:%s/<C-r>\"//g<left><left>", { desc = "Search and replace", silent = true })
 
 -- search for highlighted area
-vim.keymap.set("v", "<leader>n", "y/<C-r>\"<cr>zz", { desc = "Search", silent = true })
+vim.keymap.set("v", "<leader>n", "y/<C-r>\"<cr>", { desc = "Search", silent = true })
 
 -- open help menu for highlighted area
 vim.keymap.set("v", "H", "y:help <C-r>\"<cr>", { desc = "Help", silent = true })

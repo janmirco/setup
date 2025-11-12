@@ -38,7 +38,7 @@ local jump_to_spell_error = function(direction)
         vim.bo.spelllang = "en_us"
         vim.wo.spell = true
     end
-    local keys = vim.api.nvim_replace_termcodes(direction .. "szz", true, false, true)
+    local keys = vim.api.nvim_replace_termcodes(direction .. "s", true, false, true)
     vim.api.nvim_feedkeys(keys, "n", true)
 end
 vim.keymap.set("n", "]s", function() jump_to_spell_error("]") end, { desc = "[Spell] Next error", silent = true })
@@ -74,18 +74,9 @@ vim.keymap.set("n", "<A-w>", function() toggle("wrap") end, { desc = "Toggle wra
 vim.keymap.set("n", "<A-R>", function() toggle("relativenumber") end, { desc = "Toggle relativenumber", silent = true })
 
 -- standard commands mapped with leader
-vim.keymap.set("n", "<leader>R", function()
-    vim.cmd("edit")
-    print(vim.fn.expand("%:t") .. " reloaded")
-end, { desc = "Reload current file", silent = true })
-vim.keymap.set("n", "<leader>w", function()
-    vim.cmd("write")
-    print(vim.fn.expand("%:t") .. " written")
-end, { desc = "write", silent = true })
-vim.keymap.set("n", "<leader>W", function()
-    vim.cmd("wall")
-    print("All files written")
-end, { desc = "wall", silent = true })
+vim.keymap.set("n", "<leader>R", function() vim.cmd("edit") end, { desc = "Reload current file", silent = true })
+vim.keymap.set("n", "<leader>w", function() vim.cmd("write") end, { desc = "write", silent = true })
+vim.keymap.set("n", "<leader>W", function() vim.cmd("wall") end, { desc = "wall", silent = true })
 vim.keymap.set("n", "<leader>q", function() vim.cmd("quit") end, { desc = "quit", silent = true })
 vim.keymap.set("n", "<leader>Q", function() vim.cmd("qall") end, { desc = "qall", silent = true })
 vim.keymap.set("n", "<leader>a", function()
@@ -114,7 +105,6 @@ vim.keymap.set("n", "<leader>rb", ":bufdo %s///ge | update", { desc = "Buffer-wi
 vim.keymap.set("n", "<leader>ow", function()
     vim.cmd("update")
     vim.cmd("only")
-    print("Closed all except current window: " .. vim.fn.expand("%:t"))
 end, { desc = "Close all except current window", silent = true })
 
 -- source current file
@@ -174,10 +164,6 @@ vim.keymap.set("n", "<s-down>", "<c-y>", { desc = "Scroll current line up withou
 vim.keymap.set("n", "Y", "y$", { silent = true }) -- to the end of the line
 vim.keymap.set("n", "<C-y>", ":%y+<cr>", { desc = "Yank entire file", silent = true })
 
--- keeping it centered
-vim.keymap.set("n", "n", "nzz", { silent = true })
-vim.keymap.set("n", "N", "Nzz", { silent = true })
-
 -- move current line
 vim.keymap.set("n", "<A-j>", "<S-v>dp", { desc = "Move current line down", silent = true })
 vim.keymap.set("n", "<A-k>", "<S-v>dkP", { desc = "Move current line up", silent = true })
@@ -200,12 +186,16 @@ vim.keymap.set("n", "<leader>u4", function() vim.cmd("Mason") end, { desc = "Mas
 -- make
 vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { desc = "make", silent = true })
 
+-- messages
+vim.keymap.set("n", ",.", ":messages<CR>", { desc = "Open messages", silent = true })
+vim.keymap.set("n", ",,", ":echo ''<CR>", { desc = "Clear latest message in command line", silent = true })
+
 -- manual indenting
 vim.keymap.set("n", "<leader><leader>", function()
     local cursor_pos = vim.api.nvim_win_get_cursor(0)
     vim.cmd("normal! gg=G")
     vim.api.nvim_win_set_cursor(0, cursor_pos)
-    vim.cmd("normal! ^zz")
+    vim.cmd("normal! ^")
 end, { desc = "Indent current file using neovim", silent = true })
 
 -- sort entire file

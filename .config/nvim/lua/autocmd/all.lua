@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
 
         -- Remove any fold appearance changes and open all folds
         vim.opt_local.foldmethod = "expr"
-        vim.opt_local.fillchars = { fold = " " }
+        vim.opt_local.fillchars = { fold = " ", eob = " " }
         vim.opt_local.foldtext = ""
         vim.cmd("highlight Folded guibg=normal")
         vim.cmd("normal! zR")
@@ -63,28 +63,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking text",
     group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
     callback = function() vim.highlight.on_yank() end,
-})
-
-local safe_zz = function()
-    local mode = vim.api.nvim_get_mode().mode
-    if mode ~= "t" then vim.cmd("normal! zz") end
-end
-
-vim.api.nvim_create_autocmd("BufEnter", {
-    desc = "Keep it centered and Jump to Git hunk",
-    group = vim.api.nvim_create_augroup("keep-it-centered-and-jump-to-git-hunk", { clear = true }),
-    callback = function(args)
-        -- Check if already jumped
-        if vim.b[args.buf].jumped_to_git_hunk then
-            -- do not jump to next hunk if already jumped, only keep it centered
-            vim.defer_fn(function() safe_zz() end, 10)
-            return
-        else
-            -- jump to next hunk and keep it centered
-            local delay_in_ms = 200
-            vim.defer_fn(function() require("gitsigns").next_hunk() end, delay_in_ms)
-            vim.defer_fn(function() safe_zz() end, delay_in_ms + 10)
-            vim.b[args.buf].jumped_to_git_hunk = true
-        end
-    end,
 })
