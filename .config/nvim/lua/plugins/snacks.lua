@@ -58,11 +58,6 @@ return {
             indent = { enabled = false },
             input = { enabled = true },
             lazygit = { enabled = true },
-            notifier = {
-                enabled = true,
-                timeout = 3000,
-                top_down = false,
-            },
             quickfile = { enabled = true },
             scope = {
                 enabled = true,
@@ -110,8 +105,6 @@ return {
             },
             { "LG", function() Snacks.lazygit.open() end, desc = "Lazygit" },
             { "LL", function() Snacks.lazygit.log() end, desc = "Lazygit Current File History" },
-            { ",,", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-            { ",.", function() Snacks.notifier.show_history() end, desc = "Notification History" },
             { "]w", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "v" } },
             { "[w", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "v" } },
             {

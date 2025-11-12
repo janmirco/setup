@@ -69,3 +69,6 @@ vim.opt.guicursor = table.concat({
     "i-c-ci-ve-t:ver25",
     "r-cr-o:hor20",
 }, ",")
+
+vim.opt.colorcolumn = { 81, 161 }
+vim.opt.cursorline = true

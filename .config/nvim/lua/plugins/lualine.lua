@@ -38,14 +38,6 @@ return {
             end
         end
 
-        local show_editor_mode = function()
-            if vim.env.EDITOR_LIGHT == "yes" then
-                return "🪶"
-            else
-                return ""
-            end
-        end
-
         local noice = require("noice")
         local show_selected_and_recording = function()
             local mode = string.lower(noice.api.status.mode.get())
@@ -75,7 +67,6 @@ return {
                     "diagnostics",
                 },
                 lualine_c = {
-                    { show_editor_mode },
                     "filename",
                     { show_spell },
                 },

@@ -4,9 +4,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
     group = all_group,
     pattern = "*",
     callback = function()
-        vim.opt_local.formatoptions:remove({ "c", "r", "o" })
-        vim.opt_local.colorcolumn = { 81, 161 }
-        vim.opt_local.cursorline = true
+        vim.opt_local.formatoptions:remove({ "c", "r", "o" }) -- this has to be called via opt_local from here!
 
         -- Remove any fold appearance changes and open all folds
         vim.opt_local.foldmethod = "expr"
@@ -30,6 +28,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             "notify",
             "oil",
             "snacks_dashboard",
+            "snacks_notif_history",
             "telescope",
             "whichkey",
         }
@@ -37,6 +36,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             if vim.bo.filetype:lower():find(excluded_filetype) then
                 vim.opt_local.colorcolumn = ""
                 vim.opt_local.cursorline = false
+                vim.opt_local.conceallevel = 0
                 return
             end
         end

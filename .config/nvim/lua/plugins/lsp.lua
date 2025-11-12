@@ -101,6 +101,7 @@ return {
             vim.lsp.config("lua_ls", {
                 capabilities = capabilities,
                 on_attach = on_attach,
+                root_markers = { "lazy-lock.json" },
                 settings = {
                     Lua = {
                         runtime = { version = "LuaJIT" },

@@ -1,52 +1,35 @@
-local markdown_auto_format_group = vim.api.nvim_create_augroup("MarkdownAutoFormatGroup", { clear = true })
+local markdown_group = vim.api.nvim_create_augroup("MarkdownGroup", { clear = true })
+
+-- =============================================================================================================================================================
+--   Automatic formatting
+
 vim.api.nvim_create_autocmd("BufWritePost", {
-    group = markdown_auto_format_group,
+    group = markdown_group,
     pattern = { "*.md", "*.json" },
     callback = function() vim.cmd(":silent exec '! prettier --tab-width 4 --write %'") end,
 })
 
-local markdown_conceal_group = vim.api.nvim_create_augroup("MarkdownConcealGroup", { clear = true })
+-- =============================================================================================================================================================
+--   Concealing
+
 vim.api.nvim_create_autocmd("InsertEnter", {
-    group = markdown_conceal_group,
+    group = markdown_group,
     pattern = { "*.md" },
     callback = function() vim.wo.conceallevel = 0 end,
 })
 vim.api.nvim_create_autocmd("InsertLeave", {
-    group = markdown_conceal_group,
+    group = markdown_group,
     pattern = { "*.md" },
     callback = function() vim.wo.conceallevel = 2 end,
 })
 
-local clear_syntax_highlighting = function()
-    if vim.g.markdown_tag_match ~= nil and vim.g.markdown_tag_match >= 1 then
-        vim.fn.matchdelete(vim.g.markdown_tag_match)
-        vim.g.markdown_tag_match = nil
-    end
-    if vim.g.markdown_url_match ~= nil and vim.g.markdown_url_match >= 1 then
-        vim.fn.matchdelete(vim.g.markdown_url_match)
-        vim.g.markdown_url_match = nil
-    end
-end
+-- =============================================================================================================================================================
+--   Keymaps
 
-local markdown_general_group = vim.api.nvim_create_augroup("MarkdownGroup", { clear = true })
-vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
-    group = markdown_general_group,
-    pattern = { "markdown", "typst" },
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    group = markdown_group,
+    pattern = { "markdown" },
     callback = function()
-        -- create special syntax highlighting for markdown
-        if vim.api.nvim_buf_get_name(0):match("%.md$") then
-            -- Define highlight groups using Catppuccin palette
-            local frappe = require("catppuccin.palettes").get_palette("frappe")
-            vim.cmd("highlight MyMarkdownTag guifg=" .. frappe["mauve"] .. " gui=bold")
-            vim.cmd("highlight MyMarkdownURL gui=underline")
-
-            -- Add matches
-            vim.g.markdown_tag_match = vim.fn.matchadd("MyMarkdownTag", "#\\w\\+")
-            vim.g.markdown_url_match = vim.fn.matchadd("MyMarkdownURL", "\\[[^\\]]*\\](\\([^\\)]*\\))")
-        else
-            clear_syntax_highlighting()
-        end
-
         -- Open file using enter key
         vim.keymap.set("n", "<CR>", function()
             local path = vim.fn.expand("<cfile>")
@@ -92,16 +75,49 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
     end,
 })
 
+-- =============================================================================================================================================================
+--   Highlighting
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    group = markdown_group,
+    pattern = { "*.md" },
+    callback = function()
+        -- Define highlight groups using Catppuccin palette
+        local frappe = require("catppuccin.palettes").get_palette("frappe")
+        vim.cmd("highlight MyMarkdownTag guifg=" .. frappe["flamingo"] .. " gui=bold")
+        vim.cmd("highlight MyMarkdownURL gui=underline")
+        vim.cmd("highlight MyMarkdownDone guifg=" .. frappe["overlay0"] .. " gui=strikethrough")
+
+        -- Add matches
+        vim.b.markdown_tag_match = vim.fn.matchadd("MyMarkdownTag", "#\\w\\+")
+        vim.b.markdown_url_match = vim.fn.matchadd("MyMarkdownURL", "\\[[^\\]]*\\](\\([^\\)]*\\))")
+        vim.b.markdown_done_match = vim.fn.matchadd("MyMarkdownDone", "\\-\\ \\[x\\].*")
+    end,
+})
+
+-- Clear all markdown match IDs from any buffer
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    group = markdown_group,
+    pattern = { "*" },
+    callback = function()
+        local file_ext = vim.fn.expand("%:e")
+        if file_ext ~= "md" then vim.fn.clearmatches() end
+    end,
+})
+
+-- =============================================================================================================================================================
+--   Specifically for TODO.md
+
 -- Set up autocmd to update task counts on relevant events
-local markdown_task_count_group = vim.api.nvim_create_augroup("MarkdownTaskCountGroup", { clear = true })
 local ns_id = vim.api.nvim_create_namespace("task_counts")
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "BufReadPost", "TextChanged", "TextChangedI" }, {
-    group = markdown_task_count_group,
+vim.api.nvim_create_autocmd({ "BufEnter", "BufReadPost", "TextChanged", "TextChangedI" }, {
+    group = markdown_group,
     pattern = "TODO.md",
     callback = function()
-        if not vim.api.nvim_buf_get_name(0):match("TODO.md") then return end
-
         local buf = vim.api.nvim_get_current_buf()
+
+        -- Remove colorcolumn
+        vim.opt_local.colorcolumn = ""
 
         -- Clear previous extmarks in namespace
         vim.api.nvim_buf_clear_namespace(buf, ns_id, 0, -1)

@@ -23,11 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
 local opts = { change_detection = { notify = false } }
-if vim.env.EDITOR_LIGHT == "yes" then
-    lazy.setup({ require("light") }, opts)
-else
-    lazy.setup("plugins", opts)
-end
+lazy.setup("plugins", opts)
 
 require("autocmd")
 require("maps")
