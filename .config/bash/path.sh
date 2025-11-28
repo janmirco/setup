@@ -26,5 +26,8 @@ export PYTHONPATH="$PYTHONPATH:$HOME/github/dealii/dealii/install/lib/python3.10
 export MODULAR_HOME="$HOME/.modular"
 export PATH="$MODULAR_HOME/pkg/packages.modular.com_mojo/bin:$PATH"
 
+# paraqus
+export PYTHONPATH="$PYTHONPATH:$HOME/github/institute-of-mechanics/paraqus/src"
+
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"

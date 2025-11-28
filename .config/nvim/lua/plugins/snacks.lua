@@ -56,7 +56,6 @@ return {
                 },
             },
             indent = { enabled = false },
-            input = { enabled = true },
             lazygit = { enabled = true },
             quickfile = { enabled = true },
             scope = {

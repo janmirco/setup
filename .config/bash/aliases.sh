@@ -332,6 +332,7 @@ alias jp='jj git fetch'
 alias jP='jj git push'
 alias jr='jj rebase'
 alias js='jj status'
+alias jS='jj squash'
 alias ju='jj undo'
 alias jw='jj show'
 

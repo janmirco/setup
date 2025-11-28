@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
             if path:match("^https?://") or path:match("%.pdf$") or path:match("%.jpg$") or path:match("%.png$") or path:match("%.svg$") then
                 vim.ui.open(path)
             else
-                vim.cmd("normal! gf")
+                vim.cmd.edit(path)
             end
         end, { desc = "Open file/url under cursor", silent = true })
 
@@ -84,13 +84,17 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     callback = function()
         -- Define highlight groups using Catppuccin palette
         local frappe = require("catppuccin.palettes").get_palette("frappe")
-        vim.cmd("highlight MyMarkdownTag guifg=" .. frappe["flamingo"] .. " gui=bold")
+        vim.cmd("highlight MyMarkdownTag guifg=" .. frappe["mauve"] .. " gui=bold")
         vim.cmd("highlight MyMarkdownURL gui=underline")
+        vim.cmd("highlight MyMarkdownBlocked guifg=" .. frappe["blue"] .. " gui=bold")
+        vim.cmd("highlight MyMarkdownDeadline guifg=" .. frappe["yellow"] .. " gui=bold")
         vim.cmd("highlight MyMarkdownDone guifg=" .. frappe["overlay0"] .. " gui=strikethrough")
 
         -- Add matches
         vim.b.markdown_tag_match = vim.fn.matchadd("MyMarkdownTag", "#\\w\\+")
         vim.b.markdown_url_match = vim.fn.matchadd("MyMarkdownURL", "\\[[^\\]]*\\](\\([^\\)]*\\))")
+        vim.b.markdown_blocked_match = vim.fn.matchadd("MyMarkdownBlocked", "(BLOCKED_BY:.\\{-})")
+        vim.b.markdown_deadline_match = vim.fn.matchadd("MyMarkdownDeadline", "(DEADLINE:.\\{-})")
         vim.b.markdown_done_match = vim.fn.matchadd("MyMarkdownDone", "\\-\\ \\[x\\].*")
     end,
 })
