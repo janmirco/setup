@@ -1,3 +1,11 @@
+-- remap navigation in case of wrapped lines
+vim.keymap.set("n", "j", "gj", { silent = true })
+vim.keymap.set("n", "k", "gk", { silent = true })
+vim.keymap.set("n", "<Down>", "gj", { silent = true })
+vim.keymap.set("n", "<Up>", "gk", { silent = true })
+vim.keymap.set("i", "<Down>", "<C-\\><C-o>gj", { silent = true })
+vim.keymap.set("i", "<Up>", "<C-\\><C-o>gk", { silent = true })
+
 -- remap gv (reselection in visual mode) for use with git
 vim.keymap.set("n", "gV", "gv", { desc = "Start visual mode with previous area", silent = true })
 

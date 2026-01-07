@@ -5,8 +5,8 @@ local markdown_group = vim.api.nvim_create_augroup("MarkdownGroup", { clear = tr
 
 vim.api.nvim_create_autocmd("BufWritePost", {
     group = markdown_group,
-    pattern = { "*.md", "*.json" },
-    callback = function() vim.cmd(":silent exec '! prettier --tab-width 4 --write %'") end,
+    pattern = { "*.md", "*.json", "*.yaml" },
+    callback = function() vim.cmd(":silent exec '! prettier --log-level silent --tab-width 4 --print-width 1 --write %'") end,
 })
 
 -- =============================================================================================================================================================
