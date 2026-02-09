@@ -15,7 +15,35 @@ return {
                 fzf_opts = {
                     ["--cycle"] = true,
                 },
-                files = { no_ignore = true },
+                files = {
+                    no_ignore = true,
+                    rg_opts = table.concat({
+                        "--hidden",
+                        "--no-ignore-vcs",
+                        "--glob",
+                        "!{**/*egg-info/*,**/.*cache*/*,**/.byobu/*,**/.cache/*,**/.cargo/*,**/.config/abiword/*,**/.config/akonadi/*,**/.config/autostart/*,**/.config/BraveSoftware/*,**/.config/cat_installer/*,**/.config/cef_user_data/*,**/.config/coc/*,**/.config/Code/*,**/.config/dconf/*,**/.config/enchant/*,**/.config/fltk.org/*,**/.config/freerdp/*,**/.config/ghb/*,**/.config/GIMP/*,**/.config/google-chrome/*,**/.config/gtk-2.0/*,**/.config/gtk-3.0/*,**/.config/gtk-4.0/*,**/.config/htop/*,**/.config/ibus/*,**/.config/inkscape/*,**/.config/kde.org/*,**/.config/KDE/*,**/.config/kdeconnect/*,**/.config/kdedefaults/*,**/.config/khtml/*,**/.config/lazygit/*,**/.config/libaccounts-glib/*,**/.config/libreoffice/*,**/.config/menus/*,**/.config/microsoft-edge/*,**/.config/neofetch/*,**/.config/nvim/autoload/*,**/.config/nvim/undodir/*,**/.config/obs-studio/*,**/.config/obsidian/*,**/.config/octave/*,**/.config/ookla/*,**/.config/ParaView/*,**/.config/pavucontrol-qt/*,**/.config/pulse/*,**/.config/remmina/*,**/.config/sciebo/*,**/.config/session/*,**/.config/texstudio/*,**/.config/thefuck/*,**/.config/ticktick/*,**/.config/tmux/plugins*,**/.config/Unknown Organization/*,**/.config/VirtualBox/*,**/.config/vlc/*,**/.config/xm1/*,**/.config/xsettingsd/*,**/.dotnet/*,**/.fltk/*,**/.fonts/*,**/.git/*,**/.gnome/*,**/.gnupg/*,**/.imageio/*,**/.ipython/*,**/.java/*,**/.jj/*,**/.julia/*,**/.jupyter/*,**/.kde/*,**/.keras/*,**/.local/*,**/.Mathematica/*,**/.modular/*,**/.mozilla/*,**/.mplayer/*,**/.npm/*,**/.nv/*,**/.openjfx/cache/*,**/.org.jabref.gui.JabRefMain/*,**/.pki/*,**/.pulsesecure/*,**/.rpmdb/*,**/.rustup/*,**/.texlive2021/*,**/.thunderbird/*,**/.var/*,**/.Wolfram/*,**/.zoom/*,**/__pycache__/*,**/CATSettings/*,**/env/*,**/node_modules/*,**/snap/*,**/vbox/*,**/venv/*,**/.venv/*}",
+                        "--color=never",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                    }, " "),
+                    fd_opts = table.concat({
+                        "--color=never",
+                        "--hidden",
+                        "--type f",
+                        "--type l",
+                        "--exclude .env",
+                        "--exclude .git",
+                        "--exclude .jj",
+                        "--exclude .venv",
+                        "--exclude __pycache__",
+                        "--exclude env",
+                        "--exclude node_modules",
+                        "--exclude venv",
+                    }, " "),
+                },
             })
             vim.keymap.set("n", "ff", function() fzf_lua.files() end, { desc = "Find files in current directory", silent = true })
             vim.keymap.set("n", "fh", function() fzf_lua.files({ cwd = "~" }) end, { desc = "Find files in home directory", silent = true })
@@ -77,6 +105,37 @@ return {
                     },
                 })
             end, { desc = "Pick conventional commit type", silent = true })
+
+            -- Markdown header
+            vim.keymap.set("n", "fmh", function()
+                local buf = vim.api.nvim_get_current_buf()
+                local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+
+                local entries = {}
+                for i, line in ipairs(lines) do
+                    local level, text = line:match("^(#+)%s+(.*)")
+                    if level then
+                        -- format: "lnum: ### heading text"
+                        table.insert(entries, string.format("%d:%s %s", i, level, text))
+                    end
+                end
+
+                require("fzf-lua").fzf_exec(entries, {
+                    actions = {
+                        ["default"] = function(selected)
+                            if not selected or not selected[1] then return end
+                            local lnum = tonumber(selected[1]:match("^(%d+):"))
+                            if lnum then vim.api.nvim_win_set_cursor(0, { lnum, 0 }) end
+                        end,
+                    },
+                    winopts = {
+                        title = "Markdown headers",
+                        title_pos = "left",
+                        height = #entries + 4,
+                        preview = { wrap = true },
+                    },
+                })
+            end, { desc = "Pick markdown header", silent = true })
         end,
     },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

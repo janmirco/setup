@@ -125,8 +125,11 @@ export FZF_DEFAULT_OPTS="--layout=reverse --border $FZF_KEY_BINDS $FZF_CATPPUCCI
 export MY_FZF_EXCLUDES="--exclude .env --exclude .venv --exclude env --exclude venv --exclude node_modules --exclude .git --exclude .jj --exclude __pycache__"
 export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type file"
 
-## jj settings
+# jj settings
 source <(COMPLETE=bash jj)
+
+# just settings
+eval "$(just --completions bash)"
 
 # starship settings
 eval "$(starship init bash)"

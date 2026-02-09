@@ -131,6 +131,7 @@
 /.config/systemmonitorrc
 /.config/systemsettingsrc
 /.config/touchpadrc
+/.config/touchpadxlibinputrc
 /.config/trashrc
 /.config/Trolltech.conf
 /.config/user-dirs.dirs
@@ -265,6 +266,7 @@
 /.rustup/
 /.sage/
 /.ssh/
+/.streamlit/
 /.texlive2021/
 /.texlive2023/
 /.thunderbird/

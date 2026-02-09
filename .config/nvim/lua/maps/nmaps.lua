@@ -192,7 +192,13 @@ vim.keymap.set("n", "<leader>u3", function() vim.cmd("MasonUpdate") end, { desc 
 vim.keymap.set("n", "<leader>u4", function() vim.cmd("Mason") end, { desc = "Mason", silent = true })
 
 -- make
-vim.keymap.set("n", "<leader>m", function() vim.cmd("! make") end, { desc = "make", silent = true })
+vim.keymap.set("n", "<leader>m", function()
+    if vim.fn.filereadable("justfile") == 1 then
+        vim.cmd("! just")
+    else
+        vim.cmd("! make")
+    end
+end, { desc = "Run just when justfile exists, otherwise, run make", silent = true })
 
 -- messages
 vim.keymap.set("n", ",.", ":messages<CR>", { desc = "Open messages", silent = true })

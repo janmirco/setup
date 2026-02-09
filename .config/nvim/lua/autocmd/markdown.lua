@@ -40,13 +40,24 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
             end
         end, { desc = "Open file/url under cursor", silent = true })
 
+        -- Paste clipboard content as markdown link
+        vim.keymap.set("n", "mp", function()
+            local word = vim.fn.expand("<cword>") -- get word under cursor
+            local clipboard = vim.fn.getreg("+") -- get system clipboard content
+            local md_link = string.format("[%s](%s)", word, clipboard)
+
+            -- Insert Markdown link at cursor position, replacing the word
+            vim.cmd("normal diw")
+            vim.api.nvim_put({ md_link }, "c", false, true)
+        end, { desc = "Paste clipboard content as markdown link around word under cursor", silent = true })
+
         -- Toggle to-dos
         vim.keymap.set("n", "mt", function()
             local line = vim.api.nvim_get_current_line()
-            if line:match("^%- %[ %]") then
-                line = line:gsub("^%- %[ %]", "- [x]")
-            elseif line:match("^%- %[[x]%]") then
-                line = line:gsub("^%- %[[x]%]", "- [ ]")
+            if line:match("%- %[ %]") then
+                line = line:gsub("%- %[ %]", "- [x]")
+            elseif line:match("%- %[[x]%]") then
+                line = line:gsub("%- %[[x]%]", "- [ ]")
             end
             vim.api.nvim_set_current_line(line)
         end, { desc = "Toggle to-dos", silent = true })

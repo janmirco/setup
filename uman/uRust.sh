@@ -13,6 +13,7 @@ cargo install fd-find
 cargo install git-delta
 cargo install hayagriva --features cli  # bibliography management for typst
 cargo install jj-cli --locked --bin jj
+cargo install just
 cargo install nu --locked
 cargo install presenterm --locked
 cargo install resvg

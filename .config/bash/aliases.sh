@@ -16,7 +16,7 @@ alias jjc="$EDITOR $HOME/.config/jj/config.toml"
 alias nn="$EDITOR $HOME/.config/nvim/init.lua"
 alias rr="$EDITOR $HOME/.config/rofi/config.rasi"
 alias ss="$EDITOR $HOME/.config/starship/config.toml"
-alias tt="$EDITOR $HOME/TODO.md"
+alias tt="$EDITOR $HOME/TODO.md $HOME/BIG_PICTURE.md"
 alias vv="$EDITOR $HOME/.config/vim/config.vim"
 alias ww="$EDITOR $HOME/.config/wezterm/wezterm.lua"
 alias yy="$EDITOR $HOME/.config/yazi/yazi.toml"
@@ -84,7 +84,6 @@ cl() {
     clear
     EZA_FUNC "$@"
 }
-alias cm='clear; make'
 alias crop='$HOME/scripts/crop.sh'
 alias crop_png='$HOME/scripts/crop_png.sh'
 ct() {
@@ -119,7 +118,14 @@ alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias ls='ls --group-directories-first --color=always'
 alias lsyearmd='ls *{1,2}???*.md'
-alias m='make'
+m() {
+    if [[ -f justfile ]] ; then
+        just "$@"
+    else
+        make "$@"
+    fi
+}
+alias cm='clear; m'
 mansearch() {
     man -k "$1"
 }
@@ -270,6 +276,12 @@ git_clone_with_gitbuw_token() {
     git clone "$url_with_token"
 }
 
+git_set_url_with_gitbuw_token() {
+    url="$1"
+    url_with_token="${url/https:\/\//https://"$GITBUW_TOKEN@"}"
+    git remote set-url origin "$url_with_token"
+}
+
 alias G='lazygit'
 alias L='lazygit log'
 alias S='lazygit status'
@@ -341,7 +353,7 @@ alias ji='$EDITOR "$(jj root)"/.gitignore'
 
 alias jcurrentstate='cd "$(jj root)" && jj commit -m "feat: add current state"'
 alias jreadme='jj commit README.md -m "update readme" && jj bookmark set main --revision @- && jj git push'
-alias jtodo='cd $HOME && jj commit ~/TODO.md ~/todo -m "feat: update to-dos"'
+alias jtodo='cd $HOME && jj commit ~/TODO.md ~/BIG_PICTURE.md ~/todo -m "feat: update to-dos"'
 alias jlazylock='cd $HOME && jj commit ~/.config/nvim/lazy-lock.json -m "chore(nvim): update lazy-lock.json"'
 
 # --------------------------------------------------------------------
