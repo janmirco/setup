@@ -66,7 +66,7 @@ return {
             vim.keymap.set("n", "fS", function() fzf_lua.lsp_document_symbols() end, { desc = "Find LSP document symbols", silent = true })
             vim.keymap.set("n", "fR", function() fzf_lua.lsp_references() end, { desc = "Find LSP references", silent = true })
 
-            -- conventional commits
+            -- Conventional commit types
             vim.keymap.set("n", "<leader>b", function()
                 local conv_commits = {
                     -- See: https://github.com/commitizen/conventional-commit-types/blob/master/index.json
@@ -106,7 +106,7 @@ return {
                 })
             end, { desc = "Pick conventional commit type", silent = true })
 
-            -- Markdown header
+            -- Markdown headers
             vim.keymap.set("n", "fmh", function()
                 local buf = vim.api.nvim_get_current_buf()
                 local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
@@ -136,6 +136,44 @@ return {
                     },
                 })
             end, { desc = "Pick markdown header", silent = true })
+
+            -- Line comments
+            vim.keymap.set("n", "fch", function()
+                local buf = vim.api.nvim_get_current_buf()
+                local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+
+                -- Extract line comment prefix from commentstring (e.g. "# " from "# %s")
+                local comment_prefix = vim.bo.commentstring:gsub("%%s.*", ""):gsub("%s*$", "")
+
+                -- Escape special regex chars in comment_prefix for Lua pattern
+                local esc_prefix = comment_prefix:gsub("([%(%)%.%%%+%-%*%?%[%^%$%]])", "%%%1")
+                local pattern = "^%s*" .. esc_prefix .. "+%s*(.*)"
+
+                local entries = {}
+                for i, line in ipairs(lines) do
+                    local level, text = line:match(pattern)
+                    if level then
+                        -- format example for Lua: "lnum: -- line comment"
+                        table.insert(entries, string.format("%d:%s", i, level))
+                    end
+                end
+
+                require("fzf-lua").fzf_exec(entries, {
+                    actions = {
+                        ["default"] = function(selected)
+                            if not selected or not selected[1] then return end
+                            local lnum = tonumber(selected[1]:match("^(%d+):"))
+                            if lnum then vim.api.nvim_win_set_cursor(0, { lnum, 0 }) end
+                        end,
+                    },
+                    winopts = {
+                        title = "Line comments",
+                        title_pos = "left",
+                        height = #entries + 4,
+                        preview = { wrap = true },
+                    },
+                })
+            end, { desc = "Pick line comment", silent = true })
         end,
     },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
