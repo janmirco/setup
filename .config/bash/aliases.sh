@@ -118,14 +118,6 @@ alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -l --almost-all --human-readable --group-directories-first --color=always'
 alias ls='ls --group-directories-first --color=always'
 alias lsyearmd='ls *{1,2}???*.md'
-m() {
-    if [[ -f justfile ]] ; then
-        just "$@"
-    else
-        make "$@"
-    fi
-}
-alias cm='clear; m'
 mansearch() {
     man -k "$1"
 }
@@ -385,6 +377,31 @@ alias foexit='$HOME/scripts/fopen.sh "" "xdg" "" && exit'
 alias fOexit='$HOME/scripts/fopen.sh "$HOME" "xdg" "" && exit'
 
 alias fl='$HOME/scripts/live_grep.sh'
+
+# --------------------------------------------------------------------
+#   make & just
+
+make_just() {
+    if [[ -f justfile ]] ; then
+        \just "$@"
+    else
+        \make "$@"
+    fi
+}
+
+alias make='make_just'
+alias m='make_just'
+alias cm='clear; make_just'
+
+just_make() {
+    if [[ -f GNUmakefile || -f makefile || -f Makefile ]] ; then
+        \make "$@"
+    else
+        \just "$@"
+    fi
+}
+
+alias just='just_make'
 
 # --------------------------------------------------------------------
 #   Neovim
