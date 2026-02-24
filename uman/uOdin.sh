@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
 bin_name="odin"
-month="2024-12"
+month="2026-02"
+date="$month-04"
 version="dev-$month"
 log_sign="[uOdin]"
 bin_path="$HOME/bin/$bin_name"
 dir_name="$bin_name-linux-amd64"
 tar_name="$dir_name-$version.tar.gz"
 url="https://github.com/odin-lang/Odin/releases/download/$version/$tar_name"
-nightly_name="$dir_name-nightly+$month-05"
+nightly_name="$dir_name-nightly+$date"
 
 function download {
     url="$1"

@@ -6,6 +6,7 @@ local servers = {
     fortls = false,
     jsonls = false,
     lua_ls = "special",
+    ols = false,
     pyright = "special",
     ruff = false,
     rust_analyzer = false,

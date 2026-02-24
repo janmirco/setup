@@ -10,6 +10,7 @@
 alias aa="$EDITOR $HOME/.config/alacritty/alacritty.toml"
 alias ba="$EDITOR $HOME/.config/bash/aliases.sh"
 alias bb="$EDITOR $HOME/.bashrc"
+alias bp="$EDITOR $HOME/.config/bash/path.sh"
 alias gg="$EDITOR $HOME/.config/git/config"
 alias hh="$EDITOR $HOME/.config/ghostty/config"
 alias jjc="$EDITOR $HOME/.config/jj/config.toml"
