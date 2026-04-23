@@ -8,6 +8,7 @@
 --   Delay: 400 ms
 --   Rate: 40 repeats/s
 
+require("vim._core.ui2").enable()
 require("options") -- needs to be set before plugin manager configurations!
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

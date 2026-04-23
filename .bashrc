@@ -129,7 +129,7 @@ export FZF_DEFAULT_COMMAND="fd --hidden --no-ignore-vcs $MY_FZF_EXCLUDES --type 
 source <(COMPLETE=bash jj)
 
 # just settings
-eval "$(\just --completions bash)"
+eval "$(just --completions bash)"
 
 # starship settings
 eval "$(starship init bash)"

@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             "cmp",
             "dashboard",
             "float",
+            "fzf",
             "lazy",
             "man",
             "mason",
@@ -32,12 +33,12 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             "telescope",
             "whichkey",
         }
-        for _, excluded_filetype in ipairs(excluded_filetypes) do
-            if vim.bo.filetype:lower():find(excluded_filetype) then
+        for _, excluded in ipairs(excluded_filetypes) do
+            if vim.bo.filetype:lower():find(excluded) then
                 vim.opt_local.colorcolumn = ""
                 vim.opt_local.cursorline = false
                 vim.opt_local.conceallevel = 0
-                return
+                return -- makes sure to exit when current filetype should be excluded for further settings
             end
         end
 
@@ -47,15 +48,18 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             "neogitcommitmessage",
             "jjdescription",
         }
-        for _, version_control_filetype in ipairs(version_control_filetypes) do
-            if vim.bo.filetype:lower():find(version_control_filetype) then
+        for _, excluded in ipairs(version_control_filetypes) do
+            if vim.bo.filetype:lower():find(excluded) then
                 vim.opt_local.colorcolumn = { 51, 73 }
                 vim.opt_local.cursorline = true
                 vim.opt_local.spelllang = "en_us"
                 vim.opt_local.spell = true
-                return
+                return -- makes sure to exit when current filetype should be excluded for further settings
             end
         end
+
+        -- Enable treesitter only when parser exists
+        if vim.treesitter.get_parser() then vim.treesitter.start() end
     end,
 })
 

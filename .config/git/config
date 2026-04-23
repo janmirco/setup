@@ -16,7 +16,7 @@
     defaultBranch = main
 
 [core]
-    editor = "nvim -c 'lua require(\"neogit\").open({ \"commit\" })'"
+    editor = "nvim"
     pager = delta
 
 [interactive]

@@ -104,10 +104,19 @@ vim.keymap.set("n", "q", function()
     else
         vim.cmd("quit")
     end
-end, { desc = "Delete current buffer", silent = true })
+end, { desc = "Delete current buffer or quit", silent = true })
 vim.keymap.set("n", "<Tab>", function() vim.cmd("bnext") end, { silent = true })
 vim.keymap.set("n", "<BS>", function() vim.cmd("bprevious") end, { silent = true })
 vim.keymap.set("n", "<leader>rb", ":bufdo %s///ge | update", { desc = "Buffer-wide search/replace", silent = true })
+
+-- jumps
+vim.keymap.set("n", "<C-i>", "<C-i>", { silent = true })
+vim.keymap.set("n", "<C-o>", "<C-o>", { silent = true })
+-- NOTE:
+-- It is necessary to override <C-i> because by default both <C-i> and <Tab>
+-- send same keyboard signal to terminal. With this keymap setting, Neovim can
+-- distinguish both signals.
+-- Only set <C-o> for completeness. Not necessary.
 
 -- close every window except for the current one
 vim.keymap.set("n", "<leader>ow", function()

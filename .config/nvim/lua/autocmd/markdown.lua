@@ -41,13 +41,32 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         end, { desc = "Open file/url under cursor", silent = true })
 
         -- Paste clipboard content as markdown link
-        vim.keymap.set("n", "mp", function()
-            local word = vim.fn.expand("<cword>") -- get word under cursor
-            local clipboard = vim.fn.getreg("+") -- get system clipboard content
+        vim.keymap.set({ "n", "v" }, "mp", function()
+            -- Get current mode
+            local mode = vim.fn.mode()
+
+            -- Get word under cursor or visual selection
+            local word = ""
+            if mode == "n" then
+                word = vim.fn.expand("<cword>")
+            else
+                word = table.concat(vim.fn.getregion(vim.fn.getpos("v"), vim.fn.getpos(".")), "\n")
+            end
+
+            -- Get system clipboard content
+            local clipboard = vim.fn.getreg("+")
+
+            -- Create markdown link out of word and clipboard
             local md_link = string.format("[%s](%s)", word, clipboard)
 
-            -- Insert Markdown link at cursor position, replacing the word
-            vim.cmd("normal diw")
+            -- Remove word under cursor or visual selection
+            if mode == "n" then
+                vim.cmd("normal diw")
+            else
+                vim.cmd("normal d")
+            end
+
+            -- Insert Markdown link at cursor position
             vim.api.nvim_put({ md_link }, "c", false, true)
         end, { desc = "Paste clipboard content as markdown link around word under cursor", silent = true })
 

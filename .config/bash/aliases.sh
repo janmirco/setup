@@ -163,13 +163,19 @@ qrsvg() {
 }
 alias renameAll='rename "s/\ /_/g" *; rename "s/(\(|\)|\[|\]|\{|\})//g" *; rename "y/A-Z/a-z/" *'
 rgi() {
-  rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --color=always "$@" | $LESS_CMD
+    rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --color=always "$@" | $LESS_CMD
+}
+rginv() {
+    rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --color=never --files-with-matches "$@" | sort | xargs $EDITOR
 }
 rgix() {
-  rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --glob "*.$2" "$1" --color=always | $LESS_CMD
+    rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --glob "*.$2" "$1" --color=always | $LESS_CMD
+}
+rgixnv() {
+    rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --ignore-case --glob "*.$2" "$1" --color=never --files-with-matches | sort | xargs $EDITOR
 }
 rgx() {
-  rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --glob "*.$2" "$1" --color=always | $LESS_CMD
+    rg --hidden --no-ignore-vcs --glob "$RG_GLOB" --glob "*.$2" "$1" --color=always | $LESS_CMD
 }
 alias rm='rm -i'
 search_replace() {
@@ -286,7 +292,7 @@ alias gw='git show'
 alias gv='git difftool'
 alias gm='git mergetool'
 
-alias gc='$EDITOR -c "lua require(\"neogit\").open({ \"commit\" })"'
+alias gc='git commit'
 
 git_format="%C(bold blue)%h%C(reset) %C(bold green)%ci%C(reset) %C(dim white)%an%C(reset) -> %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)"
 
@@ -384,25 +390,16 @@ alias fl='$HOME/scripts/live_grep.sh'
 
 make_just() {
     if [[ -f justfile ]] ; then
-        \just "$@"
+        just "$@"
+    elif [[ -f GNUmakefile || -f makefile || -f Makefile ]] ; then
+        make "$@"
     else
-        \make "$@"
+        echo "Error: No justfile, GNUmakefile, makefile, or Makefile present"
     fi
 }
 
-alias make='make_just'
 alias m='make_just'
 alias cm='clear; make_just'
-
-just_make() {
-    if [[ -f GNUmakefile || -f makefile || -f Makefile ]] ; then
-        \make "$@"
-    else
-        \just "$@"
-    fi
-}
-
-alias just='just_make'
 
 # --------------------------------------------------------------------
 #   Neovim

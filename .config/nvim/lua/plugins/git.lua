@@ -33,22 +33,6 @@ return {
         end,
     },
     {
-        "NeogitOrg/neogit",
-        branch = "master",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function()
-            local neogit = require("neogit")
-            neogit.setup({
-                disable_insert_on_commit = true,
-                graph_style = "unicode",
-            })
-            vim.keymap.set("n", "gc", function() neogit.open({ "commit" }) end, { desc = "[Git] Commit", silent = true })
-            vim.keymap.set("n", "gl", function() neogit.open({ "log" }) end, { desc = "[Git] Commit", silent = true })
-            vim.keymap.set("n", "gP", function() neogit.open({ "push" }) end, { desc = "[Git] Push", silent = true })
-            vim.keymap.set("n", "gs", function() neogit.open({ kind = "replace" }) end, { desc = "[Git] Status", silent = true })
-        end,
-    },
-    {
         "tpope/vim-fugitive",
         config = function()
             vim.keymap.set("n", "g,", ":diffget //2<cr>:echo '[GitMerge] Grabbed from left side'<cr>", { desc = "[Git] Diffget from left", silent = true })
