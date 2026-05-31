@@ -4,14 +4,15 @@ local servers = {
     cmake = false,
     docker_language_server = false,
     fortls = false,
+    harper_ls = "special",
     jsonls = false,
     lua_ls = "special",
     ols = false,
-    pyright = "special",
+    pyright = false,
     ruff = false,
     rust_analyzer = false,
     texlab = false,
-    tinymist = false,
+    tinymist = "special",
     vimls = false,
     zls = false,
 }
@@ -28,7 +29,7 @@ return {
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = language_servers,
-                automatic_enable = true,
+                automatic_enable = false,
             })
         end,
     },
@@ -36,10 +37,6 @@ return {
         "neovim/nvim-lspconfig",
         priority = 4000,
         lazy = false,
-        dependencies = {
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-        },
         config = function()
             -- Use same symbols as diagnostics from lualine
             local symbols = {
@@ -51,7 +48,6 @@ return {
                 },
                 no_icons = { error = "E:", warn = "W:", info = "I:", hint = "H:" },
             }
-
             vim.diagnostic.config({
                 underline = true,
                 virtual_lines = { current_line = true },
@@ -65,65 +61,106 @@ return {
                 },
             })
 
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local on_attach_keymaps = function(_, bufnr)
+                local opts = function(desc)
+                    return {
+                        desc = desc,
+                        silent = true,
+                        buf = bufnr,
+                    }
+                end
 
-            local on_attach = function()
-                vim.keymap.set("n", "<A-I>", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, { desc = "[LSP] Toggle inlay hint", silent = true })
-                vim.keymap.set("n", "<leader>L", function() vim.lsp.stop_client(vim.lsp.get_clients()) end, { desc = "[LSP] Stop client", silent = true })
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "[LSP] Hover", silent = true })
-                vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "[LSP] Show signature help", silent = true }) -- when typing function arguments
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "[LSP] Previous diagnostic", silent = true })
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "[LSP] Next diagnostic", silent = true })
-                vim.keymap.set("n", "gC", vim.lsp.buf.code_action, { desc = "[LSP] Code action", silent = true })
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "[LSP] Go to declaration", silent = true })
-                vim.keymap.set("n", "gI", ":lua =vim.lsp.get_active_clients()[1].server_capabilities<cr>", { desc = "[LSP] Show server capabilities", silent = true })
-                vim.keymap.set("n", "gR", vim.lsp.buf.rename, { desc = "[LSP] Rename", silent = true })
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[LSP] Go to definition", silent = true })
-                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "[LSP] List implementations in quickfix", silent = true })
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "[LSP] List references in quickfix", silent = true })
-                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, { desc = "[LSP] Go to type definition", silent = true })
+                vim.keymap.set("n", "<A-I>", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, opts("[LSP] Toggle inlay hint"))
+                vim.keymap.set("n", "<leader>L", function() vim.lsp.stop_client(vim.lsp.get_clients()) end, opts("LSP Stop client"))
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("[LSP] Hover"))
+                vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts("[LSP] Previous diagnostic"))
+                vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts("[LSP] Next diagnostic"))
+                vim.keymap.set("n", "gc", vim.lsp.buf.code_action, opts("[LSP] Code action"))
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts("[LSP] Go to declaration"))
+                vim.keymap.set("n", "gI", ":lua =vim.lsp.get_active_clients()[1].server_capabilities<cr>", opts("[LSP] Show server capabilities"))
+                vim.keymap.set("n", "gR", vim.lsp.buf.rename, opts("[LSP] Rename"))
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("[LSP] Go to definition"))
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts("[LSP] List implementations in quickfix"))
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("[LSP] List references in quickfix"))
+                vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts("[LSP] Go to type definition"))
             end
 
-            -- language servers without special setup
+            -- Language servers without special setup
             for server, special in pairs(servers) do
                 if not special then vim.lsp.config(server, {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
+                    on_attach = function(client, bufnr) on_attach_keymaps(client, bufnr) end,
                 }) end
             end
 
-            -- lua
+            -- Lua
             vim.lsp.config("lua_ls", {
-                capabilities = capabilities,
-                on_attach = on_attach,
+                on_attach = function(client, bufnr) on_attach_keymaps(client, bufnr) end,
                 root_markers = { "lazy-lock.json" },
                 settings = {
                     Lua = {
                         runtime = { version = "LuaJIT" },
                         diagnostics = { globals = { "vim", "require" } },
                         workspace = {
-                            library = {
-                                vim.fn.stdpath("config"),
-                                vim.fn.stdpath("data") .. "/lazy",
-                            },
+                            checkThirdParty = false,
+                            library = vim.api.nvim_get_runtime_file("", true),
                         },
                         telemetry = { enable = false },
                     },
                 },
             })
 
-            -- python
-            vim.lsp.config("pyright", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                handlers = { ["textDocument/publishDiagnostics"] = function() end },
+            -- Harper
+            vim.lsp.config("harper_ls", {
+                on_attach = function(client, bufnr) on_attach_keymaps(client, bufnr) end,
+                cmd = { "harper-ls", "--stdio" },
+                filetypes = {
+                    "asciidoc",
+                    "gitcommit",
+                    "jjdescription",
+                    "markdown",
+                    "tex",
+                    "text",
+                    "toml",
+                    "typst",
+                    "yaml",
+                },
+                capabilities = {
+                    textDocument = {
+                        semanticTokens = {
+                            multilineTokenSupport = true,
+                        },
+                    },
+                },
+                settings = {
+                    ["harper-ls"] = {
+                        userDictPath = "~/.config/harper-ls/dictionary.txt",
+                        linters = {
+                            UseTitleCase = false,
+                        },
+                    },
+                },
             })
 
-            -- enable all language servers
+            -- Typst
+            vim.lsp.config("tinymist", {
+                on_attach = function(client, bufnr)
+                    on_attach_keymaps(client, bufnr)
+
+                    -- Automatically pin main.typ in current directory as main
+                    vim.print(client.name)
+                    client:exec_cmd({
+                        title = "pin",
+                        command = "tinymist.pinMain",
+                        arguments = { vim.fn.getcwd() .. "/main.typ" },
+                    }, { bufnr = bufnr })
+                end,
+            })
+
+            -- Enable all language servers
             vim.lsp.enable(language_servers)
 
-            -- use temporary fix to avoid race condition when using nvim v0.11+ and lazy package manager
-            -- different solution would be to move LSP config outside of lazy.nvim
+            -- Use temporary fix to avoid race condition when using nvim v0.11+ and lazy package manager.
+            -- A different solution would be to move LSP config outside of lazy.nvim.
             local lsp_group = vim.api.nvim_create_augroup("LSPAttachAugroup", { clear = true })
             vim.api.nvim_create_autocmd("VimEnter", {
                 group = lsp_group,

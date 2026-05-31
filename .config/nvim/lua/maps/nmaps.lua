@@ -27,6 +27,7 @@ copy_keymap("n", "<leader>cc", "gcc") -- use 3<leader>cc to comment 3 lines (cur
 copy_keymap("v", "<leader>cc", "gc")
 vim.keymap.del("n", "gcc")
 vim.keymap.del("v", "gc")
+vim.keymap.del("n", "gc")
 
 -- toggle local spell check
 local toggle_spell = function(language)
@@ -39,6 +40,23 @@ local toggle_spell = function(language)
 end
 vim.keymap.set("n", "<A-e>", function() toggle_spell("en_us") end, { desc = "Toggle spell en_us", silent = true })
 vim.keymap.set("n", "<A-d>", function() toggle_spell("de") end, { desc = "Toggle spell de", silent = true })
+
+-- toggle harper ls
+local is_harper_enabled = function()
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    for _, client in ipairs(clients) do
+        if client.name == "harper_ls" then return true end
+    end
+    return false
+end
+local toggle_harper_ls = function()
+    if is_harper_enabled() then
+        vim.lsp.enable("harper_ls", false)
+    else
+        vim.lsp.enable("harper_ls", true)
+    end
+end
+vim.keymap.set("n", "<A-r>", function() toggle_harper_ls() end, { desc = "Toggle Harper LS grammar checker", silent = true })
 
 -- more spell keymaps
 local jump_to_spell_error = function(direction)

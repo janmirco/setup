@@ -10,6 +10,7 @@ log_sign="[uGhostty]"
 #
 # Notes:
 #   - Although newest build works with newly installed dependencies, switching back to older version of Ghostty because of weird flash when splitting and missing dim for unfocused split.
+#   - Stick to Zig 0.13.0 and Ghostty 1.1.x
 #
 # See:
 #   - https://ghostty.org/docs/install/build

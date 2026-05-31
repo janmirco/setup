@@ -241,6 +241,7 @@
 /.config/vlc/
 /.config/xm1/
 /.config/xsettingsd/
+/.config/zed/
 /.dotnet/
 /.fltk/
 /.fonts/
@@ -278,6 +279,7 @@
 /.vscode/
 /.Wolfram/
 /.zoom/
+/.zotero/
 /backups/
 /bin/
 /ble-*/
@@ -301,3 +303,4 @@
 /vbox/
 /Videos/
 /wiki/
+/Zotero/

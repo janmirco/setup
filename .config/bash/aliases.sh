@@ -107,6 +107,7 @@ helpgrep() {
 hextodec() {
     echo "ibase=16; $1" | bc
 }
+alias intel_oneapi_setvars='source /opt/intel/oneapi/setvars.sh'
 alias ip_address='hostname --all-ip-addresses | sed --expression "s/ .*//"'
 alias less=$LESS_CMD
 l() {
@@ -117,11 +118,11 @@ lb(){
 }
 alias ldpathlist='echo "$LD_LIBRARY_PATH" | tr ":" "\n"'
 alias ll='ls -l --almost-all --human-readable --group-directories-first --color=always'
-alias ls='ls --group-directories-first --color=always'
 alias lsyearmd='ls *{1,2}???*.md'
 mansearch() {
     man -k "$1"
 }
+alias mv='mv -i'
 alias n='$HOME/scripts/notes.sh'
 alias notes='$HOME/scripts/notes.sh'
 alias nushell='nu'

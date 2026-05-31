@@ -1,100 +1,42 @@
 return {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-        "f3fora/cmp-spell",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-path",
-        "kdheepak/cmp-latex-symbols",
-        "onsails/lspkind.nvim",
-        "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip",
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+    version = "1.*",
+    opts = {
+        keymap = {
+            preset = "none",
+
+            ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+            ["<C-e>"] = { "hide", "fallback" },
+            ["<Enter>"] = { "accept", "fallback" }, -- Option `accept` will not automatically select (alternative would be `select_and_accept`). You have to use <Tab> first. This has the advantage of <Enter> always being recognized as a way of creating a new line without interruption from the completion menu. Not having uninterrupted <Tab> is no issue since you never use <Tab> after a word.
+
+            ["<S-Tab>"] = { "select_prev", "fallback_to_mappings" },
+            ["<Tab>"] = { "select_next", "fallback_to_mappings" },
+
+            ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+            ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+            ["<A-j>"] = { "snippet_forward", "fallback" },
+            ["<A-k>"] = { "snippet_backward", "fallback" },
+
+            ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+        },
+        appearance = {
+            nerd_font_variant = "mono",
+        },
+        completion = {
+            menu = { max_height = 5 },
+            documentation = { auto_show = false }, -- show/hide documentation with <C-space>
+            list = { selection = { preselect = false, auto_insert = false } },
+        },
+        signature = { -- show/hide signature with <C-k>
+            enabled = true,
+            trigger = { enabled = false },
+        },
+        sources = {
+            default = { "lsp", "path", "snippets", "buffer" },
+        },
+        fuzzy = { implementation = "prefer_rust_with_warning" },
     },
-    config = function()
-        vim.opt.pumheight = 5 -- limit max item number in completion menu
-
-        local cmp = require("cmp")
-        local luasnip = require("luasnip")
-
-        cmp.setup({
-            view = {
-                entries = { name = "custom", selection_order = "near_cursor" },
-            },
-            window = {
-                completion = cmp.config.window.bordered(),
-                documentation = false,
-            },
-            mapping = cmp.mapping.preset.insert({
-                -- C-b (back) C-f (forward) for snippet placeholder navigation
-                ["<C-u>"] = cmp.mapping.scroll_docs(-4), -- up
-                ["<C-d>"] = cmp.mapping.scroll_docs(4), -- down
-                ["<C-e>"] = cmp.mapping.close(),
-                ["<C-Space>"] = cmp.mapping.complete(),
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.locally_jumpable(1) then
-                        luasnip.jump(1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.locally_jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-            }),
-            sources = cmp.config.sources({
-                { name = "nvim_lua" },
-                { name = "nvim_lsp" },
-                { name = "luasnip" },
-                { name = "buffer", option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end } },
-                { name = "spell" },
-                { name = "path" },
-                { name = "latex_symbols" },
-            }),
-            formatting = {
-                format = require("lspkind").cmp_format({
-                    mode = "symbol_text",
-                    menu = {
-                        buffer = "[Buffer]",
-                        latex_symbols = "[Latex]",
-                        luasnip = "[LuaSnip]",
-                        nvim_lsp = "[LSP]",
-                        nvim_lua = "[NvimLua]",
-                        path = "[Path]",
-                        spell = "[Spell]",
-                    },
-                }),
-            },
-            snippet = {
-                expand = function(args) luasnip.lsp_expand(args.body) end,
-            },
-        })
-
-        -- `/` cmdline setup.
-        cmp.setup.cmdline("/", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "buffer" },
-            },
-        })
-
-        -- `:` cmdline setup.
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({
-                { name = "path" },
-            }, {
-                { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
-            }),
-        })
-    end,
+    opts_extend = { "sources.default" },
 }
