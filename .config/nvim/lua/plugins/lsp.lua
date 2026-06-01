@@ -115,8 +115,6 @@ return {
                 cmd = { "harper-ls", "--stdio" },
                 filetypes = {
                     "asciidoc",
-                    "gitcommit",
-                    "jjdescription",
                     "markdown",
                     "tex",
                     "text",
@@ -133,6 +131,10 @@ return {
                 },
                 settings = {
                     ["harper-ls"] = {
+                        excludePatterns = {
+                            "**/BIG_PICTURE.md",
+                            "**/TODO.md",
+                        },
                         userDictPath = "~/.config/harper-ls/dictionary.txt",
                         linters = {
                             UseTitleCase = false,

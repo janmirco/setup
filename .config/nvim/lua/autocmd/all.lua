@@ -52,8 +52,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FileType" }, {
             if vim.bo.filetype:lower():find(excluded) then
                 vim.opt_local.colorcolumn = { 51, 73 }
                 vim.opt_local.cursorline = true
-                vim.opt_local.spelllang = "en_us"
-                vim.opt_local.spell = true
                 return -- makes sure to exit when current filetype should be excluded for further settings
             end
         end

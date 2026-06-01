@@ -276,6 +276,7 @@
 /.tmux/
 /.var/
 /.vpn/
+/.vscode-shared/
 /.vscode/
 /.Wolfram/
 /.zoom/
